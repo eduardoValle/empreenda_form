@@ -10,16 +10,17 @@ require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 
 function eea_uninstall_db() {
 
-    dbDelta("DROP TABLE IF EXISTS `eea_coordinator`");
-    dbDelta("DROP TABLE IF EXISTS `eea_members`");
-    dbDelta("DROP TABLE IF EXISTS `eea_institution`");
-    dbDelta("DROP TABLE IF EXISTS `eea_campus`");
-    dbDelta("DROP TABLE IF EXISTS `eea_discipline`");
-    dbDelta("DROP TABLE IF EXISTS `eea_functions`");
-    dbDelta("DROP TABLE IF EXISTS `eea_participation`");
-    dbDelta("DROP TABLE IF EXISTS `eea_partnerships`");
-    dbDelta("DROP TABLE IF EXISTS `eea_host_institutions`");
-    dbDelta("DROP TABLE IF EXISTS `eea_financial_resources`");
+    dbDelta("DROP TABLE IF EXISTS `eea_campus`;");
+    dbDelta("DROP TABLE IF EXISTS `eea_discipline`;");
+    dbDelta("DROP TABLE IF EXISTS `eea_functions`;");
+    dbDelta("DROP TABLE IF EXISTS `eea_partnerships`;");
+    dbDelta("DROP TABLE IF EXISTS `eea_host_institutions`;");
+    dbDelta("DROP TABLE IF EXISTS `eea_financial_resources`;");
+
+    dbDelta("DROP TABLE IF EXISTS `eea_coordinator`;");
+    dbDelta("DROP TABLE IF EXISTS `eea_institution`;");
+    dbDelta("DROP TABLE IF EXISTS `eea_members`;");
+    dbDelta("DROP TABLE IF EXISTS `eea_participation`;");
 }
 
 
