@@ -10,8 +10,8 @@
 * Extracting the real dir of plugins
 */
 function getDir(){
-    $_dir = dirname( __DIR__ . "../");    
-    $_dir = explode("/", $_dir);
+    $_dir = dirname( __DIR__ . ".." . DIRECTORY_SEPARATOR);    
+    $_dir = explode( DIRECTORY_SEPARATOR, $_dir);
     $dir = $_dir[sizeof($_dir)-1];
     return $dir;
 }
@@ -41,7 +41,7 @@ function eea_theme() {
         'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js',
         plugins_url().'/' . $dir . '/libs/jquery.formtowizard.js',
-        plugins_url().'/' . $dir . '/libs/form.js'
+        plugins_url().'/' . $dir . '/libs/form.js',
 
 
     );
