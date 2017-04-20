@@ -10,16 +10,27 @@
 * Extracting the real dir of plugins
 */
 function getDir(){
-    $_dir = dirname( __DIR__ . "../");    
-    $_dir = explode("/", $_dir);
+    $_dir = dirname( __DIR__ . ".." . DIRECTORY_SEPARATOR);    
+    $_dir = explode(  DIRECTORY_SEPARATOR, $_dir);
     $dir = $_dir[sizeof($_dir)-1];
     return $dir;
+}
+function _readir( $dir, $target ){
+    $files=array();
+    if (is_dir($dir)){
+      if ($dh = opendir($dir)){
+        while (($file = readdir($dh)) !== false   ){
+          if( $file!="." && $file!=".." ) $files[]= $target.$file;
+        }
+        closedir($dh);
+      }
+    }
+    return $files;
 }
 function getHtmlScripts( $arr ){
     $html = "";
     foreach( $arr as $k=>$v){
-        $html .='<script src="' .$v. '"></script>';
-        
+        $html .='<script src="' .$v. '"></script>';        
     }
     return $html;
 }
@@ -31,25 +42,28 @@ function getHtmlStyles( $arr ){
     }
     return $html;
 }
+
 function eea_theme() {
     // get the real dir
     $dir = getDir();
+    // define the plugin path
+    $path = dirname( __DIR__ . ".." . DIRECTORY_SEPARATOR) ;
+    // define the plugin url
+    $plugins_url = plugins_url().'/' . $dir;
     // define the scripts dependencies
-    $scripts = array(
-        plugins_url().'/' . $dir . '/libs/angular.min.js',
-        plugins_url().'/' . $dir . '/js/form.ctrl.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js',
-        plugins_url().'/' . $dir . '/libs/jquery.formtowizard.js',
-        plugins_url().'/' . $dir . '/libs/form.js'
-
-
+    $scripts = array_merge(
+        array(
+            'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js'
+        ),
+        _readir( $path. '/libs/',  $plugins_url. '/libs/'),
+        _readir( $path. '/js/',  $plugins_url. '/js/')
     );
-    // define the styles dependencies
-    $styles = array(
-        'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css',
-        plugins_url().'/' . $dir . '/css/form.css'
 
+    // define the styles dependencies
+    $styles = array_merge(
+         _readir( $path. '/css/',  $plugins_url. '/css/'),
+        'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css'
     );
 
     $htmlScripts  = getHtmlScripts( $scripts );
