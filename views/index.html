@@ -1,0 +1,558 @@
+
+
+<div ng-repeat="card in instituicao track by $index" class="card" style="width: 20rem; float: left; margin-right: 10px;">
+  <img class="card-img-top" src="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/logo-fundo-transparente-pequena.png" alt="Card image cap">
+  <div class="card-block">
+    <h4 class="card-title"> {{card.title}} </h4>
+    <p class="card-text"> {{$index}} - {{card.description}} </p>
+  </div>
+  <button ng-click="editar(card, $index)"> Editar</button>
+</div>
+
+<input type="text" ng-model="title">
+<input type="text" ng-model="description" >
+<button ng-click="inserir() "></button>
+
+<div class="row wrap">
+	<div class="col-lg-12">
+		<div id='progress'>
+			<div id='progress-complete'></div>
+		</div>
+		<form id="SignupForm" name="SignupForm" action="" method="post" class="form-horizontal">
+			<fieldset>
+				<legend>Coordenador</legend>
+				<!-- Name input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.name" id="name" name="name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- CPF input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="cpf">CPF</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.cpf" id="cpf" name="cpf" type="text" placeholder="Apenas números" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Address input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.address" id="address" name="address" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Email input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="email">E-mail</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.email" id="email" name="email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Phone input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="phone">Telefone</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.phone" id="phone" name="phone" type="text" placeholder="Apenas números" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Mobile input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="mobile">Celular</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.mobile" id="mobile" name="mobile" type="text" placeholder="Apenas números" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- CoordCurso input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="coordCurso">Coordenador do Curso</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.coordCurso" id="coordCurso" name="coordCurso" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- CVLattes input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="cvLattes">Currículo Lattes</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.cvLattes" id="cvLattes" name="cvLattes" type="text" placeholder="Link" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="experience">Experiências individuais e conjuntas na área de empreendedorismo.</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.experience" class="form-control" id="experience" name="experience"></textarea>
+					</div>
+				</div>
+				<br>
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="external_participation">Participação em organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas locais ou nacionais.</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.external_participation" class="form-control" id="external_participation" name="external_participation"></textarea>
+					</div>
+				</div>
+				<br>
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="motivation">Motivação para participar do programa.</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.motivation" class="form-control" id="motivation" name="motivation"></textarea>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<legend>Outros membros da instituição ou membros externos que compõem a equipe local do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
+				<!-- Function -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="nameFunc">Função</label>
+					<div class="col-md-6 col-sm-6">
+						<select ng-model="signupForm.nameFunc" id="nameFunc" name="nameFunc" class="form-control">
+						  <option value="Professor da disciplina">Professor da disciplina</option>
+						  <option value="Responsável pela comunicação com a central do PEA">Responsável pela comunicação com a central do PEA</option>
+						  <option value="Tutor de projetos">Tutor de projetos</option>
+						  <option value="Responsável pela formação da banca de avaliadores">Responsável pela formação da banca de avaliadores</option>
+						  <option value="Organizador do ELEA">Organizador do ELEA</option>
+						  <option value="Responsável pelas comunicações analógicas ou digitais de divulgação do PEA">Responsável pelas comunicações analógicas ou digitais de divulgação</option>
+						</select>
+					</div>
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="nameMember">Nome</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.nameMember" id="nameMember" name="nameMember" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+
+					</div>
+				</div>
+				<br>
+				<!-- CPF input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="cpfMember">CPF</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.cpfMember" id="cpfMember" name="cpfMember" type="text" placeholder="Apenas números" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Email input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="emailMember">E-mail</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.emailMember" id="emailMember" name="emailMember" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Mobile input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="mobileMember">Celular</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.mobileMember" id="mobileMember" name="mobileMember" type="text" placeholder="Apenas números" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- CVLattes input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="cvLattesMember">Currículo Lattes</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.cvLattesMember" id="cvLattesMember" name="cvLattesMember" type="text" placeholder="Link" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Multiple Radios -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="acceptMember">Declaro a concordância com as normas do programa apresentadas através  deste <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf" target="_blank" title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017</a></label>
+					<div class="col-md-6 col-sm-6">
+						<div class="radio">
+							<label>
+								<input type="radio" name="agreeMember" value="true">
+								Aceito
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="agreeMember" value="false">
+								Não aceito
+								</label>
+						</div>
+					</div>
+				</div>
+				<br>
+
+				<!-- Add Mamber -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="addMember">Adicionar Membros</label>
+					<div class="col-md-6 col-sm-6">
+						<button id="addMember" name="addMember" class="btn btn-primary">+ Membro</button>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="form-horizontal" role="form">
+				<legend>Proposta</legend>
+
+				<!-- Select Basic -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="proposal">Proposta</label>
+					<div class="col-md-6 col-sm-6">
+						<select ng-model="signupForm.proposal" id="proposal" name="proposal" class="form-control">
+						  <option value="Individual">Individual</option>
+						  <option value="Conjunto entre campus">Conjunto entre campus</option>
+						  <option value="Conjunto entre Instituições">Conjunto entre Instituições</option>
+						</select>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset class="form-horizontal" role="form">
+				<legend>Instituição</legend>
+				<!-- Name input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="nameInstitution">Nome</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.nameInstitution" id="nameInstitution" name="nameInstitution" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- CNPJ input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="cnpjInstitution">CNPJ</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.cnpjInstitution" id="cnpjInstitution" name="cnpjInstitution" type="text" placeholder="Apenas números" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Address input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="addressInstitution">Endereço</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.addressInstitution" id="addressInstitution" name="addressInstitution" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Email input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="emailInstitution">E-mail</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.emailInstitution" id="email" name="emailInstitution" type="emailInstitution" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Phone input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="phoneInstitution">Telefone</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.phoneInstitution" id="phoneInstitution" name="phoneInstitution" type="text" placeholder="Apenas números" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Contact input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="responsibleInstitution">Contato Responsável</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.responsibleInstitution" id="responsibleInstitution" name="responsibleInstitution" type="text" placeholder="" class="form-control input-md">
+					</div>
+				</div>
+				<br>
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="pastParticipations">Participações passadas em programas de empreendedorismo ou outras  experiências na área, incluindo atividades internas na área já realizadas.</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.pastParticipations" class="form-control" id="pastParticipations" name="pastParticipations"></textarea>
+					</div>
+				</div>
+				<br>
+				<!-- File Button -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="termAppointment">Termo de compromisso</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.termAppointment" id="termAppointment" name="termAppointment" class="input-file" type="file">
+					</div>
+				</div>
+				<br>
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="addDiscipline">Adicionar instituição</label>
+					<div class="col-md-6 col-sm-6">
+						<button id="addDiscipline" name="addDiscipline" class="btn btn-primary">+ Instituição</button>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<!-- Form Name -->
+				<legend>Disciplina</legend>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="nameDiscipline">Disciplinas programadas para 2017-2</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.nameDIscipline" id="nameDiscipline" name="nameDiscipline" type="text" placeholder="Nome" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Multiple Radios -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="Optional">Disciplina de empreendedorismo na grande currícular</label>
+					<div class="col-md-6 col-sm-6">
+						<div class="radio">
+							<label>
+								<input ng-model="signupForm.discOptional" type="radio" name="discOptional" value="false">
+								Obrigatória
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input type="radio" name="discOptional" value="true">
+								Optativa
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="codeDiscipline">Código</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.codeDiscipline" id="codeDiscipline" name="codeDiscipline" type="text" placeholder="Código da disciplina" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="teacher">Professor</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.teacher" id="teacher" name="teacher" type="text" placeholder="Professor da Disciplina" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="nStudents">Previsão do nº de alunos</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.nStudents" id="nStudents" name="nStudents" type="text" placeholder="Apenas números" class="form-control input-md">
+					</div>
+				</div>
+
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="addDiscipline">Adicionar Disciplina</label>
+					<div class="col-md-6 col-sm-6">
+						<button ng-model="signupForm.addDiscipline" id="addDiscipline" name="addDiscipline" class="btn btn-primary">+ Disciplina</button>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<!-- Form Name -->
+				<legend>Parcerias estabelecidas na comunidade local para ações empreendedoras</legend>
+
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="partnerships">Histórico de parcerias para ações empreendedoras</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.partnerships" class="form-control" id="partnerships" name="partnerships"></textarea>
+					</div>
+				</div>
+
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="partnershipsForPea">Parcerias estabelecidas especialmente para o <abbr title="Programa Empreenda. Em Ação!">PEA</abbr> ou o <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> na <abbr title="Instituição de Ensino Superior">IES</abbr></label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.partnershipsForPea" class="form-control" id="partnershipsForPea" name="partnershipsForPea"></textarea>
+					</div>
+				</div>
+
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="partnershipsBetweenInstitutions">Parceria entre <abbr title="Instituições de Ensino Superior">IESs</abbr> para realizar o <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> conjuntamente</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.partnershipsBetweenInstitutions" class="form-control" id="partnershipsBetweenInstitutions" name="partnershipsBetweenInstitutions"></textarea>
+					</div>
+				</div>
+
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="partnershipsBetweenCampus">Parceria entre campi diferentes da mesma <abbr title="Instituição de Ensino Superior">IES</abbr> para realizar o <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr>  conjuntamente em um dos campi</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.partnershipsBetweenCampus" class="form-control" id="partnershipsBetweenCampus" name="partnershipsBetweenCampus"></textarea>
+					</div>
+				</div>
+
+			</fieldset>
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Recursos econômicos apresentados como contrapartida</legend>
+
+				<!-- Multiple Checkboxes -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="agreeResources">Como contrapartida mínima, a instituição deve oferecer sem qualquer custo  para o Programa o espaço físico para o <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> , segurança no local do <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> ,  limpeza do local, energia elétrica e recursos de vídeo e áudio adequados.</label>
+					<div class="col-md-4">
+						<div class="checkbox">
+							<label for="agreeResources-0">
+							 	<input type="checkbox" name="agreeResources" id="agreeResources-0" value="true">
+							  	Sim, concordo e confirmo a contrapartida supra citada.
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="idLocal">Identificação do local de realização do Evento Local do Empreenda. Em Ação!  (<abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr>)</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.idLocal" id="idLocal" name="idLocal" type="text" placeholder="" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="nameLocal">Nome do espaço (auditório, teatro, etc)</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.nameLocal" id="nameLocal" name="nameLocal" type="text" placeholder="" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="AddressLocal">Endereço</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.AddressLocal" id="AddressLocal" name="AddressLocal" type="text" placeholder="" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="maximumCapacity">Capacidade máxima</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.maximumCapacity" id="maximumCapacity" name="maximumCapacity" type="text" placeholder="" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Multiple Checkboxes -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="optionsCounterpart">Opcionais contrapartida econômica</label>
+					<div class="col-md-4">
+						<div class="checkbox">
+							<label for="optionsCounterpart-0">
+								<input ng-model="signupForm.optionsCounterpart" type="checkbox" name="optionsCounterpart" id="optionsCounterpart-0" value="internet">
+							  	Internet
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="others">Outros</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.others" id="others" name="others" type="text" placeholder="" class="form-control input-md">
+
+					</div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="addOthers">Adicionar Outros</label>
+					<div class="col-md-4">
+						<button id="addOthers" name="addOthers" class="btn btn-primary">+ Outros</button>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+
+				<!-- Form Name -->
+				<legend>Plano de divulgação do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr> </legend>
+
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="disseminationPlan">Plano de divulgação do  <abbr title="Programa Empreenda. Em Ação!">PEA</abbr>  para a comunidade interna e externa à  <abbr title="Instituições de Ensino Superior">IES</abbr>,  incluindo canais e número de inserções em cada canal.</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.disseminationPlan" class="form-control" id="disseminationPlan" name="disseminationPlan"></textarea>
+					</div>
+				</div>
+
+			</fieldset>
+			<fieldset>
+				<!-- Form Name -->
+				<legend>Recursos financeiros apresentados como contrapartida, quando houver</legend>
+
+				<!-- Multiple Radios -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="resources">Recursos</label>
+					<div class="col-md-6 col-sm-6">
+						<div class="radio">
+							<label>
+								<input ng-model="signupForm.resources" type="radio" name="resources" value="Próprio">
+								Próprio
+							</label>
+						</div>
+						<div class="radio">
+							<label>
+								<input ng-model="signupForm.resources" type="radio" name="resources" value="Parceiro">
+								Parceiro
+							</label>
+						</div>
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="namePartner">Nome</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.namePartner" id="namePartner" name="namePartner" type="text" placeholder="" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="featuresValue">Valor de recurso</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.featuresValue" id="featuresValue" name="featuresValue" type="text" placeholder="R$" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="addressPartner">Endereço</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.addressPartner" id="addressPartner" name="addressPartner" type="text" placeholder="" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="responsibleContact">Contato do responsável</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.responsibleContact" id="responsibleContact" name="responsibleContact" type="text" placeholder="" class="form-control input-md">
+					</div>
+				</div>
+
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="detailingResources">Detalhamento</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.detailingResources" class="form-control" id="detailingResources" name="detailingResources"></textarea>
+					</div>
+				</div>
+
+				<!-- Button -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="addPartner">Adicionar parceiro</label>
+					<div class="col-md-6 col-sm-6">
+						<button id="addPartner" name="addPartner" class="btn btn-primary">+ Parceiro</button>
+					</div>
+				</div>
+			</fieldset>
+			<button id="SaveAccount" type="submit" class="btn btn-primary submit">Candidatar</button>
+		</form>
+	</div>
