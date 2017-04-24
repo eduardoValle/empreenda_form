@@ -74,8 +74,9 @@
 					<div class="form-group">
 						<label class="col-md-4 col-sm-3 control-label" for="experience">Experiências individuais e conjuntas na área de empreendedorismo.</label>
 						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.coordenador.experience" class="form-control" id="experience" name="experience"></textarea>
+							<textarea ng-model="signupForm.coordenador.experience" class="form-control" id="experience" maxlength="10" name="experience"></textarea>
 						</div>
+						<div class="col-md-6 col-sm-6">{{signupForm.coordenador.experience | wordcount:false}}</div>
 					</div>
 					<br>
 					<!-- Textarea -->
