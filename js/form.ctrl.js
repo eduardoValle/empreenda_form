@@ -5,6 +5,36 @@
 	'use strict';
 
 	angular.module('eea', [])
+		.filter('wordcount', function () {
+
+			/*
+			* @param string input is the string that have to count
+			* @param number/boolean limit is a flag that means if we limit by
+			                          a number like: 10/1000 which 1000 is
+			                          the limit value. Or is false, catch the
+			                          attribute maxvalue os the input/textarea
+			                          by the id
+			* @param string id to catch the maxvalue value
+			* @return string in format: <string.length>/<limit>
+			*/
+
+			return function (input, limit, id) {
+				//verifica se o limit está setado
+				var stringSize = input.length;
+				if (!!limit) {
+					return '' + stringSize + '/' + limit;
+				} else {
+					if (!!id) {
+						var _limit = jQuery("#" + id).attr("maxlength");
+						return '' + stringSize + '/' + _limit;
+					} else {
+						return '';
+					}
+				}
+
+			}
+
+		})
 		.controller('EeaForm', ['$scope', 'Member', 'Instituicao', 'OthersFeatures', 'FinancialResources', 'Discipline', '$http',
         function ($scope, Member, Instituicao, OthersFeatures, FinancialResources, Discipline, $http) {
 
@@ -73,7 +103,8 @@
 						lattes: '',
 						experience: '',
 						external_participation: '',
-						motivation: ''
+						motivation: '',
+						disseminationPlan: ''
 					},
 					members: Member.get(),
 					instituicao: Instituicao.get(),
@@ -89,6 +120,7 @@
 					},
 					financial_resources: FinancialResources.get(),
 				};
+
 
 
 
@@ -115,6 +147,8 @@
 						phone: '',
 						responsible: '',
 						phone_responsible: '',
+						pastParticipations: '',
+						termAppointment: '',
 						partnerships: {
 							historic: '',
 							partnerships_between_institutions: '',
@@ -164,55 +198,91 @@
 
 
 				function campusCoordenador() {
-					return !($scope.signupForm.coordenador.name || $scope.signupForm.coordenador.cpf || $scope.signupForm.coordenador.address || $scope.signupForm.coordenador.email || $scope.signupForm.coordenador.phone || $scope.signupForm.coordenador.mobile || $scope.signupForm.coordenador.responsible || $scope.signupForm.coordenador.lattes || $scope.signupForm.coordenador.experience || $scope.signupForm.coordenador.external_participation || $scope.signupForm.coordenador.motivation)
+					return !($scope.signupForm.coordenador.name && $scope.signupForm.coordenador.cpf && $scope.signupForm.coordenador.address && $scope.signupForm.coordenador.email && $scope.signupForm.coordenador.phone && $scope.signupForm.coordenador.mobile && $scope.signupForm.coordenador.responsible && $scope.signupForm.coordenador.lattes && $scope.signupForm.coordenador.experience && $scope.signupForm.coordenador.external_participation && $scope.signupForm.coordenador.motivation)
+				}
+
+				function campusMember() {
+					return !($scope.members.name && $scope.members.cpf && $scope.members.email && $scope.members.mobile && $scope.members.lattes)
+				}
+			
+				function campusInstituicao() {
+					return !(
+						
+						$scope.instituicao.name && $scope.instituicao.cnpj && $scope.instituicao.address && $scope.instituicao.email && $scope.instituicao.phone && $scope.instituicao.responsible && $scope.instituicao.phone_responsible && $scope.instituicao.pastParticipations && $scope.instituicao.termAppointment && 
+							 
+							 
+							 $scope.discipline.name && $scope.discipline.Optional && $scope.discipline.code_discipline && $scope.discipline.teacher && $scope.discipline.n_students && 
+							 
+							 
+							 $scope.partnerships.historic && $scope.partnerships.partnerships_for_pea && $scope.partnerships.partnerships_between_institutions && $scope.partnerships.partnerships_between_campus)
 				}
 
 				$scope.addListener = function (id, validation) {
 					var interval = window.setInterval(() => {
 						if (jQuery(id).length > 0) {
-							jQuery(id).bind('click', () => {
-								validation();
+							jQuery(id).bindFirst('click', (e) => {
+								validation(e);
 							});
 							clearInterval(interval);
 						}
+
 					}, 1000);
 				};
 
+				$scope.addListener("#step0Next", function (e) {
+					if (campusCoordenador()) {
+						//e.stopImmediatePropagation();
 
-				$scope.addListener("#step0Next", function () {
-					if(campusCoordenador()){
-						alert("Preencha os campos corretamente!");			
+					} else {
+						//alert("Teste")
 					}
+					e.preventDefault();
+					return false;
+				});
+			
+				$scope.addListener("#step1Next", function (e) {
+					if (campusMember()) {
+						//e.stopImmediatePropagation();
+
+					} else {
+						//alert("GO")
+					}
+					e.preventDefault();
+					return false;
+				});
+			
+				$scope.addListener("#step3Next", function (e) {
+					if (campusInstituicao()) {
+						//e.stopImmediatePropagation();
+
+					} else {
+						//alert("GO")
+					}
+					e.preventDefault();
+					return false;
 				});
 
-				$scope.addListener("#step1Next", function () {
-					//campusMember;
-					//addMember();
-				});
 
-				/*				function camposNulos() {
 
-									return !(
-										//Coordenador
-										$scope.signupForm.name || $scope.signupForm.cpf || $scope.signupForm.address || $scope.signupForm.email || $scope.signupForm.phone || $scope.signupForm.mobile || $scope.signupForm.coordCurso || $scope.signupForm.cvLattes || $scope.signupForm.experience || $scope.signupForm.external_participation || $scope.signupForm.motivation ||
-										//Outros membros da instituição ou membros externos que compõem a equipe local do PEA
-										$scope.signupForm.nameFunc || $scope.signupForm.nameMember || $scope.signupForm.cpfMember || $scope.signupForm.emailMember || $scope.signupForm.mobileMember || $scope.signupForm.cvLattesMember ||
-										//Proposta
-										$scope.signupForm.proposal ||
-										//Instituição/Campus
-										$scope.signupForm.nameInstitution || $scope.signupForm.cnpjInstitution || $scope.signupForm.addressInstitution || $scope.signupForm.emailInstitution || $scope.signupForm.phoneInstitution || $scope.signupForm.responsibleInstitution || $scope.signupForm.pastParticipations || $scope.signupForm.termAppointment ||
-										//Disciplina		 
-										$scope.signupForm.nameDIscipline || $scope.signupForm.discOptional || $scope.signupForm.codeDiscipline || $scope.signupForm.teacher || $scope.signupForm.nStudents ||
-										//Parcerias estabelecidas na comunidade local para ações empreendedoras
-										$scope.signupForm.partnerships || $scope.signupForm.partnershipsForPea || $scope.signupForm.partnershipsBetweenInstitutions || $scope.signupForm.partnershipsBetweenCampus ||
-										//Recursos econômicos apresentados como contrapartida	
-										$scope.signupForm.idLocal || $scope.signupForm.nameLocal || $scope.signupForm.addressLocal || $scope.signupForm.maximumCapacity || $scope.signupForm.optionsCounterpart || $scope.signupForm.others ||
-										//Plano de divulgação do PEA	
-										$scope.signupForm.disseminationPlan ||
-										//Recursos financeiros apresentados como contrapartida, quando houver	
-										$scope.signupForm.resources || $scope.signupForm.namePartner || $scope.signupForm.featuresValue || $scope.signupForm.addressPartner || $scope.signupForm.responsibleContact || $scope.signupForm.detailingResources);
-								}
-					*/
+				/*				
+
+				function camposNulos() {
+
+					return !(
+						//Outros membros da instituição ou membros externos que compõem a equipe local do PEA
+						$scope.signupForm.nameFunc || $scope.signupForm.nameMember || $scope.signupForm.cpfMember || $scope.signupForm.emailMember || $scope.signupForm.mobileMember || $scope.signupForm.cvLattesMember ||
+						//Proposta
+						$scope.signupForm.proposal ||
+						//Instituição/Campus
+						
+						//Recursos econômicos apresentados como contrapartida	
+						$scope.signupForm.idLocal || $scope.signupForm.nameLocal || $scope.signupForm.addressLocal || $scope.signupForm.maximumCapacity || $scope.signupForm.optionsCounterpart || $scope.signupForm.others ||
+						//Plano de divulgação do PEA	
+						$scope.signupForm.disseminationPlan ||
+						//Recursos financeiros apresentados como contrapartida, quando houver	
+						$scope.signupForm.resources || $scope.signupForm.namePartner || $scope.signupForm.featuresValue || $scope.signupForm.addressPartner || $scope.signupForm.responsibleContact || $scope.signupForm.detailingResources);
+				}
+				*/
 
 				function agreeMember() {
 					return !($scope.signupForm.agreeMember == false);
@@ -227,16 +297,25 @@
 					//	toastMessage('Nenhum dos campos podem estar em branco!!');
 					//	return;
 					//} else {
+					
+					var formData = new FormData();
+					formData.append("termAppointment", jQuery("#termAppointment")[0].files[0]);
+					
+					formData.append("signupForm", JSON.stringify($scope.signupForm));
+					
 					$http({
 						method: 'POST',
-						url: 'auth/formPea',
-						data: $scope.signupForm
-					}).then(function () {
+						url: '../wp-content/plugins/empreenda_form/views/upload.php',
+						data: formData,
+						transformRequest: angular.identity,
+   						headers: {'Content-Type': undefined}
+					}).then(function ( response) {
+						console.log( response );
 						// SUCSESS
-						toastMessage('Email enviado com sucesso!');
+						//toastMessage('Email enviado com sucesso!');
 					}, function () {
 						// ERROR
-						toastMessage('Email não encontrado!');
+						//toastMessage('Email não encontrado!');
 					});
 
 					//	}
