@@ -3,8 +3,50 @@ $(function () {
 
 	$signupForm.validate({
 		rules: {
+          name:'required',
+					cpf:{
+						required:true,
+						number:true
+					},
+					address:'required',
+					email:{
+						required: true,
+      					email: true
+					},
+					phone:{
+						required:true,
+						number:true
+					},
+					mobile:{
+						required:true,
+						number:true
+					},
+					responsible:'required',
+					lattes:'required',
+					experience:'required',
+					external_participation:'required',
+					motivation:'required',
 
-			financial_resources_name: 'required',
+					member_name:'required',
+					member_cpf:{
+						required:true,
+						number:true
+					},
+					member_email:{
+						required: true,
+      					email: true
+					},
+					member_phone:{
+						required:true,
+						number:true
+					},
+					member_mobile:{
+						required:true,
+						number:true
+					},
+					member_lattes:'required',
+					agreeMember:'required',
+      financial_resources_name: 'required',
 			partner_features: {
 				required: true,
 				number: true

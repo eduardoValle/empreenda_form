@@ -5,36 +5,36 @@
 	'use strict';
 
 	angular.module('eea', [])
-		.filter('wordcount', function () {
+	.filter('wordcount', function() {
 
-			/*
-			* @param string input is the string that have to count
-			* @param number/boolean limit is a flag that means if we limit by
-			                          a number like: 10/1000 which 1000 is
-			                          the limit value. Or is false, catch the
-			                          attribute maxvalue os the input/textarea
-			                          by the id
-			* @param string id to catch the maxvalue value
-			* @return string in format: <string.length>/<limit>
-			*/
+             /*
+             * @param string input is the string that have to count
+             * @param number/boolean limit is a flag that means if we limit by
+                                       a number like: 10/1000 which 1000 is
+                                       the limit value. Or is false, catch the
+                                       attribute maxvalue os the input/textarea
+                                       by the id
+             * @param string id to catch the maxvalue value
+             * @return string in format: <string.length>/<limit>
+             */
+             
+             return function(input, limit, id) {
+               //verifica se o limit está setado
+               var stringSize = input.length;
+               if( !!limit ){
+                   return '' + stringSize + '/' + limit;
+               }else{
+                   if( !!id){
+                       var _limit = jQuery("#"+id).attr("maxlength");
+                       return '' + stringSize + '/' + _limit;
+                   }else{
+                       return '';
+                   }
+               }
 
-			return function (input, limit, id) {
-				//verifica se o limit está setado
-				var stringSize = input.length;
-				if (!!limit) {
-					return '' + stringSize + '/' + limit;
-				} else {
-					if (!!id) {
-						var _limit = jQuery("#" + id).attr("maxlength");
-						return '' + stringSize + '/' + _limit;
-					} else {
-						return '';
-					}
-				}
+             }
 
-			}
-
-		})
+       })
 		.controller('EeaForm', ['$scope', 'Member', 'Instituicao', 'OthersFeatures', 'FinancialResources', 'Discipline', '$http',
         function ($scope, Member, Instituicao, OthersFeatures, FinancialResources, Discipline, $http) {
 
@@ -222,6 +222,10 @@
 						$scope.partnerships.historic && $scope.partnerships.partnerships_for_pea && $scope.partnerships.partnerships_between_institutions && $scope.partnerships.partnerships_between_campus)
 				}
 
+				function campusMember() {
+					return !($scope.members.name || $scope.members.cpf || $scope.members.email || $scope.members.mobile || $scope.members.lattes)
+				}
+
 				$scope.addListener = function (id, validation) {
 					var interval = window.setInterval(() => {
 						if (jQuery(id).length > 0) {
@@ -234,17 +238,20 @@
 					}, 1000);
 				};
 
+				$scope.showRequiredMessage = function(field){
+					return "É necessário preencher o campo "+field;
+				};
 				$scope.addListener("#step0Next", function (e) {
 					if (campusCoordenador()) {
-						//e.stopImmediatePropagation();
-
-					} else {
-						//alert("Teste")
+						e.stopImmediatePropagation();
+						
+					}else{
+						alert("GO")
 					}
 					e.preventDefault();
 					return false;
 				});
-
+          
 				$scope.addListener("#step1Next", function (e) {
 					if (campusMember()) {
 						//e.stopImmediatePropagation();
@@ -272,8 +279,6 @@
 					return false;
 				});
 
-
-
 				/*				
 
 				function camposNulos() {
@@ -284,7 +289,13 @@
 						//Proposta
 						$scope.signupForm.proposal ||
 						//Instituição/Campus
-						
+
+						$scope.signupForm.nameInstitution || $scope.signupForm.cnpjInstitution || $scope.signupForm.addressInstitution || $scope.signupForm.emailInstitution || $scope.signupForm.phoneInstitution || $scope.signupForm.responsibleInstitution || $scope.signupForm.pastParticipations || $scope.signupForm.termAppointment ||
+						//Disciplina		 
+						$scope.signupForm.nameDIscipline || $scope.signupForm.discOptional || $scope.signupForm.codeDiscipline || $scope.signupForm.teacher || $scope.signupForm.nStudents ||
+						//Parcerias estabelecidas na comunidade local para ações empreendedoras
+						$scope.signupForm.partnerships || $scope.signupForm.partnershipsForPea || $scope.signupForm.partnershipsBetweenInstitutions || $scope.signupForm.partnershipsBetweenCampus ||
+
 						//Recursos econômicos apresentados como contrapartida	
 						$scope.signupForm.idLocal || $scope.signupForm.nameLocal || $scope.signupForm.addressLocal || $scope.signupForm.maximumCapacity || $scope.signupForm.optionsCounterpart || $scope.signupForm.others ||
 						//Plano de divulgação do PEA	
