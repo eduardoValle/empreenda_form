@@ -5,8 +5,8 @@
 	'use strict';
 
 	angular.module('eea', [])
-		.controller('EeaForm', ['$scope', 'Member', 'Instituicao', 'OthersFeatures', 'FinancialResources', 'Discipline',
-        function ($scope, Member, Instituicao, OthersFeatures, FinancialResources, Discipline) {
+		.controller('EeaForm', ['$scope', 'Member', 'Instituicao', 'OthersFeatures', 'FinancialResources', 'Discipline', '$http',
+        function ($scope, Member, Instituicao, OthersFeatures, FinancialResources, Discipline, $http) {
 
 				$scope.members = {
 					functions: '',
@@ -35,7 +35,7 @@
 					responsible: '',
 					phone_responsible: '',
 					pastParticipations: '',
-					termAppointment:'',
+					termAppointment: '',
 					partnerships: {
 						historic: '',
 						partnerships_between_institutions: '',
@@ -52,6 +52,7 @@
 
 				$scope.financial_resources = {
 					own_resource: '',
+					name: '',
 					partner_features: '',
 					address: '',
 					cnpj: '',
@@ -105,7 +106,7 @@
 				}
 
 				$scope.addInstituicao = () => {
-					Instituicao.addInstituicao($scope.instituicao);
+					Instituicao.add($scope.instituicao);
 					$scope.instituicao = {
 						name: '',
 						cnpj: '',
@@ -126,7 +127,7 @@
 				}
 
 				$scope.addDiscipline = () => {
-					Discipline.addDiscipline($scope.discipline);
+					Discipline.add($scope.discipline);
 					$scope.discipline = {
 						name: '',
 						optativa: '',
@@ -139,7 +140,7 @@
 				}
 
 				$scope.addFinancialResources = () => {
-					FinancialResources.addFinancialResources($scope.financial_resources);
+					FinancialResources.add($scope.financial_resources);
 					$scope.financial_resources = {
 						own_resource: '',
 						partner_features: '',
@@ -153,7 +154,7 @@
 				}
 
 				$scope.addOthersFeatures = () => {
-					OthersFeatures.addOthersFeatures($scope.others_features);
+					OthersFeatures.add($scope.others_features);
 					$scope.others_features = {
 						name: '',
 
@@ -162,30 +163,56 @@
 				}
 
 
-
-/*				function camposNulos() {
-
-					return !(
-						//Coordenador
-						$scope.signupForm.name || $scope.signupForm.cpf || $scope.signupForm.address || $scope.signupForm.email || $scope.signupForm.phone || $scope.signupForm.mobile || $scope.signupForm.coordCurso || $scope.signupForm.cvLattes || $scope.signupForm.experience || $scope.signupForm.external_participation || $scope.signupForm.motivation ||
-						//Outros membros da instituição ou membros externos que compõem a equipe local do PEA
-						$scope.signupForm.nameFunc || $scope.signupForm.nameMember || $scope.signupForm.cpfMember || $scope.signupForm.emailMember || $scope.signupForm.mobileMember || $scope.signupForm.cvLattesMember ||
-						//Proposta
-						$scope.signupForm.proposal ||
-						//Instituição/Campus
-						$scope.signupForm.nameInstitution || $scope.signupForm.cnpjInstitution || $scope.signupForm.addressInstitution || $scope.signupForm.emailInstitution || $scope.signupForm.phoneInstitution || $scope.signupForm.responsibleInstitution || $scope.signupForm.pastParticipations || $scope.signupForm.termAppointment ||
-						//Disciplina		 
-						$scope.signupForm.nameDIscipline || $scope.signupForm.discOptional || $scope.signupForm.codeDiscipline || $scope.signupForm.teacher || $scope.signupForm.nStudents ||
-						//Parcerias estabelecidas na comunidade local para ações empreendedoras
-						$scope.signupForm.partnerships || $scope.signupForm.partnershipsForPea || $scope.signupForm.partnershipsBetweenInstitutions || $scope.signupForm.partnershipsBetweenCampus ||
-						//Recursos econômicos apresentados como contrapartida	
-						$scope.signupForm.idLocal || $scope.signupForm.nameLocal || $scope.signupForm.addressLocal || $scope.signupForm.maximumCapacity || $scope.signupForm.optionsCounterpart || $scope.signupForm.others ||
-						//Plano de divulgação do PEA	
-						$scope.signupForm.disseminationPlan ||
-						//Recursos financeiros apresentados como contrapartida, quando houver	
-						$scope.signupForm.resources || $scope.signupForm.namePartner || $scope.signupForm.featuresValue || $scope.signupForm.addressPartner || $scope.signupForm.responsibleContact || $scope.signupForm.detailingResources);
+				function campusCoordenador() {
+					return !($scope.signupForm.coordenador.name || $scope.signupForm.coordenador.cpf || $scope.signupForm.coordenador.address || $scope.signupForm.coordenador.email || $scope.signupForm.coordenador.phone || $scope.signupForm.coordenador.mobile || $scope.signupForm.coordenador.responsible || $scope.signupForm.coordenador.lattes || $scope.signupForm.coordenador.experience || $scope.signupForm.coordenador.external_participation || $scope.signupForm.coordenador.motivation)
 				}
-	*/
+
+				$scope.addListener = function (id, validation) {
+					var interval = window.setInterval(() => {
+						if (jQuery(id).length > 0) {
+							jQuery(id).bind('click', () => {
+								validation();
+							});
+							clearInterval(interval);
+						}
+					}, 1000);
+				};
+
+
+				$scope.addListener("#step0Next", function () {
+					if(campusCoordenador()){
+						alert("Preencha os campos corretamente!");			
+					}
+				});
+
+				$scope.addListener("#step1Next", function () {
+					//campusMember;
+					//addMember();
+				});
+
+				/*				function camposNulos() {
+
+									return !(
+										//Coordenador
+										$scope.signupForm.name || $scope.signupForm.cpf || $scope.signupForm.address || $scope.signupForm.email || $scope.signupForm.phone || $scope.signupForm.mobile || $scope.signupForm.coordCurso || $scope.signupForm.cvLattes || $scope.signupForm.experience || $scope.signupForm.external_participation || $scope.signupForm.motivation ||
+										//Outros membros da instituição ou membros externos que compõem a equipe local do PEA
+										$scope.signupForm.nameFunc || $scope.signupForm.nameMember || $scope.signupForm.cpfMember || $scope.signupForm.emailMember || $scope.signupForm.mobileMember || $scope.signupForm.cvLattesMember ||
+										//Proposta
+										$scope.signupForm.proposal ||
+										//Instituição/Campus
+										$scope.signupForm.nameInstitution || $scope.signupForm.cnpjInstitution || $scope.signupForm.addressInstitution || $scope.signupForm.emailInstitution || $scope.signupForm.phoneInstitution || $scope.signupForm.responsibleInstitution || $scope.signupForm.pastParticipations || $scope.signupForm.termAppointment ||
+										//Disciplina		 
+										$scope.signupForm.nameDIscipline || $scope.signupForm.discOptional || $scope.signupForm.codeDiscipline || $scope.signupForm.teacher || $scope.signupForm.nStudents ||
+										//Parcerias estabelecidas na comunidade local para ações empreendedoras
+										$scope.signupForm.partnerships || $scope.signupForm.partnershipsForPea || $scope.signupForm.partnershipsBetweenInstitutions || $scope.signupForm.partnershipsBetweenCampus ||
+										//Recursos econômicos apresentados como contrapartida	
+										$scope.signupForm.idLocal || $scope.signupForm.nameLocal || $scope.signupForm.addressLocal || $scope.signupForm.maximumCapacity || $scope.signupForm.optionsCounterpart || $scope.signupForm.others ||
+										//Plano de divulgação do PEA	
+										$scope.signupForm.disseminationPlan ||
+										//Recursos financeiros apresentados como contrapartida, quando houver	
+										$scope.signupForm.resources || $scope.signupForm.namePartner || $scope.signupForm.featuresValue || $scope.signupForm.addressPartner || $scope.signupForm.responsibleContact || $scope.signupForm.detailingResources);
+								}
+					*/
 
 				function agreeMember() {
 					return !($scope.signupForm.agreeMember == false);
@@ -200,19 +227,19 @@
 					//	toastMessage('Nenhum dos campos podem estar em branco!!');
 					//	return;
 					//} else {
-						$http({
-							method: 'GET',
-							url: 'auth/formPea',
-							data: $scope.signupForm
-						}).then(function () {
-							// SUCSESS
-							toastMessage('Email enviado com sucesso!');
-						}, function () {
-							// ERROR
-							toastMessage('Email não encontrado!');
-						});
+					$http({
+						method: 'POST',
+						url: 'auth/formPea',
+						data: $scope.signupForm
+					}).then(function () {
+						// SUCSESS
+						toastMessage('Email enviado com sucesso!');
+					}, function () {
+						// ERROR
+						toastMessage('Email não encontrado!');
+					});
 
-				//	}
+					//	}
 
 				};
 

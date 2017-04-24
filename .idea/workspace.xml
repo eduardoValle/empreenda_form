@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b312ab89-4364-43c8-ad3e-7980a4636708" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/db_install.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/table_criation.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/db_install.php" afterPath="$PROJECT_DIR$/models/db_install.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/table_criation.php" afterPath="$PROJECT_DIR$/models/table_criation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/empreenda_form.php" afterPath="$PROJECT_DIR$/empreenda_form.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/form.tpl.php" afterPath="$PROJECT_DIR$/views/form.tpl.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,8 +40,8 @@
       <file leaf-file-name="db_install.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/db_install.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -49,18 +51,18 @@
         <entry file="file://$PROJECT_DIR$/models/table_criation.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+              <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="25" />
               <folding>
-                <marker date="1492623179843" expanded="true" signature="198:231" ph="DROP TABLE I... " />
-                <marker date="1492623179843" expanded="true" signature="249:286" ph="DROP TABLE I... " />
-                <marker date="1492623179843" expanded="true" signature="304:340" ph="DROP TABLE I... " />
-                <marker date="1492623179843" expanded="true" signature="358:397" ph="DROP TABLE I... " />
-                <marker date="1492623179843" expanded="true" signature="415:459" ph="DROP TABLE I... " />
-                <marker date="1492623179843" expanded="true" signature="477:523" ph="DROP TABLE I... " />
-                <marker date="1492623179843" expanded="true" signature="542:580" ph="DROP TABLE I... " />
-                <marker date="1492623179843" expanded="true" signature="598:636" ph="DROP TABLE I... " />
-                <marker date="1492623179843" expanded="true" signature="654:688" ph="DROP TABLE I... " />
-                <marker date="1492623179843" expanded="true" signature="706:746" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="198:236" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="253:287" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="304:342" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="359:392" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="409:446" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="463:499" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="516:556" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="573:612" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="629:673" ph="DROP TABLE I... " />
+                <marker date="1492622788422" expanded="true" signature="690:736" ph="DROP TABLE I... " />
               </folding>
             </state>
           </provider>
@@ -99,7 +101,6 @@
         <option value="$PROJECT_DIR$/models/table_institution.php" />
         <option value="$PROJECT_DIR$/models/table_participation.php" />
         <option value="$PROJECT_DIR$/empreenda_form.php" />
-        <option value="$PROJECT_DIR$/models/table_criation.php" />
         <option value="$PROJECT_DIR$/models/db_install.php" />
       </list>
     </option>
@@ -193,7 +194,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../tema" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
   </component>
@@ -303,18 +304,17 @@
       <workItem from="1492435757441" duration="119000" />
       <workItem from="1492435963377" duration="17912000" />
       <workItem from="1492521336438" duration="17919000" />
-      <workItem from="1492610546866" duration="13781000" />
+      <workItem from="1492610546866" duration="9355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61666000" />
+    <option name="totallyTimeSpent" value="57240000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15052083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15052083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -341,7 +341,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="1" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -551,26 +551,26 @@
     <entry file="file://$PROJECT_DIR$/models/table_criation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="10" column="9" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="9" />
+          <caret line="10" column="25" lean-forward="false" selection-start-line="10" selection-start-column="9" selection-end-line="10" selection-end-column="25" />
           <folding>
-            <marker date="1492623179843" expanded="true" signature="198:231" ph="DROP TABLE I... " />
-            <marker date="1492623179843" expanded="true" signature="249:286" ph="DROP TABLE I... " />
-            <marker date="1492623179843" expanded="true" signature="304:340" ph="DROP TABLE I... " />
-            <marker date="1492623179843" expanded="true" signature="358:397" ph="DROP TABLE I... " />
-            <marker date="1492623179843" expanded="true" signature="415:459" ph="DROP TABLE I... " />
-            <marker date="1492623179843" expanded="true" signature="477:523" ph="DROP TABLE I... " />
-            <marker date="1492623179843" expanded="true" signature="542:580" ph="DROP TABLE I... " />
-            <marker date="1492623179843" expanded="true" signature="598:636" ph="DROP TABLE I... " />
-            <marker date="1492623179843" expanded="true" signature="654:688" ph="DROP TABLE I... " />
-            <marker date="1492623179843" expanded="true" signature="706:746" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="198:236" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="253:287" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="304:342" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="359:392" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="409:446" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="463:499" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="516:556" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="573:612" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="629:673" ph="DROP TABLE I... " />
+            <marker date="1492622788422" expanded="true" signature="690:736" ph="DROP TABLE I... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/db_install.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="21" column="49" lean-forward="false" selection-start-line="21" selection-start-column="49" selection-end-line="21" selection-end-column="49" />
           <folding />
         </state>
       </provider>
