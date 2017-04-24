@@ -1,0 +1,77 @@
+<!-- Form Name -->
+					<legend>Recursos financeiros apresentados como contrapartida, quando houver</legend>
+
+					<!-- Multiple Radios -->
+					<div class="form-group">
+						<label class="col-md-4 col-sm-3 control-label" for="resources">Recursos</label>
+						<div class="col-md-6 col-sm-6">
+							<div class="radio">
+								<label>
+									<input ng-model="financial_resources.own_resource" type="radio" name="own_resource" value="Próprio">
+									Próprio
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input ng-model="financial_resources.own_resource" type="radio" name="own_resource" value="Parceiro">
+									Parceiro
+								</label>
+							</div>
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
+						<div class="col-md-6 col-sm-6">
+							<input ng-model="financial_resources.name" id="name" name="name" type="text" placeholder="" class="form-control input-md">
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 col-sm-3 control-label" for="partner_features">Valor de recurso</label>
+						<div class="col-md-6 col-sm-6">
+							<input ng-model="financial_resources.partner_features" id="partner_features" name="partner_features" type="text" placeholder="R$" class="form-control input-md">
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
+						<div class="col-md-6 col-sm-6">
+							<input ng-model="financial_resources.address" id="address" name="address" type="text" placeholder="" class="form-control input-md">
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 col-sm-3 control-label" for="cnpj">CNPJ</label>
+						<div class="col-md-6 col-sm-6">
+							<input ng-model="financial_resources.cnpj" id="cnpj" name="cnpj" type="text" placeholder="" class="form-control input-md">
+						</div>
+					</div>
+
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 col-sm-3 control-label" for="contact_person">Contato do responsável</label>
+						<div class="col-md-6 col-sm-6">
+							<input ng-model="financial_resources.contact_person" id="contact_person" name="contact_person" type="text" placeholder="" class="form-control input-md">
+						</div>
+					</div>
+
+					<!-- Textarea -->
+					<div class="form-group">
+						<label class="col-md-4 col-sm-3 control-label" for="detailing">Detalhamento</label>
+						<div class="col-md-6 col-sm-6">
+							<textarea ng-model="financial_resources.detailing" class="form-control" id="detailingResources" name="detailing"></textarea>
+						</div>
+					</div>
+
+					<!-- Button -->
+					<div class="form-group">
+						<label class="col-md-4 col-sm-3 control-label" for="addPartner">Adicionar parceiro</label>
+						<div class="col-md-6 col-sm-6">
+							<button id="addPartner" name="addPartner" class="btn btn-primary" ng-click="addFinancialResources()" onclick="return false;">+ Parceiro</button>
+						</div>
+					</div>

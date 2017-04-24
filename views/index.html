@@ -10,7 +10,7 @@
 					<div class="form-group">
 						<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
 						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.name" id="name" name="name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md" required="">
+							<input ng-model="signupForm.coordenador.name" id="name" name="name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
 						</div>
 					</div>
 					<br>
@@ -74,16 +74,21 @@
 					<div class="form-group">
 						<label class="col-md-4 col-sm-3 control-label" for="experience">Experiências individuais e conjuntas na área de empreendedorismo.</label>
 						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.coordenador.experience" class="form-control" id="experience" maxlength="10" name="experience"></textarea>
+							<textarea ng-model="signupForm.coordenador.experience" maxlength='10' class="form-control" id="experience" name="experience"></textarea>
 						</div>
-						<div class="col-md-6 col-sm-6">{{signupForm.coordenador.experience | wordcount:false}}</div>
+						<div class="col-md-6 col-sm-6">
+						{{signupForm.coordenador.experience|wordcount:false:'experience'}}
+						</div>
 					</div>
 					<br>
 					<!-- Textarea -->
 					<div class="form-group">
 						<label class="col-md-4 col-sm-3 control-label" for="external_participation">Participação em organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas locais ou nacionais.</label>
 						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.coordenador.external_participation" class="form-control" id="external_participation" name="external_participation"></textarea>
+							<textarea ng-model="signupForm.coordenador.external_participation" maxlength='10' class="form-control" id="external_participation" name="external_participation"></textarea>
+						</div>
+						<div class="col-md-6 col-sm-6">
+						{{signupForm.coordenador.external_participation|wordcount:false:'external_participation'}}
 						</div>
 					</div>
 					<br>
