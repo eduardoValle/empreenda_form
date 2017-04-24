@@ -22,7 +22,7 @@ function eea_desable_db () {
     eea_uninstall_db();
 }
 
-add_action('init', 'eea_start_db');
-add_action('deactivate_', 'eea_desable_db');
+//add_action('init', 'eea_start_db');
+//add_action('deactivate_', 'eea_desable_db');
 register_activation_hook(__FILE__, 'eea_start_db');
 register_deactivation_hook(__FILE__, 'eea_desable_db');
