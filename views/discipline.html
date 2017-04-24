@@ -1,0 +1,62 @@
+<!-- Form Name -->
+<legend>Disciplina</legend>
+<!-- Text input-->
+<div class="form-group">
+	<label class="col-md-4 col-sm-3 control-label" for="name">Disciplinas programadas para 2017-2</label>
+	<div class="col-md-6 col-sm-6">
+		<input ng-model="discipline.name" id="name" name="name" type="text" placeholder="Nome" class="form-control input-md">
+	</div>
+</div>
+
+<!-- Multiple Radios -->
+<div class="form-group">
+	<label class="col-md-4 col-sm-3 control-label" for="Optional">Disciplina de empreendedorismo na grande currícular</label>
+	<div class="col-md-6 col-sm-6">
+		<div class="radio">
+			<label>
+									<input ng-model="discipline.Optional" type="radio" name="Optional" value="false">
+									Obrigatória
+								</label>
+		</div>
+		<div class="radio">
+			<label>
+									<input type="radio" name="Optional" value="true">
+									Optativa
+								</label>
+		</div>
+	</div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+	<label class="col-md-4 col-sm-3 control-label" for="code_discipline">Código</label>
+	<div class="col-md-6 col-sm-6">
+		<input ng-model="discipline.code_discipline" id="code_discipline" name="code_discipline" type="text" placeholder="Código da disciplina" class="form-control input-md">
+	</div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+	<label class="col-md-4 col-sm-3 control-label" for="teacher">Professor</label>
+	<div class="col-md-6 col-sm-6">
+		<input ng-model="discipline.teacher" id="teacher" name="teacher" type="text" placeholder="Professor da Disciplina" class="form-control input-md">
+	</div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+	<label class="col-md-4 col-sm-3 control-label" for="n_students">Previsão do nº de alunos</label>
+	<div class="col-md-6 col-sm-6">
+		<input ng-model="discipline.n_students" id="n_students" name="n_students" type="text" placeholder="Apenas números" class="form-control input-md">
+	</div>
+</div>
+
+
+<!-- Button -->
+<div class="form-group">
+	<label class="col-md-4 col-sm-3 control-label" for="addDiscipline">Adicionar Disciplina</label>
+	<div class="col-md-6 col-sm-6">
+		<button ng-model="discipline.addDiscipline" id="addDiscipline" name="addDiscipline" class="btn btn-primary" ng-click="addDiscipline()" onclick="return false;">+ Disciplina</button>
+	</div>
+</div>
+<br>

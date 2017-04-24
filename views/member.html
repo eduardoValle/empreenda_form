@@ -1,0 +1,83 @@
+	<legend>Outros membros da instituição ou membros externos que compõem a equipe local do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
+	<!-- Function -->
+	<div class="form-group">
+		<label class="col-md-4 col-sm-3 control-label" for="functions">Função</label>
+		<div class="col-md-6 col-sm-6">
+			<select ng-model="members.functions" id="nameFunc" name="nameFunc" class="form-control">
+			  <option value="Professor da disciplina">Professor da disciplina</option>
+			  <option value="Responsável pela comunicação com a central do PEA">Responsável pela comunicação com a central do PEA</option>
+			  <option value="Tutor de projetos">Tutor de projetos</option>
+			  <option value="Responsável pela formação da banca de avaliadores">Responsável pela formação da banca de avaliadores</option>
+			  <option value="Organizador do ELEA">Organizador do ELEA</option>
+			  <option value="Responsável pelas comunicações analógicas ou digitais de divulgação do PEA">Responsável pelas comunicações analógicas ou digitais de divulgação</option>
+			</select>
+		</div>
+	</div>
+	<br>
+	<div class="form-group">
+		<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
+		<div class="col-md-6 col-sm-6">
+			<input ng-model="members.name" id="name" name="name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+
+		</div>
+	</div>
+	<br>
+	<!-- CPF input-->
+	<div class="form-group">
+		<label class="col-md-4 col-sm-3 control-label" for="cpf">CPF</label>
+		<div class="col-md-6 col-sm-6">
+			<input ng-model="members.cpf" id="cpf" name="cpf" type="text" placeholder="Apenas números" class="form-control input-md">
+		</div>
+	</div>
+	<br>
+	<!-- Email input-->
+	<div class="form-group">
+		<label class="col-md-4 col-sm-3 control-label" for="email">E-mail</label>
+		<div class="col-md-6 col-sm-6">
+			<input ng-model="members.email" id="email" name="email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
+		</div>
+	</div>
+	<br>
+	<!-- Mobile input-->
+	<div class="form-group">
+		<label class="col-md-4 col-sm-3 control-label" for="mobile">Celular</label>
+		<div class="col-md-6 col-sm-6">
+			<input ng-model="members.mobile" id="mobile" name="mobile" type="text" placeholder="Apenas números" class="form-control input-md">
+		</div>
+	</div>
+	<br>
+	<!-- CVLattes input-->
+	<div class="form-group">
+		<label class="col-md-4 col-sm-3 control-label" for="lattes">Currículo Lattes</label>
+		<div class="col-md-6 col-sm-6">
+			<input ng-model="members.lattes" id="lattes" name="lattes" type="text" placeholder="Link" class="form-control input-md">
+		</div>
+	</div>
+	<br>
+	<!-- Multiple Radios -->
+	<div class="form-group">
+		<label class="col-md-4 col-sm-3 control-label" for="acceptMember">Declaro a concordância com as normas do programa apresentadas através  deste <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf" target="_blank" title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017</a></label>
+		<div class="col-md-6 col-sm-6">
+			<div class="radio">
+				<label>
+					<input type="radio" name="agreeMember" value="true">
+					Aceito
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="agreeMember" value="false">
+					Não aceito
+					</label>
+			</div>
+		</div>
+	</div>
+	<br>
+
+	<!-- Add Mamber -->
+	<div class="form-group">
+		<label class="col-md-4 col-sm-3 control-label" for="addMember">Adicionar Membros</label>
+		<div class="col-md-6 col-sm-6">
+			<button id="addMember" name="addMember" ng-click="addMember()" onclick="return false;" class="btn btn-primary">+ Membro</button>
+		</div>
+	</div>
