@@ -1,10 +1,17 @@
+<style>
+#agreeMember-error{
+	position: absolute;
+    top: 33px;
+}
+.radio_member{ margin-top: 36px !important; }
+</style>
 	<legend>Outros membros da instituição ou membros externos que compõem a equipe local do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
 	<!-- Function -->
 	<div class="form-group">
 		<label class="col-md-4 col-sm-3 control-label" for="functions">Função</label>
 		<div class="col-md-6 col-sm-6">
-			<select ng-model="members.functions" id="nameFunc" name="nameFunc" class="form-control">
-			  <option value="Professor da disciplina">Professor da disciplina</option>
+			<select ng-model="members.functions" id="nameFunc" name="nameFunc" class="form-control" >
+			  <option value="Professor da disciplina" selected>Professor da disciplina</option>
 			  <option value="Responsável pela comunicação com a central do PEA">Responsável pela comunicação com a central do PEA</option>
 			  <option value="Tutor de projetos">Tutor de projetos</option>
 			  <option value="Responsável pela formação da banca de avaliadores">Responsável pela formação da banca de avaliadores</option>
@@ -15,42 +22,60 @@
 	</div>
 	<br>
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
+		<label class="col-md-4 col-sm-3 control-label" for="member_name">Nome</label>
 		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.name" id="name" name="name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+			<input ng-model="members.name" id="member_name" name="member_name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md"
+			required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo Nome"
+			>
 
 		</div>
 	</div>
 	<br>
 	<!-- CPF input-->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="cpf">CPF</label>
+		<label class="col-md-4 col-sm-3 control-label" for="member_cpf">CPF</label>
 		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.cpf" id="cpf" name="cpf" type="text" placeholder="Apenas números" class="form-control input-md">
+			<input ng-model="members.cpf" id="member_cpf" name="member_cpf" type="number" placeholder="Apenas números" class="form-control input-md"
+			required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo CPF">
 		</div>
 	</div>
 	<br>
 	<!-- Email input-->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="email">E-mail</label>
+		<label class="col-md-4 col-sm-3 control-label" for="member_email">E-mail</label>
 		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.email" id="email" name="email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
+			<input ng-model="members.email" id="member_email" name="member_email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md"
+			required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo E-mail"			data-rule-email="true" 
+			data-msg-email="Formato de E-mail inválido" 
+			>
 		</div>
 	</div>
 	<br>
 	<!-- Mobile input-->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="mobile">Celular</label>
+		<label class="col-md-4 col-sm-3 control-label" for="member_mobile">Celular</label>
 		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.mobile" id="mobile" name="mobile" type="text" placeholder="Apenas números" class="form-control input-md">
+			<input ng-model="members.mobile" id="member_mobile" name="member_mobile" type="number" placeholder="Apenas números" class="form-control input-md"
+			required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo Celular">
 		</div>
 	</div>
 	<br>
 	<!-- CVLattes input-->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="lattes">Currículo Lattes</label>
+		<label class="col-md-4 col-sm-3 control-label" for="member_lattes">Currículo Lattes</label>
 		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.lattes" id="lattes" name="lattes" type="text" placeholder="Link" class="form-control input-md">
+			<input ng-model="members.lattes" id="member_lattes" name="member_lattes" type="text" placeholder="Link" class="form-control input-md"
+			required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo Lattes">
 		</div>
 	</div>
 	<br>
@@ -60,11 +85,15 @@
 		<div class="col-md-6 col-sm-6">
 			<div class="radio">
 				<label>
-					<input type="radio" name="agreeMember" value="true">
+					<input type="radio" name="agreeMember" value="true"
+						required
+						data-rule-required="true" 
+						data-msg-required="É necessário aceitar as normas do programa"
+					>
 					Aceito
 				</label>
 			</div>
-			<div class="radio">
+			<div class="radio radio_member">
 				<label>
 					<input type="radio" name="agreeMember" value="false">
 					Não aceito

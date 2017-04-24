@@ -1,25 +1,34 @@
 <legend>Instituição</legend>
 <!-- Name input-->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
+	<label class="col-md-4 col-sm-3 control-label" for="instituicao_name">Nome</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.name" id="name" name="name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+		<input ng-model="instituicao.name" id="instituicao_name" name="instituicao_name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md"
+		required
+		data-rule-required="true" 
+		data-msg-required="É necessário preencher o Nome.">
 	</div>
 </div>
 <br>
 <!-- CNPJ input-->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="cnpj">CNPJ</label>
+	<label class="col-md-4 col-sm-3 control-label" for="instituicao_cnpj">CNPJ</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.cnpj" id="cnpj" name="cnpj" type="text" placeholder="Apenas números" class="form-control input-md">
+		<input ng-model="instituicao.cnpj" id="instituicao_cnpj" name="instituicao_cnpj" type="number" placeholder="Apenas números" class="form-control input-md"
+		required
+		data-rule-required="true" 
+		data-msg-required="É necessário preencher o campo CNPJ.">
 	</div>
 </div>
 <br>
 <!-- Address input-->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
+	<label class="col-md-4 col-sm-3 control-label" for="instituicao_address">Endereço</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.address" id="address" name="address" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md">
+		<input ng-model="instituicao.address" id="instituicao_address" name="instituicao_address" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md"
+		required
+		data-rule-required="true" 
+		data-msg-required="É necessário preencher o campo Endereço.">
 	</div>
 </div>
 <br>
@@ -27,7 +36,14 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="email">E-mail</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.email" id="email" name="email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
+		<input ng-model="instituicao.email" id="email" name="email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md"
+		required
+		data-rule-required="true" 
+		data-msg-required="É necessário preencher o campo CNPJ."
+		data-rule-email="true" 
+		data-msg-email="Formato de E-mail inválido."
+
+		>
 	</div>
 </div>
 <br>

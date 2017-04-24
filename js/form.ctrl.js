@@ -212,7 +212,9 @@
 
 					}, 1000);
 				};
-
+				$scope.showRequiredMessage = function(field){
+					return "É necessário preencher o campo "+field;
+				};
 				$scope.addListener("#step0Next", function (e) {
 					if (campusCoordenador()) {
 						e.stopImmediatePropagation();
@@ -272,7 +274,7 @@
 					//} else {
 					$http({
 						method: 'POST',
-						url: 'auth/formPea',
+						url: '../wp-content/plugins/empreenda_form/views/finish.php',
 						data: $scope.signupForm
 					}).then(function () {
 						// SUCSESS
