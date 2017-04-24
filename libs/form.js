@@ -2,10 +2,36 @@ $(function () {
 	var $signupForm = $('#SignupForm');
 
 	$signupForm.validate({
+		rules: {
+
+			financial_resources_name: 'required',
+			partner_features: {
+				required: true,
+				number: true
+			},
+			financial_resources_address: 'required',
+			financial_resources_cnpj: {
+				required: true,
+				number: true
+			},
+			contact_person: 'required',
+			detailing: 'required',
+			disseminationPlan: 'required',
+			maximum_capacity:{
+				required: true,
+				number: true
+			},
+			address_local: 'required',
+			name_local: 'required',
+			identification: 'required',
+			agreeResources: 'required',
+			
+		},
 		errorElement: 'em',
 		submitHandler: function (form) {
 			alert('submitted');
-			form.submit();
+			//form.submit();
+			return false;
 		}
 	});
 

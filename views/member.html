@@ -56,17 +56,17 @@
 	<br>
 	<!-- Multiple Radios -->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="acceptMember">Declaro a concordância com as normas do programa apresentadas através  deste <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf" target="_blank" title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017</a></label>
+		<label class="col-md-4 col-sm-3 control-label">Declaro a concordância com as normas do programa apresentadas através  deste <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf" target="_blank" title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017</a></label>
 		<div class="col-md-6 col-sm-6">
 			<div class="radio">
 				<label>
-					<input type="radio" name="agreeMember" value="true">
+					<input ng-model="members.agreeMember" type="radio" name="agreeMember" value="true">
 					Aceito
 				</label>
 			</div>
 			<div class="radio">
 				<label>
-					<input type="radio" name="agreeMember" value="false">
+					<input ng-model="members.agreeMember" type="radio" name="agreeMember" value="false">
 					Não aceito
 					</label>
 			</div>

@@ -24,7 +24,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="financial_resources.name" id="name" name="name" type="text" placeholder="" class="form-control input-md">
+		<input ng-model="financial_resources.name" id="financial_resources_name" name="financial_resources_name" type="text" placeholder="" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo Nome">
 	</div>
 </div>
 
@@ -32,7 +34,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="partner_features">Valor de recurso</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="financial_resources.partner_features" id="partner_features" name="partner_features" type="text" placeholder="R$" class="form-control input-md">
+		<input ng-model="financial_resources.partner_features" id="partner_features" name="partner_features" type="number" placeholder="R$" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo Valor de recurso">
 	</div>
 </div>
 
@@ -40,7 +44,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="financial_resources.address" id="address" name="address" type="text" placeholder="" class="form-control input-md">
+		<input ng-model="financial_resources.address" id="financial_resources_address" name="financial_resources_address" type="text" placeholder="" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo Endereço">
 	</div>
 </div>
 
@@ -48,7 +54,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="cnpj">CNPJ</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="financial_resources.cnpj" id="cnpj" name="cnpj" type="text" placeholder="" class="form-control input-md">
+		<input ng-model="financial_resources.cnpj" id="financial_resources_cnpj" name="financial_resources_cnpj" type="number" placeholder="" class="form-control input-md" financial_resources required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo CNPJ">
 	</div>
 </div>
 
@@ -56,7 +64,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="contact_person">Contato do responsável</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="financial_resources.contact_person" id="contact_person" name="contact_person" type="text" placeholder="" class="form-control input-md">
+		<input ng-model="financial_resources.contact_person" id="contact_person" name="contact_person" type="text" placeholder="" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo Contato do Resposável">
 	</div>
 </div>
 
@@ -64,7 +74,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="detailing">Detalhamento</label>
 	<div class="col-md-6 col-sm-6">
-		<textarea ng-model="financial_resources.detailing" class="form-control" id="detailing" name="detailing" maxlength="1500"></textarea>
+		<textarea ng-model="financial_resources.detailing" class="form-control" id="detailing" name="detailing" maxlength="1500" required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo Detalhamento"></textarea>
 {{financial_resources.detailing|wordcount:false:'detailing'}}
 	</div>
 </div>

@@ -3,7 +3,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.name" id="name" name="name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+		<input ng-model="instituicao.name" id="name_instituicao" name="name_instituicao" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Nome">
 	</div>
 </div>
 <br>
@@ -11,7 +13,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="cnpj">CNPJ</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.cnpj" id="cnpj" name="cnpj" type="text" placeholder="Apenas números" class="form-control input-md">
+		<input ng-model="instituicao.cnpj" id="cnpj_instituicao" name="cnpj_instituicao" type="number" placeholder="Apenas números" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo CNPJ">
 	</div>
 </div>
 <br>
@@ -19,7 +23,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.address" id="address" name="address" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md">
+		<input ng-model="instituicao.address" id="address_instituicao" name="address_instituicao" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Endereço">
 	</div>
 </div>
 <br>
@@ -27,7 +33,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="email">E-mail</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.email" id="email" name="email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
+		<input ng-model="instituicao.email" id="email_instituicao" name="email_instituicao" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Email">
 	</div>
 </div>
 <br>
@@ -35,7 +43,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="phone">Telefone</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.phone" id="phone" name="phone" type="text" placeholder="Apenas números" class="form-control input-md">
+		<input ng-model="instituicao.phone" id="instituicao_phone" name="instituicao_phone" type="number" placeholder="Apenas números" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Telefone">
 	</div>
 </div>
 <br>
@@ -43,7 +53,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="responsible">Responsável</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.responsible" id="responsible" name="responsible" type="text" placeholder="" class="form-control input-md">
+		<input ng-model="instituicao.responsible" id="instituicao_responsible" name="instituicao_responsible" type="text" placeholder="" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Responsável">
 	</div>
 </div>
 <br>
@@ -51,7 +63,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="phone_responsible">Contato do responsável</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.phone_responsible" id="phone_responsible" name="phone_responsible" type="text" placeholder="" class="form-control input-md">
+		<input ng-model="instituicao.phone_responsible" id="instituicao_phone_responsible" name="instituicao_phone_responsible" type="text" placeholder="" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Contato do responsável">
 	</div>
 </div>
 <br>
@@ -70,7 +84,9 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="termAppointment">Termo de compromisso</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.termAppointment" id="termAppointment" name="termAppointment" class="input-file" type="file">
+		<input ng-model="instituicao.termAppointment" id="termAppointment" name="termAppointment" class="input-file" type="file" required
+			data-rule-required="true" 
+			data-msg-required="É necessário anexar o Termo de compromisso">
 	</div>
 </div>
 <br>

@@ -204,17 +204,22 @@
 				function campusMember() {
 					return !($scope.members.name && $scope.members.cpf && $scope.members.email && $scope.members.mobile && $scope.members.lattes)
 				}
-			
+
+				function agreeMember() {
+					return $scope.members.aagreeMember.value();
+					console.log($scope.members.aagreeMember.value());
+				}
+
 				function campusInstituicao() {
 					return !(
-						
-						$scope.instituicao.name && $scope.instituicao.cnpj && $scope.instituicao.address && $scope.instituicao.email && $scope.instituicao.phone && $scope.instituicao.responsible && $scope.instituicao.phone_responsible && $scope.instituicao.pastParticipations && $scope.instituicao.termAppointment && 
-							 
-							 
-							 $scope.discipline.name && $scope.discipline.Optional && $scope.discipline.code_discipline && $scope.discipline.teacher && $scope.discipline.n_students && 
-							 
-							 
-							 $scope.partnerships.historic && $scope.partnerships.partnerships_for_pea && $scope.partnerships.partnerships_between_institutions && $scope.partnerships.partnerships_between_campus)
+
+						$scope.instituicao.name && $scope.instituicao.cnpj && $scope.instituicao.address && $scope.instituicao.email && $scope.instituicao.phone && $scope.instituicao.responsible && $scope.instituicao.phone_responsible && $scope.instituicao.pastParticipations && $scope.instituicao.termAppointment &&
+
+
+						$scope.discipline.name && $scope.discipline.Optional && $scope.discipline.code_discipline && $scope.discipline.teacher && $scope.discipline.n_students &&
+
+
+						$scope.partnerships.historic && $scope.partnerships.partnerships_for_pea && $scope.partnerships.partnerships_between_institutions && $scope.partnerships.partnerships_between_campus)
 				}
 
 				$scope.addListener = function (id, validation) {
@@ -239,18 +244,23 @@
 					e.preventDefault();
 					return false;
 				});
-			
+
 				$scope.addListener("#step1Next", function (e) {
 					if (campusMember()) {
 						//e.stopImmediatePropagation();
 
-					} else {
+					}
+					if (agreeMember === false){
+						
+						//e.stopImmediatePropagation();
+					}
+					else {
 						//alert("GO")
 					}
 					e.preventDefault();
 					return false;
 				});
-			
+
 				$scope.addListener("#step3Next", function (e) {
 					if (campusInstituicao()) {
 						//e.stopImmediatePropagation();
@@ -297,20 +307,22 @@
 					//	toastMessage('Nenhum dos campos podem estar em branco!!');
 					//	return;
 					//} else {
-					
+
 					var formData = new FormData();
 					formData.append("termAppointment", jQuery("#termAppointment")[0].files[0]);
-					
+
 					formData.append("signupForm", JSON.stringify($scope.signupForm));
-					
+
 					$http({
 						method: 'POST',
 						url: '../wp-content/plugins/empreenda_form/views/upload.php',
 						data: formData,
 						transformRequest: angular.identity,
-   						headers: {'Content-Type': undefined}
-					}).then(function ( response) {
-						console.log( response );
+						headers: {
+							'Content-Type': undefined
+						}
+					}).then(function (response) {
+						console.log(response);
 						// SUCSESS
 						//toastMessage('Email enviado com sucesso!');
 					}, function () {
