@@ -93,7 +93,7 @@
 				};
 
 				$scope.financial_resources = {
-					own_resource: '',
+					own_resource: '1',
 					name: '',
 					partner_features: '',
 					address: '',
@@ -119,6 +119,7 @@
 						disseminationPlan: ''
 					},
 					members: Member.get(),
+					proposal: '1',
 					instituicao: Instituicao.get(),
 					discipline: Discipline.get(),
 					host_institutions: {
@@ -127,14 +128,10 @@
 						address: '',
 						maximum_capacity: '',
 						optional_features: '',
-						others_features: OthersFeatures.get(),
-
 					},
+					others_features: OthersFeatures.get(),
 					financial_resources: FinancialResources.get(),
 				};
-
-
-
 
 				$scope.addMember = () => {
 					if (!!$scope.members.functions &&
@@ -228,7 +225,7 @@
 					) {
 						FinancialResources.add($scope.financial_resources);
 						$scope.financial_resources = {
-							own_resource: '',
+							own_resource: '1',
 							partner_features: '',
 							address: '',
 							cnpj: '',
@@ -268,17 +265,22 @@
 				};
 
 
-				$scope.addListener("#step1Next", function (e) {
+				$scope.addListener("#step1Next", function () {
 					$scope.addMember();
 				});
 
-				$scope.addListener("#step3Next", function (e) {
+				$scope.addListener("#step2Next", function () {
 					$scope.addInstituicao();
 					$scope.addDiscipline();
 				});
 
-				$scope.addListener("#step4Next", function (e) {
+				$scope.addListener("#step3Next", function () {
 					$scope.addOthersFeatures()
+
+				});
+			
+				$scope.addListener("#SaveAccount", function () {
+					$scope.addFinancialResources()
 
 				});
 

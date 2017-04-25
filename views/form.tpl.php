@@ -47,7 +47,6 @@ function eea_theme() {
     );
     // define the styles dependencies
     $styles = array(
-        'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css',
         plugins_url().'/' . $dir . '/css/form.css'
 
     );
