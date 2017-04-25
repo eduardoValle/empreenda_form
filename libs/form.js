@@ -46,7 +46,40 @@
 					},
 					member_lattes:'required',
 					agreeMember:'required',
-					
+					instituicao_name:'required',
+					instituicao_cnpj:{
+						required:true,
+						number:true
+					},
+					instituicao_address:'required',
+					instituicao_email:{
+						required:true,
+						email:true
+					},
+					instituicao_phone:{
+						required:true,
+						number:true
+					},
+					instituicao_responsible:'required',
+					phone_responsible:{
+						required:true,
+						number:true
+					},
+					pastParticipations:'required',
+					instituicao_historic:'required',
+					partnerships_for_pea:'required',
+					partnerships_between_institutions:'required',
+					partnerships_between_campus:'required'
+					discipline_name:'required',
+					code_discipline:'required',
+					discipline_teacher:'required',
+					n_students:{
+						required:true,
+						number:true
+					}
+
+
+
 
 				},
 				errorElement: 'em',
