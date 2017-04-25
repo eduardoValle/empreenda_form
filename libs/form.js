@@ -98,7 +98,7 @@ $(function () {
 			name_local: 'required',
 			identification: 'required',
 			agreeResources: 'required',
-			
+
 		},
 		errorElement: 'em',
 		submitHandler: function (form) {

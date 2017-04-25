@@ -1,35 +1,29 @@
-<<<<<<< HEAD
 <legend>Proposta</legend>
 
 <!-- Select Basic -->
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="proposal">Proposta</label>
 	<div class="col-md-6 col-sm-6">
-		<select id="proposal" ng-model="signupForm.proposal" name="proposal" class="form-control">
-							  <option value="1">Individual</option>
-							  <option value="2">Conjunto entre campus</option>
-							  <option value="3">Conjunto entre Instituições</option>
+		<select id="signupForm.proposal" ng-model="signupForm.proposal" name="proposal" class="form-control input-md">
+							  <option value="1" ng-init="signupForm.proposal=1" selected>Individual</option>
+							  <option value="2" ng-init="signupForm.proposal=2">Conjunto entre campus</option>
+							  <option value="3" ng-init="signupForm.proposal=3">Conjunto entre Instituições</option>
 							</select>
 	</div>
 </div>
 
 
-=======
->>>>>>> 6a085298f44b13328abd7c081ebe94c2febc5b2c
 <legend>Instituição</legend>
+<legend ng-if="signupForm.proposal==1">Instituição</legend>
+<legend ng-if="signupForm.proposal==3">Instituição</legend>
+<legend ng-if="signupForm.proposal==2">Campus</legend>
 <!-- Name input-->
 <div class="form-group">
 
 	<label class="col-md-4 col-sm-3 control-label" for="instituicao_name">Nome</label>
 	<div class="col-md-6 col-sm-6">
-<<<<<<< HEAD
+
 		<input ng-model="instituicao.name" id="instituicao_name" name="instituicao_name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o Nome.">
-=======
-		<input ng-model="instituicao.name" id="instituicao_name" name="instituicao_name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md"
-		required
-		data-rule-required="true" 
-		data-msg-required="É necessário preencher o Nome.">
->>>>>>> 6a085298f44b13328abd7c081ebe94c2febc5b2c
 	</div>
 </div>
 <br>
@@ -37,13 +31,8 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="cnpj">CNPJ</label>
 	<div class="col-md-6 col-sm-6">
-<<<<<<< HEAD
 		<input ng-model="instituicao.cnpj" id="cnpj_instituicao" name="cnpj_instituicao" type="number" placeholder="Apenas números" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário aceitar o campo CNPJ">
-=======
-		<input ng-model="instituicao.cnpj" id="cnpj_instituicao" name="cnpj_instituicao" type="number" placeholder="Apenas números" class="form-control input-md" required
-			data-rule-required="true" 
-			data-msg-required="É necessário aceitar o campo CNPJ">
->>>>>>> 6a085298f44b13328abd7c081ebe94c2febc5b2c
+
 	</div>
 </div>
 <br>
@@ -51,14 +40,7 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="instituicao_address">Endereço</label>
 	<div class="col-md-6 col-sm-6">
-<<<<<<< HEAD
 		<input ng-model="instituicao.address" id="instituicao_address" name="instituicao_address" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo Endereço.">
-=======
-		<input ng-model="instituicao.address" id="instituicao_address" name="instituicao_address" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md"
-		required
-		data-rule-required="true" 
-		data-msg-required="É necessário preencher o campo Endereço.">
->>>>>>> 6a085298f44b13328abd7c081ebe94c2febc5b2c
 	</div>
 </div>
 <br>
@@ -66,16 +48,7 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="instituicao_email">E-mail</label>
 	<div class="col-md-6 col-sm-6">
-<<<<<<< HEAD
 		<input ng-model="instituicao.email" id="instituicao_email" name="instituicao_email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo E-mail." data-rule-email="true" data-msg-email="Formato de E-mail inválido.">
-=======
-		<input ng-model="instituicao.email" id="instituicao_email" name="instituicao_email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md"
-		required
-		data-rule-required="true" 
-		data-msg-required="É necessário preencher o campo E-mail."
-		data-rule-email="true" 
-		data-msg-email="Formato de E-mail inválido.">
->>>>>>> 6a085298f44b13328abd7c081ebe94c2febc5b2c
 	</div>
 </div>
 <br>
@@ -83,15 +56,7 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="instituicao_phone">Telefone</label>
 	<div class="col-md-6 col-sm-6">
-<<<<<<< HEAD
 		<input ng-model="instituicao.phone" id="instituicao_phone" name="instituicao_phone" type="number" placeholder="Apenas números" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo Telefone.">
-=======
-		<input ng-model="instituicao.phone" id="instituicao_phone" name="instituicao_phone" type="number" placeholder="Apenas números" class="form-control input-md"
-		required
-		data-rule-required="true" 
-		data-msg-required="É necessário preencher o campo Telefone.">
->>>>>>> 6a085298f44b13328abd7c081ebe94c2febc5b2c
-
 	</div>
 </div>
 <br>
@@ -99,14 +64,7 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="instituicao_responsible">Responsável</label>
 	<div class="col-md-6 col-sm-6">
-<<<<<<< HEAD
 		<input ng-model="instituicao.responsible" id="instituicao_responsible" name="instituicao_responsible" type="text" placeholder="" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo Responsável.">
-=======
-		<input ng-model="instituicao.responsible" id="instituicao_responsible" name="instituicao_responsible" type="text" placeholder="" class="form-control input-md"
-		required
-		data-rule-required="true" 
-		data-msg-required="É necessário preencher o campo Responsável.">
->>>>>>> 6a085298f44b13328abd7c081ebe94c2febc5b2c
 	</div>
 </div>
 <br>
@@ -114,14 +72,7 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="phone_responsible">Contato do responsável</label>
 	<div class="col-md-6 col-sm-6">
-<<<<<<< HEAD
 		<input ng-model="instituicao.phone_responsible" id="phone_responsible" name="phone_responsible" type="number" placeholder="" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo Telefone.">
-=======
-		<input ng-model="instituicao.phone_responsible" id="phone_responsible" name="phone_responsible" type="number" placeholder="" class="form-control input-md"
-		required
-		data-rule-required="true" 
-		data-msg-required="É necessário preencher o campo Telefone.">
->>>>>>> 6a085298f44b13328abd7c081ebe94c2febc5b2c
 	</div>
 </div>
 <br>
@@ -182,9 +133,21 @@
 <br><br>
 <!-- Button -->
 <div class="form-group">
-	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao">Adicionar instituição</label>
+	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="signupForm.proposal==1">Adicionar instituição</label>
+	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="signupForm.proposal==3">Adicionar instituição</label>
+	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="signupForm.proposal==2">Adicionar campus</label>
 	<div class="col-md-6 col-sm-6">
-		<button id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;">+ Instituição</button>
+		<button id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="signupForm.proposal==1">+ Instituição</button>
+		<button id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="signupForm.proposal==3">+ Instituição</button>
+		<button id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="signupForm.proposal==2">+ Campus</button>
+	</div>
+</div>
+
+
+<div class="card w-100" ng-repeat="i in signupForm.instituicao">
+	<div class="card-block">
+		<h3 class="card-title">{{i.name}}</h3>
+		<p class="card-text">{{i.address}}</p>
 	</div>
 </div>
 

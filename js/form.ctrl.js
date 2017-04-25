@@ -5,7 +5,6 @@
 	'use strict';
 
 	angular.module('eea', [])
-
 		.filter('wordcount', function () {
 
 			/*
@@ -53,7 +52,6 @@
 
 				$scope.members = {
 					functions: '1',
-
 					name: '',
 					cpf: '',
 					email: '',
@@ -78,8 +76,8 @@
 					phone: '',
 					responsible: '',
 					phone_responsible: '',
-					pastParticipations: '',
-					termAppointment: '',
+					past_participations: '',
+					term_appointment: '',
 					partnerships: {
 						historic: '',
 						partnerships_between_institutions: '',
@@ -165,7 +163,8 @@
 						!!$scope.instituicao.phone &&
 						!!$scope.instituicao.responsible &&
 						!!$scope.instituicao.phone_responsible &&
-						!!$scope.instituicao.pastParticipations &&
+						!!$scope.instituicao.past_participations &&
+						!!$scope.instituicao.term_appointment &&
 						!!$scope.instituicao.partnerships.historic &&
 						!!$scope.instituicao.partnerships.partnerships_between_institutions &&
 						!!$scope.instituicao.partnerships.partnerships_between_campus &&
@@ -180,8 +179,8 @@
 							phone: '',
 							responsible: '',
 							phone_responsible: '',
-							pastParticipations: '',
-							termAppointment: '',
+							past_participations: '',
+							term_appointment: '',
 							partnerships: {
 								historic: '',
 								partnerships_between_institutions: '',
@@ -201,15 +200,13 @@
 						!!$scope.discipline.teacher &&
 						!!$scope.discipline.n_students
 					) {
-
 						Discipline.add($scope.discipline);
 						$scope.discipline = {
 							name: '',
 							optional: '',
 							code_discipline: '',
 							teacher: '',
-							n_students: ''
-
+							n_students: '',
 						};
 
 						$scope.signupForm.discipline = Discipline.get();
@@ -240,14 +237,12 @@
 				}
 
 				$scope.addOthersFeatures = () => {
-					if (
-						!!$scope.others_features.name
-					) {
+					if (!!$scope.others_features.name) {
 						OthersFeatures.add($scope.others_features);
-					$scope.others_features = {
-						name: '',
+						$scope.others_features = {
+							name: '',
 
-					};
+						};
 
 						$scope.signupForm.others_features = OthersFeatures.get();
 					}
@@ -264,8 +259,7 @@
 
 					}, 1000);
 				};
-
-
+          
 				$scope.addListener("#step1Next", function () {
 					$scope.addMember();
 				});
@@ -279,7 +273,7 @@
 					$scope.addOthersFeatures()
 
 				});
-			
+
 				$scope.addListener("#SaveAccount", function () {
 					$scope.addFinancialResources()
 
