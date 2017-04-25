@@ -5,6 +5,7 @@
 	'use strict';
 
 	angular.module('eea', [])
+
 		.filter('wordcount', function () {
 
 			/*
@@ -52,6 +53,7 @@
 
 				$scope.members = {
 					functions: '1',
+
 					name: '',
 					cpf: '',
 					email: '',
