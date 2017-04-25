@@ -251,7 +251,29 @@
 						$scope.signupForm.others_features = OthersFeatures.get();
 					}
 				}
-
+				$scope.testar=function(){
+					var formData = new FormData();
+					var obj =  {"coordenador":{"name":"aaaaaaaaaaaaaa","cpf":"","address":"","email":"","phone":"","mobile":"","responsible":"","lattes":"","experience":"","external_participation":"","motivation":""},"members":[],"instituicao":[],"discipline":[],"host_institutions":{"identification":"","name":"","address":"","maximum_capacity":"","optional_features":"","others_features":[]},"financial_resources":[]};
+                    formData.append( 'signupForm', JSON.stringify(obj));
+                    formData.append( 'termAppointment', jQuery("#file")[0].files[0]);
+					var url = window.location.href;
+					url = url.replace(/index.php\/+/,'');
+					url= url + '../wp-content/plugins/empreenda_form/views/teste.php';
+                    $http({
+                        method: 'POST',
+                        url: url,
+                        data: formData,
+                        headers: { 'Content-Type': undefined},
+						transformRequest: angular.identity
+                    }).then(function (data) {
+                    	console.log( data );
+                        // SUCSESS
+                       // toastMessage('Email enviado com sucesso!');
+                    }, function () {
+                        // ERROR
+                        //toastMessage('Email não encontrado!');
+                    });
+                };
 				$scope.addListener = function (id, validation) {
 					var interval = window.setInterval(() => {
 						if (jQuery(id).length > 0) {

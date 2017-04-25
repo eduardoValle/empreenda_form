@@ -1,23 +1,19 @@
 <!-- Text input-->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="name">Outros</label>
-	<div class="col-md-6 col-sm-6">
-		<input ng-model="others_features.name" id="others_features_name" name="others_features_name" type="text" placeholder="" class="form-control">
-	</div>
+    <label class="col-md-4 col-sm-3 control-label" for="name">Outros</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="others_features.name" id="name" name="name" type="text" placeholder=""
+               class="form-control input-md">
+
+    </div>
 </div>
 
 <!-- Button -->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="addOthers">Adicionar Outros</label>
-	<div class="col-md-4">
-		<button id="addOthers" name="addOthers" class="btn btn-primary" ng-click="addOthersFeatures()" onclick="return false;">+ Outros</button>
-	</div>
-</div>
-
-
-
-<div class="card w-100" ng-repeat="o in signupForm.others_features">
-	<div class="card-block">
-		<h3 class="card-title">{{o.name}}</h3>
-	</div>
+    <label class="col-md-4 col-sm-3 control-label" for="addOthers">Adicionar Outros</label>
+    <div class="col-md-4">
+        <button id="addOthers" name="addOthers" class="btn btn-primary" ng-click="addOthersFeatures()"
+                onclick="return false;">+ Outros
+        </button>
+    </div>
 </div>
