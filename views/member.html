@@ -1,24 +1,30 @@
-
 <style>
 #agreeMember-error{
 	position: absolute;
     top: 33px;
 }
 .radio_member{ margin-top: 36px !important; }
+.card{
+	border-color: #ccc;
+	border-radius: 4px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 5px 10px
+}	
 </style>
+
 	<legend>Outros membros da instituição ou membros externos que compõem a equipe local do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
 	<!-- Function -->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="functions">Função</label>
+		<label class="col-md-4 col-sm-3 control-label">Função</label>
 		<div class="col-md-6 col-sm-6">
-
-			<select ng-model="members.functions" id="nameFunc" name="nameFunc" class="form-control" >
-			  <option value="Professor da disciplina" selected>Professor da disciplina</option>
-			  <option value="Responsável pela comunicação com a central do PEA">Responsável pela comunicação com a central do PEA</option>
-			  <option value="Tutor de projetos">Tutor de projetos</option>
-			  <option value="Responsável pela formação da banca de avaliadores">Responsável pela formação da banca de avaliadores</option>
-			  <option value="Organizador do ELEA">Organizador do ELEA</option>
-			  <option value="Responsável pelas comunicações analógicas ou digitais de divulgação do PEA">Responsável pelas comunicações analógicas ou digitais de divulgação</option>
+			<select class="form-control input-md"  ng-model="members.functions" id="members_functions" name="members_functions" required data-rule-required="true" data-msg-required="É necessário escolher a função do membro">
+			  <option value="1" >Professor da disciplina</option>
+			  <option value="2">Responsável pela comunicação com a central do PEA</option>
+			  <option value="3">Tutor de projetos</option>
+			  <option value="4">Responsável pela formação da banca de avaliadores</option>
+			  <option value="5">Organizador do ELEA</option>
+			  <option value="6">Responsável pelas comunicações analógicas ou digitais de divulgação</option>
 			</select>
 		</div>
 	</div>
@@ -112,3 +118,11 @@
 			<button id="addMember" name="addMember" ng-click="addMember()" onclick="return false;" class="btn btn-primary">+ Membro</button>
 		</div>
 	</div>
+	
+	<div class="card w-100" ng-repeat="m in signupForm.members">
+	  <div class="card-block">
+		<h3 class="card-title">{{m.name}}</h3>
+		<p class="card-text">{{getMemberFunction(m.functions)}}</p>
+	  </div>
+	</div>
+	

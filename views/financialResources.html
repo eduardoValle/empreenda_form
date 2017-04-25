@@ -88,3 +88,12 @@
 		<button id="addPartner" name="addPartner" class="btn btn-primary" ng-click="addFinancialResources()" onclick="return false;">+ Parceiro</button>
 	</div>
 </div>
+
+
+
+<div class="card w-100" ng-repeat="f in signupForm.financial_resources">
+	<div class="card-block">
+		<h3 class="card-title">{{f.name}}</h3>
+		<p class="card-text">{{f.partner_features}}</p>
+	</div>
+</div>

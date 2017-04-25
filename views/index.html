@@ -85,7 +85,7 @@
 					<div class="form-group">
 						<label class="col-md-4 col-sm-3 control-label" for="mobile">Celular</label>
 						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.mobile" id="mobile" name="mobile" type="text" placeholder="Apenas números" class="form-control input-md" required
+							<input ng-model="signupForm.coordenador.mobile" id="mobile" name="mobile" type="number" placeholder="Apenas números" class="form-control input-md" required
 							data-rule-required="true" 
 							data-msg-required="É necessário preencher o campo Celular"
 							data-rule-number="true" 
@@ -117,11 +117,9 @@
 					<div class="form-group">
 						<label class="col-md-4 col-sm-3 control-label" for="experience">Experiências individuais e conjuntas na área de empreendedorismo.</label>
 						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.coordenador.experience" maxlength='10' class="form-control" id="experience" name="experience" required
+							<textarea ng-model="signupForm.coordenador.experience" maxlength='3000' class="form-control" id="experience" name="experience" required
 							data-rule-required="true" 
 							data-msg-required="É necessário preencher o campo Experiências individuais e conjuntas na área de empreendedorismo"></textarea>
-						</div>
-						<div class="col-md-6 col-sm-6">
 						{{signupForm.coordenador.experience|wordcount:false:'experience'}}
 						</div>
 					</div>
@@ -130,12 +128,9 @@
 					<div class="form-group">
 						<label class="col-md-4 col-sm-3 control-label" for="external_participation">Participação em organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas locais ou nacionais.</label>
 						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.coordenador.external_participation" maxlength='10' class="form-control" id="external_participation" name="external_participation" required
+							<textarea ng-model="signupForm.coordenador.external_participation" maxlength='1500' class="form-control" id="external_participation" name="external_participation" required
 							data-rule-required="true" 
-							data-msg-required="É necessário preencher o campo Participação em organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas locais ou nacionais."></textarea>
-						</div>
-						<div class="col-md-6 col-sm-6">
-						{{signupForm.coordenador.external_participation|wordcount:false:'external_participation'}}
+							data-msg-required="É necessário preencher o campo Participação em organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas locais ou nacionais."></textarea>					{{signupForm.coordenador.external_participation|wordcount:false:'external_participation'}}
 						</div>
 					</div>
 					<br>
@@ -143,9 +138,10 @@
 					<div class="form-group">
 						<label class="col-md-4 col-sm-3 control-label" for="motivation">Motivação para participar do programa.</label>
 						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.coordenador.motivation" class="form-control" id="motivation" name="motivation" required
+							<textarea ng-model="signupForm.coordenador.motivation" class="form-control" id="motivation" name="motivation" maxlength='2000' required
 							data-rule-required="true" 
 							data-msg-required="É necessário preencher o campo Motivação para participar do programa."></textarea>
+						{{signupForm.coordenador.motivation|wordcount:false:'motivation'}}
 						</div>
 					</div>
 				</fieldset>
