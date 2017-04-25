@@ -13,6 +13,7 @@
 </div>
 
 
+<legend>Instituição</legend>
 <legend ng-if="signupForm.proposal==1">Instituição</legend>
 <legend ng-if="signupForm.proposal==3">Instituição</legend>
 <legend ng-if="signupForm.proposal==2">Campus</legend>
@@ -21,6 +22,7 @@
 
 	<label class="col-md-4 col-sm-3 control-label" for="instituicao_name">Nome</label>
 	<div class="col-md-6 col-sm-6">
+
 		<input ng-model="instituicao.name" id="instituicao_name" name="instituicao_name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o Nome.">
 	</div>
 </div>
@@ -30,6 +32,7 @@
 	<label class="col-md-4 col-sm-3 control-label" for="cnpj">CNPJ</label>
 	<div class="col-md-6 col-sm-6">
 		<input ng-model="instituicao.cnpj" id="cnpj_instituicao" name="cnpj_instituicao" type="number" placeholder="Apenas números" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário aceitar o campo CNPJ">
+
 	</div>
 </div>
 <br>
@@ -54,7 +57,6 @@
 	<label class="col-md-4 col-sm-3 control-label" for="instituicao_phone">Telefone</label>
 	<div class="col-md-6 col-sm-6">
 		<input ng-model="instituicao.phone" id="instituicao_phone" name="instituicao_phone" type="number" placeholder="Apenas números" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo Telefone.">
-
 	</div>
 </div>
 <br>
@@ -78,7 +80,7 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="pastParticipations">Participações passadas em programas de empreendedorismo ou outras  experiências na área, incluindo atividades internas na área já realizadas.</label>
 	<div class="col-md-6 col-sm-6">
-		<textarea ng-model="instituicao.past_participations" maxlength='4000' class="form-control" id="pastParticipations" name="pastParticipations" required data-rule-required="true" data-msg-required="É necessário preencher o campo Participações passadas em programas de empreendedorismo ou outras  experiências na área, incluindo atividades internas na área já realizadas."></textarea> {{instituicao.past_participations|wordcount:false:'pastParticipations'}}
+		<textarea ng-model="instituicao.pastParticipations" maxlength='4000' class="form-control" id="pastParticipations" name="pastParticipations" required data-rule-required="true" data-msg-required="É necessário preencher o campo Participações passadas em programas de empreendedorismo ou outras  experiências na área, incluindo atividades internas na área já realizadas."></textarea> {{instituicao.pastParticipations|wordcount:false:'pastParticipations'}}
 	</div>
 </div>
 <br>
@@ -86,7 +88,7 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="termAppointment">Termo de compromisso</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.term_appointment" id="termAppointment" name="termAppointment" class="input-file" type="file" required data-rule-required="true" data-msg-required="É necessário anexar o Termo de compromisso">
+		<input ng-model="instituicao.termAppointment" id="termAppointment" name="termAppointment" class="input-file" type="file" required data-rule-required="true" data-msg-required="É necessário anexar o Termo de compromisso">
 	</div>
 </div>
 <br>
@@ -141,6 +143,13 @@
 	</div>
 </div>
 
+
+<div class="card w-100" ng-repeat="i in signupForm.instituicao">
+	<div class="card-block">
+		<h3 class="card-title">{{i.name}}</h3>
+		<p class="card-text">{{i.address}}</p>
+	</div>
+</div>
 
 <div class="card w-100" ng-repeat="i in signupForm.instituicao">
 	<div class="card-block">

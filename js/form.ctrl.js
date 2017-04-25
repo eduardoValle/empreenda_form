@@ -61,7 +61,7 @@
 
 				$scope.discipline = {
 					name: '',
-					Optional: '1',
+					optional: '1',
 					code_discipline: '',
 					teacher: '',
 					n_students: '',
@@ -189,7 +189,6 @@
 							}
 
 						};
-
 						$scope.signupForm.instituicao = Instituicao.get();
 					}
 				}
@@ -208,7 +207,6 @@
 							code_discipline: '',
 							teacher: '',
 							n_students: '',
-
 						};
 
 						$scope.signupForm.discipline = Discipline.get();
@@ -261,8 +259,7 @@
 
 					}, 1000);
 				};
-
-
+          
 				$scope.addListener("#step1Next", function () {
 					$scope.addMember();
 				});
