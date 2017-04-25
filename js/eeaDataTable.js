@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    angular.module('eea.painel', []).controller('PainelCtrl', ['$scope', '$http',
+    angular.module('eea.painel', ['datatables']).controller('PainelCtrl', ['$scope', '$http',
         function ($scope, $http) {
 
             $scope.logo = 'layout/logo.png';

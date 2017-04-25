@@ -43,6 +43,7 @@ function my_custom_menu_page() {
             <script src="'. plugins_url() . '/empreenda_form/libs/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
             <script src="'. plugins_url() . '/empreenda_form/libs/data-tables/js/jquery.dataTables.min.js" type="text/javascript"></script>
             <script src="'. plugins_url() . '/empreenda_form/libs/data-tables/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+            <script src="'. plugins_url() . '/empreenda_form/libs/angular-datatables.min.js" type="text/javascript"></script>
             <script src="'. plugins_url() . '/empreenda_form/js/eeaDataTable.js" type="text/javascript"></script>
             <script>
             $("#dataTab").dataTable();

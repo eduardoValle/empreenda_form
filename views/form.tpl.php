@@ -15,22 +15,23 @@ function getDir(){
     $dir = $_dir[sizeof($_dir)-1];
     return $dir;
 }
+
 function getHtmlScripts( $arr ){
     $html = "";
     foreach( $arr as $k=>$v){
         $html .='<script src="' .$v. '"></script>';
-        
     }
     return $html;
 }
+
 function getHtmlStyles( $arr ){
     $html = "";
     foreach( $arr as $k=>$v){
         $html .='<link rel="stylesheet" href="' .$v. '">';
-        
     }
     return $html;
 }
+
 function eea_theme() {
     // get the real dir
     $dir = getDir();
@@ -41,15 +42,12 @@ function eea_theme() {
         plugins_url().'/' . $dir . '/libs/jquery.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js',
         plugins_url().'/' . $dir . '/libs/jquery.formtowizard.js',
-        plugins_url().'/' . $dir . '/libs/form.js',
-
-
+        plugins_url().'/' . $dir . '/libs/form.js'
     );
     // define the styles dependencies
     $styles = array(
         'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css',
         plugins_url().'/' . $dir . '/css/form.css'
-
     );
 
     $htmlScripts  = getHtmlScripts( $scripts );
