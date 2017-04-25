@@ -1,13 +1,11 @@
 <style>
-    #agreeResources-error {
-        position: absolute;
-        top: 50px;
-    }
-
-    .radio_member {
-        margin-top: 50px !important;
-    }
+#agreeResources-error{
+	position: absolute;
+    top: 50px;
+}
+.radio_member{ margin-top: 50px !important; }
 </style>
+
  		<div class="row wrap">
 		<div class="col-lg-12">
 			<div id='progress'>
@@ -147,7 +145,7 @@
 						</div>
 					</div>
 				</fieldset>
-				
+
 				<fieldset>
 					<member></member>
 				</fieldset>
@@ -157,123 +155,103 @@
 			</fieldset>
 			<fieldset>
 
+				<!-- Form Name -->
+				<legend>Recursos econômicos apresentados como contrapartida</legend>
 
-                <!-- Form Name -->
-                <legend>Recursos econômicos apresentados como contrapartida</legend>
+				<!-- Multiple Checkboxes -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="agreeResources">Como contrapartida mínima, a instituição deve oferecer sem qualquer custo  para o Programa o espaço físico para o <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> , segurança no local do <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> ,  limpeza do local, energia elétrica e recursos de vídeo e áudio adequados.</label>
+					<div class="col-md-4">
+						<div class="checkbox">
+							<label>
+								 	<input type="checkbox" name="agreeResources" id="agreeResources" value="true" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Recursos de contrapartida">
+								  	Sim, concordo e confirmo a contrapartida supra citada.
+								</label>
+						</div>
+					</div>
+				</div>
 
-                <!-- Multiple Checkboxes -->
-                <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="agreeResources">Como contrapartida mínima, a
-                        instituição deve oferecer sem qualquer custo para o Programa o espaço físico para o <abbr
-                                title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> , segurança no local do <abbr
-                                title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> , limpeza do local, energia
-                        elétrica e recursos de vídeo e áudio adequados.</label>
-                    <div class="col-md-4">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="agreeResources" id="agreeResources" value="true" required
-                                       data-rule-required="true"
-                                       data-msg-required="É necessário aceitar o campo Recursos de contrapartida">
-                                Sim, concordo e confirmo a contrapartida supra citada.
-                            </label>
-                        </div>
-                    </div>
-                </div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="identification">Identificação do local de realização do Evento Local do Empreenda. Em Ação!  (<abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr>)</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.host_institutions.identification" id="identification" name="identification" type="text" placeholder="" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Identificação do local">
+					</div>
+				</div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="identification">Identificação do local de
-                        realização do Evento Local do Empreenda. Em Ação! (<abbr
-                                title="Evento Local do Empreenda. Em Ação!">ELEA</abbr>)</label>
-                    <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.host_institutions.identification" id="identification"
-                               name="identification" type="text" placeholder="" class="form-control input-md" required
-                               data-rule-required="true"
-                               data-msg-required="É necessário aceitar o campo Identificação do local">
-                    </div>
-                </div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="name">Nome do espaço (auditório, teatro, etc)</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.host_institutions.name" id="name_local" name="nameLocal" type="text" placeholder="" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Nome do espaço">
+					</div>
+				</div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="name">Nome do espaço (auditório, teatro,
-                        etc)</label>
-                    <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.host_institutions.name" id="name_local" name="nameLocal" type="text"
-                               placeholder="" class="form-control input-md" required
-                               data-rule-required="true"
-                               data-msg-required="É necessário aceitar o campo Nome do espaço">
-                    </div>
-                </div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.host_institutions.address" id="address_local" name="addressLocal" type="text" placeholder="" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Endereço">
+					</div>
+				</div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
-                    <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.host_institutions.address" id="address_local" name="addressLocal"
-                               type="text" placeholder="" class="form-control input-md" required
-                               data-rule-required="true"
-                               data-msg-required="É necessário aceitar o campo Endereço">
-                    </div>
-                </div>
+				<!-- Text input-->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="maximumCapacity">Capacidade máxima</label>
+					<div class="col-md-6 col-sm-6">
+						<input ng-model="signupForm.host_institutions.maximum_capacity" id="maximum_capacity" name="maximum_capacity" type="number" placeholder="" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo Capacidade máxima">
+					</div>
+				</div>
 
-                <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="maximumCapacity">Capacidade máxima</label>
-                    <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.host_institutions.maximum_capacity" id="maximum_capacity"
-                               name="maximum_capacity" type="number" placeholder="" class="form-control input-md"
-                               required
-                               data-rule-required="true"
-                               data-msg-required="É necessário aceitar o campo Capacidade máxima">
-                    </div>
-                </div>
+				<!-- Multiple Checkboxes -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="optionsCounterpart">Opcionais contrapartida econômica</label>
+					<div class="col-md-4">
+						<div class="checkbox">
+							<label>
+									<input ng-model="signupForm.host_institutions.optional_features" type="checkbox" name="optional_features" id="optional_features" value="internet">
+								  	Internet
+								</label>
+						</div>
+					</div>
+				</div>
 
-                <!-- Multiple Checkboxes -->
-                <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="optionsCounterpart">Opcionais contrapartida
-                        econômica</label>
-                    <div class="col-md-4">
-                        <div class="checkbox">
-                            <label>
-                                <input ng-model="signupForm.host_institutions.optional_features" type="checkbox"
-                                       name="optional_features" id="optional_features" value="internet">
-                                Internet
-                            </label>
-                        </div>
-                    </div>
-                </div>
+				<others-features></others-features>
+			</fieldset>
 
-                <others-features></others-features>
-            </fieldset>
+			<fieldset>
 
-            <fieldset>
-                <!-- Form Name -->
-                <legend>Plano de divulgação do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
+				<!-- Form Name -->
+				<legend>Plano de divulgação do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr> </legend>
 
-                <!-- Textarea -->
-                <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="disseminationPlan">Plano de divulgação do <abbr
-                            title="Programa Empreenda. Em Ação!">PEA</abbr> para a comunidade interna e externa à <abbr
-                            title="Instituições de Ensino Superior">IES</abbr>, incluindo canais e número de inserções
-                        em cada canal.</label>
-                    <div class="col-md-6 col-sm-6">
-						<textarea ng-model="signupForm.coordenador.disseminationPlan" class="form-control"
-                                  id="disseminationPlan" maxlength="4000" name="disseminationPlan" required
-                                  data-rule-required="true"
-                                  data-msg-required="É necessário preencher o campo do Plano de divulgação"></textarea>
+				<!-- Textarea -->
+				<div class="form-group">
+					<label class="col-md-4 col-sm-3 control-label" for="disseminationPlan">Plano de divulgação do  <abbr title="Programa Empreenda. Em Ação!">PEA</abbr>  para a comunidade interna e externa à  <abbr title="Instituições de Ensino Superior">IES</abbr>,  incluindo canais e número de inserções em cada canal.</label>
+					<div class="col-md-6 col-sm-6">
+						<textarea ng-model="signupForm.coordenador.disseminationPlan" class="form-control" id="disseminationPlan" maxlength="4000" name="disseminationPlan" required
+			data-rule-required="true" 
+			data-msg-required="É necessário preencher o campo do Plano de divulgação"></textarea>
 
-                    </div>
-                    <div class="col-md-6 col-sm-6">
-                        {{signupForm.coordenador.disseminationPlan|wordcount:false:'disseminationPlan'}}
-                    </div>
-                </div>
-            </fieldset>
-            <fieldset>
-                <financial-resources></financial-resources>
-            </fieldset>
-            <button id="SaveAccount" type="submit" class="btn btn-primary submit" ng-click="register()"
-                    onclick="return false;">Candidatar
-            </button>
-        </form>
-    </div>
+					</div>
+					<div class="col-md-6 col-sm-6"> {{signupForm.coordenador.disseminationPlan|wordcount:false:'disseminationPlan'}}
+					</div>
+				</div>
+
+			</fieldset>
+			<fieldset>
+				<financial-resources></financial-resources>
+			</fieldset>
+			<button id="SaveAccount" type="submit" class="btn btn-primary submit" ng-click="register()" onclick="return false;">Candidatar</button>
+		</form>
+	</div>
 </div>

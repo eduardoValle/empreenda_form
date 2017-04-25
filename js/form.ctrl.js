@@ -76,8 +76,8 @@
 					phone: '',
 					responsible: '',
 					phone_responsible: '',
-					pastParticipations: '',
-					termAppointment: '',
+					past_participations: '',
+					term_appointment: '',
 					partnerships: {
 						historic: '',
 						partnerships_between_institutions: '',
@@ -163,8 +163,8 @@
 						!!$scope.instituicao.phone &&
 						!!$scope.instituicao.responsible &&
 						!!$scope.instituicao.phone_responsible &&
-						!!$scope.instituicao.pastParticipations &&
-						!!$scope.instituicao.termAppointment &&
+						!!$scope.instituicao.past_participations &&
+						!!$scope.instituicao.term_appointment &&
 						!!$scope.instituicao.partnerships.historic &&
 						!!$scope.instituicao.partnerships.partnerships_between_institutions &&
 						!!$scope.instituicao.partnerships.partnerships_between_campus &&
@@ -179,8 +179,8 @@
 							phone: '',
 							responsible: '',
 							phone_responsible: '',
-							pastParticipations: '',
-							termAppointment: '',
+							past_participations: '',
+							term_appointment: '',
 							partnerships: {
 								historic: '',
 								partnerships_between_institutions: '',
@@ -196,16 +196,16 @@
 
 				$scope.addDiscipline = () => {
 					if (!!$scope.discipline.name &&
-						!!$scope.discipline.optativa &&
-						!!$scope.discipline.code_disciplina &&
+						!!$scope.discipline.optional &&
+						!!$scope.discipline.code_discipline &&
 						!!$scope.discipline.teacher &&
 						!!$scope.discipline.n_students
 					) {
 						Discipline.add($scope.discipline);
 						$scope.discipline = {
 							name: '',
-							optativa: '',
-							code_disciplina: '',
+							optional: '',
+							code_discipline: '',
 							teacher: '',
 							n_students: '',
 
@@ -239,41 +239,17 @@
 				}
 
 				$scope.addOthersFeatures = () => {
-					if (
-						!!$scope.others_features.name
-					) {
+					if (!!$scope.others_features.name) {
 						OthersFeatures.add($scope.others_features);
-					$scope.others_features = {
-						name: '',
+						$scope.others_features = {
+							name: '',
 
-					};
+						};
 
 						$scope.signupForm.others_features = OthersFeatures.get();
 					}
 				}
-				$scope.testar=function(){
-					var formData = new FormData();
-					var obj =  {"coordenador":{"name":"aaaaaaaaaaaaaa","cpf":"","address":"","email":"","phone":"","mobile":"","responsible":"","lattes":"","experience":"","external_participation":"","motivation":""},"members":[],"instituicao":[],"discipline":[],"host_institutions":{"identification":"","name":"","address":"","maximum_capacity":"","optional_features":"","others_features":[]},"financial_resources":[]};
-                    formData.append( 'signupForm', JSON.stringify(obj));
-                    formData.append( 'termAppointment', jQuery("#file")[0].files[0]);
-					var url = window.location.href;
-					url = url.replace(/index.php\/+/,'');
-					url= url + '../wp-content/plugins/empreenda_form/views/teste.php';
-                    $http({
-                        method: 'POST',
-                        url: url,
-                        data: formData,
-                        headers: { 'Content-Type': undefined},
-						transformRequest: angular.identity
-                    }).then(function (data) {
-                    	console.log( data );
-                        // SUCSESS
-                       // toastMessage('Email enviado com sucesso!');
-                    }, function () {
-                        // ERROR
-                        //toastMessage('Email não encontrado!');
-                    });
-                };
+
 				$scope.addListener = function (id, validation) {
 					var interval = window.setInterval(() => {
 						if (jQuery(id).length > 0) {
@@ -300,7 +276,7 @@
 					$scope.addOthersFeatures()
 
 				});
-			
+
 				$scope.addListener("#SaveAccount", function () {
 					$scope.addFinancialResources()
 
