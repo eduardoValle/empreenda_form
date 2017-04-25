@@ -5,41 +5,53 @@
 	'use strict';
 
 	angular.module('eea', [])
-	.filter('wordcount', function() {
+		.filter('wordcount', function () {
 
-             /*
-             * @param string input is the string that have to count
-             * @param number/boolean limit is a flag that means if we limit by
-                                       a number like: 10/1000 which 1000 is
-                                       the limit value. Or is false, catch the
-                                       attribute maxvalue os the input/textarea
-                                       by the id
-             * @param string id to catch the maxvalue value
-             * @return string in format: <string.length>/<limit>
-             */
-             
-             return function(input, limit, id) {
-               //verifica se o limit está setado
-               var stringSize = input.length;
-               if( !!limit ){
-                   return '' + stringSize + '/' + limit;
-               }else{
-                   if( !!id){
-                       var _limit = jQuery("#"+id).attr("maxlength");
-                       return '' + stringSize + '/' + _limit;
-                   }else{
-                       return '';
-                   }
-               }
+			/*
+			* @param string input is the string that have to count
+			* @param number/boolean limit is a flag that means if we limit by
+			                          a number like: 10/1000 which 1000 is
+			                          the limit value. Or is false, catch the
+			                          attribute maxvalue os the input/textarea
+			                          by the id
+			* @param string id to catch the maxvalue value
+			* @return string in format: <string.length>/<limit>
+			*/
 
-             }
+			return function (input, limit, id) {
+				//verifica se o limit está setado
+				var stringSize = input.length;
+				if (!!limit) {
+					return '' + stringSize + '/' + limit;
+				} else {
+					if (!!id) {
+						var _limit = jQuery("#" + id).attr("maxlength");
+						return '' + stringSize + '/' + _limit;
+					} else {
+						return '';
+					}
+				}
 
-       })
+			}
+
+		})
 		.controller('EeaForm', ['$scope', 'Member', 'Instituicao', 'OthersFeatures', 'FinancialResources', 'Discipline', '$http',
         function ($scope, Member, Instituicao, OthersFeatures, FinancialResources, Discipline, $http) {
 
+				$scope.getMemberFunction = (id) => {
+					var list = [
+					'',
+					'Professor da disciplina',
+				   'Responsável pela comunicação com a central do PEA',
+				   'Tutor de projetos',
+				   'Responsável pela formação da banca de avaliadores',
+				   'Organizador do ELEA', 'Responsável pelas comunicações analógicas ou digitais de divulgação'
+				]
+					return list[id];
+				}
+
 				$scope.members = {
-					functions: '',
+					functions: '1',
 					name: '',
 					cpf: '',
 					email: '',
@@ -49,7 +61,7 @@
 
 				$scope.discipline = {
 					name: '',
-					Optional: '',
+					Optional: '1',
 					code_discipline: '',
 					teacher: '',
 					n_students: '',
@@ -125,105 +137,122 @@
 
 
 				$scope.addMember = () => {
-					Member.add($scope.members);
-					$scope.members = {
-						functions: '',
-						name: '',
-						cpf: '',
-						email: '',
-						mobile: '',
-						lattes: '',
-					};
-					console.log(Member.get());
+					if (!!$scope.members.functions &&
+						!!$scope.members.name &&
+						!!$scope.members.cpf &&
+						!!$scope.members.email &&
+						!!$scope.members.mobile &&
+						!!$scope.members.lattes
+					) {
+						Member.add($scope.members);
+						$scope.members = {
+							functions: '1',
+							name: '',
+							cpf: '',
+							email: '',
+							mobile: '',
+							lattes: '',
+						};
+
+						$scope.signupForm.members = Member.get();
+					}
 				}
 
 				$scope.addInstituicao = () => {
-					Instituicao.add($scope.instituicao);
-					$scope.instituicao = {
-						name: '',
-						cnpj: '',
-						address: '',
-						email: '',
-						phone: '',
-						responsible: '',
-						phone_responsible: '',
-						pastParticipations: '',
-						termAppointment: '',
-						partnerships: {
-							historic: '',
-							partnerships_between_institutions: '',
-							partnerships_between_campus: '',
-							partnerships_for_pea: '',
-						}
+					if (!!$scope.instituicao.name &&
+						!!$scope.instituicao.cnpj &&
+						!!$scope.instituicao.address &&
+						!!$scope.instituicao.email &&
+						!!$scope.instituicao.phone &&
+						!!$scope.instituicao.responsible &&
+						!!$scope.instituicao.phone_responsible &&
+						!!$scope.instituicao.pastParticipations &&
+						!!$scope.instituicao.termAppointment &&
+						!!$scope.instituicao.partnerships.historic &&
+						!!$scope.instituicao.partnerships.partnerships_between_institutions &&
+						!!$scope.instituicao.partnerships.partnerships_between_campus &&
+						!!$scope.instituicao.partnerships.partnerships_for_pea
+					) {
+						Instituicao.add($scope.instituicao);
+						$scope.instituicao = {
+							name: '',
+							cnpj: '',
+							address: '',
+							email: '',
+							phone: '',
+							responsible: '',
+							phone_responsible: '',
+							pastParticipations: '',
+							termAppointment: '',
+							partnerships: {
+								historic: '',
+								partnerships_between_institutions: '',
+								partnerships_between_campus: '',
+								partnerships_for_pea: '',
+							}
 
-					};
-					console.log(Instituicao.get());
+						};
+
+						$scope.signupForm.instituicao = Instituicao.get();
+					}
 				}
 
 				$scope.addDiscipline = () => {
-					Discipline.add($scope.discipline);
-					$scope.discipline = {
-						name: '',
-						optativa: '',
-						code_disciplina: '',
-						teacher: '',
-						n_students: '',
+					if (!!$scope.discipline.name &&
+						!!$scope.discipline.optativa &&
+						!!$scope.discipline.code_disciplina &&
+						!!$scope.discipline.teacher &&
+						!!$scope.discipline.n_students
+					) {
+						Discipline.add($scope.discipline);
+						$scope.discipline = {
+							name: '',
+							optativa: '',
+							code_disciplina: '',
+							teacher: '',
+							n_students: '',
 
-					};
-					console.log(Discipline.get());
+						};
+
+						$scope.signupForm.discipline = Discipline.get();
+					}
 				}
 
 				$scope.addFinancialResources = () => {
-					FinancialResources.add($scope.financial_resources);
-					$scope.financial_resources = {
-						own_resource: '',
-						partner_features: '',
-						address: '',
-						cnpj: '',
-						contact_person: '',
-						detailing: '',
+					if (!!$scope.financial_resources.own_resource &&
+						!!$scope.financial_resources.partner_features &&
+						!!$scope.financial_resources.address &&
+						!!$scope.financial_resources.cnpj &&
+						!!$scope.financial_resources.contact_person &&
+						!!$scope.financial_resources.detailing
+					) {
+						FinancialResources.add($scope.financial_resources);
+						$scope.financial_resources = {
+							own_resource: '',
+							partner_features: '',
+							address: '',
+							cnpj: '',
+							contact_person: '',
+							detailing: '',
 
-					};
-					console.log(FinancialResources.get());
+						};
+
+						$scope.signupForm.financial_resources = FinancialResources.get();
+					}
 				}
 
 				$scope.addOthersFeatures = () => {
-					OthersFeatures.add($scope.others_features);
+					if (
+						!!$scope.others_features.name
+					) {
+						OthersFeatures.add($scope.others_features);
 					$scope.others_features = {
 						name: '',
 
 					};
-					console.log(OthersFeatures.get());
-				}
 
-
-				function campusCoordenador() {
-					return !($scope.signupForm.coordenador.name && $scope.signupForm.coordenador.cpf && $scope.signupForm.coordenador.address && $scope.signupForm.coordenador.email && $scope.signupForm.coordenador.phone && $scope.signupForm.coordenador.mobile && $scope.signupForm.coordenador.responsible && $scope.signupForm.coordenador.lattes && $scope.signupForm.coordenador.experience && $scope.signupForm.coordenador.external_participation && $scope.signupForm.coordenador.motivation)
-				}
-
-				function campusMember() {
-					return !($scope.members.name && $scope.members.cpf && $scope.members.email && $scope.members.mobile && $scope.members.lattes)
-				}
-
-				function agreeMember() {
-					return $scope.members.aagreeMember.value();
-					console.log($scope.members.aagreeMember.value());
-				}
-
-				function campusInstituicao() {
-					return !(
-
-						$scope.instituicao.name && $scope.instituicao.cnpj && $scope.instituicao.address && $scope.instituicao.email && $scope.instituicao.phone && $scope.instituicao.responsible && $scope.instituicao.phone_responsible && $scope.instituicao.pastParticipations && $scope.instituicao.termAppointment &&
-
-
-						$scope.discipline.name && $scope.discipline.Optional && $scope.discipline.code_discipline && $scope.discipline.teacher && $scope.discipline.n_students &&
-
-
-						$scope.partnerships.historic && $scope.partnerships.partnerships_for_pea && $scope.partnerships.partnerships_between_institutions && $scope.partnerships.partnerships_between_campus)
-				}
-
-				function campusMember() {
-					return !($scope.members.name || $scope.members.cpf || $scope.members.email || $scope.members.mobile || $scope.members.lattes)
+						$scope.signupForm.others_features = OthersFeatures.get();
+					}
 				}
 				$scope.testar=function(){
 					var formData = new FormData();
@@ -260,80 +289,20 @@
 					}, 1000);
 				};
 
-				$scope.showRequiredMessage = function(field){
-					return "É necessário preencher o campo "+field;
-				};
-				$scope.addListener("#step0Next", function (e) {
-					if (campusCoordenador()) {
-						e.stopImmediatePropagation();
-						
-					}else{
-						alert("GO")
-					}
-					e.preventDefault();
-					return false;
-				});
-          
-				$scope.addListener("#step1Next", function (e) {
-					if (campusMember()) {
-						//e.stopImmediatePropagation();
 
-					}
-					if (agreeMember === false){
-						
-						//e.stopImmediatePropagation();
-					}
-					else {
-						//alert("GO")
-					}
-					e.preventDefault();
-					return false;
+				$scope.addListener("#step1Next", function (e) {
+					$scope.addMember();
 				});
 
 				$scope.addListener("#step3Next", function (e) {
-					if (campusInstituicao()) {
-						//e.stopImmediatePropagation();
-
-					} else {
-						//alert("GO")
-					}
-					e.preventDefault();
-					return false;
+					$scope.addInstituicao();
+					$scope.addDiscipline();
 				});
 
-				/*				
+				$scope.addListener("#step4Next", function (e) {
+					$scope.addOthersFeatures()
 
-				function camposNulos() {
-
-					return !(
-						//Outros membros da instituição ou membros externos que compõem a equipe local do PEA
-						$scope.signupForm.nameFunc || $scope.signupForm.nameMember || $scope.signupForm.cpfMember || $scope.signupForm.emailMember || $scope.signupForm.mobileMember || $scope.signupForm.cvLattesMember ||
-						//Proposta
-						$scope.signupForm.proposal ||
-						//Instituição/Campus
-
-						$scope.signupForm.nameInstitution || $scope.signupForm.cnpjInstitution || $scope.signupForm.addressInstitution || $scope.signupForm.emailInstitution || $scope.signupForm.phoneInstitution || $scope.signupForm.responsibleInstitution || $scope.signupForm.pastParticipations || $scope.signupForm.termAppointment ||
-						//Disciplina		 
-						$scope.signupForm.nameDIscipline || $scope.signupForm.discOptional || $scope.signupForm.codeDiscipline || $scope.signupForm.teacher || $scope.signupForm.nStudents ||
-						//Parcerias estabelecidas na comunidade local para ações empreendedoras
-						$scope.signupForm.partnerships || $scope.signupForm.partnershipsForPea || $scope.signupForm.partnershipsBetweenInstitutions || $scope.signupForm.partnershipsBetweenCampus ||
-
-						//Recursos econômicos apresentados como contrapartida	
-						$scope.signupForm.idLocal || $scope.signupForm.nameLocal || $scope.signupForm.addressLocal || $scope.signupForm.maximumCapacity || $scope.signupForm.optionsCounterpart || $scope.signupForm.others ||
-						//Plano de divulgação do PEA	
-						$scope.signupForm.disseminationPlan ||
-						//Recursos financeiros apresentados como contrapartida, quando houver	
-						$scope.signupForm.resources || $scope.signupForm.namePartner || $scope.signupForm.featuresValue || $scope.signupForm.addressPartner || $scope.signupForm.responsibleContact || $scope.signupForm.detailingResources);
-				}
-				*/
-
-				function agreeMember() {
-					return !($scope.signupForm.agreeMember == false);
-				}
-
-				function agreeResources() {
-					return !($scope.signupForm.agreeMember == false);
-				}
+				});
 
 				$scope.register = function () {
 					//if (camposNulos()) {
