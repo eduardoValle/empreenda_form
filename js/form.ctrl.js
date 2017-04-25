@@ -103,7 +103,8 @@
 						lattes: '',
 						experience: '',
 						external_participation: '',
-						motivation: ''
+						motivation: '',
+						disseminationPlan: ''
 					},
 					members: Member.get(),
 					instituicao: Instituicao.get(),
@@ -119,6 +120,7 @@
 					},
 					financial_resources: FinancialResources.get(),
 				};
+
 
 
 
@@ -145,6 +147,8 @@
 						phone: '',
 						responsible: '',
 						phone_responsible: '',
+						pastParticipations: '',
+						termAppointment: '',
 						partnerships: {
 							historic: '',
 							partnerships_between_institutions: '',
@@ -194,7 +198,28 @@
 
 
 				function campusCoordenador() {
-					return !($scope.signupForm.coordenador.name || $scope.signupForm.coordenador.cpf || $scope.signupForm.coordenador.address || $scope.signupForm.coordenador.email || $scope.signupForm.coordenador.phone || $scope.signupForm.coordenador.mobile || $scope.signupForm.coordenador.responsible || $scope.signupForm.coordenador.lattes || $scope.signupForm.coordenador.experience || $scope.signupForm.coordenador.external_participation || $scope.signupForm.coordenador.motivation)
+					return !($scope.signupForm.coordenador.name && $scope.signupForm.coordenador.cpf && $scope.signupForm.coordenador.address && $scope.signupForm.coordenador.email && $scope.signupForm.coordenador.phone && $scope.signupForm.coordenador.mobile && $scope.signupForm.coordenador.responsible && $scope.signupForm.coordenador.lattes && $scope.signupForm.coordenador.experience && $scope.signupForm.coordenador.external_participation && $scope.signupForm.coordenador.motivation)
+				}
+
+				function campusMember() {
+					return !($scope.members.name && $scope.members.cpf && $scope.members.email && $scope.members.mobile && $scope.members.lattes)
+				}
+
+				function agreeMember() {
+					return $scope.members.aagreeMember.value();
+					console.log($scope.members.aagreeMember.value());
+				}
+
+				function campusInstituicao() {
+					return !(
+
+						$scope.instituicao.name && $scope.instituicao.cnpj && $scope.instituicao.address && $scope.instituicao.email && $scope.instituicao.phone && $scope.instituicao.responsible && $scope.instituicao.phone_responsible && $scope.instituicao.pastParticipations && $scope.instituicao.termAppointment &&
+
+
+						$scope.discipline.name && $scope.discipline.Optional && $scope.discipline.code_discipline && $scope.discipline.teacher && $scope.discipline.n_students &&
+
+
+						$scope.partnerships.historic && $scope.partnerships.partnerships_for_pea && $scope.partnerships.partnerships_between_institutions && $scope.partnerships.partnerships_between_campus)
 				}
 
 				function campusMember() {
@@ -212,6 +237,7 @@
 
 					}, 1000);
 				};
+
 				$scope.showRequiredMessage = function(field){
 					return "É necessário preencher o campo "+field;
 				};
@@ -225,15 +251,33 @@
 					e.preventDefault();
 					return false;
 				});
+          
+				$scope.addListener("#step1Next", function (e) {
+					if (campusMember()) {
+						//e.stopImmediatePropagation();
 
-				// $scope.addListener("#step1Next", function () {
-				// 	if (campusMember()) {
-				// 		//alert("Ei");			
-				// 		return;
-				// 	}
-				// 	$scope.addMember();
-				// 	console.log($scope.addMember());
-				// });
+					}
+					if (agreeMember === false){
+						
+						//e.stopImmediatePropagation();
+					}
+					else {
+						//alert("GO")
+					}
+					e.preventDefault();
+					return false;
+				});
+
+				$scope.addListener("#step3Next", function (e) {
+					if (campusInstituicao()) {
+						//e.stopImmediatePropagation();
+
+					} else {
+						//alert("GO")
+					}
+					e.preventDefault();
+					return false;
+				});
 
 				/*				
 
@@ -245,11 +289,13 @@
 						//Proposta
 						$scope.signupForm.proposal ||
 						//Instituição/Campus
+
 						$scope.signupForm.nameInstitution || $scope.signupForm.cnpjInstitution || $scope.signupForm.addressInstitution || $scope.signupForm.emailInstitution || $scope.signupForm.phoneInstitution || $scope.signupForm.responsibleInstitution || $scope.signupForm.pastParticipations || $scope.signupForm.termAppointment ||
 						//Disciplina		 
 						$scope.signupForm.nameDIscipline || $scope.signupForm.discOptional || $scope.signupForm.codeDiscipline || $scope.signupForm.teacher || $scope.signupForm.nStudents ||
 						//Parcerias estabelecidas na comunidade local para ações empreendedoras
 						$scope.signupForm.partnerships || $scope.signupForm.partnershipsForPea || $scope.signupForm.partnershipsBetweenInstitutions || $scope.signupForm.partnershipsBetweenCampus ||
+
 						//Recursos econômicos apresentados como contrapartida	
 						$scope.signupForm.idLocal || $scope.signupForm.nameLocal || $scope.signupForm.addressLocal || $scope.signupForm.maximumCapacity || $scope.signupForm.optionsCounterpart || $scope.signupForm.others ||
 						//Plano de divulgação do PEA	
@@ -272,16 +318,27 @@
 					//	toastMessage('Nenhum dos campos podem estar em branco!!');
 					//	return;
 					//} else {
+
+					var formData = new FormData();
+					formData.append("termAppointment", jQuery("#termAppointment")[0].files[0]);
+
+					formData.append("signupForm", JSON.stringify($scope.signupForm));
+
 					$http({
 						method: 'POST',
-						url: '../wp-content/plugins/empreenda_form/views/finish.php',
-						data: $scope.signupForm
-					}).then(function () {
+						url: '../wp-content/plugins/empreenda_form/views/upload.php',
+						data: formData,
+						transformRequest: angular.identity,
+						headers: {
+							'Content-Type': undefined
+						}
+					}).then(function (response) {
+						console.log(response);
 						// SUCSESS
-						toastMessage('Email enviado com sucesso!');
+						//toastMessage('Email enviado com sucesso!');
 					}, function () {
 						// ERROR
-						toastMessage('Email não encontrado!');
+						//toastMessage('Email não encontrado!');
 					});
 
 					//	}

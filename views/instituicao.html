@@ -1,6 +1,7 @@
 <legend>Instituição</legend>
 <!-- Name input-->
 <div class="form-group">
+
 	<label class="col-md-4 col-sm-3 control-label" for="instituicao_name">Nome</label>
 	<div class="col-md-6 col-sm-6">
 		<input ng-model="instituicao.name" id="instituicao_name" name="instituicao_name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md"
@@ -12,12 +13,11 @@
 <br>
 <!-- CNPJ input-->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="instituicao_cnpj">CNPJ</label>
+	<label class="col-md-4 col-sm-3 control-label" for="cnpj">CNPJ</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.cnpj" id="instituicao_cnpj" name="instituicao_cnpj" type="number" placeholder="Apenas números" class="form-control input-md"
-		required
-		data-rule-required="true" 
-		data-msg-required="É necessário preencher o campo CNPJ.">
+		<input ng-model="instituicao.cnpj" id="cnpj_instituicao" name="cnpj_instituicao" type="number" placeholder="Apenas números" class="form-control input-md" required
+			data-rule-required="true" 
+			data-msg-required="É necessário aceitar o campo CNPJ">
 	</div>
 </div>
 <br>
@@ -41,9 +41,7 @@
 		data-rule-required="true" 
 		data-msg-required="É necessário preencher o campo E-mail."
 		data-rule-email="true" 
-		data-msg-email="Formato de E-mail inválido."
-
-		>
+		data-msg-email="Formato de E-mail inválido.">
 	</div>
 </div>
 <br>
@@ -55,6 +53,7 @@
 		required
 		data-rule-required="true" 
 		data-msg-required="É necessário preencher o campo Telefone.">
+
 	</div>
 </div>
 <br>
@@ -89,13 +88,18 @@
 		data-rule-required="true" 
 		data-msg-required="É necessário preencher o campo Participações passadas em programas de empreendedorismo ou outras  experiências na área, incluindo atividades internas na área já realizadas."></textarea>
 	</div>
+	<div class="col-md-6 col-sm-6">
+		{{instituicao.pastParticipations|wordcount:false:'pastParticipations'}}
+	</div>
 </div>
 <br>
 <!-- File Button -->
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="termAppointment">Termo de compromisso</label>
 	<div class="col-md-6 col-sm-6">
-		<input ng-model="instituicao.termAppointment" id="termAppointment" name="termAppointment" class="input-file" type="file">
+		<input ng-model="instituicao.termAppointment" id="termAppointment" name="termAppointment" class="input-file" type="file" required
+			data-rule-required="true" 
+			data-msg-required="É necessário anexar o Termo de compromisso">
 	</div>
 </div>
 <br>
@@ -108,10 +112,14 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="instituicao_historic">Histórico de parcerias para ações empreendedoras</label>
 	<div class="col-md-6 col-sm-6">
-		<textarea ng-model="instituicao.partnerships.historic" class="form-control" id="instituicao_historic" name="instituicao_historic"
+		<textarea ng-model="instituicao.partnerships.historic" maxlength="3000" class="form-control" id="instituicao_historic" name="instituicao_historic"
 		required
 		data-rule-required="true" 
 		data-msg-required="É necessário preencher o campo Histórico de parcerias para ações empreendedoras."></textarea>
+  </div>
+		<div class="col-md-6 col-sm-6">
+		{{instituicao.partnerships.historic|wordcount:false:'historic'}}
+
 	</div>
 </div>
 
@@ -119,10 +127,13 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="partnerships_for_pea">Parcerias estabelecidas especialmente para o <abbr title="Programa Empreenda. Em Ação!">PEA</abbr> ou o <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> na <abbr title="Instituição de Ensino Superior">IES</abbr></label>
 	<div class="col-md-6 col-sm-6">
-		<textarea ng-model="instituicao.partnerships.partnerships_for_pea" class="form-control" id="partnerships_for_pea" name="partnerships_for_pea"
+		<textarea ng-model="instituicao.partnerships.partnerships_for_pea" class="form-control" id="partnerships_for_pea" maxlength="3000" name="partnerships_for_pea"
 		required
 		data-rule-required="true" 
 		data-msg-required="É necessário preencher o campo Parcerias estabelecidas especialmente para o programa Empreenda. Em Ação!."></textarea>
+	</div>
+		<div class="col-md-6 col-sm-6">
+		{{instituicao.partnerships.partnerships_for_pea|wordcount:false:'partnerships_for_pea'}}
 	</div>
 </div>
 
@@ -130,10 +141,13 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="partnerships_between_institutions">Parceria entre <abbr title="Instituições de Ensino Superior">IESs</abbr> para realizar o <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> conjuntamente</label>
 	<div class="col-md-6 col-sm-6">
-		<textarea ng-model="instituicao.partnerships.partnerships_between_institutions" class="form-control" id="partnerships_between_institutions" name="partnerships_between_institutions"
+		<textarea ng-model="instituicao.partnerships.partnerships_between_institutions" maxlength="3000" class="form-control" id="partnerships_between_institutions" name="partnerships_between_institutions"
 		required
 		data-rule-required="true" 
 		data-msg-required="É necessário preencher o campo Parcerias entre Instituições de Ensino Superior."></textarea>
+    </div>
+		<div class="col-md-6 col-sm-6">
+    {{instituicao.partnerships.partnerships_between_institutions|wordcount:false:'partnerships_between_institutions'}}
 	</div>
 </div>
 
@@ -141,10 +155,13 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="partnerships_between_campus">Parceria entre campi diferentes da mesma <abbr title="Instituição de Ensino Superior">IES</abbr> para realizar o <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr>  conjuntamente em um dos campi</label>
 	<div class="col-md-6 col-sm-6">
-		<textarea ng-model="instituicao.partnerships.partnerships_between_campus" class="form-control" id="partnerships_between_campus" name="partnerships_between_campus"
+		<textarea ng-model="instituicao.partnerships.partnerships_between_campus"  maxlength="3000" class="form-control" id="partnerships_between_campus" name="partnerships_between_campus"
 		required
 		data-rule-required="true" 
 		data-msg-required="É necessário preencher o campo Instituição de Ensino Superior."></textarea>
+	</div>
+	<div class="col-md-6 col-sm-6">
+		{{instituicao.partnerships.partnerships_between_campus|wordcount:false:'partnerships_between_campus'}}
 	</div>
 </div>
 
