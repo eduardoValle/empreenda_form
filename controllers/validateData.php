@@ -8,9 +8,9 @@
 
 global $wpdb;
 
-$wpdb->insert('table',
+$wpdb->insert('user',
     array(
-        'column1' => 'value1',
+        'name' => 'Luiz',
         'column2' => 123
     ),
     array(

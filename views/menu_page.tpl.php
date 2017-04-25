@@ -18,22 +18,25 @@ function my_custom_menu_page() {
     
             <table class="table table-striped table-bordered table-hover" id="dataTab">
                 <thead>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Título</th>
+                    <th>Coordeador</th>
+                    <th>Celular</th>
+                    <th>E-mail</th>
+                    <th>Instituição</th>
                 </thead>
     
                 <tfoot>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Título</th>
+                    <th>Coordeador</th>
+                    <th>Celular</th>
+                    <th>E-mail</th>
+                    <th>Instituição</th>
                 </tfoot>
     
                 <tbody>
                     <tr ng-repeat="dado in dados">
                         <td>{{dado.nome}}</td>
                         <td>{{dado.numero}}</td>
-                        <td>{{dado.teste}}</td>
+                        <td>{{dado.email}}</td>
+                        <td>{{dado.instituicao}}</td>
                     </tr>
                 </tbody>
             </table>
