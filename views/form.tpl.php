@@ -10,8 +10,8 @@
 * Extracting the real dir of plugins
 */
 function getDir(){
-    $_dir = dirname( __DIR__ . "../");    
-    $_dir = explode("/", $_dir);
+    $_dir = dirname( __DIR__ . ".." . DIRECTORY_SEPARATOR);    
+    $_dir = explode( DIRECTORY_SEPARATOR, $_dir);
     $dir = $_dir[sizeof($_dir)-1];
     return $dir;
 }
@@ -38,16 +38,15 @@ function eea_theme() {
     $scripts = array(
         plugins_url().'/' . $dir . '/libs/angular.min.js',
         plugins_url().'/' . $dir . '/js/form.ctrl.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js',
+        plugins_url().'/' . $dir . '/libs/jquery.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js',
         plugins_url().'/' . $dir . '/libs/jquery.formtowizard.js',
-        plugins_url().'/' . $dir . '/libs/form.js'
+        plugins_url().'/' . $dir . '/libs/form.js',
 
 
     );
     // define the styles dependencies
     $styles = array(
-        'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css',
         plugins_url().'/' . $dir . '/css/form.css'
 
     );
