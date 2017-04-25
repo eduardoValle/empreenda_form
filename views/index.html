@@ -1,207 +1,241 @@
- 		<div class="row wrap">
-		<div class="col-lg-12">
-			<div id='progress'>
-				<div id='progress-complete'></div>
-			</div>
-			<form id="SignupForm" name="SignupForm" action="" method="post" class="form-horizontal">
-				<fieldset>
-					<legend>Coordenador</legend>
-					<!-- Name input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.name" id="name" name="name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md" required="">
-						</div>
-					</div>
-					<br>
-					<!-- CPF input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="cpf">CPF</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.cpf" id="cpf" name="cpf" type="text" placeholder="Apenas números" class="form-control input-md">
-						</div>
-					</div>
-					<br>
-					<!-- Address input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.address" id="address" name="address" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md">
-						</div>
-					</div>
-					<br>
-					<!-- Email input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="email">E-mail</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.email" id="email" name="email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
-						</div>
-					</div>
-					<br>
-					<!-- Phone input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="phone">Telefone</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.fone" id="phone" name="phone" type="text" placeholder="Apenas números" class="form-control input-md">
-						</div>
-					</div>
-					<br>
-					<!-- Mobile input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="mobile">Celular</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.mobile" id="mobile" name="mobile" type="text" placeholder="Apenas números" class="form-control input-md">
-						</div>
-					</div>
-					<br>
-					<!-- CoordCurso input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="responsible">Coordenador do Curso</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.responsible" id="responsible" name="responsible" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
-						</div>
-					</div>
-					<br>
-					<!-- CVLattes input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="cvLalattesttes">Currículo Lattes</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.coordenador.lattes" id="lattes" name="lattes" type="text" placeholder="Link" class="form-control input-md">
-						</div>
-					</div>
-					<br>
-					<!-- Textarea -->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="experience">Experiências individuais e conjuntas na área de empreendedorismo.</label>
-						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.coordenador.experience" class="form-control" id="experience" name="experience"></textarea>
-						</div>
-					</div>
-					<br>
-					<!-- Textarea -->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="external_participation">Participação em organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas locais ou nacionais.</label>
-						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.coordenador.external_participation" class="form-control" id="external_participation" name="external_participation"></textarea>
-						</div>
-					</div>
-					<br>
-					<!-- Textarea -->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="motivation">Motivação para participar do programa.</label>
-						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.coordenador.motivation" class="form-control" id="motivation" name="motivation"></textarea>
-						</div>
-					</div>
-				</fieldset>
+<input type="file" name="file" id="file">
+<button ng-click="testar()"> teste</button>
+<div class="row wrap">
+    <div class="col-lg-12">
+        <div id='progress'>
+            <div id='progress-complete'></div>
+        </div>
+        <form id="SignupForm" name="SignupForm" action="" method="post" class="form-horizontal">
+            <fieldset>
+                <legend>Coordenador</legend>
+                <!-- Name input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.coordenador.name" id="name" name="name" type="text"
+                               placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md" required="">
+                    </div>
+                </div>
+                <br>
+                <!-- CPF input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="cpf">CPF</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.coordenador.cpf" id="cpf" name="cpf" type="text"
+                               placeholder="Apenas números" class="form-control input-md">
+                    </div>
+                </div>
+                <br>
+                <!-- Address input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.coordenador.address" id="address" name="address" type="text"
+                               placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md">
+                    </div>
+                </div>
+                <br>
+                <!-- Email input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="email">E-mail</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.coordenador.email" id="email" name="email" type="email"
+                               placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
+                    </div>
+                </div>
+                <br>
+                <!-- Phone input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="phone">Telefone</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.coordenador.fone" id="phone" name="phone" type="text"
+                               placeholder="Apenas números" class="form-control input-md">
+                    </div>
+                </div>
+                <br>
+                <!-- Mobile input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="mobile">Celular</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.coordenador.mobile" id="mobile" name="mobile" type="text"
+                               placeholder="Apenas números" class="form-control input-md">
+                    </div>
+                </div>
+                <br>
+                <!-- CoordCurso input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="responsible">Coordenador do Curso</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.coordenador.responsible" id="responsible" name="responsible"
+                               type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+                    </div>
+                </div>
+                <br>
+                <!-- CVLattes input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="cvLalattesttes">Currículo Lattes</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.coordenador.lattes" id="lattes" name="lattes" type="text"
+                               placeholder="Link" class="form-control input-md">
+                    </div>
+                </div>
+                <br>
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="experience">Experiências individuais e conjuntas
+                        na área de empreendedorismo.</label>
+                    <div class="col-md-6 col-sm-6">
+                        <textarea ng-model="signupForm.coordenador.experience" class="form-control" id="experience"
+                                  name="experience"></textarea>
+                    </div>
+                </div>
+                <br>
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="external_participation">Participação em
+                        organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas
+                        locais ou nacionais.</label>
+                    <div class="col-md-6 col-sm-6">
+                        <textarea ng-model="signupForm.coordenador.external_participation" class="form-control"
+                                  id="external_participation" name="external_participation"></textarea>
+                    </div>
+                </div>
+                <br>
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="motivation">Motivação para participar do
+                        programa.</label>
+                    <div class="col-md-6 col-sm-6">
+                        <textarea ng-model="signupForm.coordenador.motivation" class="form-control" id="motivation"
+                                  name="motivation"></textarea>
+                    </div>
+                </div>
+            </fieldset>
 
-				<fieldset>
-					<member></member>
-				</fieldset>
+            <fieldset>
+                <member></member>
+            </fieldset>
 
-				<fieldset class="form-horizontal" role="form">
-					<legend>Proposta</legend>
+            <fieldset class="form-horizontal" role="form">
+                <legend>Proposta</legend>
 
-					<!-- Select Basic -->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="proposal">Proposta</label>
-						<div class="col-md-6 col-sm-6">
-							<select id="proposal" name="proposal" class="form-control">
-							  <option value="Individual">Individual</option>
-							  <option value="Conjunto entre campus">Conjunto entre campus</option>
-							  <option value="Conjunto entre Instituições">Conjunto entre Instituições</option>
-							</select>
-						</div>
-					</div>
-				</fieldset>
+                <!-- Select Basic -->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="proposal">Proposta</label>
+                    <div class="col-md-6 col-sm-6">
+                        <select id="proposal" name="proposal" class="form-control">
+                            <option value="Individual">Individual</option>
+                            <option value="Conjunto entre campus">Conjunto entre campus</option>
+                            <option value="Conjunto entre Instituições">Conjunto entre Instituições</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
 
-				<fieldset class="form-horizontal" role="form">
-					<instituicao></instituicao>
-				</fieldset>
-				<fieldset>
+            <fieldset class="form-horizontal" role="form">
+                <instituicao></instituicao>
+            </fieldset>
+            <fieldset>
 
-					<!-- Form Name -->
-					<legend>Recursos econômicos apresentados como contrapartida</legend>
+                <!-- Form Name -->
+                <legend>Recursos econômicos apresentados como contrapartida</legend>
 
-					<!-- Multiple Checkboxes -->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="agreeResources">Como contrapartida mínima, a instituição deve oferecer sem qualquer custo  para o Programa o espaço físico para o <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> , segurança no local do <abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> ,  limpeza do local, energia elétrica e recursos de vídeo e áudio adequados.</label>
-						<div class="col-md-4">
-							<div class="checkbox">
-								<label>
-								 	<input type="checkbox" name="agreeResources" id="agreeResources-0" value="true">
-								  	Sim, concordo e confirmo a contrapartida supra citada.
-								</label>
-							</div>
-						</div>
-					</div>
+                <!-- Multiple Checkboxes -->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="agreeResources">Como contrapartida mínima, a
+                        instituição deve oferecer sem qualquer custo para o Programa o espaço físico para o <abbr
+                                title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> , segurança no local do <abbr
+                                title="Evento Local do Empreenda. Em Ação!">ELEA</abbr> , limpeza do local, energia
+                        elétrica e recursos de vídeo e áudio adequados.</label>
+                    <div class="col-md-4">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="agreeResources" id="agreeResources-0" value="true">
+                                Sim, concordo e confirmo a contrapartida supra citada.
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="identification">Identificação do local de realização do Evento Local do Empreenda. Em Ação!  (<abbr title="Evento Local do Empreenda. Em Ação!">ELEA</abbr>)</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.host_institutions.identification" id="identification" name="identification" type="text" placeholder="" class="form-control input-md">
-						</div>
-					</div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="identification">Identificação do local de
+                        realização do Evento Local do Empreenda. Em Ação! (<abbr
+                                title="Evento Local do Empreenda. Em Ação!">ELEA</abbr>)</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.host_institutions.identification" id="identification"
+                               name="identification" type="text" placeholder="" class="form-control input-md">
+                    </div>
+                </div>
 
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="name">Nome do espaço (auditório, teatro, etc)</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.host_institutions.name" id="name" name="namee" type="text" placeholder="" class="form-control input-md">
-						</div>
-					</div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="name">Nome do espaço (auditório, teatro,
+                        etc)</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.host_institutions.name" id="name" name="namee" type="text"
+                               placeholder="" class="form-control input-md">
+                    </div>
+                </div>
 
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.host_institutions.address" id="address" name="address" type="text" placeholder="" class="form-control input-md">
-						</div>
-					</div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.host_institutions.address" id="address" name="address" type="text"
+                               placeholder="" class="form-control input-md">
+                    </div>
+                </div>
 
-					<!-- Text input-->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="maximumCapacity">Capacidade máxima</label>
-						<div class="col-md-6 col-sm-6">
-							<input ng-model="signupForm.host_institutions.maximum_capacity" id="maximum_capacity" name="maximum_capacity" type="text" placeholder="" class="form-control input-md">
-						</div>
-					</div>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="maximumCapacity">Capacidade máxima</label>
+                    <div class="col-md-6 col-sm-6">
+                        <input ng-model="signupForm.host_institutions.maximum_capacity" id="maximum_capacity"
+                               name="maximum_capacity" type="text" placeholder="" class="form-control input-md">
+                    </div>
+                </div>
 
-					<!-- Multiple Checkboxes -->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="optionsCounterpart">Opcionais contrapartida econômica</label>
-						<div class="col-md-4">
-							<div class="checkbox">
-								<label>
-									<input ng-model="signupForm.host_institutions.optional_features" type="checkbox" name="optional_features" id="optional_features" value="internet">
-								  	Internet
-								</label>
-							</div>
-						</div>
-					</div>
+                <!-- Multiple Checkboxes -->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="optionsCounterpart">Opcionais contrapartida
+                        econômica</label>
+                    <div class="col-md-4">
+                        <div class="checkbox">
+                            <label>
+                                <input ng-model="signupForm.host_institutions.optional_features" type="checkbox"
+                                       name="optional_features" id="optional_features" value="internet">
+                                Internet
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
-				<others-features></others-features>
-				</fieldset>
+                <others-features></others-features>
+            </fieldset>
 
-				<fieldset>
+            <fieldset>
+                <!-- Form Name -->
+                <legend>Plano de divulgação do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
 
-					<!-- Form Name -->
-					<legend>Plano de divulgação do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr> </legend>
-
-					<!-- Textarea -->
-					<div class="form-group">
-						<label class="col-md-4 col-sm-3 control-label" for="disseminationPlan">Plano de divulgação do  <abbr title="Programa Empreenda. Em Ação!">PEA</abbr>  para a comunidade interna e externa à  <abbr title="Instituições de Ensino Superior">IES</abbr>,  incluindo canais e número de inserções em cada canal.</label>
-						<div class="col-md-6 col-sm-6">
-							<textarea ng-model="signupForm.disseminationPlan" class="form-control" id="disseminationPlan" name="disseminationPlan"></textarea>
-						</div>
-					</div>
-
-				</fieldset>
-				<fieldset>
-					<financial-resources></financial-resources>
-				</fieldset>
-				<button id="SaveAccount" type="submit" class="btn btn-primary submit" ng-click="register()" onclick="return false;">Candidatar</button>
-			</form>
-		</div>
-	</div>
+                <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-4 col-sm-3 control-label" for="disseminationPlan">Plano de divulgação do <abbr
+                            title="Programa Empreenda. Em Ação!">PEA</abbr> para a comunidade interna e externa à <abbr
+                            title="Instituições de Ensino Superior">IES</abbr>, incluindo canais e número de inserções
+                        em cada canal.</label>
+                    <div class="col-md-6 col-sm-6">
+                        <textarea ng-model="signupForm.disseminationPlan" class="form-control" id="disseminationPlan"
+                                  name="disseminationPlan"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <financial-resources></financial-resources>
+            </fieldset>
+            <button id="SaveAccount" type="submit" class="btn btn-primary submit" ng-click="register()"
+                    onclick="return false;">Candidatar
+            </button>
+        </form>
+    </div>
+</div>

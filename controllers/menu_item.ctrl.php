@@ -18,7 +18,7 @@ function wpdocs_register_my_custom_menu_page(){
         'manage_options',
         'custompage',
         'my_custom_menu_page',
-        plugins_url(ABSPATH . 'wp-admin/images/generic.png'),
+        '../wp-content/plugins/empreenda_form/imgs/plugin-ico.png',
         6
     );
 }

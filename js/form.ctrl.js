@@ -166,7 +166,29 @@
 				function campusCoordenador() {
 					return !($scope.signupForm.coordenador.name || $scope.signupForm.coordenador.cpf || $scope.signupForm.coordenador.address || $scope.signupForm.coordenador.email || $scope.signupForm.coordenador.phone || $scope.signupForm.coordenador.mobile || $scope.signupForm.coordenador.responsible || $scope.signupForm.coordenador.lattes || $scope.signupForm.coordenador.experience || $scope.signupForm.coordenador.external_participation || $scope.signupForm.coordenador.motivation)
 				}
-
+				$scope.testar=function(){
+					var formData = new FormData();
+					var obj =  {"coordenador":{"name":"aaaaaaaaaaaaaa","cpf":"","address":"","email":"","phone":"","mobile":"","responsible":"","lattes":"","experience":"","external_participation":"","motivation":""},"members":[],"instituicao":[],"discipline":[],"host_institutions":{"identification":"","name":"","address":"","maximum_capacity":"","optional_features":"","others_features":[]},"financial_resources":[]};
+                    formData.append( 'signupForm', JSON.stringify(obj));
+                    formData.append( 'termAppointment', jQuery("#file")[0].files[0]);
+					var url = window.location.href;
+					url = url.replace(/index.php\/+/,'');
+					url= url + '../wp-content/plugins/empreenda_form/views/teste.php';
+                    $http({
+                        method: 'POST',
+                        url: url,
+                        data: formData,
+                        headers: { 'Content-Type': undefined},
+						transformRequest: angular.identity
+                    }).then(function (data) {
+                    	console.log( data );
+                        // SUCSESS
+                       // toastMessage('Email enviado com sucesso!');
+                    }, function () {
+                        // ERROR
+                        //toastMessage('Email não encontrado!');
+                    });
+                };
 				$scope.addListener = function (id, validation) {
 					var interval = window.setInterval(() => {
 						if (jQuery(id).length > 0) {
