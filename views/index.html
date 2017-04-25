@@ -1,19 +1,33 @@
-<input type="file" name="file" id="file">
-<button ng-click="testar()"> teste</button>
+<style>
+    #agreeResources-error {
+        position: absolute;
+        top: 50px;
+    }
+
+    .radio_member {
+        margin-top: 50px !important;
+    }
+</style>
+
 <div class="row wrap">
     <div class="col-lg-12">
         <div id='progress'>
             <div id='progress-complete'></div>
         </div>
-        <form id="SignupForm" name="SignupForm" action="" method="post" class="form-horizontal">
+        <form id="SignupForm" name="SignupForm" action="" method="post" class="form-horizontal"
+              onsubmit="return false;">
             <fieldset>
                 <legend>Coordenador</legend>
                 <!-- Name input-->
                 <div class="form-group">
                     <label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
                     <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.coordenador.name" id="name" name="name" type="text"
-                               placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md" required="">
+                        <input ng-model="signupForm.coordenador.name"
+                               id="name" name="name"
+                               type="text"
+                               placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md" required
+                               data-rule-required="true"
+                               data-msg-required="É necessário preencher o campo Nome">
                     </div>
                 </div>
                 <br>
@@ -21,8 +35,16 @@
                 <div class="form-group">
                     <label class="col-md-4 col-sm-3 control-label" for="cpf">CPF</label>
                     <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.coordenador.cpf" id="cpf" name="cpf" type="text"
-                               placeholder="Apenas números" class="form-control input-md">
+                        <input ng-model="signupForm.coordenador.cpf"
+                               id="cpf" name="cpf"
+                               type="number"
+                               placeholder="Apenas números" class="form-control input-md"
+                               required
+                               data-rule-required="true"
+                               data-msg-required="É necessário preencher o campo CPF"
+                               data-rule-number="true"
+                               data-msg-number="O campo CPF só aceita números"
+                        >
                     </div>
                 </div>
                 <br>
@@ -30,8 +52,12 @@
                 <div class="form-group">
                     <label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
                     <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.coordenador.address" id="address" name="address" type="text"
-                               placeholder="Ex. Rua Antônio Gomes Silva, nº 415" class="form-control input-md">
+                        <input ng-model="signupForm.coordenador.address"
+                               id="address" name="address" type="text" placeholder="Ex. Rua Antônio Gomes Silva, nº 415"
+                               class="form-control input-md"
+                               required
+                               data-rule-required="true"
+                               data-msg-required="É necessário preencher o campo Endereço">
                     </div>
                 </div>
                 <br>
@@ -40,7 +66,12 @@
                     <label class="col-md-4 col-sm-3 control-label" for="email">E-mail</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.coordenador.email" id="email" name="email" type="email"
-                               placeholder="Ex. pedrolucas@contato.com" class="form-control input-md">
+                               placeholder="Ex. pedrolucas@contato.com" class="form-control input-md" required
+                               data-rule-required="true"
+                               data-msg-required="É necessário preencher o campo E-mail"
+                               data-rule-email="true"
+                               data-msg-email="Formato de E-mail inválido"
+                        >
                     </div>
                 </div>
                 <br>
@@ -48,8 +79,13 @@
                 <div class="form-group">
                     <label class="col-md-4 col-sm-3 control-label" for="phone">Telefone</label>
                     <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.coordenador.fone" id="phone" name="phone" type="text"
-                               placeholder="Apenas números" class="form-control input-md">
+                        <input ng-model="signupForm.coordenador.fone" id="phone" name="phone" type="number"
+                               placeholder="Apenas números" class="form-control input-md" required
+                               data-rule-required="true"
+                               data-msg-required="É necessário preencher o campo Telefone"
+                               data-rule-number="true"
+                               data-msg-number="O campo Telefone só aceita números"
+                        >
                     </div>
                 </div>
                 <br>
@@ -58,7 +94,11 @@
                     <label class="col-md-4 col-sm-3 control-label" for="mobile">Celular</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.coordenador.mobile" id="mobile" name="mobile" type="text"
-                               placeholder="Apenas números" class="form-control input-md">
+                               placeholder="Apenas números" class="form-control input-md" required
+                               data-rule-required="true"
+                               data-msg-required="É necessário preencher o campo Celular"
+                               data-rule-number="true"
+                               data-msg-number="O campo Celular só aceita números">
                     </div>
                 </div>
                 <br>
@@ -67,7 +107,10 @@
                     <label class="col-md-4 col-sm-3 control-label" for="responsible">Coordenador do Curso</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.coordenador.responsible" id="responsible" name="responsible"
-                               type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md">
+                               type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md"
+                               required
+                               data-rule-required="true"
+                               data-msg-required="É necessário preencher o campo Coordenador do Curso">
                     </div>
                 </div>
                 <br>
@@ -76,7 +119,9 @@
                     <label class="col-md-4 col-sm-3 control-label" for="cvLalattesttes">Currículo Lattes</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.coordenador.lattes" id="lattes" name="lattes" type="text"
-                               placeholder="Link" class="form-control input-md">
+                               placeholder="Link" class="form-control input-md" required
+                               data-rule-required="true"
+                               data-msg-required="É necessário preencher o campo Lattes">
                     </div>
                 </div>
                 <br>
@@ -85,8 +130,13 @@
                     <label class="col-md-4 col-sm-3 control-label" for="experience">Experiências individuais e conjuntas
                         na área de empreendedorismo.</label>
                     <div class="col-md-6 col-sm-6">
-                        <textarea ng-model="signupForm.coordenador.experience" class="form-control" id="experience"
-                                  name="experience"></textarea>
+							<textarea ng-model="signupForm.coordenador.experience" maxlength='10' class="form-control"
+                                      id="experience" name="experience" required
+                                      data-rule-required="true"
+                                      data-msg-required="É necessário preencher o campo Experiências individuais e conjuntas na área de empreendedorismo"></textarea>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        {{signupForm.coordenador.experience|wordcount:false:'experience'}}
                     </div>
                 </div>
                 <br>
@@ -96,8 +146,14 @@
                         organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas
                         locais ou nacionais.</label>
                     <div class="col-md-6 col-sm-6">
-                        <textarea ng-model="signupForm.coordenador.external_participation" class="form-control"
-                                  id="external_participation" name="external_participation"></textarea>
+							<textarea ng-model="signupForm.coordenador.external_participation" maxlength='10'
+                                      class="form-control" id="external_participation" name="external_participation"
+                                      required
+                                      data-rule-required="true"
+                                      data-msg-required="É necessário preencher o campo Participação em organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas locais ou nacionais."></textarea>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        {{signupForm.coordenador.external_participation|wordcount:false:'external_participation'}}
                     </div>
                 </div>
                 <br>
@@ -106,8 +162,10 @@
                     <label class="col-md-4 col-sm-3 control-label" for="motivation">Motivação para participar do
                         programa.</label>
                     <div class="col-md-6 col-sm-6">
-                        <textarea ng-model="signupForm.coordenador.motivation" class="form-control" id="motivation"
-                                  name="motivation"></textarea>
+							<textarea ng-model="signupForm.coordenador.motivation" class="form-control" id="motivation"
+                                      name="motivation" required
+                                      data-rule-required="true"
+                                      data-msg-required="É necessário preencher o campo Motivação para participar do programa."></textarea>
                     </div>
                 </div>
             </fieldset>
@@ -150,7 +208,9 @@
                     <div class="col-md-4">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" name="agreeResources" id="agreeResources-0" value="true">
+                                <input type="checkbox" name="agreeResources" id="agreeResources" value="true" required
+                                       data-rule-required="true"
+                                       data-msg-required="É necessário aceitar o campo Recursos de contrapartida">
                                 Sim, concordo e confirmo a contrapartida supra citada.
                             </label>
                         </div>
@@ -164,7 +224,9 @@
                                 title="Evento Local do Empreenda. Em Ação!">ELEA</abbr>)</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.host_institutions.identification" id="identification"
-                               name="identification" type="text" placeholder="" class="form-control input-md">
+                               name="identification" type="text" placeholder="" class="form-control input-md" required
+                               data-rule-required="true"
+                               data-msg-required="É necessário aceitar o campo Identificação do local">
                     </div>
                 </div>
 
@@ -173,8 +235,10 @@
                     <label class="col-md-4 col-sm-3 control-label" for="name">Nome do espaço (auditório, teatro,
                         etc)</label>
                     <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.host_institutions.name" id="name" name="namee" type="text"
-                               placeholder="" class="form-control input-md">
+                        <input ng-model="signupForm.host_institutions.name" id="name_local" name="nameLocal" type="text"
+                               placeholder="" class="form-control input-md" required
+                               data-rule-required="true"
+                               data-msg-required="É necessário aceitar o campo Nome do espaço">
                     </div>
                 </div>
 
@@ -182,8 +246,10 @@
                 <div class="form-group">
                     <label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
                     <div class="col-md-6 col-sm-6">
-                        <input ng-model="signupForm.host_institutions.address" id="address" name="address" type="text"
-                               placeholder="" class="form-control input-md">
+                        <input ng-model="signupForm.host_institutions.address" id="address_local" name="addressLocal"
+                               type="text" placeholder="" class="form-control input-md" required
+                               data-rule-required="true"
+                               data-msg-required="É necessário aceitar o campo Endereço">
                     </div>
                 </div>
 
@@ -192,7 +258,10 @@
                     <label class="col-md-4 col-sm-3 control-label" for="maximumCapacity">Capacidade máxima</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.host_institutions.maximum_capacity" id="maximum_capacity"
-                               name="maximum_capacity" type="text" placeholder="" class="form-control input-md">
+                               name="maximum_capacity" type="number" placeholder="" class="form-control input-md"
+                               required
+                               data-rule-required="true"
+                               data-msg-required="É necessário aceitar o campo Capacidade máxima">
                     </div>
                 </div>
 
@@ -215,6 +284,7 @@
             </fieldset>
 
             <fieldset>
+
                 <!-- Form Name -->
                 <legend>Plano de divulgação do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
 
@@ -225,10 +295,17 @@
                             title="Instituições de Ensino Superior">IES</abbr>, incluindo canais e número de inserções
                         em cada canal.</label>
                     <div class="col-md-6 col-sm-6">
-                        <textarea ng-model="signupForm.disseminationPlan" class="form-control" id="disseminationPlan"
-                                  name="disseminationPlan"></textarea>
+						<textarea ng-model="signupForm.coordenador.disseminationPlan" class="form-control"
+                                  id="disseminationPlan" maxlength="4000" name="disseminationPlan" required
+                                  data-rule-required="true"
+                                  data-msg-required="É necessário preencher o campo do Plano de divulgação"></textarea>
+
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        {{signupForm.coordenador.disseminationPlan|wordcount:false:'disseminationPlan'}}
                     </div>
                 </div>
+
             </fieldset>
             <fieldset>
                 <financial-resources></financial-resources>
