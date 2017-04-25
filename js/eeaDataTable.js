@@ -12,8 +12,8 @@
             $scope.dados = [
                 {id: 1, nome: 'Luiz Eduardo', numero: '32 2131-1231', teste: 'Teste teste teste'},
                 {id: 2, nome: 'Kamilla', numero: '32 1232-3434', teste: 'Teste2 teste2 teste2'},
-                {id: 3, nome: 'Marcelle', numero: '32 5544-4566', teste: 'Teste3 teste3 teste3'},
-                {id: 4, nome: 'Bruna Harumí', numero: '32 4767-7666', teste: 'Teste4 teste4 teste4'}
+                {id: 3, nome: 'Thales', numero: '32 5544-4566', teste: 'Teste3 teste3 teste3'},
+                {id: 4, nome: 'Donatello', numero: '32 4767-7666', teste: 'Teste4 teste4 teste4'}
             ];
 
             // console.log(window.location + '/wordpress/wp-content/plugins/empreenda_form/controllers/teste.php');
