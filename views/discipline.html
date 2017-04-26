@@ -14,13 +14,13 @@
 	<div class="col-md-6 col-sm-6">
 		<div class="radio">
 			<label>
-					<input ng-model="discipline.Optional" type="radio" name="Optional" value="1" selected>
+					<input ng-model="discipline.optional" type="radio" name="Optional" value="1" selected>
 									Obrigatória
 								</label>
 		</div>
 		<div class="radio">
 			<label>
-									<input ng-model="discipline.Optional" type="radio" name="Optional" value="0">
+									<input ng-model="discipline.optional" type="radio" name="Optional" value="0">
 									Optativa
 								</label>
 		</div>
@@ -62,7 +62,7 @@
 <br>
 
 
-<div class="card w-100" ng-repeat="d in signupForm.disipline">
+<div class="card w-100" ng-repeat="d in signupForm.discipline">
 	<div class="card-block">
 		<h3 class="card-title">{{d.name}}</h3>
 		<p class="card-text">{{d.code_discipline}}</p>
