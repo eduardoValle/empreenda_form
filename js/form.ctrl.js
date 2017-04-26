@@ -171,12 +171,13 @@
 							"#members_functions",
 							"#member_name",
 							"#member_cpf",
-							"#member_phone",
 							"#member_mobile",
 							"#member_email",
 							"#member_lattes"
 						]);
+						return true;
 					}
+					return false;
 				}
 
 				$scope.addInstituicao = () => {
@@ -201,6 +202,7 @@
 							)
 						)
 					) {
+						$scope.term = false;
 						Instituicao.add($scope.instituicao);
 
 						$scope.instituicao = {
@@ -213,7 +215,7 @@
 							phone_responsible: '',
 							past_participations: '',
 							term_appointment: '',
-							proposal: '',
+							proposal: '1',
 							partnerships_historic: '',
 							partnerships_between_institutions: '',
 							partnerships_between_campus: '',
@@ -270,20 +272,20 @@
 				}
 
 				$scope.addFinancialResources = () => {
-						FinancialResources.add($scope.financial_resources);
-						$scope.financial_resources = {
-							own_resource: '1',
-							partner_features: '',
-							name: '',
-							address: '',
-							cnpj: '',
-							contact_person: '',
-							detailing: '',
+					FinancialResources.add($scope.financial_resources);
+					$scope.financial_resources = {
+						own_resource: '1',
+						partner_features: '',
+						name: '',
+						address: '',
+						cnpj: '',
+						contact_person: '',
+						detailing: '',
 
-						};
+					};
 
-						$scope.signupForm.financial_resources = FinancialResources.get();
-						$scope.removeValidation([
+					$scope.signupForm.financial_resources = FinancialResources.get();
+					$scope.removeValidation([
 							"#own_resource",
 							"#name",
 							"#partner_features",
@@ -295,15 +297,16 @@
 				}
 
 				$scope.addOthersFeatures = () => {
-					if (!!$scope.others_features.name) {
-						OthersFeatures.add($scope.others_features);
-						$scope.others_features = {
-							name: '',
+					OthersFeatures.add($scope.others_features);
+					$scope.others_features = {
+						name: '',
 
-						};
+					};
 
-						$scope.signupForm.others_features = OthersFeatures.get();
-					}
+					$scope.signupForm.others_features = OthersFeatures.get();
+					return true;
+
+					return false;
 				}
 
 				$scope.addListener = function (id, validation) {
@@ -320,43 +323,134 @@
 
 
 				$scope.addListener("#step1Next", function (e) {
-					$scope.addMember();
+					if ($scope.addMember()) {
+						$scope.$apply();
+					} else {
+						if ($scope.signupForm.members.length > 0) {
+							$scope.$apply();
+						} else {
+							e.stopImmediatePropagation();
+							e.preventDefault();
+							return false;
+						}
+					}
 				});
 
 				$scope.addListener("#step2Next", function (e) {
-					$scope.addInstituicao();					
+					$scope.addInstituicao();
 					$scope.addDiscipline();
-					if (!$("#SignupForm").validate().form()) {
-						e.stopImmediatePropagation();
-						e.preventDefault();
-						return false;
-					}
-					if (
+					if (!$("#SignupForm").validate().form() ||
 						$scope.signupForm.instituicao.length == 0 ||
 						$scope.signupForm.discipline.length == 0
 					) {
 						e.stopImmediatePropagation();
 						e.preventDefault();
 						return false;
+					} else {
+						$scope.$apply();
 					}
 				});
 
-				$scope.addListener("#step3Next", function () {
-					$scope.addOthersFeatures()
+				$scope.addListener("#step3Next", function (e) {
+					if ($scope.addOthersFeatures()) {
+						$scope.$apply();
+					} else {
+						e.stopImmediatePropagation();
+						e.preventDefault();
+						return false;
+					}
 
 				});
 
 				$scope.addListener("#SaveAccount", function () {
-					$scope.addFinancialResources()
+					$scope.addFinancialResources();
+					$scope.$apply();
+					//$scope.register();
 
 				});
 
+				// ************** EDIT ************** //
+
+
+				$scope.editMember = function (member) {
+					$scope.members = member;
+					$scope.edit = true;
+				}
+
+				$scope.removeMember = function (indexMember) {
+					$scope.signupForm.members.splice(indexMember, 1);
+				}
+
+				$scope.saveMember = function () {
+					$scope.members = angular.copy(Member.get());
+					$scope.edit = false;
+				}
+
+				$scope.editDiscipline = function (discipline) {
+					$scope.discipline = discipline;
+					$scope.edit = true;
+				}
+
+				$scope.removeDiscipline = function (indexDiscipline) {
+					$scope.signupForm.discipline.splice(indexDiscipline, 1);
+				}
+
+				$scope.saveDiscipline = function () {
+					$scope.discipline = angular.copy(Discipline.get());
+					$scope.edit = false;
+				}
+
+				$scope.editInstituicao = function (instituicao) {
+					$scope.instituicao = instituicao;
+					$scope.edit = true;
+				}
+
+				$scope.removeInstituicao = function (indexInstituicao) {
+					$scope.signupForm.instituicao.splice(indexInstituicao, 1);
+				}
+
+				$scope.saveInstituicao = function () {
+					$scope.instituicao = angular.copy(Instituicao.get());
+					$scope.edit = false;
+				}
+
+				$scope.editFinancialResources = function (financialResources) {
+					$scope.financial_resources = financialResources;
+					$scope.edit = true;
+				}
+
+				$scope.removeFinancialResources = function (indexFinancialResources) {
+					$scope.signupForm.financial_resources.splice(indexFinancialResources, 1);
+				}
+
+				$scope.saveFinancialResources = function () {
+					$scope.financial_resources = angular.copy(FinancialResources.get());
+					$scope.edit = false;
+				}
+
+				$scope.edit = false;
+
+				// ************** REGISTER ************** //
+				$scope.loader = (str) => {
+					if (!!str) {
+						if (str == 'show') {
+							$(".preloader").show();
+							$(".status").show();
+						} else {
+							$(".preloader").hide();
+							$(".status").hide();
+						}
+					} else {
+						$(".preloader").hide();
+						$(".status").hide();
+					}
+				};
 				$scope.register = function () {
 					//if (camposNulos()) {
 					//	toastMessage('Nenhum dos campos podem estar em branco!!');
 					//	return;
 					//} else {
-
+					$scope.loader('show');
 					var formData = new FormData();
 					formData.append("term_appointment", jQuery("#term_appointment")[0].files[0]);
 
@@ -364,7 +458,7 @@
 
 					$http({
 						method: 'POST',
-						url: '../wp-content/plugins/empreenda_form/views/upload.php',
+						url: '/wordpress/wp-content/plugins/empreenda_form/controllers/validateData.php',
 						data: formData,
 						transformRequest: angular.identity,
 						headers: {
@@ -374,9 +468,29 @@
 						console.log(response);
 						// SUCSESS
 						//toastMessage('Email enviado com sucesso!');
+						$scope.loader('hide');
+						jQuery.toast({
+							text: "Sua proposta foi enviada com sucesso", // Text that is to be shown in the toast
+							heading: 'Parabéns', // Optional heading to be shown on the toast
+							icon: 'success', // Type of toast icon
+							showHideTransition: 'fade', // fade, slide or plain
+							allowToastClose: true, // Boolean value true or false
+							hideAfter: false, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+							stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+							position: 'mid-center', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+							textAlign: 'left', // Text alignment i.e. left, right or center
+							loader: true, // Whether to show loader or not. True by default
+							loaderBg: '#9EC600', // Background color of the toast loader
+						});
+						
+						setTimeout(function () {
+							window.location.href = "http://www.empreendaemacao.com.br/"; //will redirect to your blog page (an ex: blog.html)
+						}, 2000);
+
 					}, function () {
 						// ERROR
 						//toastMessage('Email não encontrado!');
+						$scope.loader('hide');
 					});
 
 					//	}

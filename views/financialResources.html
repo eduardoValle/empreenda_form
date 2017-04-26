@@ -7,13 +7,13 @@
 	<div class="col-md-6 col-sm-6">
 		<div class="radio">
 			<label>
-									<input ng-model="financial_resources.own_resource" type="radio" name="own_resource" id="own_resource" value="1" >
+									<input ng-model="financial_resources.own_resource" type="radio" name="own_resource" id="own_resource" value="2" ng-init="financial_resources.own_resource=true">
 									Próprio
 								</label>
 		</div>
 		<div class="radio">
 			<label>
-									<input ng-model="financial_resources.own_resource" type="radio" name="own_resource" id="own_resource" value="2"  ng-init="financial_resources.own_resource=false">
+									<input ng-model="financial_resources.own_resource" type="radio" name="own_resource" id="own_resource" value="1"  >
 									Parceiro
 								</label>
 		</div>
@@ -85,7 +85,8 @@
 <div class="form-group">
 	<label class="col-md-4 col-sm-3 control-label" for="addPartner">Adicionar parceiro</label>
 	<div class="col-md-6 col-sm-6">
-		<button id="addPartner" name="addPartner" class="btn btn-primary" ng-click="addFinancialResources()" onclick="return false;">+ Parceiro</button>
+		<button ng-if="!edit" id="addPartner" name="addPartner" class="btn btn-primary" ng-click="addFinancialResources()" onclick="return false;">+ Parceiro</button>
+		<button ng-if="edit" onclick="return false;" ng-click="saveFinancialResources()" class="btn btn-success">Alterar</button>
 	</div>
 </div>
 
@@ -93,7 +94,9 @@
 
 <div class="card w-100" ng-repeat="f in signupForm.financial_resources">
 	<div class="card-block">
-		<h3 class="card-title">{{f.name}}</h3>
-		<p class="card-text">{{f.partner_features}}</p>
+		<h3 class="card-title">{{f.partner_features}}</h3>
+		<p class="card-text">{{f.detailing}}</p>
+		<button ng-click="editFinancialResources(f)" onclick="return false;" class="btn btn-warning">Editar</button>
+		<button ng-click="removeFinancialResources($index)" onclick="return false;" class="btn btn-danger">Excluir</button>
 	</div>
 </div>
