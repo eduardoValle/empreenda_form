@@ -5,9 +5,9 @@
 	<label class="col-md-4 col-sm-3 control-label" for="proposal">Proposta</label>
 	<div class="col-md-6 col-sm-6">
 		<select id="proposal" ng-model="instituicao.proposal" name="proposal" class="form-control input-md">
-							  <option value="1" ng-init="instituicao.proposal=1" selected>Individual</option>
-							  <option value="2" ng-init="instituicao.proposal=2">Conjunto entre campus</option>
-							  <option value="3" ng-init="instituicao.proposal=3">Conjunto entre Instituições</option>
+							  <option value="1">Individual</option>
+							  <option value="2">Conjunto entre campus</option>
+							  <option value="3">Conjunto entre Instituições</option>
 							</select>
 	</div>
 </div>
@@ -135,7 +135,7 @@
 	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==2">Adicionar campus</label>
 	<div class="col-md-6 col-sm-6">
 	<button ng-if="!edit" id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="instituicao.proposal==1">+ Adicionar</button>
-	<button ng-if="edit" onclick="return false;" ng-click="saveInstituicao()" class="btn btn-success">Alterar</button>
+	<button ng-if="edit" onclick="return false;" ng-click="saveItem('institution')" class="btn btn-success">Alterar</button>
 
 </div>
 
@@ -143,7 +143,7 @@
 	<div class="card-block">
 		<h3 class="card-title">{{i.name}}</h3>
 		<p class="card-text">{{i.address}}</p>
-		<button ng-click="editInstituicao(i)" onclick="return false;" class="btn btn-warning">Editar</button>
-		<button ng-click="removeInstituicao($index)" onclick="return false;" class="btn btn-danger">Excluir</button>
+		<button ng-click="editItem('institution',i)" onclick="return false;" class="btn btn-warning">Editar</button>
+		<button ng-click="removeItem('institution',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
 	</div>
 </div>

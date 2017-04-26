@@ -57,7 +57,7 @@
 	<label class="col-md-4 col-sm-3 control-label" for="addDiscipline">Adicionar Disciplina</label>
 	<div class="col-md-6 col-sm-6">
 		<button ng-if="!edit" ng-model="discipline.addDiscipline" id="addDiscipline" name="addDiscipline" class="btn btn-primary" ng-click="addDiscipline()" onclick="return false;">+ Disciplina</button>
-		<button ng-if="edit" onclick="return false;" ng-click="saveDiscipline()" class="btn btn-success">Alterar</button>
+		<button ng-if="edit" onclick="return false;" ng-click="saveItem('discipline')" class="btn btn-success">Alterar</button>
 	</div>
 </div>
 <br>
@@ -67,7 +67,7 @@
 	<div class="card-block">
 		<h3 class="card-title">{{d.name}}</h3>
 		<p class="card-text">{{d.code_discipline}}</p>
-		<button ng-click="editDiscipline(d)" onclick="return false;" class="btn btn-warning">Editar</button>
-		<button ng-click="removeDiscipline($index)" onclick="return false;" class="btn btn-danger">Excluir</button>
+		<button ng-click="editItem('discipline',d)" onclick="return false;" class="btn btn-warning">Editar</button>
+		<button ng-click="removeItem('discipline',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
 	</div>
 </div>
