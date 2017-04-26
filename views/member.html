@@ -4,16 +4,11 @@
     top: 33px;
 }
 .radio_member{ margin-top: 36px !important; }
-.card{
-	border-color: #ccc;
-	border-radius: 4px;
-	border-style: solid;
-	border-width: 1px;
-	padding: 5px 10px
-}	
+
 </style>
 
 	<legend>Outros membros da instituição ou membros externos que compõem a equipe local do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
+	<br>
 	<!-- Function -->
 	<div class="form-group">
 		<label class="col-md-4 col-sm-3 control-label">Função</label>
@@ -30,7 +25,7 @@
 	</div>
 	<br>
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="member_name">Nome</label>
+		<label class="col-md-4 col-sm-3 control-label">Nome</label>
 		<div class="col-md-6 col-sm-6">
 			<input ng-model="members.name" id="member_name" name="member_name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md"
 			required
@@ -43,7 +38,7 @@
 	<br>
 	<!-- CPF input-->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="member_cpf">CPF</label>
+		<label class="col-md-4 col-sm-3 control-label">CPF</label>
 		<div class="col-md-6 col-sm-6">
 			<input ng-model="members.cpf" id="member_cpf" name="member_cpf" type="number" placeholder="Apenas números" class="form-control input-md"
 			required
@@ -54,7 +49,7 @@
 	<br>
 	<!-- Email input-->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="member_email">E-mail</label>
+		<label class="col-md-4 col-sm-3 control-label">E-mail</label>
 		<div class="col-md-6 col-sm-6">
 			<input ng-model="members.email" id="member_email" name="member_email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md"
 			required
@@ -67,7 +62,7 @@
 	<br>
 	<!-- Mobile input-->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="member_mobile">Celular</label>
+		<label class="col-md-4 col-sm-3 control-label">Celular</label>
 		<div class="col-md-6 col-sm-6">
 			<input ng-model="members.mobile" id="member_mobile" name="member_mobile" type="number" placeholder="Apenas números" class="form-control input-md"
 			required
@@ -78,7 +73,7 @@
 	<br>
 	<!-- CVLattes input-->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="member_lattes">Currículo Lattes</label>
+		<label class="col-md-4 col-sm-3 control-label">Currículo Lattes</label>
 		<div class="col-md-6 col-sm-6">
 			<input ng-model="members.lattes" id="member_lattes" name="member_lattes" type="text" placeholder="Link" class="form-control input-md"
 			required
@@ -89,7 +84,7 @@
 	<br>
 	<!-- Multiple Radios -->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="acceptMember">Declaro a concordância com as normas do programa apresentadas através  deste <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf" target="_blank" title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017</a></label>
+		<label class="col-md-4 col-sm-3 control-label">Declaro a concordância com as normas do programa apresentadas através  deste <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf" target="_blank" title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017</a></label>
 		<div class="col-md-6 col-sm-6">
 			<div class="radio">
 				<label>
@@ -113,16 +108,19 @@
 
 	<!-- Add Mamber -->
 	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label" for="addMember">Adicionar Membros</label>
+		<label class="col-md-4 col-sm-3 control-label">Adicionar Membros</label>
 		<div class="col-md-6 col-sm-6">
-			<button id="addMember" name="addMember" ng-click="addMember()" onclick="return false;" class="btn btn-primary">+ Membro</button>
+			<button ng-if="!edit" id="addMember" name="addMember" ng-click="addMember()" onclick="return false;" class="btn btn-primary">+ Membro</button>
+			<button ng-if="edit" onclick="return false;" ng-click="saveMember()" class="btn btn-success">Alterar</button>
 		</div>
 	</div>
 	
-	<div class="card w-100" ng-repeat="m in signupForm.members">
+	<div class="card w-100" ng-repeat="m in signupForm.members track by $index">
 	  <div class="card-block">
 		<h3 class="card-title">{{m.name}}</h3>
 		<p class="card-text">{{getMemberFunction(m.functions)}}</p>
+		<button ng-click="editMember(m)" onclick="return false;" class="btn btn-warning">Editar</button>
+		<button ng-click="removeMember($index)" onclick="return false;" class="btn btn-danger">Excluir</button>
 	  </div>
 	</div>
 	
