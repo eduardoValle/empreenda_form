@@ -4,7 +4,7 @@
 (function () {
 	'use strict';
 
-	angular.module('eea', [])
+	angular.module('eea', ['eea_directives', 'eea_services'])
 		.filter('wordcount', function () {
 
 			/*
@@ -78,12 +78,11 @@
 					phone_responsible: '',
 					past_participations: '',
 					term_appointment: '',
-					partnerships: {
-						historic: '',
-						partnerships_between_institutions: '',
-						partnerships_between_campus: '',
-						partnerships_for_pea: '',
-					}
+					proposal: '1',
+					partnerships_historic: '',
+					partnerships_between_institutions: '',
+					partnerships_between_campus: '',
+					partnerships_for_pea: '',
 
 				};
 
@@ -118,10 +117,9 @@
 						motivation: '',
 						disseminationPlan: ''
 					},
-					members: Member.get(),
-					proposal: '1',
-					instituicao: Instituicao.get(),
-					discipline: Discipline.get(),
+					members: [],
+					instituicao: [],
+					discipline: [],
 					host_institutions: {
 						identification: '',
 						name: '',
@@ -129,9 +127,26 @@
 						maximum_capacity: '',
 						optional_features: '',
 					},
-					others_features: OthersFeatures.get(),
-					financial_resources: FinancialResources.get(),
+					others_features: [],
+					financial_resources: []
 				};
+				$scope.removeValidation = (id) => {
+					if (!Array.isArray(id)) {
+						$(id).rules("remove")
+							.data('rule-required', false)
+							.removeAttr('required');
+					} else {
+						id.map(i => {
+							if (typeof (i) === 'string') {
+								try {
+									$(i).rules("remove");
+									$(i).data('rule-required', false)
+									$(i).removeAttr('required');
+								} catch (e) {}
+							}
+						});
+					}
+				}
 
 				$scope.addMember = () => {
 					if (!!$scope.members.functions &&
@@ -152,6 +167,15 @@
 						};
 
 						$scope.signupForm.members = Member.get();
+						$scope.removeValidation([
+							"#members_functions",
+							"#member_name",
+							"#member_cpf",
+							"#member_phone",
+							"#member_mobile",
+							"#member_email",
+							"#member_lattes"
+						]);
 					}
 				}
 
@@ -164,13 +188,21 @@
 						!!$scope.instituicao.responsible &&
 						!!$scope.instituicao.phone_responsible &&
 						!!$scope.instituicao.past_participations &&
-						!!$scope.instituicao.term_appointment &&
-						!!$scope.instituicao.partnerships.historic &&
-						!!$scope.instituicao.partnerships.partnerships_between_institutions &&
-						!!$scope.instituicao.partnerships.partnerships_between_campus &&
-						!!$scope.instituicao.partnerships.partnerships_for_pea
+						!!$scope.instituicao.partnerships_historic &&
+						!!$scope.instituicao.partnerships_between_institutions &&
+						!!$scope.instituicao.partnerships_between_campus &&
+						!!$scope.instituicao.partnerships_for_pea &&
+						(
+							$scope.signupForm.discipline.length > 0 || (!!$scope.discipline.name &&
+								!!$scope.discipline.optional &&
+								!!$scope.discipline.code_discipline &&
+								!!$scope.discipline.teacher &&
+								!!$scope.discipline.n_students
+							)
+						)
 					) {
 						Instituicao.add($scope.instituicao);
+
 						$scope.instituicao = {
 							name: '',
 							cnpj: '',
@@ -181,15 +213,32 @@
 							phone_responsible: '',
 							past_participations: '',
 							term_appointment: '',
-							partnerships: {
-								historic: '',
-								partnerships_between_institutions: '',
-								partnerships_between_campus: '',
-								partnerships_for_pea: '',
-							}
+							proposal: '',
+							partnerships_historic: '',
+							partnerships_between_institutions: '',
+							partnerships_between_campus: '',
+							partnerships_for_pea: '',
 
 						};
 						$scope.signupForm.instituicao = Instituicao.get();
+						$scope.removeValidation([
+							"#proposal",
+							"#instituicao_name",
+							"#cnpj_instituicao",
+							"#past_participations",
+							"#instituicao_address",
+							"#instituicao_email",
+							"#instituicao_phone",
+							"#instituicao_responsible",
+							"#phone_responsible",
+							"#term_appointment",
+							"#instituicao_historic",
+							"#partnerships_for_pea",
+							"#partnerships_between_institutions",
+							"#partnerships_between_campus",
+						]);
+					} else {
+						$("#SignupForm").validate().form();
 					}
 				}
 
@@ -206,25 +255,26 @@
 							optional: '',
 							code_discipline: '',
 							teacher: '',
-							n_students: '',
+							n_students: ''
+
 						};
 
 						$scope.signupForm.discipline = Discipline.get();
+						$scope.removeValidation([
+							"#discipline_name",
+							"#code_discipline",
+							"#discipline_teacher",
+							"#n_students"
+						]);
 					}
 				}
 
 				$scope.addFinancialResources = () => {
-					if (!!$scope.financial_resources.own_resource &&
-						!!$scope.financial_resources.partner_features &&
-						!!$scope.financial_resources.address &&
-						!!$scope.financial_resources.cnpj &&
-						!!$scope.financial_resources.contact_person &&
-						!!$scope.financial_resources.detailing
-					) {
 						FinancialResources.add($scope.financial_resources);
 						$scope.financial_resources = {
 							own_resource: '1',
 							partner_features: '',
+							name: '',
 							address: '',
 							cnpj: '',
 							contact_person: '',
@@ -233,7 +283,15 @@
 						};
 
 						$scope.signupForm.financial_resources = FinancialResources.get();
-					}
+						$scope.removeValidation([
+							"#own_resource",
+							"#name",
+							"#partner_features",
+							"#address",
+							"#cnpj",
+							"#contact_person",
+							"#detailing"
+						]);
 				}
 
 				$scope.addOthersFeatures = () => {
@@ -259,14 +317,28 @@
 
 					}, 1000);
 				};
-          
-				$scope.addListener("#step1Next", function () {
+
+
+				$scope.addListener("#step1Next", function (e) {
 					$scope.addMember();
 				});
 
-				$scope.addListener("#step2Next", function () {
-					$scope.addInstituicao();
+				$scope.addListener("#step2Next", function (e) {
+					$scope.addInstituicao();					
 					$scope.addDiscipline();
+					if (!$("#SignupForm").validate().form()) {
+						e.stopImmediatePropagation();
+						e.preventDefault();
+						return false;
+					}
+					if (
+						$scope.signupForm.instituicao.length == 0 ||
+						$scope.signupForm.discipline.length == 0
+					) {
+						e.stopImmediatePropagation();
+						e.preventDefault();
+						return false;
+					}
 				});
 
 				$scope.addListener("#step3Next", function () {
@@ -286,7 +358,7 @@
 					//} else {
 
 					var formData = new FormData();
-					formData.append("termAppointment", jQuery("#termAppointment")[0].files[0]);
+					formData.append("term_appointment", jQuery("#term_appointment")[0].files[0]);
 
 					formData.append("signupForm", JSON.stringify($scope.signupForm));
 
@@ -312,95 +384,7 @@
 				};
 
 
-        }])
-		.directive('member', ['Member', function (add) {
-			return {
-				restrict: 'E',
-				templateUrl: '../wp-content/plugins/empreenda_form/views/member.html',
-				link: function (sc, el, attrs) {}
-			};
-	}])
-		.directive('instituicao', ['Instituicao', function (add) {
-			return {
-				restrict: 'E',
-				templateUrl: '../wp-content/plugins/empreenda_form/views/instituicao.html',
-				link: function (sc, el, attrs) {}
-			};
-	}])
-		.directive('othersFeatures', ['OthersFeatures', function (add) {
-			return {
-				restrict: 'E',
-				templateUrl: '../wp-content/plugins/empreenda_form/views/othersFeatures.html',
-				link: function (sc, el, attrs) {}
-			};
-	}])
-		.directive('financialResources', ['FinancialResources', function (add) {
-			return {
-				restrict: 'E',
-				templateUrl: '../wp-content/plugins/empreenda_form/views/financialResources.html',
-				link: function (sc, el, attrs) {}
-			};
-	}])
-		.directive('discipline', ['Discipline', function (add) {
-			return {
-				restrict: 'E',
-				templateUrl: '../wp-content/plugins/empreenda_form/views/discipline.html',
-				link: function (sc, el, attrs) {}
-			};
-	}])
-		.service('Member', [function () {
-			var members = [];
-			var obj = {};
-			obj.get = function () {
-				return members;
-			};
-			obj.add = function (x) {
-				members.push(x);
-			};
-			return obj;
-	}])
-		.service('Instituicao', [function () {
-			var instituicao = [];
-			var obj = {};
-			obj.get = function () {
-				return instituicao;
-			};
-			obj.add = function (x) {
-				instituicao.push(x);
-			};
-			return obj;
-	}])
-		.service('Discipline', [function () {
-			var discipline = [];
-			var obj = {};
-			obj.get = function () {
-				return discipline;
-			};
-			obj.add = function (x) {
-				discipline.push(x);
-			};
-			return obj;
-	}])
-		.service('OthersFeatures', [function () {
-			var othersFeatures = [];
-			var obj = {};
-			obj.get = function () {
-				return othersFeatures;
-			};
-			obj.add = function (x) {
-				othersFeatures.push(x);
-			};
-			return obj;
-	}])
-		.service('FinancialResources', [function () {
-			var financialResources = [];
-			var obj = {};
-			obj.get = function () {
-				return financialResources;
-			};
-			obj.add = function (x) {
-				financialResources.push(x);
-			};
-			return obj;
-	}])
+        }]);
+
+
 }());

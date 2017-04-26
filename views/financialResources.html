@@ -13,8 +13,7 @@
 		</div>
 		<div class="radio">
 			<label>
-
-									<input ng-model="financial_resources.own_resource" type="radio" name="own_resource" id="own_resource" value="2" ng-init="financial_resources.own_resource=2">
+									<input ng-model="financial_resources.own_resource" type="radio" name="own_resource" id="own_resource" value="2"  ng-init="financial_resources.own_resource=false">
 									Parceiro
 								</label>
 		</div>
@@ -22,7 +21,7 @@
 </div>
 
 <!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==2">
+<div class="form-group" ng-if="financial_resources.own_resource==true">
 	<label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
 	<div class="col-md-6 col-sm-6">
 		<input ng-model="financial_resources.name" id="financial_resources_name" name="financial_resources_name" type="text" placeholder="" class="form-control input-md" required
@@ -42,7 +41,7 @@
 </div>
 
 <!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==2">
+<div class="form-group" ng-if="financial_resources.own_resource==true">
 	<label class="col-md-4 col-sm-3 control-label" for="address">Endereço</label>
 	<div class="col-md-6 col-sm-6">
 		<input ng-model="financial_resources.address" id="financial_resources_address" name="financial_resources_address" type="text" placeholder="" class="form-control input-md" required
@@ -52,7 +51,7 @@
 </div>
 
 <!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==2">
+<div class="form-group" ng-if="financial_resources.own_resource==true">
 	<label class="col-md-4 col-sm-3 control-label" for="cnpj">CNPJ</label>
 	<div class="col-md-6 col-sm-6">
 		<input ng-model="financial_resources.cnpj" id="financial_resources_cnpj" name="financial_resources_cnpj" type="number" placeholder="" class="form-control input-md" financial_resources required
@@ -62,7 +61,7 @@
 </div>
 
 <!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==2">
+<div class="form-group" ng-if="financial_resources.own_resource==true">
 	<label class="col-md-4 col-sm-3 control-label" for="contact_person">Contato do responsável</label>
 	<div class="col-md-6 col-sm-6">
 		<input ng-model="financial_resources.contact_person" id="contact_person" name="contact_person" type="text" placeholder="" class="form-control input-md" required
@@ -97,5 +96,4 @@
 		<h3 class="card-title">{{f.name}}</h3>
 		<p class="card-text">{{f.partner_features}}</p>
 	</div>
-
 </div>
