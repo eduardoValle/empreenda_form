@@ -47,8 +47,11 @@
         <entry file="file://$PROJECT_DIR$/controllers/menu_item.ctrl.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="20" selection-end-column="67" />
-              <folding />
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="20" selection-end-column="61" />
+              <folding>
+                <marker date="1493212515245" expanded="true" signature="257:513" ph="..." />
+                <marker date="1493212515245" expanded="true" signature="276:510" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,7 +95,6 @@
         <option value="$PROJECT_DIR$/classes/Rest.inc.php" />
         <option value="$PROJECT_DIR$/views/teste.php" />
         <option value="$PROJECT_DIR$/controllers/teste.php" />
-        <option value="$PROJECT_DIR$/controllers/menu_item.ctrl.php" />
         <option value="$PROJECT_DIR$/libs/jquery.min.js" />
         <option value="$PROJECT_DIR$/js/form.ctrl.js" />
         <option value="$PROJECT_DIR$/models/db_install.php" />
@@ -106,6 +108,7 @@
         <option value="$PROJECT_DIR$/js/eeaDataTable.js" />
         <option value="$PROJECT_DIR$/controllers/validateData.php" />
         <option value="$PROJECT_DIR$/views/menu_page.tpl.php" />
+        <option value="$PROJECT_DIR$/controllers/menu_item.ctrl.php" />
       </list>
     </option>
   </component>
@@ -347,12 +350,12 @@
       <workItem from="1492732954794" duration="54000" />
       <workItem from="1493037152861" duration="2353000" />
       <workItem from="1493124183950" duration="14020000" />
-      <workItem from="1493212263284" duration="57000" />
+      <workItem from="1493212263284" duration="345000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110452000" />
+    <option name="totallyTimeSpent" value="110740000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
@@ -686,8 +689,11 @@
     <entry file="file://$PROJECT_DIR$/controllers/menu_item.ctrl.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="20" selection-end-column="67" />
-          <folding />
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="20" selection-end-column="61" />
+          <folding>
+            <marker date="1493212515245" expanded="true" signature="257:513" ph="..." />
+            <marker date="1493212515245" expanded="true" signature="276:510" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
