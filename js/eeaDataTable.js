@@ -21,7 +21,7 @@
             $http({
                 method: 'POST',
                 headers: { 'Content-Type': undefined},
-                url:  '/wordpress/wp-content/plugins/empreenda_form/controllers/teste.php',
+                url: '/wordpress/wp-content/plugins/empreenda_form/controllers/validateData.php',
                 data: {
                     email: 'email',
                     pass: 'pass'
