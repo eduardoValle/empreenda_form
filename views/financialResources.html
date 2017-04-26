@@ -86,7 +86,7 @@
 	<label class="col-md-4 col-sm-3 control-label" for="addPartner">Adicionar parceiro</label>
 	<div class="col-md-6 col-sm-6">
 		<button ng-if="!edit" id="addPartner" name="addPartner" class="btn btn-primary" ng-click="addFinancialResources()" onclick="return false;">+ Parceiro</button>
-		<button ng-if="edit" onclick="return false;" ng-click="saveFinancialResources()" class="btn btn-success">Alterar</button>
+		<button ng-if="edit" onclick="return false;" ng-click="saveItem('financial_resources')" class="btn btn-success">Alterar</button>
 	</div>
 </div>
 
@@ -96,7 +96,7 @@
 	<div class="card-block">
 		<h3 class="card-title">{{f.partner_features}}</h3>
 		<p class="card-text">{{f.detailing}}</p>
-		<button ng-click="editFinancialResources(f)" onclick="return false;" class="btn btn-warning">Editar</button>
-		<button ng-click="removeFinancialResources($index)" onclick="return false;" class="btn btn-danger">Excluir</button>
+		<button ng-click="editItem('financial_resources',f)" onclick="return false;" class="btn btn-warning">Editar</button>
+		<button ng-click="removeItem('financial_resources',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
 	</div>
 </div>
