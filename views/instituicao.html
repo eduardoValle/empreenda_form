@@ -134,15 +134,16 @@
 	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==3">Adicionar instituição</label>
 	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==2">Adicionar campus</label>
 	<div class="col-md-6 col-sm-6">
-		<button id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="instituicao.proposal==1">+ Instituição</button>
-		<button id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="instituicao.proposal==3">+ Instituição</button>
-		<button id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="instituicao.proposal==2">+ Campus</button>
-	</div>
+	<button ng-if="!edit" id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="instituicao.proposal==1">+ Adicionar</button>
+	<button ng-if="edit" onclick="return false;" ng-click="saveInstituicao()" class="btn btn-success">Alterar</button>
+
 </div>
 
-<div class="card w-100" ng-repeat="i in signupForm.instituicao">
+<div class="card w-100" ng-repeat="i in signupForm.instituicao track by $index">
 	<div class="card-block">
 		<h3 class="card-title">{{i.name}}</h3>
 		<p class="card-text">{{i.address}}</p>
+		<button ng-click="editInstituicao(i)" onclick="return false;" class="btn btn-warning">Editar</button>
+		<button ng-click="removeInstituicao($index)" onclick="return false;" class="btn btn-danger">Excluir</button>
 	</div>
 </div>

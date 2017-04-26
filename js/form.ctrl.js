@@ -171,12 +171,20 @@
 							"#members_functions",
 							"#member_name",
 							"#member_cpf",
+<<<<<<< HEAD
+=======
 							"#member_phone",
+>>>>>>> 0183fb7c280588fde86056839f5a6db5f0d28353
 							"#member_mobile",
 							"#member_email",
 							"#member_lattes"
 						]);
+<<<<<<< HEAD
+						return true;
+=======
+>>>>>>> 0183fb7c280588fde86056839f5a6db5f0d28353
 					}
+					return false;
 				}
 
 				$scope.addInstituicao = () => {
@@ -213,7 +221,11 @@
 							phone_responsible: '',
 							past_participations: '',
 							term_appointment: '',
+<<<<<<< HEAD
+							proposal: '1',
+=======
 							proposal: '',
+>>>>>>> 0183fb7c280588fde86056839f5a6db5f0d28353
 							partnerships_historic: '',
 							partnerships_between_institutions: '',
 							partnerships_between_campus: '',
@@ -270,6 +282,17 @@
 				}
 
 				$scope.addFinancialResources = () => {
+<<<<<<< HEAD
+					FinancialResources.add($scope.financial_resources);
+					$scope.financial_resources = {
+						own_resource: '1',
+						partner_features: '',
+						name: '',
+						address: '',
+						cnpj: '',
+						contact_person: '',
+						detailing: '',
+=======
 						FinancialResources.add($scope.financial_resources);
 						$scope.financial_resources = {
 							own_resource: '1',
@@ -279,11 +302,17 @@
 							cnpj: '',
 							contact_person: '',
 							detailing: '',
+>>>>>>> 0183fb7c280588fde86056839f5a6db5f0d28353
 
-						};
+					};
 
+<<<<<<< HEAD
+					$scope.signupForm.financial_resources = FinancialResources.get();
+					$scope.removeValidation([
+=======
 						$scope.signupForm.financial_resources = FinancialResources.get();
 						$scope.removeValidation([
+>>>>>>> 0183fb7c280588fde86056839f5a6db5f0d28353
 							"#own_resource",
 							"#name",
 							"#partner_features",
@@ -303,7 +332,9 @@
 						};
 
 						$scope.signupForm.others_features = OthersFeatures.get();
+						return true;
 					}
+					return false;
 				}
 
 				$scope.addListener = function (id, validation) {
@@ -320,6 +351,26 @@
 
 
 				$scope.addListener("#step1Next", function (e) {
+<<<<<<< HEAD
+					if( $scope.addMember() ){
+						$scope.$apply();
+					}else{
+						if( $scope.signupForm.members.length > 0){
+							$scope.$apply();
+						}else{
+							e.stopImmediatePropagation();
+							e.preventDefault();
+							return false;
+						}
+					}
+				});
+
+				$scope.addListener("#step2Next", function (e) {
+					$scope.addInstituicao();
+					$scope.addDiscipline();
+					if (
+						!$("#SignupForm").validate().form() ||
+=======
 					$scope.addMember();
 				});
 
@@ -332,24 +383,100 @@
 						return false;
 					}
 					if (
+>>>>>>> 0183fb7c280588fde86056839f5a6db5f0d28353
 						$scope.signupForm.instituicao.length == 0 ||
 						$scope.signupForm.discipline.length == 0
 					) {
 						e.stopImmediatePropagation();
 						e.preventDefault();
 						return false;
+<<<<<<< HEAD
+					}else{
+						$scope.$apply();
+=======
+>>>>>>> 0183fb7c280588fde86056839f5a6db5f0d28353
 					}
 				});
 
 				$scope.addListener("#step3Next", function () {
-					$scope.addOthersFeatures()
+					if( $scope.addOthersFeatures() ){
+						$scope.$apply();
+					}else{
+						e.stopImmediatePropagation();
+						e.preventDefault();
+						return false;
+					}
 
 				});
 
 				$scope.addListener("#SaveAccount", function () {
-					$scope.addFinancialResources()
+					$scope.addFinancialResources();
+					$scope.$apply();
 
 				});
+
+			// ************** EDIT ************** //
+				
+
+				$scope.editMember = function (member) {
+					$scope.members = member;
+					$scope.edit = true;
+				}
+
+				$scope.removeMember = function (indexMember) {
+					$scope.signupForm.members.splice(indexMember, 1);
+				}
+
+				$scope.saveMember = function () {
+					$scope.members = angular.copy(Member.get());
+					$scope.edit = false;
+				}
+				
+				$scope.editDiscipline = function (discipline) {
+					$scope.discipline = discipline;
+					$scope.edit = true;
+				}
+
+				$scope.removeDiscipline = function (indexDiscipline) {
+					$scope.signupForm.discipline.splice(indexDiscipline, 1);
+				}
+
+				$scope.saveDiscipline = function () {
+					$scope.discipline = angular.copy(Discipline.get());
+					$scope.edit = false;
+				}
+				
+				$scope.editInstituicao = function (instituicao) {
+					$scope.instituicao = instituicao;
+					$scope.edit = true;
+				}
+
+				$scope.removeInstituicao = function (indexInstituicao) {
+					$scope.signupForm.instituicao.splice(indexInstituicao, 1);
+				}
+
+				$scope.saveInstituicao = function () {
+					$scope.instituicao = angular.copy(Instituicao.get());
+					$scope.edit = false;
+				}
+				
+				$scope.editFinancialResources = function (financialResources) {
+					$scope.financial_resources = financialResources;
+					$scope.edit = true;
+				}
+
+				$scope.removeFinancialResources = function (indexFinancialResources) {
+					$scope.signupForm.financial_resources.splice(indexFinancialResources, 1);
+				}
+
+				$scope.saveFinancialResources = function () {
+					$scope.financial_resources = angular.copy(FinancialResources.get());
+					$scope.edit = false;
+				}
+				
+				$scope.edit = false;
+			
+			// ************** REGISTER ************** //
 
 				$scope.register = function () {
 					//if (camposNulos()) {
