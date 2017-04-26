@@ -159,7 +159,9 @@
 							)
 						)
 					) {
+						$scope.term = false;
 						Instituicao.add($scope.instituicao);
+
 
 						$scope.instituicao = Instituicao.clear();
 						$scope.signupForm.instituicao = Instituicao.get();
@@ -259,23 +261,22 @@
 				$scope.addListener("#step2Next", function (e) {
 					$scope.addInstituicao();
 					$scope.addDiscipline();
-					if (
-						!$("#SignupForm").validate().form() ||
+					if (!$("#SignupForm").validate().form() ||
 						$scope.signupForm.instituicao.length == 0 ||
 						$scope.signupForm.discipline.length == 0
 					) {
 						e.stopImmediatePropagation();
 						e.preventDefault();
 						return false;
-					}else{
+					} else {
 						$scope.$apply();
 					}
 				});
 
-				$scope.addListener("#step3Next", function () {
-					if( $scope.addOthersFeatures() ){
+				$scope.addListener("#step3Next", function (e) {
+					if ($scope.addOthersFeatures()) {
 						$scope.$apply();
-					}else{
+					} else {
 						e.stopImmediatePropagation();
 						e.preventDefault();
 						return false;
@@ -372,7 +373,7 @@
 					//	toastMessage('Nenhum dos campos podem estar em branco!!');
 					//	return;
 					//} else {
-
+					$scope.loader('show');
 					var formData = new FormData();
 					formData.append("term_appointment", jQuery("#term_appointment")[0].files[0]);
 
@@ -380,7 +381,7 @@
 
 					$http({
 						method: 'POST',
-						url: '../wp-content/plugins/empreenda_form/views/upload.php',
+						url: '/wordpress/wp-content/plugins/empreenda_form/controllers/validateData.php',
 						data: formData,
 						transformRequest: angular.identity,
 						headers: {
@@ -393,9 +394,29 @@
 
 						// SUCSESS
 						//toastMessage('Email enviado com sucesso!');
+						$scope.loader('hide');
+						jQuery.toast({
+							text: "Sua proposta foi enviada com sucesso", // Text that is to be shown in the toast
+							heading: 'Parabéns', // Optional heading to be shown on the toast
+							icon: 'success', // Type of toast icon
+							showHideTransition: 'fade', // fade, slide or plain
+							allowToastClose: true, // Boolean value true or false
+							hideAfter: false, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
+							stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
+							position: 'mid-center', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
+							textAlign: 'left', // Text alignment i.e. left, right or center
+							loader: true, // Whether to show loader or not. True by default
+							loaderBg: '#9EC600', // Background color of the toast loader
+						});
+						
+						setTimeout(function () {
+							window.location.href = "http://www.empreendaemacao.com.br/"; //will redirect to your blog page (an ex: blog.html)
+						}, 2000);
+
 					}, function () {
 						// ERROR
 						//toastMessage('Email não encontrado!');
+						$scope.loader('hide');
 					});
 
 					//	}

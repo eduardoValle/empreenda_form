@@ -47,12 +47,14 @@ function eea_theme() {
         'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js',
         plugins_url().'/' . $dir . '/libs/jquery.formtowizard.js',
         plugins_url().'/' . $dir . '/libs/form.js',
+        plugins_url().'/' . $dir . '/js/jquery.toast.min.js',
 
 
     );
     // define the styles dependencies
     $styles = array(
-        plugins_url().'/' . $dir . '/css/form.css'
+        plugins_url().'/' . $dir . '/css/form.css',
+        plugins_url().'/' . $dir . '/css/jquery.toast.min.css',
 
     );
 

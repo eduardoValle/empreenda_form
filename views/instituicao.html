@@ -82,7 +82,7 @@
 </div>
 <br>
 <!-- File Button -->
-<div class="form-group">
+<div class="form-group" ng-init="term=true" ng-show="term">
 	<label class="col-md-4 col-sm-3 control-label" for="term_appointment">Termo de compromisso</label>
 	<div class="col-md-6 col-sm-6">
 		<input ng-model="instituicao.term_appointment" id="term_appointment" name="term_appointment" class="input-file" type="file" required data-rule-required="true" data-msg-required="É necessário anexar o Termo de compromisso">
@@ -130,13 +130,11 @@
 <br><br>
 <!-- Button -->
 <div class="form-group">
-	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==1">Adicionar instituição</label>
 	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==3">Adicionar instituição</label>
 	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==2">Adicionar campus</label>
 	<div class="col-md-6 col-sm-6">
 	<button ng-if="!edit" id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="instituicao.proposal==1">+ Adicionar</button>
 	<button ng-if="edit" onclick="return false;" ng-click="saveItem('institution')" class="btn btn-success">Alterar</button>
-
 </div>
 
 <div class="card w-100" ng-repeat="i in signupForm.instituicao track by $index">
