@@ -30,6 +30,7 @@ function eea_install_db() {
      ***********/
 
     $sql = "
+        -- --------------------------------------------------------
         --
         -- Estrutura da tabela `eea_campus`
         --
@@ -54,6 +55,7 @@ function eea_install_db() {
     dbDelta($sql);
 
     $sql = "
+        -- --------------------------------------------------------
         --
         -- Estrutura da tabela `eea_coordinator`
         --
@@ -62,6 +64,7 @@ function eea_install_db() {
           `id_coordenador` int(255) NOT NULL AUTO_INCREMENT,
           `name` varchar(255) DEFAULT NULL,
           `cpf` varchar(255) DEFAULT NULL,
+          `address` varchar(2000) DEFAULT NULL,
           `email` varchar(255) DEFAULT NULL,
           `phone` varchar(255) DEFAULT NULL,
           `mobile` varchar(255) DEFAULT NULL,
@@ -78,7 +81,6 @@ function eea_install_db() {
 
     $sql = "
         -- --------------------------------------------------------
-        
         --
         -- Estrutura da tabela `eea_discipline`
         --
@@ -86,7 +88,7 @@ function eea_install_db() {
         CREATE TABLE IF NOT EXISTS `eea_discipline` (
           `id_discipline` int(11) NOT NULL AUTO_INCREMENT,
           `name` varchar(255) DEFAULT NULL,
-          `optativa` varchar(255) DEFAULT NULL,
+          `optional` varchar(255) DEFAULT NULL,
           `code_discipline` varchar(255) DEFAULT NULL,
           `teacher` varchar(255) DEFAULT NULL,
           `n_students` int(11) DEFAULT NULL,
@@ -103,19 +105,20 @@ function eea_install_db() {
 
     $sql = "
         -- --------------------------------------------------------
-        
         --
         -- Estrutura da tabela `eea_financial_resources`
         --
         
         CREATE TABLE IF NOT EXISTS `eea_financial_resources` (
           `id_financial_resources` int(11) NOT NULL AUTO_INCREMENT,
+          `name` varchar(255) DEFAULT NULL,
           `own_resource` varchar(255) DEFAULT NULL,
           `partner_features` varchar(255) DEFAULT NULL,
-          `cnpj` varchar(255) DEFAULT NULL,
           `address` varchar(255) DEFAULT NULL,
+          `cnpj` varchar(255) DEFAULT NULL,
           `contact_person` varchar(1600) DEFAULT NULL,
           `id_participation` int(11) DEFAULT NULL,
+          `detailing` varchar(1600) DEFAULT NULL,
           PRIMARY KEY (`id_financial_resources`),
           KEY `id_participation3` (`id_participation`)
         ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
@@ -125,7 +128,6 @@ function eea_install_db() {
 
     $sql = "
         -- --------------------------------------------------------
-        
         --
         -- Estrutura da tabela `eea_functions`
         --
@@ -143,7 +145,6 @@ function eea_install_db() {
 
     $sql = "
         -- --------------------------------------------------------
-        
         --
         -- Estrutura da tabela `eea_host_institutions`
         --
@@ -164,7 +165,6 @@ function eea_install_db() {
 
     $sql = "
         -- --------------------------------------------------------
-        
         --
         -- Estrutura da tabela `eea_institution`
         --
@@ -172,6 +172,12 @@ function eea_install_db() {
         CREATE TABLE IF NOT EXISTS `eea_institution` (
           `id_institution` int(11) NOT NULL AUTO_INCREMENT,
           `name` varchar(255) DEFAULT NULL,
+          `cnpj` varchar(255) DEFAULT NULL,
+          `address` varchar(255) DEFAULT NULL,
+          `email` varchar(255) DEFAULT NULL,
+          `phone` varchar(255) DEFAULT NULL,
+          `responsible` varchar(255) DEFAULT NULL,
+          `phone_responsible` varchar(255) DEFAULT NULL,
           PRIMARY KEY (`id_institution`)
         ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
     ";
@@ -180,7 +186,6 @@ function eea_install_db() {
 
     $sql = "
         -- --------------------------------------------------------
-        
         --
         -- Estrutura da tabela `eea_members`
         --
@@ -188,8 +193,10 @@ function eea_install_db() {
         CREATE TABLE IF NOT EXISTS `eea_members` (
           `id_member` int(255) NOT NULL AUTO_INCREMENT,
           `name` varchar(255) DEFAULT NULL,
-          `lattes` varchar(255) DEFAULT NULL,
           `cpf` varchar(255) DEFAULT NULL,
+          `email` varchar(255) DEFAULT NULL,
+          `mobile` varchar(255) DEFAULT NULL,
+          `lattes` varchar(255) DEFAULT NULL,
           `id_coordenador` int(255) DEFAULT NULL,
           PRIMARY KEY (`id_member`),
           KEY `id_coordenador` (`id_coordenador`)
@@ -200,7 +207,6 @@ function eea_install_db() {
 
     $sql = "
         -- --------------------------------------------------------
-        
         --
         -- Estrutura da tabela `eea_participation`
         --
@@ -217,7 +223,6 @@ function eea_install_db() {
 
     $sql = "
         -- --------------------------------------------------------
-        
         --
         -- Estrutura da tabela `eea_partnerships`
         --

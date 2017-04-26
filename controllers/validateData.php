@@ -8,7 +8,9 @@
 
 global $wpdb;
 
-$wpdb->insert('user',
+// CAMPUS
+
+$wpdb->insert('eea_campus',
     array(
         'name' => 'Luiz',
         'column2' => 123

@@ -26,6 +26,6 @@ function eea_form_html($atts){
 }
 
 add_shortcode('eea_form', 'eea_form_html'); // Definindo o shortcode para ser inserido onde se quer o formulário.
-add_action( 'admin_menu', 'wpdocs_register_my_custom_menu_page' ); // Adicionando item no menu do painel do wordpress.
+add_action('admin_menu', 'wpdocs_register_my_custom_menu_page'); // Adicionando item no menu do painel do wordpress.
 
 //addCoordinator();

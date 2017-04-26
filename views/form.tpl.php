@@ -15,6 +15,7 @@ function getDir(){
     $dir = $_dir[sizeof($_dir)-1];
     return $dir;
 }
+
 function getHtmlScripts( $arr ){
     $html = "";
     foreach( $arr as $k=>$v){
@@ -23,6 +24,7 @@ function getHtmlScripts( $arr ){
     }
     return $html;
 }
+
 function getHtmlStyles( $arr ){
     $html = "";
     foreach( $arr as $k=>$v){
@@ -31,6 +33,7 @@ function getHtmlStyles( $arr ){
     }
     return $html;
 }
+
 function eea_theme() {
     // get the real dir
     $dir = getDir();
