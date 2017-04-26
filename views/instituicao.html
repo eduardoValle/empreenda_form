@@ -130,10 +130,9 @@
 <br><br>
 <!-- Button -->
 <div class="form-group">
-	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==3">Adicionar instituição</label>
-	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==2">Adicionar campus</label>
+	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal>1">Adicionar instituição</label>
 	<div class="col-md-6 col-sm-6">
-	<button ng-if="!edit" id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" ng-if="instituicao.proposal==1">+ Adicionar</button>
+	<button ng-if="!edit && instituicao.proposal>1" id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" >+ Adicionar</button>
 	<button ng-if="edit" onclick="return false;" ng-click="saveItem('institution')" class="btn btn-success">Alterar</button>
 </div>
 

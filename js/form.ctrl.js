@@ -49,7 +49,7 @@
 				];
 					return list[id];
 				}
-				$scope.SignupForm = ()=>{
+				$scope._SignupForm = () => {
 					//retorna um objeto membro vazio
 					$scope.members = Member.clear();
 					//retorna um objeto disciplina vazio
@@ -60,7 +60,7 @@
 					$scope.others_features = OthersFeatures.clear();
 					//retorna um objeto vazio
 					$scope.financial_resources = FinancialResources.clear();
-					
+
 					return {
 						coordenador: {
 							name: '',
@@ -90,8 +90,8 @@
 						financial_resources: []
 					};
 				};
-				
-				$scope.signupForm = $scope.SignupForm();
+
+				$scope.signupForm = $scope._SignupForm();
 				$scope.edit = false;
 
 				$scope.removeValidation = (id) => {
@@ -222,13 +222,11 @@
 				}
 
 				$scope.addOthersFeatures = () => {
-					if (!!$scope.others_features.name) {
-						OthersFeatures.add($scope.others_features);
-						$scope.others_features = OthersFeatures.clear();
-						$scope.signupForm.others_features = OthersFeatures.get();
-						return true;
-					}
-					return false;
+					OthersFeatures.add($scope.others_features);
+					$scope.others_features = OthersFeatures.clear();
+					$scope.signupForm.others_features = OthersFeatures.get();
+					return true;
+
 				}
 
 				$scope.addListener = function (id, validation) {
@@ -245,12 +243,12 @@
 
 
 				$scope.addListener("#step1Next", function (e) {
-					if( $scope.addMember() ){
+					if ($scope.addMember()) {
 						$scope.$apply();
-					}else{
-						if( $scope.signupForm.members.length > 0){
+					} else {
+						if ($scope.signupForm.members.length > 0) {
 							$scope.$apply();
-						}else{
+						} else {
 							e.stopImmediatePropagation();
 							e.preventDefault();
 							return false;
@@ -290,13 +288,13 @@
 
 				});
 
-			// ************** EDIT ************** //
-				
+				// ************** EDIT ************** //
 
-				$scope.editItem = function (type,item) {
-					if( !!type ){
+
+				$scope.editItem = function (type, item) {
+					if (!!type) {
 						$scope.edit = true;
-						switch( type ){
+						switch (type) {
 							case 'member':
 								$scope.members = item;
 								break;
@@ -313,15 +311,15 @@
 								$scope.financial_resources = item;
 								break;
 						}
-					}else{
+					} else {
 						console.error("type undefined");
 					}
-					
+
 				};
 				$scope.saveItem = function (type) {
-					if( !!type ){
+					if (!!type) {
 						$scope.edit = false;
-						switch( type ){
+						switch (type) {
 							case 'member':
 								$scope.members = angular.copy(Member.get());
 								break;
@@ -335,15 +333,15 @@
 								$scope.financial_resources = angular.copy(FinancialResources.get());;
 								break;
 						}
-					}else{
+					} else {
 						console.error("type undefined");
 					}
-					
+
 				};
-				$scope.removeItem = function (type,index) {
-					if( !!type ){
-						$scope.edit=false;
-						switch( type ){
+				$scope.removeItem = function (type, index) {
+					if (!!type) {
+						$scope.edit = false;
+						switch (type) {
 							case 'member':
 								$scope.signupForm.members.splice(index, 1);
 								break;
@@ -358,16 +356,29 @@
 								break;
 
 						}
-					}else{
+					} else {
 						console.error("type undefined");
 					}
-					
-				};
-			
-				
-			
-			// ************** REGISTER ************** //
 
+				};
+
+
+
+				// ************** REGISTER ************** //
+				$scope.loader = (str) => {
+					if (!!str) {
+						if (str == 'show') {
+							$(".preloader").show();
+							$(".status").show();
+						} else {
+							$(".preloader").hide();
+							$(".status").hide();
+						}
+					} else {
+						$(".preloader").hide();
+						$(".status").hide();
+					}
+				};
 				$scope.register = function () {
 					//if (camposNulos()) {
 					//	toastMessage('Nenhum dos campos podem estar em branco!!');
@@ -390,7 +401,7 @@
 					}).then(function (response) {
 						console.log(response);
 						//limpando o form;
-						$scope.signupForm = $scope.SignupForm();
+						$scope.signupForm = $scope._SignupForm();
 
 						// SUCSESS
 						//toastMessage('Email enviado com sucesso!');
@@ -408,7 +419,7 @@
 							loader: true, // Whether to show loader or not. True by default
 							loaderBg: '#9EC600', // Background color of the toast loader
 						});
-						
+
 						setTimeout(function () {
 							window.location.href = "http://www.empreendaemacao.com.br/"; //will redirect to your blog page (an ex: blog.html)
 						}, 2000);
