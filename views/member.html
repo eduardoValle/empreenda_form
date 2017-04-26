@@ -111,7 +111,7 @@
 		<label class="col-md-4 col-sm-3 control-label">Adicionar Membros</label>
 		<div class="col-md-6 col-sm-6">
 			<button ng-if="!edit" id="addMember" name="addMember" ng-click="addMember()" onclick="return false;" class="btn btn-primary">+ Membro</button>
-			<button ng-if="edit" onclick="return false;" ng-click="saveMember()" class="btn btn-success">Alterar</button>
+			<button ng-if="edit" onclick="return false;" ng-click="saveItem('member')" class="btn btn-success">Alterar</button>
 		</div>
 	</div>
 	
@@ -119,8 +119,8 @@
 	  <div class="card-block">
 		<h3 class="card-title">{{m.name}}</h3>
 		<p class="card-text">{{getMemberFunction(m.functions)}}</p>
-		<button ng-click="editMember(m)" onclick="return false;" class="btn btn-warning">Editar</button>
-		<button ng-click="removeMember($index)" onclick="return false;" class="btn btn-danger">Excluir</button>
+		<button ng-click="editItem('member',m)" onclick="return false;" class="btn btn-warning">Editar</button>
+		<button ng-click="removeItem('member',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
 	  </div>
 	</div>
 	
