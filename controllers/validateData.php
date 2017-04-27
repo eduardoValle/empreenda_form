@@ -6,116 +6,161 @@
  * Time: 10:16
  */
 
+require_once('../../../../wp-config.php');
 require_once('../../../../wp-load.php');
 
 global $wpdb;
 
-print var_dump($_GET);
-//print var_dump($_POST);
-
-//print_r($_FILES);
-
+$host = DB_HOST;
+$dataBase = DB_NAME;
 $array = json_decode(filter_input(INPUT_POST, 'signupForm', FILTER_DEFAULT));
-//print_r($array);
 
-
-
-// TABLEA eea_coordinator
-
-$wpdb->insert('eea_coordinator',
-    array(
-        'name' => $array->coordenador->name,
-        'cpf' => $array->coordenador->cpf,
-        'address' => $array->coordenador->address,
-        'email' => $array->coordenador->email,
-        'phone' => $array->coordenador->phone,
-        'mobile' => $array->coordenador->mobile,
-        'responsible' => $array->coordenador->responsible,
-        'lattes' => $array->coordenador->lattes,
-        'experience' => $array->coordenador->experience,
-        'external_participation' => $array->coordenador->external_participation,
-        'motivation' => $array->coordenador->motivation
-    )
-//    array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')
-);
-
-$id_coordinator = $wpdb->insert_id;
-
-
-// TABLEA eea_members
-
-foreach ($array->members as $value) {
-    $wpdb->insert('eea_members',
-        array(
-            "name" => $value->name,
-            "cpf" => $value->cpf,
-            "email" => $value->email,
-            "mobile" => $value->mobile,
-            "functions" => $value->functions,
-            "lattes" => $value->lattes,
-            "id_coordenador" => $id_coordinator
-        )
-//        array('%s', '%s', '%s', '%s', '%s', '%s', '&i')
-    );
+try {
+    $dbh = new PDO("mysql:dbname=$dataBase;host=$host", DB_USER, DB_PASSWORD, array(PDO::ATTR_PERSISTENT => true));
+    echo "Connected\n";
+} catch (Exception $e) {
+    echo "Disconnected\n";
+    die("Unable to connect: " . $e->getMessage());
 }
 
-// TABLEA eea_participation
 
-$wpdb->insert('eea_participation',
-    array(
-        "dissemination_plan" => $array->coordenador->disseminationPlan,
-        "id_coordenador" => $id_coordinator
-    )
-//    array('%s', '&i')
-);
+try {
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $dbh->beginTransaction();
 
-$id_participation = $wpdb->insert_id;
 
-// TABLEA eea_financial_resources
+//    $dbh->exec("insert into staff (id, first, last) values (23, 'Joe', 'Bloggs')");
+//    $dbh->exec("insert into salarychange (id, amount, changedate)
+//                          values (23, 50000, NOW())");
 
-foreach ($array->financial_resources as $value) {
-    $wpdb->insert('eea_financial_resources',
-        array(
-            "own_resource" => $value->own_resource,
-            "name" => $value->name,
-            "partner_features" => $value->partner_features,
-            "address" => $value->address,
-            "cnpj" => $value->cnpj,
-            "contact_person" => $value->contact_person,
-            "detailing" => $value->detailing,
-            "id_participation" => $id_participation
-        )
-//        array('%s', '%s', '%s', '%s', '%s', '%s', '%s', '&i')
-    );
+
+    // TABLEA eea_coordinator
+
+    $sth = $dbh->prepare('insert into eea_coordinator
+        (name, cpf, address, email, phone, mobile, responsible, lattes, experience, external_participation, motivation)
+        values (:name, :cpf, :address, :email, :phone, :mobile, :responsible, :lattes, :experience, :external_participation, :motivation)');
+
+    $sth->bindParam(':name', $array->coordenador->name, PDO::PARAM_STR);
+    $sth->bindParam(':cpf', $array->coordenador->cpf, PDO::PARAM_STR);
+    $sth->bindParam(':address', $array->coordenador->address, PDO::PARAM_STR);
+    $sth->bindParam(':email', $array->coordenador->email, PDO::PARAM_STR);
+    $sth->bindParam(':phone', $array->coordenador->phone, PDO::PARAM_STR);
+    $sth->bindParam(':mobile', $array->coordenador->mobile, PDO::PARAM_STR);
+    $sth->bindParam(':responsible', $array->coordenador->responsible, PDO::PARAM_STR);
+    $sth->bindParam(':lattes', $array->coordenador->lattes, PDO::PARAM_STR);
+    $sth->bindParam(':experience', $array->coordenador->experience, PDO::PARAM_STR);
+    $sth->bindParam(':external_participation', $array->coordenador->external_participation, PDO::PARAM_STR);
+    $sth->bindParam(':motivation', $array->coordenador->motivation, PDO::PARAM_STR);
+    $sth->execute();
+
+    $id_coordinator = $dbh->lastInsertId();
+    print $id_coordinator;
+
+
+    // TABLEA eea_members
+
+    foreach ($array->members as $value) {
+        $sth = $dbh->prepare('insert into eea_members
+            (name, cpf, email, mobile, functions, lattes, id_coordenador)
+            values (:name, :cpf, :email, :mobile, :functions, :lattes, :id_coordenador)');
+        $sth->bindParam(':name', $value->name, PDO::PARAM_STR);
+        $sth->bindParam(':cpf', $value->cpf, PDO::PARAM_STR);
+        $sth->bindParam(':email', $value->email, PDO::PARAM_STR);
+        $sth->bindParam(':mobile', $value->mobile, PDO::PARAM_STR);
+        $sth->bindParam(':functions', $value->functions, PDO::PARAM_STR);
+        $sth->bindParam(':lattes', $value->lattes, PDO::PARAM_STR);
+        $sth->bindParam(':id_coordenador', intval($id_coordinator), PDO::PARAM_INT);
+        $sth->execute();
+    }
+
+
+    // TABLEA eea_participation
+
+    $sth = $dbh->prepare('insert into eea_participation (dissemination_plan, id_coordenador)
+        values (:dissemination_plan, :id_coordenador)');
+
+    $sth->bindParam(':dissemination_plan', $array->coordenador->disseminationPlan, PDO::PARAM_STR);
+    $sth->bindParam(':id_coordenador', $id_coordinator, PDO::PARAM_INT);
+    $sth->execute();
+
+    $id_participation = $dbh->lastInsertId();
+
+
+    // TABLEA eea_financial_resources
+
+    foreach ($array->financial_resources as $value) {
+        $sth = $dbh->prepare('insert into eea_financial_resources
+            (own_resource, name, partner_features, address, cnpj, contact_person, detailing, id_participation)
+            values (:own_resource, :name, :partner_features, :address, :cnpj, :contact_person, :detailing, :id_participation)');
+
+        $sth->bindParam(':own_resource', $value->own_resource, PDO::PARAM_STR);
+        $sth->bindParam(':name', $value->name, PDO::PARAM_STR);
+        $sth->bindParam(':partner_features', $value->partner_features, PDO::PARAM_STR);
+        $sth->bindParam(':address', $value->address, PDO::PARAM_STR);
+        $sth->bindParam(':cnpj', $value->cnpj, PDO::PARAM_STR);
+        $sth->bindParam(':contact_person', $value->contact_person, PDO::PARAM_STR);
+        $sth->bindParam(':detailing', $value->detailing, PDO::PARAM_STR);
+        $sth->bindParam(':id_participation', intval($id_participation), PDO::PARAM_INT);
+        $sth->execute();
+    }
+
+
+    // TABLEA eea_host_institutions
+
+    $sth = $dbh->prepare('insert into eea_host_institutions
+        (name, address, identification, maximum_capacity, optional_features, id_participation)
+        values (:name, :address, :identification, :maximum_capacity, :optional_features, :id_participation)');
+
+    $sth->bindParam(':name', $array->host_institutions->name, PDO::PARAM_STR);
+    $sth->bindParam(':address', $array->host_institutions->address, PDO::PARAM_STR);
+    $sth->bindParam(':identification', $array->host_institutions->identification, PDO::PARAM_STR);
+    $sth->bindParam(':maximum_capacity', $array->host_institutions->maximum_capacity, PDO::PARAM_STR);
+    $sth->bindParam(':optional_features', $array->host_institutions->optional_features, PDO::PARAM_STR);
+    $sth->bindParam(':id_participation', $id_participation, PDO::PARAM_INT);
+    $sth->execute();
+
+    $id_host_institutions = $dbh->lastInsertId();
+
+
+    // TABLEA eea_others_features
+
+    foreach ($array->others_features as $value) {
+        $sth = $dbh->prepare('insert into eea_others_features (name, id_host_institutions) values (:name, :id_host_institutions)');
+
+        $sth->bindParam(':name', $value->name, PDO::PARAM_STR);
+        $sth->bindParam(':id_host_institutions', $id_host_institutions, PDO::PARAM_INT);
+        $sth->execute();
+    }
+
+
+
+
+
+
+
+    $dbh->commit();
+    echo 'DEU!!';
+
+} catch (Exception $e) {
+    $dbh->rollBack();
+    echo "Failed: " . $e->getMessage();
 }
 
-// TABLEA eea_host_institutions
 
-$wpdb->insert('eea_host_institutions',
-    array(
-        "name" => $array->host_institutions->name,
-        "address" => $array->host_institutions->address,
-        "identification" => $array->host_institutions->identification,
-        "maximum_capacity" => $array->host_institutions->maximum_capacity,
-        "optional_features" => $array->host_institutions->optional_features,
-        "id_participation" => $id_participation
-    )
-//    array('%s', '%s', '%s', '%s', '%s', '&i')
-);
+//print var_dump($_GET);
+////print var_dump($_POST);
+////print_r($_FILES);
+//
+//$array = json_decode(filter_input(INPUT_POST, 'signupForm', FILTER_DEFAULT));
+////print_r($array);
 
-$id_host_institutions = $wpdb->insert_id;
 
-// TABLEA eea_others_features
-
-foreach ($array->others_features as $value) {
-    $wpdb->insert('eea_others_features',
-        array(
-            "name" => $value->name,
-            "id_host_institutions" => $id_host_institutions
-        )
-//            array('%s', '&i')
-    );
-}
+//
+//
+//
+//
+//
+//
 
 // TABLEA eea_institution
 
@@ -156,4 +201,10 @@ foreach ($array->others_features as $value) {
 ////        array('%s', '%s', '%s', '%s', '%s', '&i')
 //    );
 //}
-echo "DEU!!";
+//
+//if ($eea_coordinator && $eea_members && $eea_participation && $eea_financial_resources && $eea_host_institutions && $eea_others_features){
+//    mysql_query('COMMIT');
+//    echo "DEU!!";
+//} else {
+//    mysql_query('ROLLBACK');
+//}
