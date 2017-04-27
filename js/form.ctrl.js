@@ -37,7 +37,7 @@
 		})
 		.controller('EeaForm', ['$scope', 'Member', 'Instituicao', 'OthersFeatures', 'FinancialResources', 'Discipline', '$http',
         function ($scope, Member, Instituicao, OthersFeatures, FinancialResources, Discipline, $http) {
-
+				$scope.agreeMember = false;
 				$scope.getMemberFunction = (id) => {
 					var list = [
 					'',
@@ -77,8 +77,9 @@
 							disseminationPlan: ''
 						},
 						members: [],
-						instituicao: [],
-						discipline: [],
+						instituicao: [
+							//discipline: [],
+						],
 						host_institutions: {
 							identification: '',
 							name: '',
@@ -118,6 +119,7 @@
 						!!$scope.members.cpf &&
 						!!$scope.members.email &&
 						!!$scope.members.mobile &&
+						!!$scope.agreeMember && 
 						!!$scope.members.lattes
 					) {
 						Member.add($scope.members);
@@ -130,10 +132,12 @@
 							"#member_cpf",
 							"#member_mobile",
 							"#member_email",
-							"#member_lattes"
+							"#member_lattes",
+							"#agreeMember"
 						]);
 						return true;
 					}
+					$("#SignupForm").validate().form();
 					return false;
 				}
 
@@ -149,21 +153,16 @@
 						!!$scope.instituicao.partnerships_historic &&
 						!!$scope.instituicao.partnerships_between_institutions &&
 						!!$scope.instituicao.partnerships_between_campus &&
-						!!$scope.instituicao.partnerships_for_pea &&
-						(
-							$scope.signupForm.discipline.length > 0 || (!!$scope.discipline.name &&
-								!!$scope.discipline.optional &&
-								!!$scope.discipline.code_discipline &&
-								!!$scope.discipline.teacher &&
-								!!$scope.discipline.n_students
-							)
+						!!$scope.instituicao.partnerships_for_pea
 						)
-					) {
+					 {
 						$scope.term = false;
+						$scope.addDiscipline();
+						$scope.instituicao.discipline = angular.copy(Discipline.get());
 						Instituicao.add($scope.instituicao);
-
-
+						Discipline.new();
 						$scope.instituicao = Instituicao.clear();
+						
 						$scope.signupForm.instituicao = Instituicao.get();
 						$scope.removeValidation([
 							"#proposal",
@@ -193,10 +192,10 @@
 						!!$scope.discipline.teacher &&
 						!!$scope.discipline.n_students
 					) {
+						console.log(Discipline.get());
 						Discipline.add($scope.discipline);
 						$scope.discipline = Discipline.clear();
-
-						$scope.signupForm.discipline = Discipline.get();
+						$scope.signupForm.instituicao.discipline = angular.copy(Discipline.get());
 						$scope.removeValidation([
 							"#discipline_name",
 							"#code_discipline",
@@ -204,13 +203,16 @@
 							"#n_students"
 						]);
 					}
-				}
+				}					
 
 				$scope.addFinancialResources = () => {
-					FinancialResources.add($scope.financial_resources);
-					$scope.financial_resources = FinancialResources.clear();
-					$scope.signupForm.financial_resources = FinancialResources.get();
-					$scope.removeValidation([
+					if (!!$scope.financial_resources.partner_features &&
+						!!$scope.financial_resources.detailing
+					) {
+						FinancialResources.add($scope.financial_resources);
+						$scope.financial_resources = FinancialResources.clear();
+						$scope.signupForm.financial_resources = FinancialResources.get();
+						$scope.removeValidation([
 							"#own_resource",
 							"#name",
 							"#partner_features",
@@ -219,12 +221,17 @@
 							"#contact_person",
 							"#detailing"
 						]);
+					}
 				}
 
 				$scope.addOthersFeatures = () => {
-					OthersFeatures.add($scope.others_features);
-					$scope.others_features = OthersFeatures.clear();
-					$scope.signupForm.others_features = OthersFeatures.get();
+					if (!!$scope.others_features.name) {
+						OthersFeatures.add($scope.others_features);
+						$scope.others_features = OthersFeatures.clear();
+						$scope.signupForm.others_features = OthersFeatures.get();
+
+						return true;
+					}
 					return true;
 
 				}
@@ -242,6 +249,11 @@
 				};
 
 
+				$scope.addListener("#step0Next", function (e) {
+					jQuery('html,body').scrollTop(0);
+				});
+
+
 				$scope.addListener("#step1Next", function (e) {
 					if ($scope.addMember()) {
 						$scope.$apply();
@@ -254,14 +266,14 @@
 							return false;
 						}
 					}
+					jQuery('html,body').scrollTop(0);
 				});
 
 				$scope.addListener("#step2Next", function (e) {
 					$scope.addInstituicao();
 					$scope.addDiscipline();
 					if (!$("#SignupForm").validate().form() ||
-						$scope.signupForm.instituicao.length == 0 ||
-						$scope.signupForm.discipline.length == 0
+						$scope.signupForm.instituicao.length == 0
 					) {
 						e.stopImmediatePropagation();
 						e.preventDefault();
@@ -269,6 +281,7 @@
 					} else {
 						$scope.$apply();
 					}
+					jQuery('html,body').scrollTop(0);
 				});
 
 				$scope.addListener("#step3Next", function (e) {
@@ -279,8 +292,15 @@
 						e.preventDefault();
 						return false;
 					}
+					jQuery('html,body').scrollTop(0);
 
 				});
+			
+			
+				$scope.addListener("#step4Next", function (e) {
+					jQuery('html,body').scrollTop(0);
+				});
+
 
 				$scope.addListener("#SaveAccount", function () {
 					$scope.addFinancialResources();
@@ -299,7 +319,7 @@
 								$scope.members = item;
 								break;
 							case 'discipline':
-								$scope.discipline = item;
+								$scope.instituicao.discipline = item;
 								break;
 							case 'institution':
 								$scope.instituicao = item;
@@ -324,7 +344,7 @@
 								$scope.members = angular.copy(Member.get());
 								break;
 							case 'discipline':
-								$scope.discipline = angular.copy(Discipline.get());
+								$scope.instituicao.discipline = angular.copy(Discipline.get());
 								break;
 							case 'institution':
 								$scope.instituicao = angular.copy(Instituicao.get());
@@ -346,7 +366,7 @@
 								$scope.signupForm.members.splice(index, 1);
 								break;
 							case 'discipline':
-								$scope.signupForm.discipline.splice(index, 1);
+								$scope.signupForm.instituicao.discipline.splice(index, 1);
 								break;
 							case 'institution':
 								$scope.signupForm.instituicao.splice(index, 1);

@@ -34,6 +34,9 @@
 			obj.add = function (x) {
 				instituicao.push(x);
 			};
+			obj.new = function (x) {
+				instituicao = [];
+			};
 			obj.clear=()=>{
 				return {
 					name: '',
@@ -45,7 +48,7 @@
 					phone_responsible: '',
 					past_participations: '',
 					term_appointment: '',
-					proposal: '1',
+					proposal: '3',
 					partnerships_historic: '',
 					partnerships_between_institutions: '',
 					partnerships_between_campus: '',
@@ -63,6 +66,9 @@
 			};
 			obj.add = function (x) {
 				discipline.push(x);
+			};
+			obj.new = function (x) {
+				discipline = [];
 			};
 			obj.clear = ()=>{
 				return {
