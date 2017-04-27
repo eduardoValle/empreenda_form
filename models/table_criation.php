@@ -39,6 +39,7 @@ function eea_install_db() {
           `id_coordenador` int(11) NOT NULL AUTO_INCREMENT,
           `name` varchar(255) DEFAULT NULL,
           `cpf` varchar(255) DEFAULT NULL,
+          `address` varchar(255) DEFAULT NULL,
           `email` varchar(255) DEFAULT NULL,
           `phone` varchar(255) DEFAULT NULL,
           `mobile` varchar(255) DEFAULT NULL,
@@ -144,15 +145,16 @@ function eea_install_db() {
         --
         
         CREATE TABLE IF NOT EXISTS `eea_host_institutions` (
-          `id_host_institutions` int(11) NOT NULL,
+          `id_host_institutions` int(11) NOT NULL AUTO_INCREMENT,
           `name` varchar(255) DEFAULT NULL,
           `address` varchar(255) DEFAULT NULL,
           `maximum_capacity` varchar(255) DEFAULT NULL,
           `optional_features` varchar(2100) DEFAULT NULL,
+          `identification` varchar(2100) DEFAULT NULL,
           `id_participation` int(11) DEFAULT NULL,
           PRIMARY KEY (`id_host_institutions`),
           KEY `id_participation` (`id_participation`)
-        ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+        ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
     ";
 
     dbDelta($sql);
@@ -189,6 +191,9 @@ function eea_install_db() {
           `name` varchar(255) DEFAULT NULL,
           `lattes` varchar(255) DEFAULT NULL,
           `cpf` varchar(255) DEFAULT NULL,
+          `email` varchar(255) DEFAULT NULL,
+          `mobile` varchar(255) DEFAULT NULL,
+          `functions` varchar(255) DEFAULT NULL,
           `id_coordenador` int(255) DEFAULT NULL,
           PRIMARY KEY (`id_member`),
           KEY `id_coordenador` (`id_coordenador`)
@@ -205,8 +210,8 @@ function eea_install_db() {
         
         CREATE TABLE IF NOT EXISTS `eea_others_features` (
           `id_eea_others_features` int(11) NOT NULL AUTO_INCREMENT,
-          `id_host_institutions` int(255) DEFAULT NULL,
-          `others_features` varchar(3000) DEFAULT NULL,
+          `name` varchar(3000) DEFAULT NULL,
+          `id_host_institutions` int(11) DEFAULT NULL,
           PRIMARY KEY (`id_eea_others_features`),
           KEY `id_host_institutions` (`id_host_institutions`)
         ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
