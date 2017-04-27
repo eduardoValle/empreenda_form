@@ -48,8 +48,6 @@ function eea_theme() {
         plugins_url().'/' . $dir . '/libs/jquery.formtowizard.js',
         plugins_url().'/' . $dir . '/libs/form.js',
         plugins_url().'/' . $dir . '/js/jquery.toast.min.js',
-
-
     );
     // define the styles dependencies
     $styles = array(

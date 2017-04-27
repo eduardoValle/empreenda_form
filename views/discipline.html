@@ -62,8 +62,10 @@
 </div>
 <br>
 
-
-<div class="card w-100" ng-repeat="d in signupForm.discipline track by $index">
+<div class="card">
+  <h3 class="card-header">Disciplina</h3>
+</div>
+<div class="card w-100" ng-repeat="d in signupForm.instituicao.discipline track by $index">
 	<div class="card-block">
 		<h3 class="card-title">{{d.name}}</h3>
 		<p class="card-text">{{d.code_discipline}}</p>

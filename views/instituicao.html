@@ -1,13 +1,14 @@
 <legend>Proposta</legend>
 
 <!-- Select Basic -->
-<div class="form-group">
+<div class="form-group" >
 	<label class="col-md-4 col-sm-3 control-label" for="proposal">Proposta</label>
 	<div class="col-md-6 col-sm-6">
 		<select id="proposal" ng-model="instituicao.proposal" name="proposal" class="form-control input-md">
-							  <option value="1">Individual</option>
-							  <option value="2">Conjunto entre campus</option>
+
 							  <option value="3">Conjunto entre Instituições</option>
+							  <option value="2">Conjunto entre campus</option>
+							  <option value="1">Individual</option>
 							</select>
 	</div>
 </div>
@@ -89,8 +90,6 @@
 	</div>
 </div>
 <br>
-
-<discipline></discipline>
 <!-- Form Name -->
 <legend>Parcerias estabelecidas na comunidade local para ações empreendedoras</legend>
 
@@ -126,16 +125,20 @@
 		<textarea ng-model="instituicao.partnerships_between_campus" maxlength="3000" class="form-control" id="partnerships_between_campus" name="partnerships_between_campus" required data-rule-required="true" data-msg-required="É necessário preencher o campo Instituição de Ensino Superior."></textarea> {{instituicao.partnerships_between_campus|wordcount:false:'partnerships_between_campus'}}
 	</div>
 </div>
+<br>
+
+<discipline></discipline>
 
 <br><br>
 <!-- Button -->
 <div class="form-group">
-	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal>1">Adicionar instituição</label>
+	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==2">Adicionar Campus</label>
+	<label class="col-md-6 col-sm-6 control-label" for="addInstituicao" ng-if="instituicao.proposal==3">Adicionar instituição</label>
 	<div class="col-md-6 col-sm-6">
 	<button ng-if="!edit && instituicao.proposal>1" id="addInstituicao" name="addInstituicao" class="btn btn-primary" ng-click="addInstituicao()" onclick="return false;" >+ Adicionar</button>
 	<button ng-if="edit" onclick="return false;" ng-click="saveItem('institution')" class="btn btn-success">Alterar</button>
 </div>
-
+<br><br><br><br>
 <div class="card w-100" ng-repeat="i in signupForm.instituicao track by $index">
 	<div class="card-block">
 		<h3 class="card-title">{{i.name}}</h3>
