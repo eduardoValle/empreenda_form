@@ -11,6 +11,20 @@ require_once('../../../../wp-load.php');
 
 global $wpdb;
 
+
+
+/** DADDOS PARA O UPLOAD DO ARQUIVO */
+
+$uploaddir = ABSPATH.'wp-content/plugins/empreenda_form/eea_files/';
+$uploaddir = str_replace('\\', '/', $uploaddir);
+
+$namefile = strtolower(basename($_FILES['term_appointment']['name']));
+$namefile = str_replace(' ', '-', $namefile);
+
+
+
+/** CONECTANDO COM O BANCO DE DADOS */
+
 $host = DB_HOST;
 $dataBase = DB_NAME;
 $array = json_decode(filter_input(INPUT_POST, 'signupForm', FILTER_DEFAULT));
@@ -24,14 +38,11 @@ try {
 }
 
 
+/** EFETUANDO O CADASTRO NO BANCO DE DADOS E FAZENDO O UPLOAD DO ARQUIVO */
+
 try {
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $dbh->beginTransaction();
-
-
-//    $dbh->exec("insert into staff (id, first, last) values (23, 'Joe', 'Bloggs')");
-//    $dbh->exec("insert into salarychange (id, amount, changedate)
-//                          values (23, 50000, NOW())");
 
 
     // TABLEA eea_coordinator
@@ -54,7 +65,10 @@ try {
     $sth->execute();
 
     $id_coordinator = $dbh->lastInsertId();
-    print $id_coordinator;
+
+    /** DADOS PARA FAZER O UPLOAD MAIS TARDE */
+    $namefile = $id_coordinator . '-' . $namefile;
+    $uploadfile = $uploaddir . $namefile;
 
 
     // TABLEA eea_members
@@ -133,78 +147,79 @@ try {
     }
 
 
+    /** INSTITUIÇÕES */
 
 
+    // TABLEA eea_institution
 
+    foreach ($array->instituicao as $value) {
+        $sth = $dbh->prepare('insert into eea_institution
+            (name, cnpj, address, email, phone, responsible, phone_responsible, past_participations,
+                term_appointment, proposal, partnerships_historic, partnerships_between_institutions,
+                partnerships_between_campus, partnerships_for_pea, id_coordinator)
+            values (:name, :cnpj, :address, :email, :phone, :responsible, :phone_responsible, :past_participations,
+                :term_appointment, :proposal, :partnerships_historic, :partnerships_between_institutions,
+                :partnerships_between_campus, :partnerships_for_pea, :id_coordinator)');
+
+        $sth->bindParam(':name', $value->name, PDO::PARAM_STR);
+        $sth->bindParam(':cnpj', $value->cnpj, PDO::PARAM_STR);
+        $sth->bindParam(':address', $value->address, PDO::PARAM_STR);
+        $sth->bindParam(':email', $value->email, PDO::PARAM_STR);
+        $sth->bindParam(':phone', $value->phone, PDO::PARAM_STR);
+        $sth->bindParam(':responsible', $value->responsible, PDO::PARAM_STR);
+        $sth->bindParam(':phone_responsible', $value->phone_responsible, PDO::PARAM_STR);
+        $sth->bindParam(':past_participations', $value->past_participations, PDO::PARAM_STR);
+        $sth->bindParam(':term_appointment', $uploadfile, PDO::PARAM_STR);
+        $sth->bindParam(':proposal', $value->proposal, PDO::PARAM_STR);
+        $sth->bindParam(':partnerships_historic', $value->partnerships_historic, PDO::PARAM_STR);
+        $sth->bindParam(':partnerships_between_institutions', $value->partnerships_between_institutions, PDO::PARAM_STR);
+        $sth->bindParam(':partnerships_between_campus', $value->partnerships_between_campus, PDO::PARAM_STR);
+        $sth->bindParam(':partnerships_for_pea', $value->partnerships_for_pea, PDO::PARAM_INT);
+        $sth->bindParam(':id_coordinator', $id_coordinator, PDO::PARAM_INT);
+        $sth->execute();
+
+        $id_institution = $dbh->lastInsertId();
+
+
+        // TABLEA eea_discipline
+
+        foreach ($value->discipline as $val) {
+            $sth = $dbh->prepare('insert into eea_discipline
+                (name, optional, code_discipline, teacher, n_students, id_institution)
+                values (:name, :optional, :code_discipline, :teacher, :n_students, :id_institution)');
+
+            $sth->bindParam(':name', $val->name, PDO::PARAM_STR);
+            $sth->bindParam(':optional', $val->optional, PDO::PARAM_STR);
+            $sth->bindParam(':code_discipline', $val->code_discipline, PDO::PARAM_STR);
+            $sth->bindParam(':teacher', $val->teacher, PDO::PARAM_STR);
+            $sth->bindParam(':n_students', $val->n_students, PDO::PARAM_STR);
+            $sth->bindParam(':id_institution', $id_institution, PDO::PARAM_INT);
+            $sth->execute();
+        }
+    }
+
+
+    /** UPLOAD DO ARQUIVO */
+
+    if($_FILES['term_appointment']['size'] > 32000000){ // Se o arquivo for maior que 32Mb
+        //erro de tamanho de arquivo
+        throw new Exception("Arquivo grande demais para fazer upload!\n");
+    }
+
+    if(!file_exists($uploaddir)){
+        mkdir($uploaddir, 0777, true);
+    }
+
+    if(!move_uploaded_file($_FILES['term_appointment']['tmp_name'], $uploadfile)) {
+        throw new Exception("Não foi possível realizar o upload desse arquivo!\n");
+    }
 
 
     $dbh->commit();
+
     echo 'DEU!!';
 
 } catch (Exception $e) {
     $dbh->rollBack();
     echo "Failed: " . $e->getMessage();
 }
-
-
-//print var_dump($_GET);
-////print var_dump($_POST);
-////print_r($_FILES);
-//
-//$array = json_decode(filter_input(INPUT_POST, 'signupForm', FILTER_DEFAULT));
-////print_r($array);
-
-
-//
-//
-//
-//
-//
-//
-
-// TABLEA eea_institution
-
-//$wpdb->insert('eea_institution',
-//    array(
-//        "name" => $array->instituicao->name,
-//        "cnpj" => $array->instituicao->cnpj,
-//        "address" => $array->instituicao->address,
-//        "email" => $array->instituicao->email,
-//        "phone" => $array->instituicao->phone,
-//        "responsible" => $array->instituicao->responsible,
-//        "phone_responsible" => $array->instituicao->phone_responsible,
-//        "past_participations" => $array->instituicao->past_participations,
-//        "term_appointment" => $array->instituicao->term_appointment,
-//        "proposal" => $array->instituicao->proposal,
-//        "partnerships_historic" => $array->instituicao->partnerships_historic,
-//        "partnerships_between_institutions" => $array->instituicao->partnerships_between_institutions,
-//        "partnerships_between_campus" => $array->instituicao->partnerships_between_campus,
-//        "partnerships_for_pea" => $array->instituicao->partnerships_for_pea
-//    )
-////    array('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')
-//);
-//
-//$id_institution = $wpdb->insert_id;
-//
-//// TABLEA eea_discipline
-//
-//foreach ($array->discipline as $value) {
-//    $wpdb->insert('eea_discipline',
-//        array(
-//            "name" => $value->name,
-//            "optional" => $value->optional,
-//            "code_discipline" => $value->code_discipline,
-//            "teacher" => $value->teacher,
-//            "n_students" => $value->n_students,
-//            "id_institution" => $id_institution
-//        )
-////        array('%s', '%s', '%s', '%s', '%s', '&i')
-//    );
-//}
-//
-//if ($eea_coordinator && $eea_members && $eea_participation && $eea_financial_resources && $eea_host_institutions && $eea_others_features){
-//    mysql_query('COMMIT');
-//    echo "DEU!!";
-//} else {
-//    mysql_query('ROLLBACK');
-//}

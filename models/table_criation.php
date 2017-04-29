@@ -86,7 +86,7 @@ function eea_install_db() {
         CREATE TABLE IF NOT EXISTS `eea_discipline` (
           `id_discipline` int(11) NOT NULL AUTO_INCREMENT,
           `name` varchar(255) DEFAULT NULL,
-          `optativa` varchar(255) DEFAULT NULL,
+          `optional` varchar(255) DEFAULT NULL,
           `code_discipline` varchar(255) DEFAULT NULL,
           `teacher` varchar(255) DEFAULT NULL,
           `n_students` int(11) DEFAULT NULL,
@@ -174,8 +174,17 @@ function eea_install_db() {
           `phone` varchar(255) DEFAULT NULL,
           `responsible` varchar(255) DEFAULT NULL,
           `phone_responsible` varchar(255) DEFAULT NULL,
-          PRIMARY KEY (`id_institution`)
-        ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+          `past_participations` varchar(4100) DEFAULT NULL,
+          `term_appointment` varchar(4100) DEFAULT NULL,
+          `proposal` varchar(4100) DEFAULT NULL,
+          `partnerships_historic` varchar(4100) DEFAULT NULL,
+          `partnerships_between_institutions` varchar(4100) DEFAULT NULL,
+          `partnerships_between_campus` varchar(4100) DEFAULT NULL,
+          `partnerships_for_pea` varchar(4100) DEFAULT NULL,
+          `id_coordinator` int(11) DEFAULT NULL,
+          PRIMARY KEY (`id_institution`),
+          KEY `id_coordinator` (`id_coordinator`)
+        ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=74 ;
     ";
 
     dbDelta($sql);
@@ -307,6 +316,15 @@ function eea_install_db() {
         --
         ALTER TABLE `eea_participation`
           ADD CONSTRAINT `id_coordenador2` FOREIGN KEY (`id_coordenador`) REFERENCES `eea_coordinator` (`id_coordenador`) ON DELETE CASCADE ON UPDATE CASCADE;
+    ";
+    dbDelta($fks);
+
+    $fks = "
+        --
+        -- Limitadores para a tabela `eea_institution`
+        --
+        ALTER TABLE `eea_institution`
+          ADD CONSTRAINT `id_coordinator` FOREIGN KEY (`id_coordinator`) REFERENCES `eea_coordinator` (`id_coordenador`) ON DELETE CASCADE ON UPDATE CASCADE;
     ";
     dbDelta($fks);
 }
