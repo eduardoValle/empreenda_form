@@ -12,7 +12,6 @@ require_once('../../../../wp-load.php');
 global $wpdb;
 
 
-
 /** DADDOS PARA O UPLOAD DO ARQUIVO */
 
 $uploaddir = ABSPATH.'wp-content/plugins/empreenda_form/eea_files/';
@@ -31,9 +30,9 @@ $array = json_decode(filter_input(INPUT_POST, 'signupForm', FILTER_DEFAULT));
 
 try {
     $dbh = new PDO("mysql:dbname=$dataBase;host=$host", DB_USER, DB_PASSWORD, array(PDO::ATTR_PERSISTENT => true));
-    echo "Connected\n";
+    //echo "Connected\n";
 } catch (Exception $e) {
-    echo "Disconnected\n";
+    echo "error database\n";
     die("Unable to connect: " . $e->getMessage());
 }
 
@@ -203,7 +202,9 @@ try {
 
     if($_FILES['term_appointment']['size'] > 32000000){ // Se o arquivo for maior que 32Mb
         //erro de tamanho de arquivo
+        echo "upload size error";
         throw new Exception("Arquivo grande demais para fazer upload!\n");
+//        die("upload size error" . $e->getMessage());
     }
 
     if(!file_exists($uploaddir)){
@@ -211,15 +212,17 @@ try {
     }
 
     if(!move_uploaded_file($_FILES['term_appointment']['tmp_name'], $uploadfile)) {
+        echo "upload error";
         throw new Exception("Não foi possível realizar o upload desse arquivo!\n");
     }
 
 
     $dbh->commit();
 
-    echo 'DEU!!';
+    echo 'success';
 
 } catch (Exception $e) {
     $dbh->rollBack();
-    echo "Failed: " . $e->getMessage();
+    echo "insert database";
+    //echo "Failed: " . $e->getMessage();
 }
