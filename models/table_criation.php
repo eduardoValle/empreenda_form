@@ -281,6 +281,6 @@ function eea_db_install(){
     } catch (Exception $e) {
         $dbh->rollBack();
         echo "error database\n";
-        die("Unable to connect: " . $e->getMessage());
+        die("Não foi possível criar as tabelas: " . $e->getMessage());
     }
 }

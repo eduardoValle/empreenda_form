@@ -4,33 +4,60 @@
 (function () {
     'use strict';
 
-    angular.module('eea.painel', ['datatables']).controller('PainelCtrl', ['$scope', '$http',
-        function ($scope, $http) {
+    angular.module('ngAppDemo', ['ultimateDataTableServices']).controller('ngAppDemoController', ['$scope','datatable',function($scope,datatable) {
 
-            $scope.logo = 'layout/logo.png';
-
-            $scope.dados = [
-                {id: 1, nome: 'Luiz Eduardo', numero: '32 2131-1231', teste: 'Teste teste teste'},
-                {id: 2, nome: 'Kamilla', numero: '32 1232-3434', teste: 'Teste2 teste2 teste2'},
-                {id: 3, nome: 'Thales', numero: '32 5544-4566', teste: 'Teste3 teste3 teste3'},
-                {id: 4, nome: 'Donatello', numero: '32 4767-7666', teste: 'Teste4 teste4 teste4'}
-            ];
-
-            // console.log(window.location + '/wordpress/wp-content/plugins/empreenda_form/controllers/teste.php');
-
-            $http({
-                method: 'POST',
-                headers: { 'Content-Type': undefined},
-                url: '/wordpress/wp-content/plugins/empreenda_form/controllers/validateData.php',
-                data: {
-                    email: 'email',
-                    pass: 'pass'
+        //Simple example of configuration
+        var datatableConfig = {
+            "name":"simple_datatable",
+            "columns":[
+                {
+                    "header": "test",
+                    "property": "test",
+                    "order": true,
+                    "type": "text",
+                    "edit": true
+                },
+                {
+                    "header": "test2",
+                    "property": "test2",
+                    "order": true,
+                    "type": "text"
                 }
-            }).then(function successCallback(response) {
-                console.log("DEU CERTO!!");
-                console.log(response);
-            }, function errorCallback(error) {
-                console.log("DEU ERRADO!!");
-            });
-        }]);
+            ],
+            "pagination": {
+                "mode":'local'
+            },
+            "search": {
+                'active': true,
+                url:"theUrl",//Required if mode is remote
+            },
+            "filter": {
+                active:true,//Active or not
+                highlight:false,
+                columnMode:false,
+                showButton:false //Show the filter and reset buttons if true
+            },
+            "edit": {
+                "active": false,
+                "columnMode": false
+            },
+            "order": {
+                "mode": 'local'
+            },
+            "remove": {
+                "active": false,
+                "mode": 'local'
+            }
+        };
+
+        //Simple exemple of data
+        var datatableData = [{"test":1, "test2":1000},{"test":2, "test2":1000},{"test":3, "test2":1000},
+            {"test":4, "test2":1000},{"test":5, "test2":1000},{"test":6, "test2":1000},
+            {"test":7, "test2":1000}];
+
+        //Init the datatable with his configuration
+        $scope.datatable = datatable(datatableConfig);
+        //Set the data to the datatable
+        $scope.datatable.setData(datatableData);
+    }]);
 }());

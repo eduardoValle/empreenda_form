@@ -33,7 +33,7 @@ try {
     //echo "Connected\n";
 } catch (Exception $e) {
     echo "error database\n";
-    die("Unable to connect: " . $e->getMessage());
+    die("Não foi possível conectar ao banco de dados: " . $e->getMessage());
 }
 
 

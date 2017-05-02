@@ -2,74 +2,86 @@
 <legend>Disciplina</legend>
 <!-- Text input-->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="discipline_name">Disciplinas programadas para 2017-2</label>
-	<div class="col-md-6 col-sm-6">
-		<input ng-model="discipline.name" id="discipline_name" name="discipline_name" type="text" placeholder="Nome" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo Nome.">
-	</div>
+    <label class="col-md-4 col-sm-3 control-label" for="discipline_name">Disciplinas programadas para 2017-2</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="discipline.name" id="discipline_name" name="discipline_name" type="text" placeholder="Nome"
+               class="form-control input-md" required data-rule-required="true"
+               data-msg-required="É necessário preencher o campo Nome.">
+    </div>
 </div>
 
 <!-- Multiple Radios -->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label">Disciplina de empreendedorismo na grande currícular</label>
-	<div class="col-md-6 col-sm-6">
-		<div class="radio">
-			<label>
-					<input ng-model="discipline.optional" type="radio" name="Optional" value="1" selected>
-									Obrigatória
-								</label>
-		</div>
-		<div class="radio">
-			<label>
-									<input ng-model="discipline.optional" type="radio" name="Optional" value="0">
-									Optativa
-								</label>
-		</div>
-	</div>
+    <label class="col-md-4 col-sm-3 control-label">Disciplina de empreendedorismo na grande currícular</label>
+    <div class="col-md-6 col-sm-6">
+        <div class="radio">
+            <label>
+                <input ng-model="discipline.optional" type="radio" name="Optional" value="1" selected>
+                Obrigatória
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input ng-model="discipline.optional" type="radio" name="Optional" value="0">
+                Optativa
+            </label>
+        </div>
+    </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="code_discipline">Código</label>
-	<div class="col-md-6 col-sm-6">
-		<input ng-model="discipline.code_discipline" id="code_discipline" name="code_discipline" type="text" placeholder="Código da disciplina" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo Código.">
-	</div>
+    <label class="col-md-4 col-sm-3 control-label" for="code_discipline">Código</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="discipline.code_discipline" id="code_discipline" name="code_discipline" type="text"
+               placeholder="Código da disciplina" class="form-control input-md" required data-rule-required="true"
+               data-msg-required="É necessário preencher o campo Código.">
+    </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="discipline_teacher">Professor</label>
-	<div class="col-md-6 col-sm-6">
-		<input ng-model="discipline.teacher" id="discipline_teacher" name="discipline_teacher" type="text" placeholder="Professor da Disciplina" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo Professor da disciplina.">
-	</div>
+    <label class="col-md-4 col-sm-3 control-label" for="discipline_teacher">Professor</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="discipline.teacher" id="discipline_teacher" name="discipline_teacher" type="text"
+               placeholder="Professor da Disciplina" class="form-control input-md" required data-rule-required="true"
+               data-msg-required="É necessário preencher o campo Professor da disciplina.">
+    </div>
 </div>
 
 <!-- Text input-->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="n_students">Previsão do nº de alunos</label>
-	<div class="col-md-6 col-sm-6">
-		<input ng-model="discipline.n_students" id="n_students" name="n_students" type="number" placeholder="Apenas números" class="form-control input-md" required data-rule-required="true" data-msg-required="É necessário preencher o campo Previsão de alunos.">
-	</div>
+    <label class="col-md-4 col-sm-3 control-label" for="n_students">Previsão do nº de alunos</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="discipline.n_students" id="n_students" name="n_students" type="number"
+               placeholder="Apenas números" class="form-control input-md" required data-rule-required="true"
+               data-msg-required="É necessário preencher o campo Previsão de alunos.">
+    </div>
 </div>
 
 
 <!-- Button -->
 <div class="form-group">
-	<label class="col-md-4 col-sm-3 control-label" for="addDiscipline">Adicionar Disciplina</label>
-	<div class="col-md-6 col-sm-6">
-		<button ng-if="!edit" ng-model="discipline.addDiscipline" id="addDiscipline" name="addDiscipline" class="btn btn-primary" ng-click="addDiscipline()" onclick="return false;">+ Disciplina</button>
-		<button ng-if="edit" onclick="return false;" ng-click="saveItem('discipline')" class="btn btn-success">Alterar</button>
-	</div>
+    <label class="col-md-4 col-sm-3 control-label" for="addDiscipline">Adicionar Disciplina</label>
+    <div class="col-md-6 col-sm-6">
+        <button ng-if="!edit" ng-model="discipline.addDiscipline" id="addDiscipline" name="addDiscipline"
+                class="btn btn-primary" ng-click="addDiscipline()" onclick="return false;">+ Disciplina
+        </button>
+        <button ng-if="edit" onclick="return false;" ng-click="saveItem('discipline')" class="btn btn-success">Alterar
+        </button>
+    </div>
 </div>
 <br>
 
 <div class="card">
-  <h3 class="card-header">Disciplina</h3>
+    <h3 class="card-header">Disciplina</h3>
 </div>
 <div class="card w-100" ng-repeat="d in signupForm.instituicao.discipline track by $index">
-	<div class="card-block">
-		<h3 class="card-title">{{d.name}}</h3>
-		<p class="card-text">{{d.code_discipline}}</p>
-		<button ng-click="editItem('discipline',d)" onclick="return false;" class="btn btn-warning">Editar</button>
-		<button ng-click="removeItem('discipline',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
-	</div>
+    <div class="card-block">
+        <h3 class="card-title">{{d.name}}</h3>
+        <p class="card-text">{{d.code_discipline}}</p>
+        <button ng-click="editItem('discipline',d)" onclick="return false;" class="btn btn-warning">Editar</button>
+        <button ng-click="removeItem('discipline',$index)" onclick="return false;" class="btn btn-danger">Excluir
+        </button>
+    </div>
 </div>
