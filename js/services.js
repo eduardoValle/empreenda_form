@@ -15,7 +15,7 @@
 			};
 			obj.clear = ()=>{
 				return{
-					functions: '1',
+					functions: [],
 					name: '',
 					cpf: '',
 					email: '',
