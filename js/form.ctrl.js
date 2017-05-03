@@ -19,6 +19,7 @@
 			*/
 
 			return function (input, limit, id) {
+				if(!input) return '';
 				//verifica se o limit está setado
 				var stringSize = input.length;
 				if (!!limit) {
@@ -49,49 +50,7 @@
 				];
 					return list[id];
 				}
-				$scope._SignupForm = () => {
-					//retorna um objeto membro vazio
-					$scope.members = Member.clear();
-					//retorna um objeto disciplina vazio
-					$scope.discipline = Discipline.clear();
-					//retorna um objeto instituicao vazio
-					$scope.instituicao = Instituicao.clear();
-					//retorna um objeto vazio
-					$scope.others_features = OthersFeatures.clear();
-					//retorna um objeto vazio
-					$scope.financial_resources = FinancialResources.clear();
 
-					return {
-						coordenador: {
-							name: '',
-							cpf: '',
-							address: '',
-							email: '',
-							phone: '',
-							mobile: '',
-							responsible: '',
-							lattes: '',
-							experience: '',
-							external_participation: '',
-							motivation: '',
-							disseminationPlan: ''
-						},
-						members: [],
-						instituicao: [],
-						discipline: [],
-						host_institutions: {
-							identification: '',
-							name: '',
-							address: '',
-							maximum_capacity: '',
-							optional_features: '',
-						},
-						others_features: [],
-						financial_resources: []
-					};
-				};
-
-				$scope.signupForm = $scope._SignupForm();
 				$scope.edit = false;
 
 				$scope.removeValidation = (id) => {
@@ -241,14 +200,24 @@
 					}, 1000);
 				};
 
-
+				$scope.addListener("#step0Next", function (e) {
+					$scope.members = $scope.retrieveMembersFromCache();
+					$scope.$apply();
+				});
 				$scope.addListener("#step1Next", function (e) {
+					window.setTimeout(()=>{
+						$scope.discipline = $scope.retrieveDisciplineFromCache();
+						$scope.instituicao = $scope.retrieveInstitutionFromCache();
+						$scope.$apply();
+					},300);
+
 					if ($scope.addMember()) {
 						$scope.$apply();
 					} else {
 						if ($scope.signupForm.members.length > 0) {
 							$scope.$apply();
 						} else {
+							$scope.$apply();
 							e.stopImmediatePropagation();
 							e.preventDefault();
 							return false;
@@ -257,6 +226,7 @@
 				});
 
 				$scope.addListener("#step2Next", function (e) {
+
 					$scope.addInstituicao();
 					$scope.addDiscipline();
 					if (!$("#SignupForm").validate().form() ||
@@ -281,7 +251,13 @@
 					}
 
 				});
-
+				$scope.addListener("#step4Next", function(e){
+					window.setTimeout(()=>{
+						$scope.financial_resources = $scope.retrieveFinancialResourcesFromCache();
+						$scope.others_features = $scope.retrieveOtherFeatureFromCache();
+						$scope.$apply();
+					},300);
+				});
 				$scope.addListener("#SaveAccount", function () {
 					$scope.addFinancialResources();
 					$scope.$apply();
@@ -401,7 +377,7 @@
 					}).then(function (response) {
 						console.log(response);
 						//limpando o form;
-						$scope.signupForm = $scope._SignupForm();
+						$scope.signupForm = $scope._SignupFormClear();
 
 						// SUCSESS
 						//toastMessage('Email enviado com sucesso!');
@@ -434,6 +410,121 @@
 
 				};
 
+				window.setInterval(()=>{
+					if( !!$scope.signupForm){
+						$scope.setInCache("SignupForm", $scope.signupForm);
+					}
+					if( !!$scope.members.name ){
+						$scope.setInCache("members", $scope.members);
+					}
+					if( !!$scope.discipline.name){
+						$scope.setInCache("discipline", $scope.discipline);
+					}
+					if( !!$scope.instituicao.cnpj){
+						$scope.setInCache("instituicao", $scope.instituicao);
+					}
+					if( !!$scope.others_features.name){
+						$scope.setInCache("others_features", $scope.others_features);
+					}
+					if( !!$scope.financial_resources.name){
+						$scope.setInCache("financial_resources", $scope.financial_resources);
+					}
+
+				},10000);
+
+				$scope._SignupFormClear = () => {
+					//retorna um objeto membro vazio
+					$scope.members = Member.clear();
+					$scope.setInCache("members", $scope.members);
+					//retorna um objeto disciplina vazio
+					$scope.discipline = Discipline.clear();
+					$scope.setInCache("discipline", $scope.discipline);
+					//retorna um objeto instituicao vazio
+					$scope.instituicao = Instituicao.clear();
+					$scope.setInCache("instituicao", $scope.instituicao);
+					//retorna um objeto vazio
+					$scope.others_features = OthersFeatures.clear();
+					$scope.setInCache("others_features", $scope.others_features);
+					//retorna um objeto vazio
+					$scope.financial_resources = FinancialResources.clear();
+					$scope.setInCache("financial_resources", $scope.financial_resources);
+
+					return {
+						coordenador: {
+							name: '',
+							cpf: '',
+							address: '',
+							email: '',
+							phone: '',
+							mobile: '',
+							responsible: '',
+							lattes: '',
+							experience: '',
+							external_participation: '',
+							motivation: '',
+							disseminationPlan: ''
+						},
+						members: [],
+						instituicao: [],
+						discipline: [],
+						host_institutions: {
+							identification: '',
+							name: '',
+							address: '',
+							maximum_capacity: '',
+							optional_features: '',
+						},
+						others_features: [],
+						financial_resources: []
+					};
+				};
+				$scope.getFromCache = (cache)=>{
+					if(!!cache && cache !== 'undefined'){
+						console.log("CACHE", JSON.parse(cache));
+						return JSON.parse(cache);
+					}else{
+						console.log("NOT CACHE");
+						return $scope._SignupFormClear();
+					}
+				};
+				$scope.setInCache = (key, value)=>{
+					if(!!value && value !== 'undefined'){
+						localStorage.setItem(key, JSON.stringify(value));
+					}
+				};
+				$scope.retrieveMembersFromCache= ()=>{
+					var cache = localStorage.getItem("members");
+					return $scope.getFromCache(cache);
+				};
+				$scope.retrieveDisciplineFromCache= ()=>{
+					var cache = localStorage.getItem("discipline");
+					return $scope.getFromCache(cache);
+				};
+				$scope.retrieveInstitutionFromCache= ()=>{
+					var cache = localStorage.getItem("instituicao");
+					return $scope.getFromCache(cache);
+				};
+				$scope.retrieveOtherFeatureFromCache= ()=>{
+					var cache = localStorage.getItem("others_features");
+					return $scope.getFromCache(cache);
+				};
+				$scope.retrieveFinancialResourcesFromCache= ()=>{
+					var cache = localStorage.getItem("financial_resources");
+					return $scope.getFromCache(cache);
+				};
+
+				$scope._SignupFormRetrieveFromCache = () => {
+					var cache = localStorage.getItem("SignupForm");
+					return $scope.getFromCache(cache);
+				};
+
+				$scope.signupForm = $scope._SignupFormRetrieveFromCache();
+				
+				$scope.members = $scope.retrieveMembersFromCache();
+				$scope.discipline = $scope.retrieveDisciplineFromCache();
+				$scope.instituicao = $scope.retrieveInstitutionFromCache();
+				$scope.others_features = $scope.retrieveOtherFeatureFromCache();
+				$scope.financial_resources = $scope.retrieveFinancialResourcesFromCache();
 
         }]);
 

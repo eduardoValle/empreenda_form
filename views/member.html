@@ -115,12 +115,15 @@
 		</div>
 	</div>
 	
-	<div class="card w-100" ng-repeat="m in signupForm.members track by $index">
-	  <div class="card-block">
-		<h3 class="card-title">{{m.name}}</h3>
-		<p class="card-text">{{getMemberFunction(m.functions)}}</p>
-		<button ng-click="editItem('member',m)" onclick="return false;" class="btn btn-warning">Editar</button>
-		<button ng-click="removeItem('member',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
-	  </div>
+	<div ng-if="signupForm.members.length > 0">
+		<h3>Membros:</h3>
+		<div class="card w-100" ng-repeat="m in signupForm.members track by $index">
+		  <div class="card-block">
+			<h3 class="card-title">{{m.name}}</h3>
+			<p class="card-text">{{getMemberFunction(m.functions)}}</p>
+			<button ng-click="editItem('member',m)" onclick="return false;" class="btn btn-warning">Editar</button>
+			<button ng-click="removeItem('member',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
+		  </div>
+		</div>
 	</div>
 	
