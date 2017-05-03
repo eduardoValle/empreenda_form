@@ -1,23 +1,30 @@
+<style>
+	.funcao{
+		width:45%;
+	}
+	.funcao input{
+		margin-right: 5px;
+	}
+	.functions{
+		list-style: none;
+		display: inline;
+
+	}
+	.functions > li{
+		float: left;
+		margin-right: 5px;
+	}
+	.functions > li:after{
+		content:', ';
+	}
+	.functions > li:last-child:after{
+		content:'.';
+	}
+</style>
 <h2 class="titulo-fase">Fase 2 - Outros membros da instituição ou membros externos que compõem a equipe local do <abbr
         title="Programa Empreenda. Em Ação!">PEA</abbr></h2>
 <br>
-<!-- Function -->
-<div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label">Função</label>
-    <div class="col-md-6 col-sm-6">
-        <select class="form-control input-md" ng-model="members.functions" id="members_functions"
-                name="members_functions" required data-rule-required="true"
-                data-msg-required="É necessário escolher a função do membro">
-            <option value="1">Professor de disciplina</option>
-            <option value="2">Responsável pela comunicação com a central do PEA</option>
-            <option value="3">Tutor de projetos</option>
-            <option value="4">Responsável pela formação da banca de avaliadores</option>
-            <option value="5">Responsável pela organização do ELEA</option>
-            <option value="6">Responsável pelas comunicações analógicas ou digitais de divulgação</option>
-        </select>
-    </div>
-</div>
-<br>
+
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label">Nome</label>
     <div class="col-md-6 col-sm-6">
@@ -95,6 +102,31 @@
         </div>
     </div>
 </div>
+<div class="form-group">
+	<h3>Função:</h3>
+	<label class="funcao">
+      <input type="checkbox"  ng-click="checkFunction('professor')" ng-model="functions.professor" value="1">Professor de disciplina
+    </label>
+    <label class="funcao" >
+       <input type="checkbox" ng-click="checkFunction('comunicacao')" ng-model="functions.comunicacao" value="2">Responsável pela comunicação com a central do PEA
+    </label>
+</div>
+<div class="form-group">
+    <label class="funcao">
+       <input type="checkbox"  ng-click="checkFunction('tutor')" ng-model="functions.tutor"  value="3">Tutor de projetos
+    </label>
+    <label class="funcao">
+       <input type="checkbox"  ng-click="checkFunction('banca')" ng-model="functions.banca" value="4">Responsável pela formação da banca de avaliadores
+    </label>
+</div>
+<div class="form-group">    
+    <label class="funcao">
+        <input type="checkbox"  ng-click="checkFunction('organizacao')" ng-model="functions.organizacao"  value="5">Responsável pela organização do ELEA
+    </label>
+    <label class="funcao">
+        <input type="checkbox"  ng-click="checkFunction('digitais')" ng-model="functions.digitais"  value="6">Responsável pelas comunicações analógicas ou digitais de divulgação
+    </label>
+</div>
 
 <!-- BOTÃO DE ADICIONAR MEMBRO -->
 <div class="form-group">
@@ -115,7 +147,15 @@
 <div class="card w-100" ng-repeat="m in signupForm.members track by $index">
     <div class="card-block">
         <h3 class="card-title">{{m.name}}</h3>
-        <p class="card-text">{{getMemberFunction(m.functions)}}</p>
+        <div class="card-text">
+        	<div ng-if="m.functions.length > 0">
+        		<div ng-if="m.functions.length == 1" style=" float: left; margin-right: 7px">Função:</div>
+        		<div ng-if="m.functions.length > 1"  style=" float: left; margin-right: 7px">Funções:</div>
+	        	<ul class="functions" >
+	        		<li ng-repeat="f in m.functions  track by $index"> {{getMemberFunction(f)}}</li>
+	        	</ul>
+        	</div>
+    	</div>
         <button ng-click="editItem('member',m)" onclick="return false;" class="btn btn-warning">Editar</button>
         <button ng-click="removeItem('member',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
     </div>

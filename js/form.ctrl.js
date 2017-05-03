@@ -80,6 +80,30 @@
 					$scope.agreeMember &&
 					!!$scope.members.lattes
 				) {
+					if( $scope.functions.professor || $scope.functions.comunicacao || 
+						$scope.functions.tutor || $scope.functions.banca || 
+						$scope.functions.organizacao || $scope.functions.digitais ){
+
+						$scope.itemChecked.push( $scope.functions );
+						for(var i in $scope.functions){
+							if( $scope.functions[i] ){
+								$scope.members.functions.push( $scope.mapItem[i]);
+								console.log($scope.members);
+							}
+						}
+						$scope.functions = {
+							professor:false,
+							comunicacao:false,
+							tutor:false,
+							banca:false,
+							organizacao:false,
+							digitais:false
+						};
+					}else{
+						messageToast('Defina alguma função para o membro', 'Erro!!', 'error');
+						return false;
+					}
+
 					Member.add($scope.members);
 					$scope.members = Member.clear();
 
@@ -232,40 +256,9 @@
 							return false;
 						}
 					}
+					jQuery('html,body').scrollTop(0);
 				});
 
-				$scope.addListener("#step2Next", function (e) {
-
-					$scope.addInstituicao();
-					$scope.addDiscipline();
-					if (!$("#SignupForm").validate().form() ||
-						$scope.signupForm.instituicao.length == 0 ||
-						$scope.signupForm.discipline.length == 0
-					) {
-						e.stopImmediatePropagation();
-						e.preventDefault();
-						return false;
-					} else {
-						$scope.$apply();
-					}
-				});
-
-
-
-			$scope.addListener("#step1Next", function (e) {
-				if ($scope.addMember()) {
-					$scope.$apply();
-				} else {
-					if ($scope.signupForm.members.length > 0) {
-						$scope.$apply();
-					} else {
-						e.stopImmediatePropagation();
-						e.preventDefault();
-						return false;
-					}
-				}
-				jQuery('html,body').scrollTop(0);
-			});
 
 			$scope.addListener("#step2Next", function (e) {
 				$scope.addInstituicao();
@@ -282,16 +275,6 @@
 				jQuery('html,body').scrollTop(0);
 			});
 
-				
-			$scope.addListener("#step4Next", function(e){
-					jQuery('html,body').scrollTop(0);
-					window.setTimeout(()=>{
-						$scope.financial_resources = $scope.retrieveFinancialResourcesFromCache();
-						$scope.others_features = $scope.retrieveOtherFeatureFromCache();
-						$scope.$apply();
-					},300);
-				});
-
 			$scope.addListener("#step3Next", function (e) {
 				if ($scope.addOthersFeatures()) {
 					$scope.$apply();
@@ -304,6 +287,17 @@
 
 			});
 
+			$scope.addListener("#step4Next", function(e){
+					jQuery('html,body').scrollTop(0);
+					window.setTimeout(()=>{
+						$scope.financial_resources = $scope.retrieveFinancialResourcesFromCache();
+						$scope.others_features = $scope.retrieveOtherFeatureFromCache();
+						$scope.$apply();
+					},300);
+				});
+
+		
+
 
 
 			$scope.addListener("#SaveAccount", function () {
@@ -311,6 +305,47 @@
 				$scope.$apply();
 
 			});
+
+			$scope.mapItem =  {
+				professor:1,
+				comunicacao:2,
+				tutor:3,
+				banca:4,
+				organizacao:5,
+				digitais:6
+			};
+			
+			
+			$scope.functions = {
+				professor:false,
+				comunicacao:false,
+				tutor:false,
+				banca:false,
+				organizacao:false,
+				digitais:false
+			}
+			$scope.checkFunction = (val)=>{
+				if( $scope.itemChecked.length > 0){
+					var comunicacao = 0;
+					var banca = 0;
+					var organizacao = 0;
+					var digitais = 0;
+
+					for( var i = 0; i<$scope.itemChecked.length; i++ ){
+						var item = $scope.itemChecked[i];
+						comunicacao += (item.comunicacao?1:0);
+						banca += (item.banca?1:0);
+						organizacao += (item.organizacao?1:0);
+						digitais += (item.digitais?1:0);
+					}
+					try{
+						if( eval(val) >=1 ){
+							$scope.functions[val] = false;
+							messageToast('Essa função só pode ser atribuída a um membro!', 'Erro!!', 'error');
+						}
+					}catch(e){}
+				}
+			};
 
 			// ************** EDIT ************** //
 
@@ -363,6 +398,7 @@
 					switch (type) {
 						case 'member':
 							$scope.signupForm.members.splice(index, 1);
+							$scope.itemChecked.splice(index, 1);
 							break;
 						case 'discipline':
 							$scope.signupForm.instituicao.discipline.splice(index, 1);
@@ -553,7 +589,8 @@
 				//retorna um objeto vazio
 				$scope.financial_resources = FinancialResources.clear();
 				$scope.setInCache("financial_resources", $scope.financial_resources);
-
+				$scope.itemChecked = [];
+				$scope.setInCache("itemChecked", $scope.itemChecked);
 				return {
 					coordenador: {
 						name: '',
@@ -622,6 +659,10 @@
 				var cache = localStorage.getItem("SignupForm");
 				return $scope.getFromCache(cache);
 			};
+			$scope.itemCheckedFromCache = () => {
+				var cache = localStorage.getItem('itemChecked');
+				return $scope.getFromCache(cache);
+			};
 
 			$scope.signupForm = $scope._SignupFormRetrieveFromCache();
 			
@@ -630,6 +671,7 @@
 			$scope.instituicao = $scope.retrieveInstitutionFromCache();
 			$scope.others_features = $scope.retrieveOtherFeatureFromCache();
 			$scope.financial_resources = $scope.retrieveFinancialResourcesFromCache();
+			$scope.itemChecked = $scope.itemCheckedFromCache();
         }]);
 
 }());
