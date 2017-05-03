@@ -7,6 +7,10 @@
     .radio_member {
         margin-top: 50px !important;
     }
+
+    .titulo-fase {
+        padding: 15px;
+    }
 </style>
 <div class="row wrap">
     <div class="col-lg-12">
@@ -16,17 +20,17 @@
         <form id="SignupForm" name="SignupForm" action="" method="post" class="form-horizontal"
               onsubmit="return false;">
             <fieldset>
-                <legend>Coordenador</legend>
+                <h2 class="titulo-fase">Fase 1 - Dados do coordenador</h2>
                 <!-- Name input-->
                 <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="name">Nome</label>
+                    <label class="col-md-4 col-sm-3 control-label" for="name">Nome do coordenador</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.coordenador.name"
                                id="name" name="name"
                                type="text"
                                placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md" required
                                data-rule-required="true"
-                               data-msg-required="É necessário preencher o campo Nome">
+                               data-msg-required="É necessário preencher o campo Nome do coordenador">
                     </div>
                 </div>
                 <br>
@@ -103,7 +107,7 @@
                 <br>
                 <!-- CoordCurso input-->
                 <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="responsible">Coordenador do Curso</label>
+                    <label class="col-md-4 col-sm-3 control-label" for="responsible">Cargo na IES</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.coordenador.responsible" id="responsible" name="responsible"
                                type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md"
@@ -115,7 +119,7 @@
                 <br>
                 <!-- CVLattes input-->
                 <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="cvLalattesttes">Currículo Lattes</label>
+                    <label class="col-md-4 col-sm-3 control-label" for="lattes">Currículo Lattes</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.coordenador.lattes" id="lattes" name="lattes" type="text"
                                placeholder="Link" class="form-control input-md" required
@@ -131,7 +135,7 @@
                     <div class="col-md-6 col-sm-6">
 							<textarea ng-model="signupForm.coordenador.experience" maxlength='3000' class="form-control"
                                       id="experience" name="experience" required
-                                      data-rule-required="true"
+                                      data-rule-required="true" rows="5"
                                       data-msg-required="É necessário preencher o campo Experiências individuais e conjuntas na área de empreendedorismo">
                             </textarea>
                         {{signupForm.coordenador.experience|wordcount:false:'experience'}}
@@ -146,7 +150,7 @@
                     <div class="col-md-6 col-sm-6">
 							<textarea ng-model="signupForm.coordenador.external_participation" maxlength='1500'
                                       class="form-control" id="external_participation" name="external_participation"
-                                      required
+                                      required rows="5"
                                       data-rule-required="true"
                                       data-msg-required="É necessário preencher o campo Participação em organizações e envolvimento com redes relacionadas a empreendedorismo e inovação, sejam elas locais ou nacionais.">
                             </textarea>
@@ -161,7 +165,7 @@
                     <div class="col-md-6 col-sm-6">
 							<textarea ng-model="signupForm.coordenador.motivation" class="form-control" id="motivation"
                                       name="motivation" maxlength='2000' required
-                                      data-rule-required="true"
+                                      data-rule-required="true" rows="5"
                                       data-msg-required="É necessário preencher o campo Motivação para participar do programa.">
                             </textarea>
                         {{signupForm.coordenador.motivation|wordcount:false:'motivation'}}
@@ -238,7 +242,7 @@
 
                 <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="maximumCapacity">Capacidade máxima</label>
+                    <label class="col-md-4 col-sm-3 control-label" for="maximum_capacity">Capacidade máxima</label>
                     <div class="col-md-6 col-sm-6">
                         <input ng-model="signupForm.host_institutions.maximum_capacity" id="maximum_capacity"
                                name="maximum_capacity" type="number" placeholder="" class="form-control input-md"
@@ -250,7 +254,7 @@
 
                 <!-- Multiple Checkboxes -->
                 <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="optionsCounterpart">Opcionais contrapartida
+                    <label class="col-md-4 col-sm-3 control-label" for="optional_features">Opcionais contrapartida
                         econômica</label>
                     <div class="col-md-4">
                         <div class="checkbox">

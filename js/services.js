@@ -48,7 +48,7 @@
 					phone_responsible: '',
 					past_participations: 'Nada a declarar...',
 					term_appointment: '',
-					proposal: '3',
+					proposal: '1',
 					partnerships_historic: 'Nada a declarar...',
 					partnerships_between_institutions: 'Nada a declarar...',
 					partnerships_between_campus: 'Nada a declarar...',

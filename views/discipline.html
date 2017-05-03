@@ -1,16 +1,17 @@
-<!-- Form Name -->
-<legend>Disciplina</legend>
-<!-- Text input-->
+<!-- DISCIPLINAS -->
+<h3 class="titulo-fase">Disciplinas participantes do PEA</h3>
+
+<!-- NOME DA DISCIPLINA -->
 <div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label" for="discipline_name">Disciplinas programadas para 2017-2</label>
+    <label class="col-md-4 col-sm-3 control-label" for="discipline_name">Nome da disciplina a ser ofertada em 2017-2</label>
     <div class="col-md-6 col-sm-6">
-        <input ng-model="discipline.name" id="discipline_name" name="discipline_name" type="text" placeholder="Nome"
+        <input ng-model="discipline.name" id="discipline_name" name="discipline_name" type="text" placeholder="Nome da disciplina"
                class="form-control input-md" required data-rule-required="true"
                data-msg-required="É necessário preencher o campo Nome.">
     </div>
 </div>
 
-<!-- Multiple Radios -->
+<!-- OPTATIVA/OBRIGATÓRIA -->
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label">Disciplina de empreendedorismo na grande currícular</label>
     <div class="col-md-6 col-sm-6">
@@ -29,27 +30,27 @@
     </div>
 </div>
 
-<!-- Text input-->
+<!-- CÓDIGO DA DISCIPLINA -->
 <div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label" for="code_discipline">Código</label>
+    <label class="col-md-4 col-sm-3 control-label" for="code_discipline">Código da disciplina</label>
     <div class="col-md-6 col-sm-6">
         <input ng-model="discipline.code_discipline" id="code_discipline" name="code_discipline" type="text"
                placeholder="Código da disciplina" class="form-control input-md" required data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Código.">
+               data-msg-required="É necessário preencher o campo Código da disciplina.">
     </div>
 </div>
 
-<!-- Text input-->
+<!-- NOME DO PROFESSOR -->
 <div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label" for="discipline_teacher">Professor</label>
+    <label class="col-md-4 col-sm-3 control-label" for="discipline_teacher">Nome do professor</label>
     <div class="col-md-6 col-sm-6">
         <input ng-model="discipline.teacher" id="discipline_teacher" name="discipline_teacher" type="text"
-               placeholder="Professor da Disciplina" class="form-control input-md" required data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Professor da disciplina.">
+               placeholder="Nome do professor" class="form-control input-md" required data-rule-required="true"
+               data-msg-required="É necessário preencher o campo Nome do professor.">
     </div>
 </div>
 
-<!-- Text input-->
+<!-- PREVISÃO DO NÚMERO DE ALUNOS -->
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label" for="n_students">Previsão do nº de alunos</label>
     <div class="col-md-6 col-sm-6">
@@ -59,8 +60,7 @@
     </div>
 </div>
 
-
-<!-- Button -->
+<!-- BOTÃO DE ADICIONAR DISCIPLINA -->
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label" for="addDiscipline">Adicionar Disciplina</label>
     <div class="col-md-6 col-sm-6">
@@ -73,8 +73,8 @@
 </div>
 <br>
 
-<div class="card">
-    <h3 class="card-header">Disciplina</h3>
+<div class="card" ng-if="signupForm.instituicao.discipline.length > 0">
+    <h3 class="card-header" ng-if="signupForm.instituicao.discipline.length > 0">Disciplina</h3>
 </div>
 <div class="card w-100" ng-repeat="d in signupForm.instituicao.discipline track by $index">
     <div class="card-block">

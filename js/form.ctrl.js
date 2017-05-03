@@ -33,7 +33,6 @@
 				}
 
 			}
-
 		})
 		.controller('EeaForm', ['$scope', 'Member', 'Instituicao', 'OthersFeatures', 'FinancialResources', 'Discipline', '$http',
         function ($scope, Member, Instituicao, OthersFeatures, FinancialResources, Discipline, $http) {
@@ -83,7 +82,7 @@
 						name: '',
 						address: '',
 						maximum_capacity: '',
-						optional_features: '',
+						optional_features: ''
 					},
 					others_features: [],
 					financial_resources: []
@@ -117,7 +116,7 @@
 					!!$scope.members.cpf &&
 					!!$scope.members.email &&
 					!!$scope.members.mobile &&
-					!!$scope.agreeMember &&
+					$scope.agreeMember &&
 					!!$scope.members.lattes
 				) {
 					Member.add($scope.members);
@@ -274,7 +273,7 @@
 				$scope.addInstituicao();
 				$scope.addDiscipline();
 				if (!$("#SignupForm").validate().form() ||
-					$scope.signupForm.instituicao.length == 0
+					$scope.signupForm.instituicao.length === 0
 				) {
 					e.stopImmediatePropagation();
 					e.preventDefault();
@@ -381,7 +380,7 @@
 			// ************** REGISTER ************** //
 			$scope.loader = (str) => {
 				if (!!str) {
-					if (str == 'show') {
+					if (str === 'show') {
 						$(".preloader").show();
 						$(".status").show();
 					} else {
