@@ -1,129 +1,123 @@
-<style>
-#agreeMember-error{
-	position: absolute;
-    top: 33px;
-}
-.radio_member{ margin-top: 36px !important; }
+<h2 class="titulo-fase">Fase 2 - Outros membros da instituição ou membros externos que compõem a equipe local do <abbr
+        title="Programa Empreenda. Em Ação!">PEA</abbr></h2>
+<br>
+<!-- Function -->
+<div class="form-group">
+    <label class="col-md-4 col-sm-3 control-label">Função</label>
+    <div class="col-md-6 col-sm-6">
+        <select class="form-control input-md" ng-model="members.functions" id="members_functions"
+                name="members_functions" required data-rule-required="true"
+                data-msg-required="É necessário escolher a função do membro">
+            <option value="1">Professor de disciplina</option>
+            <option value="2">Responsável pela comunicação com a central do PEA</option>
+            <option value="3">Tutor de projetos</option>
+            <option value="4">Responsável pela formação da banca de avaliadores</option>
+            <option value="5">Responsável pela organização do ELEA</option>
+            <option value="6">Responsável pelas comunicações analógicas ou digitais de divulgação</option>
+        </select>
+    </div>
+</div>
+<br>
+<div class="form-group">
+    <label class="col-md-4 col-sm-3 control-label">Nome</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="members.name" id="member_name" name="member_name" type="text"
+               placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md"
+               required
+               data-rule-required="true"
+               data-msg-required="É necessário preencher o campo Nome">
+    </div>
+</div>
+<br>
+<!-- CPF input-->
+<div class="form-group">
+    <label class="col-md-4 col-sm-3 control-label">CPF</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="members.cpf" id="member_cpf" name="member_cpf" type="number" placeholder="Apenas números"
+               class="form-control input-md"
+               required
+               data-rule-required="true"
+               data-msg-required="É necessário preencher o campo CPF">
+    </div>
+</div>
+<br>
+<!-- Email input-->
+<div class="form-group">
+    <label class="col-md-4 col-sm-3 control-label">E-mail</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="members.email" id="member_email" name="member_email" type="email"
+               placeholder="Ex. pedrolucas@contato.com" class="form-control input-md"
+               required
+               data-rule-required="true"
+               data-msg-required="É necessário preencher o campo E-mail" data-rule-email="true"
+               data-msg-email="Formato de E-mail inválido">
+    </div>
+</div>
+<br>
+<!-- Mobile input-->
+<div class="form-group">
+    <label class="col-md-4 col-sm-3 control-label">Celular</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="members.mobile" id="member_mobile" name="member_mobile" type="number"
+               placeholder="Apenas números" class="form-control input-md"
+               required
+               data-rule-required="true"
+               data-msg-required="É necessário preencher o campo Celular">
+    </div>
+</div>
+<br>
+<!-- CVLattes input-->
+<div class="form-group">
+    <label class="col-md-4 col-sm-3 control-label">Currículo Lattes</label>
+    <div class="col-md-6 col-sm-6">
+        <input ng-model="members.lattes" id="member_lattes" name="member_lattes" type="text" placeholder="Link"
+               class="form-control input-md"
+               required
+               data-rule-required="true"
+               data-msg-required="É necessário preencher o campo Lattes">
+    </div>
+</div>
 
-</style>
+<!-- CONTRATO FINAL PARA ACEITE DO COORDENADOR -->
+<div class="form-group">
+    <label class="col-md-4 col-sm-3 control-label">Declaro a concordância com as normas do programa apresentadas através
+        deste <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf" target="_blank"
+                 title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017</a></label>
+    <div class="col-md-6 col-sm-6">
+        <div class="radio">
+            <label>
+                <input type="checkbox" ng-model="agreeMember" name="agreeMember" id="agreeMember" value="true"
+                       required
+                       data-rule-required="true"
+                       data-msg-required="É necessário aceitar as normas do programa">
+                Aceito
+            </label>
+        </div>
+    </div>
+</div>
 
-	<legend>Outros membros da instituição ou membros externos que compõem a equipe local do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
-	<br>
-	<!-- Function -->
-	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label">Função</label>
-		<div class="col-md-6 col-sm-6">
-			<select class="form-control input-md"  ng-model="members.functions" id="members_functions" name="members_functions" required data-rule-required="true" data-msg-required="É necessário escolher a função do membro">
-			  <option value="1" >Professor da disciplina</option>
-			  <option value="2">Responsável pela comunicação com a central do PEA</option>
-			  <option value="3">Tutor de projetos</option>
-			  <option value="4">Responsável pela formação da banca de avaliadores</option>
-			  <option value="5">Organizador do ELEA</option>
-			  <option value="6">Responsável pelas comunicações analógicas ou digitais de divulgação</option>
-			</select>
-		</div>
-	</div>
-	<br>
-	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label">Nome</label>
-		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.name" id="member_name" name="member_name" type="text" placeholder="Ex. Pedro Lucas Pereira Gomes" class="form-control input-md"
-			required
-			data-rule-required="true" 
-			data-msg-required="É necessário preencher o campo Nome"
-			>
+<!-- BOTÃO DE ADICIONAR MEMBRO -->
+<div class="form-group">
+    <label class="col-md-4 col-sm-3 control-label">Adicionar Membros</label>
+    <div class="col-md-6 col-sm-6">
+        <button ng-if="!edit" id="addMember" name="addMember" ng-click="addMember()" onclick="return false;"
+                class="btn btn-primary">+ Membro
+        </button>
+        <button ng-if="edit" onclick="return false;" ng-click="saveItem('member')" class="btn btn-success">Alterar
+        </button>
+    </div>
+</div>
 
-		</div>
-	</div>
-	<br>
-	<!-- CPF input-->
-	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label">CPF</label>
-		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.cpf" id="member_cpf" name="member_cpf" type="number" placeholder="Apenas números" class="form-control input-md"
-			required
-			data-rule-required="true" 
-			data-msg-required="É necessário preencher o campo CPF">
-		</div>
-	</div>
-	<br>
-	<!-- Email input-->
-	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label">E-mail</label>
-		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.email" id="member_email" name="member_email" type="email" placeholder="Ex. pedrolucas@contato.com" class="form-control input-md"
-			required
-			data-rule-required="true" 
-			data-msg-required="É necessário preencher o campo E-mail"			data-rule-email="true" 
-			data-msg-email="Formato de E-mail inválido" 
-			>
-		</div>
-	</div>
-	<br>
-	<!-- Mobile input-->
-	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label">Celular</label>
-		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.mobile" id="member_mobile" name="member_mobile" type="number" placeholder="Apenas números" class="form-control input-md"
-			required
-			data-rule-required="true" 
-			data-msg-required="É necessário preencher o campo Celular">
-		</div>
-	</div>
-	<br>
-	<!-- CVLattes input-->
-	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label">Currículo Lattes</label>
-		<div class="col-md-6 col-sm-6">
-			<input ng-model="members.lattes" id="member_lattes" name="member_lattes" type="text" placeholder="Link" class="form-control input-md"
-			required
-			data-rule-required="true" 
-			data-msg-required="É necessário preencher o campo Lattes">
-		</div>
-	</div>
-	<br>
-	<!-- Multiple Radios -->
-	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label">Declaro a concordância com as normas do programa apresentadas através  deste <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf" target="_blank" title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017</a></label>
-		<div class="col-md-6 col-sm-6">
-			<div class="radio">
-				<label>
-					<input type="radio" name="agreeMember" value="true"
-						required
-						data-rule-required="true" 
-						data-msg-required="É necessário aceitar as normas do programa"
-					>
-					Aceito
-				</label>
-			</div>
-			<div class="radio radio_member">
-				<label>
-					<input type="radio" name="agreeMember" value="false">
-					Não aceito
-					</label>
-			</div>
-		</div>
-	</div>
-	<br>
 
-	<!-- Add Mamber -->
-	<div class="form-group">
-		<label class="col-md-4 col-sm-3 control-label">Adicionar Membros</label>
-		<div class="col-md-6 col-sm-6">
-			<button ng-if="!edit" id="addMember" name="addMember" ng-click="addMember()" onclick="return false;" class="btn btn-primary">+ Membro</button>
-			<button ng-if="edit" onclick="return false;" ng-click="saveItem('member')" class="btn btn-success">Alterar</button>
-		</div>
-	</div>
-	
-	<div ng-if="signupForm.members.length > 0">
-		<h3>Membros:</h3>
-		<div class="card w-100" ng-repeat="m in signupForm.members track by $index">
-		  <div class="card-block">
-			<h3 class="card-title">{{m.name}}</h3>
-			<p class="card-text">{{getMemberFunction(m.functions)}}</p>
-			<button ng-click="editItem('member',m)" onclick="return false;" class="btn btn-warning">Editar</button>
-			<button ng-click="removeItem('member',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
-		  </div>
-		</div>
-	</div>
+<div class="card" ng-if="signupForm.members.length > 0">
+    <h3 class="card-header">Membros participantes</h3>
+</div>
+<div class="card w-100" ng-repeat="m in signupForm.members track by $index">
+    <div class="card-block">
+        <h3 class="card-title">{{m.name}}</h3>
+        <p class="card-text">{{getMemberFunction(m.functions)}}</p>
+        <button ng-click="editItem('member',m)" onclick="return false;" class="btn btn-warning">Editar</button>
+        <button ng-click="removeItem('member',$index)" onclick="return false;" class="btn btn-danger">Excluir</button>
+    </div>
+</div>
 	
