@@ -86,7 +86,6 @@
 						for(var i in $scope.functions){
 							if($scope.functions[i]){
 								$scope.members.functions.push({'function': angular.copy($scope.mapItem[i])});
-								console.log($scope.members);
 							}
 						}
 						$scope.functions = {
@@ -175,7 +174,6 @@
 					!!$scope.discipline.teacher &&
 					!!$scope.discipline.n_students
 				) {
-					console.log(Discipline.get());
 					Discipline.add($scope.discipline);
 					$scope.discipline = Discipline.clear();
 					$scope.signupForm.instituicao.discipline = angular.copy(Discipline.get());
@@ -474,18 +472,17 @@
 						'Content-Type': undefined
 					}
 				}).then(function (response) {
-					//console.log(response);
-
 					$scope.loader('hide');
 					switch(response.data){
 						case 'success':
-							messageToast('Sua proposta foi enviada com sucesso!!', 'Parabéns!!', 'success');
 							//Limpando o form.
-							$scope.signupForm = $scope._SignupForm();
-
+							// $scope.signupForm = $scope.SignupForm();
+							console.log('teste');
+							localStorage.clear();
+                            messageToast('Sua proposta foi enviada com sucesso!!', 'Parabéns!!', 'success');
 							//Redirecionando para a página principal.
 							setTimeout(function () {
-								window.location.href = "http://www.empreendaemacao.com.br/"; //will redirect to your blog page (an ex: blog.html)
+								window.location.href = "http://www.empreendaemacao.com.br/";
 							}, 2000);
 							break;
 						case 'error database':
@@ -588,10 +585,8 @@
 			};
 			$scope.getFromCache = (cache)=>{
 				if(!!cache && cache !== 'undefined'){
-					console.log("CACHE", JSON.parse(cache));
 					return JSON.parse(cache);
 				}else{
-					console.log("NOT CACHE");
 					return $scope._SignupFormClear();
 				}
 			};

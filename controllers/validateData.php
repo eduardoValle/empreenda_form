@@ -20,8 +20,6 @@ $uploaddir = str_replace('\\', '/', $uploaddir);
 $namefile = strtolower(basename($_FILES['term_appointment']['name']));
 $namefile = str_replace(' ', '-', $namefile);
 
-
-
 /** CONECTANDO COM O BANCO DE DADOS */
 
 $host = DB_HOST;
@@ -69,6 +67,7 @@ try {
     /** DADOS PARA FAZER O UPLOAD MAIS TARDE */
     $namefile = $id_coordinator . '-' . $namefile;
     $uploadfile = $uploaddir . $namefile;
+    $namefile = 'https://'.$_SERVER['HTTP_HOST'] . '/wp-content/plugins/empreenda_form/eea_files/' . $namefile;
 
 
     // TABLEA eea_members
@@ -161,7 +160,6 @@ try {
 
     /** INSTITUIÇÕES */
 
-
     // TABLEA eea_institution
 
     foreach ($array->instituicao as $value) {
@@ -181,7 +179,7 @@ try {
         $sth->bindParam(':responsible', $value->responsible, PDO::PARAM_STR);
         $sth->bindParam(':phone_responsible', $value->phone_responsible, PDO::PARAM_STR);
         $sth->bindParam(':past_participations', $value->past_participations, PDO::PARAM_STR);
-        $sth->bindParam(':term_appointment', $uploadfile, PDO::PARAM_STR);
+        $sth->bindParam(':term_appointment', $namefile, PDO::PARAM_STR);
         $sth->bindParam(':proposal', $value->proposal, PDO::PARAM_STR);
         $sth->bindParam(':partnerships_historic', $value->partnerships_historic, PDO::PARAM_STR);
         $sth->bindParam(':partnerships_between_institutions', $value->partnerships_between_institutions, PDO::PARAM_STR);
