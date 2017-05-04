@@ -75,16 +75,28 @@ try {
 
     foreach ($array->members as $value) {
         $sth = $dbh->prepare('insert into eea_members
-            (name, cpf, email, mobile, functions, lattes, id_coordenador)
-            values (:name, :cpf, :email, :mobile, :functions, :lattes, :id_coordenador)');
+            (name, cpf, email, mobile, lattes, id_coordenador)
+            values (:name, :cpf, :email, :mobile, :lattes, :id_coordenador)');
         $sth->bindParam(':name', $value->name, PDO::PARAM_STR);
         $sth->bindParam(':cpf', $value->cpf, PDO::PARAM_STR);
         $sth->bindParam(':email', $value->email, PDO::PARAM_STR);
         $sth->bindParam(':mobile', $value->mobile, PDO::PARAM_STR);
-        $sth->bindParam(':functions', $value->functions, PDO::PARAM_STR);
         $sth->bindParam(':lattes', $value->lattes, PDO::PARAM_STR);
         $sth->bindParam(':id_coordenador', intval($id_coordinator), PDO::PARAM_INT);
         $sth->execute();
+
+        $id_member = $dbh->lastInsertId();
+
+        // TABLEA eea_function
+
+        foreach ($value->functions as $val) {
+
+            $sth = $dbh->prepare('insert into eea_functions (function, id_member) values (:function, :id_member)');
+
+            $sth->bindParam(':function', $val->function, PDO::PARAM_STR);
+            $sth->bindParam(':id_member', $id_member, PDO::PARAM_INT);
+            $sth->execute();
+        }
     }
 
 

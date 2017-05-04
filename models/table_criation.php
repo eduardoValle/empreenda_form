@@ -130,7 +130,7 @@ function eea_db_install(){
             
             CREATE TABLE IF NOT EXISTS `eea_functions` (
               `id_functions` int(11) NOT NULL AUTO_INCREMENT,
-              `name` varchar(255) DEFAULT NULL,
+              `function` varchar(255) DEFAULT NULL,
               `id_member` int(255) DEFAULT NULL,
               PRIMARY KEY (`id_functions`),
               KEY `id_member` (`id_member`)

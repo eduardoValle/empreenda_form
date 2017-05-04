@@ -50,8 +50,6 @@
 				];
 				return list[id];
 			}
-			
-
 
 			$scope.removeValidation = (id) => {
 				if (!Array.isArray(id)) {
@@ -84,10 +82,10 @@
 						$scope.functions.tutor || $scope.functions.banca || 
 						$scope.functions.organizacao || $scope.functions.digitais ){
 
-						$scope.itemChecked.push( $scope.functions );
+						$scope.itemChecked.push(angular.copy($scope.functions));
 						for(var i in $scope.functions){
-							if( $scope.functions[i] ){
-								$scope.members.functions.push( $scope.mapItem[i]);
+							if($scope.functions[i]){
+								$scope.members.functions.push({'function': angular.copy($scope.mapItem[i])});
 								console.log($scope.members);
 							}
 						}
@@ -189,6 +187,33 @@
 					]);
 				}
 			};
+
+
+			/** RECURSOS FINANCEIROS **/
+
+            $scope.financial = 5;
+            $scope.financialAction = function (status) {
+                $scope.financial = status;
+                $scope.financialOption = 1;
+            };
+
+            $scope.financialOption = 1;
+            $scope.financialOptionAction = function (status) {
+                $scope.financialOption = status;
+            };
+
+            $scope.financialRegisterOwn = function () {
+                $scope.addFinancialResources();
+                $scope.financialOption = 2;
+            };
+
+            $scope.financialRegister = function () {
+
+                $scope.addFinancialResources();
+                $scope.financial = 0;
+                $scope.financialOption = 0;
+            };
+
 
 			$scope.addFinancialResources = () => {
 				if (!!$scope.financial_resources.partner_features &&
@@ -296,10 +321,6 @@
 					},300);
 				});
 
-		
-
-
-
 			$scope.addListener("#SaveAccount", function () {
 				$scope.addFinancialResources();
 				$scope.$apply();
@@ -307,15 +328,14 @@
 			});
 
 			$scope.mapItem =  {
-				professor:1,
-				comunicacao:2,
-				tutor:3,
-				banca:4,
-				organizacao:5,
-				digitais:6
+				professor: 'Professor de disciplina',
+				comunicacao: 'Responsável pela comunicação com a central do PEA',
+				tutor: 'Tutor de projetos',
+				banca: 'Responsável pela formação da banca de avaliadores',
+				organizacao: 'Responsável pela organização do ELEA',
+				digitais: 'Responsável pelas comunicações analógicas ou digitais de divulgação'
 			};
-			
-			
+
 			$scope.functions = {
 				professor:false,
 				comunicacao:false,
@@ -461,12 +481,12 @@
 						case 'success':
 							messageToast('Sua proposta foi enviada com sucesso!!', 'Parabéns!!', 'success');
 							//Limpando o form.
-							$scope.signupForm = $scope._SignupForm();
+							// $scope.signupForm = $scope._SignupForm();
 
 							//Redirecionando para a página principal.
-							setTimeout(function () {
-								window.location.href = "http://www.empreendaemacao.com.br/"; //will redirect to your blog page (an ex: blog.html)
-							}, 2000);
+							// setTimeout(function () {
+							// 	window.location.href = "http://www.empreendaemacao.com.br/"; //will redirect to your blog page (an ex: blog.html)
+							// }, 2000);
 							break;
 						case 'error database':
 							messageToast('Erro ao conectar com o banco de dados!! \nPor favor, entre em contato com nossos administradores!!', 'Erro!', 'error');
@@ -496,60 +516,6 @@
 					loaderBg: '#9EC600' // Background color of the toast loader
 				});
 			}
-			$scope.register = function () {
-						//if (camposNulos()) {
-						//	toastMessage('Nenhum dos campos podem estar em branco!!');
-						//	return;
-						//} else {
-						$scope.loader('show');
-						var formData = new FormData();
-						formData.append("term_appointment", jQuery("#term_appointment")[0].files[0]);
-
-						formData.append("signupForm", JSON.stringify($scope.signupForm));
-
-						$http({
-							method: 'POST',
-							url: '/wordpress/wp-content/plugins/empreenda_form/controllers/validateData.php',
-							data: formData,
-							transformRequest: angular.identity,
-							headers: {
-								'Content-Type': undefined
-							}
-						}).then(function (response) {
-							console.log(response);
-							//limpando o form;
-							$scope.signupForm = $scope._SignupFormClear();
-
-							// SUCSESS
-							//toastMessage('Email enviado com sucesso!');
-							$scope.loader('hide');
-							jQuery.toast({
-								text: "Sua proposta foi enviada com sucesso", // Text that is to be shown in the toast
-								heading: 'Parabéns', // Optional heading to be shown on the toast
-								icon: 'success', // Type of toast icon
-								showHideTransition: 'fade', // fade, slide or plain
-								allowToastClose: true, // Boolean value true or false
-								hideAfter: false, // false to make it sticky or number representing the miliseconds as time after which toast needs to be hidden
-								stack: 5, // false if there should be only one toast at a time or a number representing the maximum number of toasts to be shown at a time
-								position: 'mid-center', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
-								textAlign: 'left', // Text alignment i.e. left, right or center
-								loader: true, // Whether to show loader or not. True by default
-								loaderBg: '#9EC600', // Background color of the toast loader
-							});
-
-							setTimeout(function () {
-								window.location.href = "http://www.empreendaemacao.com.br/"; //will redirect to your blog page (an ex: blog.html)
-							}, 2000);
-
-						}, function () {
-							// ERROR
-							//toastMessage('Email não encontrado!');
-							$scope.loader('hide');
-						});
-
-						//	}
-
-					};
 
 			window.setInterval(()=>{
 				if( !!$scope.signupForm){

@@ -20,7 +20,7 @@
 					cpf: '',
 					email: '',
 					mobile: '',
-					lattes: '',
+					lattes: ''
 				};
 			};
 			return obj;

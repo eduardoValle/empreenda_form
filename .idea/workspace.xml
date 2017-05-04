@@ -5,11 +5,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/validateData.php" afterPath="$PROJECT_DIR$/controllers/validateData.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/form.ctrl.js" afterPath="$PROJECT_DIR$/js/form.ctrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/financialResources.html" afterPath="$PROJECT_DIR$/views/financialResources.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.html" afterPath="$PROJECT_DIR$/views/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/instituicao.html" afterPath="$PROJECT_DIR$/views/instituicao.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/member.html" afterPath="$PROJECT_DIR$/views/member.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/othersFeatures.html" afterPath="$PROJECT_DIR$/views/othersFeatures.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services.js" afterPath="$PROJECT_DIR$/js/services.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/table_criation.php" afterPath="$PROJECT_DIR$/models/table_criation.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,40 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="financialResources.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="financialResources.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/financialResources.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="268" selection-end-column="6" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="validateData.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/validateData.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding>
-                <marker date="1493856854655" expanded="true" signature="1174:1459" ph="insert into eea_coordinator... " />
-                <marker date="1493856854655" expanded="true" signature="2666:2851" ph="insert into eea_members... " />
-                <marker date="1493856854655" expanded="true" signature="3434:3554" ph="insert into eea_participation... " />
-                <marker date="1493856854655" expanded="true" signature="3925:4197" ph="insert into eea_financial_resources... " />
-                <marker date="1493856854655" expanded="true" signature="4911:5147" ph="insert into eea_host_institutions... " />
-                <marker date="1493856854655" expanded="true" signature="5889:5987" ph="insert into eea_others_features... " />
-                <marker date="1493856854655" expanded="true" signature="6311:6932" ph="insert into eea_institution... " />
-                <marker date="1493856854655" expanded="true" signature="8370:8583" ph="insert into eea_discipline... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="instituicao.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/instituicao.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3298">
-              <caret line="194" column="4" lean-forward="true" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="23" />
+            <state relative-caret-position="187">
+              <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -75,19 +43,39 @@
       <file leaf-file-name="form.ctrl.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/form.ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="55" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="570" selection-end-column="0" />
+            <state relative-caret-position="4743">
+              <caret line="321" column="19" lean-forward="true" selection-start-line="321" selection-start-column="19" selection-end-line="321" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/index.html">
+      <file leaf-file-name="member.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/member.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="299" column="23" lean-forward="false" selection-start-line="299" selection-start-column="23" selection-end-line="299" selection-end-column="23" />
+            <state relative-caret-position="445">
+              <caret line="126" column="110" lean-forward="true" selection-start-line="126" selection-start-column="110" selection-end-line="126" selection-end-column="177" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="validateData.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/controllers/validateData.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <marker date="1493867402861" expanded="true" signature="1174:1459" ph="insert into eea_coordinator... " />
+                <marker date="1493867402861" expanded="true" signature="2666:2828" ph="insert into eea_members... " />
+                <marker date="1493867402861" expanded="true" signature="3428:3506" ph="insert into eea_function... " />
+                <marker date="1493867402861" expanded="true" signature="3762:3882" ph="insert into eea_participation... " />
+                <marker date="1493867402861" expanded="true" signature="4253:4525" ph="insert into eea_financial_resources... " />
+                <marker date="1493867402861" expanded="true" signature="5239:5475" ph="insert into eea_host_institutions... " />
+                <marker date="1493867402861" expanded="true" signature="6217:6315" ph="insert into eea_others_features... " />
+                <marker date="1493867402861" expanded="true" signature="6639:7260" ph="insert into eea_institution... " />
+                <marker date="1493867402861" expanded="true" signature="8698:8911" ph="insert into eea_discipline... " />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -104,10 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>insti</find>
-      <find>Nada a declarar...</find>
-      <find>endere</find>
-      <find>financial_resources.contact_person</find>
       <find>ende</find>
       <find>email</find>
       <find>tele</find>
@@ -134,6 +118,10 @@
       <find>finaliza</find>
       <find>concluir</find>
       <find>len</find>
+      <find>member</find>
+      <find>members</find>
+      <find>functions</find>
+      <find>func</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -163,17 +151,17 @@
         <option value="$PROJECT_DIR$/libs/ultimate-DataTable/ultimate-datatable-3.3.1-SNAPSHOT.css" />
         <option value="$PROJECT_DIR$/libs/ultimate-data-table/ultimate-datatable-3.3.1-SNAPSHOT.js" />
         <option value="$PROJECT_DIR$/controllers/dashboardData.php" />
-        <option value="$PROJECT_DIR$/models/table_criation.php" />
         <option value="$PROJECT_DIR$/js/eeaDataTable.js" />
         <option value="$PROJECT_DIR$/views/menu_page.tpl.php" />
-        <option value="$PROJECT_DIR$/js/services.js" />
         <option value="$PROJECT_DIR$/views/discipline.html" />
         <option value="$PROJECT_DIR$/views/instituicao.html" />
         <option value="$PROJECT_DIR$/views/othersFeatures.html" />
         <option value="$PROJECT_DIR$/views/member.html" />
         <option value="$PROJECT_DIR$/views/index.html" />
-        <option value="$PROJECT_DIR$/js/form.ctrl.js" />
         <option value="$PROJECT_DIR$/views/financialResources.html" />
+        <option value="$PROJECT_DIR$/js/services.js" />
+        <option value="$PROJECT_DIR$/models/table_criation.php" />
+        <option value="$PROJECT_DIR$/js/form.ctrl.js" />
         <option value="$PROJECT_DIR$/controllers/validateData.php" />
       </list>
     </option>
@@ -277,6 +265,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="empreenda_form" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="empreenda_form" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -444,12 +446,12 @@
       <workItem from="1493490869071" duration="10288000" />
       <workItem from="1493511136535" duration="9644000" />
       <workItem from="1493728095164" duration="13334000" />
-      <workItem from="1493815685152" duration="34414000" />
+      <workItem from="1493815685152" duration="42451000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232226000" />
+    <option name="totallyTimeSpent" value="240263000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -695,25 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/table_criation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="193" column="10" lean-forward="true" selection-start-line="193" selection-start-column="10" selection-end-line="193" selection-end-column="10" />
-          <folding>
-            <marker date="1493735874188" expanded="true" signature="271:304" ph="DROP TABLE I... " />
-            <marker date="1493735874188" expanded="true" signature="318:355" ph="DROP TABLE I... " />
-            <marker date="1493735874188" expanded="true" signature="369:405" ph="DROP TABLE I... " />
-            <marker date="1493735874188" expanded="true" signature="419:461" ph="DROP TABLE I... " />
-            <marker date="1493735874188" expanded="true" signature="475:519" ph="DROP TABLE I... " />
-            <marker date="1493735874188" expanded="true" signature="533:579" ph="DROP TABLE I... " />
-            <marker date="1493735874188" expanded="true" signature="593:631" ph="DROP TABLE I... " />
-            <marker date="1493735874188" expanded="true" signature="645:683" ph="DROP TABLE I... " />
-            <marker date="1493735874188" expanded="true" signature="697:731" ph="DROP TABLE I... " />
-            <marker date="1493735874188" expanded="true" signature="745:785" ph="DROP TABLE I... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/othersFeatures.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -752,44 +735,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="112" column="32" lean-forward="false" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/member.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/validateData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <marker date="1493856854655" expanded="true" signature="1174:1459" ph="insert into eea_coordinator... " />
-            <marker date="1493856854655" expanded="true" signature="2666:2851" ph="insert into eea_members... " />
-            <marker date="1493856854655" expanded="true" signature="3434:3554" ph="insert into eea_participation... " />
-            <marker date="1493856854655" expanded="true" signature="3925:4197" ph="insert into eea_financial_resources... " />
-            <marker date="1493856854655" expanded="true" signature="4911:5147" ph="insert into eea_host_institutions... " />
-            <marker date="1493856854655" expanded="true" signature="5889:5987" ph="insert into eea_others_features... " />
-            <marker date="1493856854655" expanded="true" signature="6311:6932" ph="insert into eea_institution... " />
-            <marker date="1493856854655" expanded="true" signature="8370:8583" ph="insert into eea_discipline... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/instituicao.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3298">
           <caret line="194" column="4" lean-forward="true" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="23" />
-          <folding />
+          <folding>
+            <marker date="1493857013349" expanded="true" signature="10460:10521" ph="..." />
+            <marker date="1493857013349" expanded="true" signature="10606:11029" ph="..." />
+            <marker date="1493857013349" expanded="true" signature="10639:11018" ph="..." />
+            <marker date="1493857013349" expanded="true" signature="10974:11003" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -801,19 +756,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/form.ctrl.js">
+    <entry file="file://$PROJECT_DIR$/views/financialResources.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="570" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/financialResources.html">
+    <entry file="file://$PROJECT_DIR$/js/services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="268" selection-end-column="6" />
+        <state relative-caret-position="-68">
+          <caret line="23" column="18" lean-forward="true" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/member.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="126" column="110" lean-forward="true" selection-start-line="126" selection-start-column="110" selection-end-line="126" selection-end-column="177" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/form.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4743">
+          <caret line="321" column="19" lean-forward="true" selection-start-line="321" selection-start-column="19" selection-end-line="321" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/table_criation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="132" column="23" lean-forward="false" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
+          <folding>
+            <marker date="1493865863907" expanded="true" signature="271:304" ph="DROP TABLE I... " />
+            <marker date="1493865863907" expanded="true" signature="318:355" ph="DROP TABLE I... " />
+            <marker date="1493865863907" expanded="true" signature="369:405" ph="DROP TABLE I... " />
+            <marker date="1493865863907" expanded="true" signature="419:461" ph="DROP TABLE I... " />
+            <marker date="1493865863907" expanded="true" signature="475:519" ph="DROP TABLE I... " />
+            <marker date="1493865863907" expanded="true" signature="533:579" ph="DROP TABLE I... " />
+            <marker date="1493865863907" expanded="true" signature="593:631" ph="DROP TABLE I... " />
+            <marker date="1493865863907" expanded="true" signature="645:683" ph="DROP TABLE I... " />
+            <marker date="1493865863907" expanded="true" signature="697:731" ph="DROP TABLE I... " />
+            <marker date="1493865863907" expanded="true" signature="745:785" ph="DROP TABLE I... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/validateData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding>
+            <marker date="1493867402861" expanded="true" signature="1174:1459" ph="insert into eea_coordinator... " />
+            <marker date="1493867402861" expanded="true" signature="2666:2828" ph="insert into eea_members... " />
+            <marker date="1493867402861" expanded="true" signature="3428:3506" ph="insert into eea_function... " />
+            <marker date="1493867402861" expanded="true" signature="3762:3882" ph="insert into eea_participation... " />
+            <marker date="1493867402861" expanded="true" signature="4253:4525" ph="insert into eea_financial_resources... " />
+            <marker date="1493867402861" expanded="true" signature="5239:5475" ph="insert into eea_host_institutions... " />
+            <marker date="1493867402861" expanded="true" signature="6217:6315" ph="insert into eea_others_features... " />
+            <marker date="1493867402861" expanded="true" signature="6639:7260" ph="insert into eea_institution... " />
+            <marker date="1493867402861" expanded="true" signature="8698:8911" ph="insert into eea_discipline... " />
+          </folding>
         </state>
       </provider>
     </entry>
