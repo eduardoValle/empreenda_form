@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b312ab89-4364-43c8-ad3e-7980a4636708" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/validateData.php" afterPath="$PROJECT_DIR$/controllers/validateData.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/form.ctrl.js" afterPath="$PROJECT_DIR$/js/form.ctrl.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/services.js" afterPath="$PROJECT_DIR$/js/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/table_criation.php" afterPath="$PROJECT_DIR$/models/table_criation.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form.ctrl.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="form.ctrl.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/form.ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4743">
-              <caret line="321" column="19" lean-forward="true" selection-start-line="321" selection-start-column="19" selection-end-line="321" selection-end-column="19" />
+            <state relative-caret-position="287">
+              <caret line="484" column="0" lean-forward="true" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -60,11 +56,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="validateData.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="validateData.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/validateData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <marker date="1493867402861" expanded="true" signature="1174:1459" ph="insert into eea_coordinator... " />
                 <marker date="1493867402861" expanded="true" signature="2666:2828" ph="insert into eea_members... " />
@@ -119,9 +115,9 @@
       <find>concluir</find>
       <find>len</find>
       <find>member</find>
-      <find>members</find>
       <find>functions</find>
       <find>func</find>
+      <find>members</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -161,8 +157,8 @@
         <option value="$PROJECT_DIR$/views/financialResources.html" />
         <option value="$PROJECT_DIR$/js/services.js" />
         <option value="$PROJECT_DIR$/models/table_criation.php" />
-        <option value="$PROJECT_DIR$/js/form.ctrl.js" />
         <option value="$PROJECT_DIR$/controllers/validateData.php" />
+        <option value="$PROJECT_DIR$/js/form.ctrl.js" />
       </list>
     </option>
   </component>
@@ -446,12 +442,12 @@
       <workItem from="1493490869071" duration="10288000" />
       <workItem from="1493511136535" duration="9644000" />
       <workItem from="1493728095164" duration="13334000" />
-      <workItem from="1493815685152" duration="42451000" />
+      <workItem from="1493815685152" duration="42562000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="240263000" />
+    <option name="totallyTimeSpent" value="240374000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -780,14 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/form.ctrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4743">
-          <caret line="321" column="19" lean-forward="true" selection-start-line="321" selection-start-column="19" selection-end-line="321" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/table_criation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -809,8 +797,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/validateData.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <marker date="1493867402861" expanded="true" signature="1174:1459" ph="insert into eea_coordinator... " />
             <marker date="1493867402861" expanded="true" signature="2666:2828" ph="insert into eea_members... " />
@@ -822,6 +810,14 @@
             <marker date="1493867402861" expanded="true" signature="6639:7260" ph="insert into eea_institution... " />
             <marker date="1493867402861" expanded="true" signature="8698:8911" ph="insert into eea_discipline... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/form.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="484" column="0" lean-forward="true" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -481,12 +481,12 @@
 						case 'success':
 							messageToast('Sua proposta foi enviada com sucesso!!', 'Parabéns!!', 'success');
 							//Limpando o form.
-							// $scope.signupForm = $scope._SignupForm();
+							$scope.signupForm = $scope._SignupForm();
 
 							//Redirecionando para a página principal.
-							// setTimeout(function () {
-							// 	window.location.href = "http://www.empreendaemacao.com.br/"; //will redirect to your blog page (an ex: blog.html)
-							// }, 2000);
+							setTimeout(function () {
+								window.location.href = "http://www.empreendaemacao.com.br/"; //will redirect to your blog page (an ex: blog.html)
+							}, 2000);
 							break;
 						case 'error database':
 							messageToast('Erro ao conectar com o banco de dados!! \nPor favor, entre em contato com nossos administradores!!', 'Erro!', 'error');
