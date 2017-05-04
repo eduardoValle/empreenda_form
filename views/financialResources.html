@@ -1,164 +1,269 @@
-<!-- Form Name -->
-<legend>Recursos financeiros apresentados como contrapartida, quando houver</legend>
+<!-- RECUSRSOS FINANCEIROS -->
+<div class="card" style="">
+    <!-- HÁ RECURSOS FINANCEIROS? -->
+    <div ng-if="financial === 5">
+        <h3 class="card-header">Há recursos financeiros?</h3>
 
-<!-- Multiple Radios -->
-<div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label" for="own_resource">Recursos</label>
-    <div class="col-md-6 col-sm-6">
-        <div class="radio">
-            <label>
-                <input ng-model="financial_resources.own_resource" type="radio" name="own_resource" id="own_resource"
-                       value="2" ng-init="financial_resources.own_resource=true">
-                Próprio
-            </label>
-        </div>
-            <div class="radio">
-            <label>
-                <input ng-model="financial_resources.own_resource" type="radio" name="own_resource" id="own_resource"
-                       value="1">
-                Parceiro
-            </label>
+        <div>
+            <button class="btn btn-primary" ng-click="financialAction(1);" onclick="return false;">Sim
+            </button>
+            <button class="btn btn-danger" ng-click="financialAction(0);" onclick="return false;">Não
+            </button>
         </div>
     </div>
-</div>
 
-<!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==true">
-    <label class="col-md-4 col-sm-3 control-label" for="financial_resources_name">Nome do parceiro</label>
-    <div class="col-md-6 col-sm-6">
-        <input ng-model="financial_resources.name" id="financial_resources_name" name="financial_resources_name"
-               type="text" placeholder="" class="form-control input-md" required
-               data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Nome">
-    </div>
-</div>
 
-<!-- Text input-->
-<div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label" for="partner_features">Valor de recurso</label>
-    <div class="col-md-6 col-sm-6">
-        <input ng-model="financial_resources.partner_features" id="partner_features" name="partner_features"
-               type="number" placeholder="R$" class="form-control input-md" required
-               data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Valor de recurso">
-    </div>
-</div>
+    <!-- FINALIZAR O CADASTRO -->
+    <div ng-if="financial === 0">
+        <h3 class="card-header">Ultimo passoa antes de finalizar o cadastro</h3>
 
-<!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==true">
-    <label class="col-md-4 col-sm-3 control-label" for="financial_resources_address">Endereço completo do parceiro</label>
-    <div class="col-md-6 col-sm-6">
-        <input ng-model="financial_resources.address" id="financial_resources_address"
-               placeholder="Ex. Rua Antônio Gomes Silva, nº 415"
-               name="financial_resources_address" type="text" class="form-control input-md" required
-               data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Endereço completo do parceiro">
-    </div>
-</div>
+        <!-- CONTRATO FINAL PARA ACEITE DO COORDENADOR -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label">
+                Declaro a concordância com as normas do programa apresentadas através deste
+                <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf"
+                   target="_blank"
+                   title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017
+                </a>
+            </label>
+            <div class="col-md-6 col-sm-6">
+                <div class="radio">
+                    <label>
+                        <input type="checkbox" ng-model="agreeMember" name="agreeMember"
+                               id="agreeMember" value="true"
+                               required
+                               data-rule-required="true"
+                               data-msg-required="É necessário aceitar as normas do programa">
+                        Aceito
+                    </label>
+                </div>
+            </div>
+        </div>
 
-<!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==true">
-    <label class="col-md-4 col-sm-3 control-label" for="address">E-mail do parceiro</label>
-    <div class="col-md-6 col-sm-6">
-        <input ng-model="financial_resources.partner_email" id="financial_resources_address"
-               placeholder="Ex. pedrolucas@contato.com"
-               name="financial_resources_address" type="text" class="form-control input-md" required
-               data-rule-required="true"
-               data-msg-required="É necessário preencher o campo E-mail completo">
-    </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==true">
-    <label class="col-md-4 col-sm-3 control-label" for="address">Telefone do parceiro</label>
-    <div class="col-md-6 col-sm-6">
-        <input ng-model="financial_resources.partner_phone" id="financial_resources_address"
-               placeholder="Apenas números"
-               name="financial_resources_address" type="text" class="form-control input-md" required
-               data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Telefone do parceiro">
-    </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==true">
-    <label class="col-md-4 col-sm-3 control-label" for="cnpj">CNPJ do parceiro</label>
-    <div class="col-md-6 col-sm-6">
-        <input ng-model="financial_resources.cnpj" id="financial_resources_cnpj" name="financial_resources_cnpj"
-               placeholder="Apenas números"
-               type="number" class="form-control input-md" financial_resources required
-               data-rule-required="true"
-               data-msg-required="É necessário preencher o campo CNPJ">
-    </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==true">
-    <label class="col-md-4 col-sm-3 control-label" for="contact_person">Nome do responsável</label>
-    <div class="col-md-6 col-sm-6">
-        <input ng-model="financial_resources.contact_name" id="contact_person" name="contact_person" type="text"
-               placeholder="" class="form-control input-md" required
-               data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Contato do Resposável">
-    </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==true">
-    <label class="col-md-4 col-sm-3 control-label" for="contact_person">Telefone do responsável</label>
-    <div class="col-md-6 col-sm-6">
-        <input ng-model="financial_resources.contact_phone" id="contact_person" name="contact_person" type="text"
-               placeholder="Apenas números" class="form-control input-md" required
-               data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Telefone do Resposável">
-    </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group" ng-if="financial_resources.own_resource==true">
-    <label class="col-md-4 col-sm-3 control-label" for="contact_person">E-mail do responsável</label>
-    <div class="col-md-6 col-sm-6">
-        <input ng-model="financial_resources.contact_email" id="contact_person" name="contact_person" type="text"
-               placeholder="Ex. pedrolucas@contato.com" class="form-control input-md" required
-               data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Contato do Resposável">
-    </div>
-</div>
-
-<!-- Textarea -->
-<div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label" for="detailing">Detalhamento</label>
-    <div class="col-md-6 col-sm-6">
-		<textarea ng-model="financial_resources.detailing" class="form-control" id="detailing" name="detailing"
-                  maxlength="1500" required
-                  data-rule-required="true"
-                  data-msg-required="É necessário preencher o campo Detalhamento"></textarea>
-        {{financial_resources.detailing|wordcount:false:'detailing'}}
-    </div>
-</div>
-
-<!-- Button -->
-<div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label" for="addPartner">Adicionar parceiro</label>
-    <div class="col-md-6 col-sm-6">
-        <button ng-if="!edit" id="addPartner" name="addPartner" class="btn btn-primary"
-                ng-click="addFinancialResources()" onclick="return false;">+ Parceiro
+        <button type="submit" class="btn btn-success submit" ng-click="register()"
+                onclick="return false;">Finalizar cadastro
         </button>
-        <button ng-if="edit" onclick="return false;" ng-click="saveItem('financial_resources')" class="btn btn-success">
-            Alterar
+
+        <button type="submit" class="btn btn-primary submit" ng-click="financialAction(1)"
+                onclick="return false;">Adicionar recurso
         </button>
     </div>
-</div>
 
 
-<div class="card w-100" ng-repeat="f in signupForm.financial_resources">
-    <div class="card-block">
-        <h3 class="card-title">{{f.partner_features}}</h3>
-        <p class="card-text">{{f.detailing}}</p>
-        <button ng-click="editItem('financial_resources',f)" onclick="return false;" class="btn btn-warning">Editar
-        </button>
-        <button ng-click="removeItem('financial_resources',$index)" onclick="return false;" class="btn btn-danger">
-            Excluir
-        </button>
+    <!-- OPÇÕES DE RECURSO -->
+    <div class="btn-group form-group" data-toggle="buttons" ng-if="financial === 1">
+        <label class="btn btn-primary active" ng-click="financialOptionAction(1)">
+            <input type="radio" name="options" id="option1" value="1" checked>
+            Recurso Próprio
+        </label>
+        <label class="btn btn-primary" ng-click="financialOptionAction(2)">
+            <input type="radio" name="options" id="option2" value="2">
+            Recurso de terceiros
+        </label>
+        <label class="btn btn-primary" ng-click="financialOptionAction(3)">
+            <input type="radio" name="options" id="option3" value="3">
+            Recurso Próprio e de terceiros
+        </label>
+    </div>
+
+
+    <!-- RECURSO PRÓPRIO -->
+    <div ng-if="(financialOption === 1 || financialOption === 3) && financial !== 0 && financial !== 5">
+
+        <h3 class="titulo-fase">Adicione o recurso próprio</h3>
+
+        <!-- VALOR DO RECURSO -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="own_value">Valor de
+                recurso</label>
+            <div class="col-md-6 col-sm-6">
+                <input ng-model="financial_resources.partner_features" id="own_value"
+                       name="partner_features"
+                       type="number" placeholder="R$" class="form-control input-md" required
+                       data-rule-required="true"
+                       data-msg-required="É necessário preencher o campo Valor de recurso">
+            </div>
+        </div>
+        <!-- INFORMAÇÕES ADICIONAIS SOBRE A PARCERIA -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="own_detailing">
+                Informações adicionais sobre o recurso
+            </label>
+            <div class="col-md-6 col-sm-6">
+                                <textarea ng-model="financial_resources.detailing" class="form-control"
+                                          id="own_detailing"
+                                          name="own_detailing"
+                                          maxlength="1500" required
+                                          data-rule-required="true" rows="5"
+                                          data-msg-required="É necessário preencher o campo Informações adicionais sobre o recurso">
+
+                                </textarea>
+                {{financial_resources.detailing|wordcount:false:'own_detailing'}}
+            </div>
+        </div>
+
+        <!-- BOTÃO ADICIONAR RECURSO -->
+        <div class="form-group" ng-if="financialOption !== 3">
+            <button class="btn btn-primary" ng-click="financialRegister()" onclick="return false;">
+                ADICIONAR
+            </button>
+            <!-- Concluir -->
+            <button class="btn btn-success" ng-click="financialRegister()" onclick="return false;">
+                Concluir
+            </button>
+        </div>
+
+        <!-- BOTÃO CADASTRAR PARCEIRO -->
+        <div class="form-group" ng-if="financialOption === 3">
+            <!-- + Recurso do parceiro -->
+            <button class="btn btn-primary" ng-click="financialRegisterOwn()" onclick="return false;">
+                + RECURSO DO PARCEIRO
+            </button>
+            <!-- Concluir -->
+            <button class="btn btn-success" ng-click="financialRegister()" onclick="return false;">
+                Concluir
+            </button>
+        </div>
+    </div>
+
+
+    <!-- RECURSO DE TERCEIROS -->
+    <div ng-if="financialOption === 2 && financial !== 0 && financial !== 5">
+
+        <h3 class="titulo-fase">Adicione o recurso de parceiros</h3>
+
+        <!-- NOME DO PARCEIRO -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="financial_resources_name">
+                Nome do parceiro
+            </label>
+            <div class="col-md-6 col-sm-6">
+                <input ng-model="financial_resources.name" id="financial_resources_name" name="financial_resources_name"
+                       type="text" placeholder="" class="form-control input-md" required
+                       data-rule-required="true"
+                       data-msg-required="É necessário preencher o campo Nome">
+            </div>
+        </div>
+
+        <!-- ENDEREÇO DO PARCEIRO -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="financial_resources_address">
+                Endereço completo do parceiro
+            </label>
+            <div class="col-md-6 col-sm-6">
+                <input ng-model="financial_resources.address" id="financial_resources_address"
+                       placeholder="Ex. Rua Antônio Gomes Silva, nº 415"
+                       name="financial_resources_address" type="text" class="form-control input-md" required
+                       data-rule-required="true"
+                       data-msg-required="É necessário preencher o campo Endereço completo do parceiro">
+            </div>
+        </div>
+
+        <!-- CNPJ DO PARCEIRO -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="financial_resources_cnpj">CNPJ do parceiro</label>
+            <div class="col-md-6 col-sm-6">
+                <input ng-model="financial_resources.cnpj" id="financial_resources_cnpj" name="financial_resources_cnpj"
+                       placeholder="Apenas números"
+                       type="number" class="form-control input-md" financial_resources required
+                       data-rule-required="true"
+                       data-msg-required="É necessário preencher o campo CNPJ">
+            </div>
+        </div>
+
+        <!-- VALOR DE RECURSO -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="partner_features">Valor de recurso</label>
+            <div class="col-md-6 col-sm-6">
+                <input ng-model="financial_resources.partner_features" id="partner_features" name="partner_features"
+                       type="number" placeholder="R$" class="form-control input-md" required
+                       data-rule-required="true"
+                       data-msg-required="É necessário preencher o campo Valor de recurso">
+            </div>
+        </div>
+
+        <!-- NOME DO RESPONSÁVEL -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="contact_person">Nome do responsável</label>
+            <div class="col-md-6 col-sm-6">
+                <input ng-model="financial_resources.contact_name" id="name_person" name="contact_person" type="text"
+                       placeholder="" class="form-control input-md" required
+                       data-rule-required="true"
+                       data-msg-required="É necessário preencher o campo Contato do Resposável">
+            </div>
+        </div>
+
+        <!-- TELEFONE DO RESPONSÁVEL -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="contact_person">Telefone do responsável</label>
+            <div class="col-md-6 col-sm-6">
+                <input ng-model="financial_resources.contact_phone" id="contact_person" name="contact_person"
+                       type="text"
+                       placeholder="Apenas números" class="form-control input-md" required
+                       data-rule-required="true"
+                       data-msg-required="É necessário preencher o campo Telefone do Resposável">
+            </div>
+        </div>
+
+        <!-- E-MAIL DO RESPONSÁVEL -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="contact_person">E-mail do responsável</label>
+            <div class="col-md-6 col-sm-6">
+                <input ng-model="financial_resources.contact_email" id="email_person" name="contact_person" type="text"
+                       placeholder="Ex. pedrolucas@contato.com" class="form-control input-md" required
+                       data-rule-required="true"
+                       data-msg-required="É necessário preencher o campo Contato do Resposável">
+            </div>
+        </div>
+
+        <!-- INFORMAÇÕES ADICIONAIS SOBRE A PARCERIA -->
+        <div class="form-group">
+            <label class="col-md-4 col-sm-3 control-label" for="detailing">
+                Informações adicionais sobre a parceria
+            </label>
+            <div class="col-md-6 col-sm-6">
+                            <textarea ng-model="financial_resources.detailing" class="form-control"
+                                      id="detailing" name="detailing"
+                                      maxlength="1500" required
+                                      data-rule-required="true" rows="5"
+                                      data-msg-required="É necessário preencher o campo Informações adicionais sobre a parceria">
+
+                            </textarea>
+                {{financial_resources.detailing|wordcount:false:'detailing'}}
+            </div>
+        </div>
+
+
+        <!-- BOTÃO ADICIONAR RECURSO -->
+        <div class="form-group">
+            <!-- Adicionar -->
+            <button ng-if="!edit" name="addPartner" class="btn btn-primary"
+                    ng-click="addFinancialResources()" onclick="return false;">ADICIONAR
+            </button>
+
+            <!-- Alterar -->
+            <button ng-if="edit" onclick="return false;" ng-click="saveItem('financial_resources')"
+                    class="btn btn-success">
+                Alterar
+            </button>
+
+            <!-- Concluir -->
+            <button class="btn btn-success" ng-click="financialRegister()" onclick="return false;">
+                Concluir
+            </button>
+        </div>
+    </div>
+
+    <!-- ARRAY DE PARCEIROS -->
+    <div ng-if="financial !== 0 && financial !== 5" class="card w-100" ng-repeat="f in signupForm.financial_resources">
+        <div class="card-block">
+            <h3 class="card-title">{{f.partner_features}}</h3>
+            <p class="card-text">{{f.detailing}}</p>
+            <button ng-click="editItem('financial_resources',f)" onclick="return false;" class="btn btn-warning">Editar
+            </button>
+            <button ng-click="removeItem('financial_resources',$index)" onclick="return false;" class="btn btn-danger">
+                Excluir
+            </button>
+        </div>
     </div>
 </div>

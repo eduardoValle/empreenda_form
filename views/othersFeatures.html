@@ -1,21 +1,22 @@
-<!-- Text input-->
+<!-- OUTROS RECURSOS COMO CONTRAPARTIDA -->
 <div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label">Outros</label>
+    <label class="col-md-4 col-sm-3 control-label" for="others_features_name">
+        Outros recusrsos como contrapartida econômicos para o ELEA
+    </label>
     <div class="col-md-6 col-sm-6">
         <input ng-model="others_features.name" id="others_features_name" name="others_features_name" type="text"
-               placeholder="" class="form-control">
+               placeholder="Internet, etc...." class="form-control">
     </div>
 </div>
 
 <div class="form-group" ng-repeat="o in signupForm.others_features">
-    <label class="col-md-4 col-sm-3 control-label" for="name">Outros</label>
+    <label class="col-md-4 col-sm-3 control-label">Outros</label>
     <div class="col-md-6 col-sm-6">
         <input placeholder="{{o.name}}">
     </div>
 </div>
 
-
-<!-- Button -->
+<!-- BOTÃO DE ADICIONAR OUTROS -->
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label" for="addOthers">Adicionar Outros</label>
     <div class="col-md-4">

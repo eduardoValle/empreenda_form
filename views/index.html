@@ -21,7 +21,8 @@
               onsubmit="return false;">
             <fieldset>
                 <h2 class="titulo-fase">Fase 1 - Dados do coordenador</h2>
-                <!-- Name input-->
+
+                <!-- NOME DO COORDENADOR -->
                 <div class="form-group">
                     <label class="col-md-4 col-sm-3 control-label" for="name">Nome do coordenador</label>
                     <div class="col-md-6 col-sm-6">
@@ -182,10 +183,10 @@
             </fieldset>
             <fieldset>
 
-                <!-- Form Name -->
-                <legend>Recursos econômicos apresentados como contrapartida</legend>
+                <!-- FASE 4 - RESURSOS ECONÔMICOS APRESENTADOS COMO CONTRAPARTIDA -->
+                <h2 class="titulo-fase">Fase 4 - Recursos econômicos apresentados como contrapartida</h2>
 
-                <!-- Multiple Checkboxes -->
+                <!-- CONTRATO DE CONTRAPARTIDA -->
                 <div class="form-group">
                     <label class="col-md-4 col-sm-3 control-label" for="agreeResources">Como contrapartida mínima, a
                         instituição deve oferecer sem qualquer custo para o Programa o espaço físico para o <abbr
@@ -254,8 +255,8 @@
 
                 <!-- Multiple Checkboxes -->
                 <div class="form-group">
-                    <label class="col-md-4 col-sm-3 control-label" for="optional_features">Opcionais contrapartida
-                        econômica</label>
+                    <label class="col-md-4 col-sm-3 control-label" for="optional_features">Outros recusrsos como
+                        contrapartida econômicos para o ELEA</label>
                     <div class="col-md-4">
                         <div class="checkbox">
                             <label>
@@ -273,7 +274,7 @@
             <fieldset>
 
                 <!-- Form Name -->
-                <legend>Plano de divulgação do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></legend>
+                <h2>Fase 5 -Plando de divulgação do <abbr title="Programa Empreenda. Em Ação!">PEA</abbr></h2>
 
                 <!-- Textarea -->
                 <div class="form-group">
@@ -284,7 +285,7 @@
                     <div class="col-md-6 col-sm-6">
 						<textarea ng-model="signupForm.coordenador.disseminationPlan" class="form-control"
                                   id="disseminationPlan" maxlength="4000" name="disseminationPlan" required
-                                  data-rule-required="true"
+                                  data-rule-required="true" rows="5"
                                   data-msg-required="É necessário preencher o campo do Plano de divulgação">
                         </textarea>
                     </div>
@@ -297,9 +298,6 @@
             <fieldset>
                 <financial-resources></financial-resources>
             </fieldset>
-            <button id="SaveAccount" type="submit" class="btn btn-primary submit" ng-click="register()"
-                    onclick="return false;">Candidatar
-            </button>
         </form>
     </div>
 </div>

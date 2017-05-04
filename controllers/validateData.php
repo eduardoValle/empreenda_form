@@ -27,6 +27,7 @@ $namefile = str_replace(' ', '-', $namefile);
 $host = DB_HOST;
 $dataBase = DB_NAME;
 $array = json_decode(filter_input(INPUT_POST, 'signupForm', FILTER_DEFAULT));
+//print_r($array);
 
 try {
     $dbh = new PDO("mysql:dbname=$dataBase;host=$host", DB_USER, DB_PASSWORD, array(PDO::ATTR_PERSISTENT => true));
