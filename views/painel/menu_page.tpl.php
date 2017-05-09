@@ -25,7 +25,7 @@ function my_custom_menu_page() {
             
              <div ng-app="ngAppDemo" class="container-fluid">
                 <div class="row">
-                    <h1 align=center>Simple Ultimate DataTable exemple</h1><br>
+                    <h1 align=center>Lista de coordenadores cadastrados</h1><br>
                     <div ng-controller="ngAppDemoController">
                         <div class="col-md-12 col-lg-12" ultimate-datatable="datatable">
                         </div>

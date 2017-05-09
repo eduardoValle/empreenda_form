@@ -21,10 +21,10 @@ function eea_uninstall_db() {
             DROP TABLE IF EXISTS `eea_others_features`;
             DROP TABLE IF EXISTS `eea_host_institutions`;
             DROP TABLE IF EXISTS `eea_financial_resources`;
-            DROP TABLE IF EXISTS `eea_coordinator`;
             DROP TABLE IF EXISTS `eea_institution`;
             DROP TABLE IF EXISTS `eea_members`;
             DROP TABLE IF EXISTS `eea_participation`;
+            DROP TABLE IF EXISTS `eea_coordinator`;
         ';
 
         $dbh = new PDO("mysql:dbname=$dataBase;host=$host", DB_USER, DB_PASSWORD, array(PDO::ATTR_PERSISTENT => true));
@@ -65,6 +65,7 @@ function eea_db_install(){
               `experience` varchar(3100) DEFAULT NULL,
               `external_participation` varchar(1600) DEFAULT NULL,
               `motivation` varchar(2100) DEFAULT NULL,
+              `registration_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
               PRIMARY KEY (`id_coordenador`)
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
     

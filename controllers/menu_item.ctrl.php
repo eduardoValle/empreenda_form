@@ -6,7 +6,7 @@
  * Time: 18:43
  */
 
-require_once(EEAURL.'views/menu_page.tpl.php');
+require_once(EEAURL.'views/painel/menu_page.tpl.php');
 
 /**
  * Registrando uma página customizada no menu do painel.
