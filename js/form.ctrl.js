@@ -32,7 +32,6 @@
                         return '';
                     }
                 }
-
             }
         })
         .controller('EeaForm', ['$scope', 'Member', 'Instituicao', 'OthersFeatures', 'FinancialResources', 'Discipline', '$http',
@@ -236,7 +235,6 @@
                         OthersFeatures.add($scope.others_features);
                         $scope.others_features = OthersFeatures.clear();
                         $scope.signupForm.others_features = OthersFeatures.get();
-
                         return true;
                     }
                     return true;
@@ -305,7 +303,6 @@
                         return false;
                     }
                     jQuery('html,body').scrollTop(0);
-
                 });
 
                 $scope.addListener("#step4Next", function () {
@@ -320,7 +317,6 @@
                 $scope.addListener("#SaveAccount", function () {
                     $scope.addFinancialResources();
                     $scope.$apply();
-
                 });
 
                 $scope.mapItem = {
@@ -408,7 +404,6 @@
                     } else {
                         console.error("type undefined");
                     }
-
                 };
                 $scope.removeItem = function (type, index) {
                     if (!!type) {
@@ -427,12 +422,10 @@
                             case 'financial_resources':
                                 $scope.signupForm.financial_resources.splice(index, 1);
                                 break;
-
                         }
                     } else {
                         console.error("type undefined");
                     }
-
                 };
 
                 // ************** REGISTER ************** //
@@ -530,7 +523,6 @@
                     if (!!$scope.financial_resources.name) {
                         $scope.setInCache("financial_resources", $scope.financial_resources);
                     }
-
                 }, 10000);
 
                 $scope._SignupFormClear = function () {
@@ -580,6 +572,7 @@
                         financial_resources: []
                     };
                 };
+
                 $scope.getFromCache = function (cache) {
                     if (!!cache && cache !== 'undefined') {
                         return JSON.parse(cache);
@@ -587,27 +580,33 @@
                         return $scope._SignupFormClear();
                     }
                 };
+
                 $scope.setInCache = function (key, value) {
                     if (!!value && value !== 'undefined') {
                         localStorage.setItem(key, JSON.stringify(value));
                     }
                 };
+
                 $scope.retrieveMembersFromCache = function () {
                     var cache = localStorage.getItem("members");
                     return $scope.getFromCache(cache);
                 };
+
                 $scope.retrieveDisciplineFromCache = function () {
                     var cache = localStorage.getItem("discipline");
                     return $scope.getFromCache(cache);
                 };
+
                 $scope.retrieveInstitutionFromCache = function () {
                     var cache = localStorage.getItem("instituicao");
                     return $scope.getFromCache(cache);
                 };
+
                 $scope.retrieveOtherFeatureFromCache = function () {
                     var cache = localStorage.getItem("others_features");
                     return $scope.getFromCache(cache);
                 };
+
                 $scope.retrieveFinancialResourcesFromCache = function () {
                     var cache = localStorage.getItem("financial_resources");
                     return $scope.getFromCache(cache);
@@ -617,6 +616,7 @@
                     var cache = localStorage.getItem("SignupForm");
                     return $scope.getFromCache(cache);
                 };
+
                 $scope.itemCheckedFromCache = function () {
                     var cache = localStorage.getItem('itemChecked');
                     return $scope.getFromCache(cache);
