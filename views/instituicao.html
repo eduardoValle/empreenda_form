@@ -78,7 +78,8 @@
     <label class="col-md-4 col-sm-3 control-label" for="instituicao_responsible">Nome do representante legal</label>
     <div class="col-md-6 col-sm-6">
         <input ng-model="instituicao.responsible" id="instituicao_responsible" name="instituicao_responsible"
-               type="text" placeholder="" class="form-control input-md" required data-rule-required="true"
+               type="text" class="form-control input-md" placeholder="Ex. Pedro Lucas Pereira Gomes" required
+               data-rule-required="true"
                data-msg-required="É necessário preencher o campo Nome do representante legal.">
     </div>
 </div>
@@ -89,7 +90,7 @@
     <label class="col-md-4 col-sm-3 control-label" for="phone_responsible">Contato do representante legal</label>
     <div class="col-md-6 col-sm-6">
         <input ng-model="instituicao.phone_responsible" id="phone_responsible" name="phone_responsible" type="text"
-               placeholder="" class="form-control input-md" required
+               placeholder="Apenas números" class="form-control input-md" required
                mask='(99) 9 9999-9999'
                data-rule-required="true"
                data-msg-required="É necessário preencher o campo de Contato do representante legal.">
