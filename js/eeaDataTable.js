@@ -70,13 +70,13 @@
                 url: '/wordpress/wp-content/plugins/empreenda_form/controllers/selecionaDados.php'
             }).then(function (response) {
                 console.log(response.data);
-                coordenadores = response.data;
+                $scope.coordenadores = response.data;
 
                 //Inserindo as configurações no data table.
                 $scope.datatable = datatable(datatableConfig);
 
                 //Inserindo os dados no data table.
-                $scope.datatable.setData(coordenadores);
+                $scope.datatable.setData($scope.coordenadores);
 
             }, function () {
                 console.log("Não foi possível retornar os dados do Coordenador!!");

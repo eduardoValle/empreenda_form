@@ -3,68 +3,50 @@ $(function () {
 
 	$signupForm.validate({
 		rules: {
+
+            /** COORDENADOR **/
+
 			name: 'required',
-			cpf: {
-				required: true,
-				number: true
-			},
+			cpf: 'required',
 			address: 'required',
 			email: {
 				required: true,
 				email: true
 			},
-			phone: {
-				required: true,
-				number: true
-			},
-			mobile: {
-				required: true,
-				number: true
-			},
+			phone: 'required',
+			mobile: 'required',
 			responsible: 'required',
 			lattes: 'required',
 			experience: 'required',
 			external_participation: 'required',
 			motivation: 'required',
+
+			/** MEMBER **/
+
 			members_functions: 'required',
 			member_name: 'required',
-			member_cpf: {
-				required: true,
-				number: true
-			},
+			member_cpf: 'required',
 			member_email: {
 				required: true,
 				email: true
 			},
-			member_phone: {
-				required: true,
-				number: true
-			},
-			member_mobile: {
-				required: true,
-				number: true
-			},
+			member_phone: 'required',
+			member_mobile: 'required',
 			member_lattes: 'required',
 			agreeMember: 'required',
+
+            /** INSTITUIÇÃO **/
+
 			instituicao_name: 'required',
-			instituicao_cnpj: {
-				required: true,
-				number: true
-			},
+			instituicao_cnpj: 'required',
 			instituicao_address: 'required',
 			instituicao_email: {
 				required: true,
 				email: true
 			},
-			instituicao_phone: {
-				required: true,
-				number: true
-			},
+			instituicao_phone: 'required',
 			instituicao_responsible: 'required',
-			phone_responsible: {
-				required: true,
-				number: true
-			},
+			phone_responsible: 'required',
 			pastParticipations: 'required',
 			instituicao_historic: 'required',
 			partnerships_for_pea: 'required',
@@ -77,16 +59,19 @@ $(function () {
 				required: true,
 				number: true
 			},
+
+            /** RECURSOS FINANCEIROS **/
+
 			financial_resources_name: 'required',
 			partner_features: {
 				required: true,
 				number: true
 			},
+
+            /** RECURSOS ECONÔMICOS **/
+
 			financial_resources_address: 'required',
-			financial_resources_cnpj: {
-				required: true,
-				number: true
-			},
+			financial_resources_cnpj: 'required',
 			contact_person: 'required',
 			detailing: 'required',
 			disseminationPlan: 'required',
@@ -97,8 +82,7 @@ $(function () {
 			address_local: 'required',
 			name_local: 'required',
 			identification: 'required',
-			agreeResources: 'required',
-			
+			agreeResources: 'required'
 		},
 		errorElement: 'em',
 		submitHandler: function (form) {

@@ -4,7 +4,7 @@
 (function () {
 	'use strict';
 
-	angular.module('eea', ['eea_directives', 'eea_services'])
+	angular.module('eea', ['ngMask', 'eea_directives', 'eea_services'])
 		.filter('wordcount', function () {
 
 			/*
@@ -69,13 +69,13 @@
 				}
 			}
 
-			$scope.addMember = () => {
+			$scope.addMember = function() {
 				if (!!$scope.members.functions &&
 					!!$scope.members.name &&
 					!!$scope.members.cpf &&
 					!!$scope.members.email &&
 					!!$scope.members.mobile &&
-					$scope.agreeMember &&
+					// $scope.agreeMember &&
 					!!$scope.members.lattes
 				) {
 					if( $scope.functions.professor || $scope.functions.comunicacao || 
@@ -111,14 +111,14 @@
 						"#member_cpf",
 						"#member_mobile",
 						"#member_email",
-						"#member_lattes",
-						"#agreeMember"
+						"#member_lattes"
+						// "#agreeMember"
 					]);
 					return true;
 				}
 				$("#SignupForm").validate().form();
 				return false;
-			}
+			};
 
 			$scope.addInstituicao = () => {
 				if (!!$scope.instituicao.name &&
@@ -156,7 +156,7 @@
 						"#instituicao_phone",
 						"#instituicao_responsible",
 						"#phone_responsible",
-						"#term_appointment",
+						// "#term_appointment",
 						"#instituicao_historic",
 						"#partnerships_for_pea",
 						"#partnerships_between_institutions",
@@ -213,7 +213,7 @@
             };
 
 
-			$scope.addFinancialResources = () => {
+			$scope.addFinancialResources = function() {
 				if (!!$scope.financial_resources.partner_features &&
 					!!$scope.financial_resources.detailing
 				) {
@@ -230,9 +230,9 @@
 						"#detailing"
 					]);
 				}
-			}
+			};
 
-			$scope.addOthersFeatures = () => {
+			$scope.addOthersFeatures = function() {
 				if (!!$scope.others_features.name) {
 					OthersFeatures.add($scope.others_features);
 					$scope.others_features = OthersFeatures.clear();
@@ -241,13 +241,12 @@
 					return true;
 				}
 				return true;
-
-			}
+			};
 
 			$scope.addListener = function (id, validation) {
-				var interval = window.setInterval(() => {
+				var interval = window.setInterval(function(){
 					if (jQuery(id).length > 0) {
-						jQuery(id).bindFirst('click', (e) => {
+						jQuery(id).bindFirst('click', function(e){
 							validation(e);
 						});
 						clearInterval(interval);
@@ -261,7 +260,7 @@
 					$scope.$apply();
 				});
 				$scope.addListener("#step1Next", function (e) {
-					window.setTimeout(()=>{
+					window.setTimeout(function() {
 						$scope.discipline = $scope.retrieveDisciplineFromCache();
 						$scope.instituicao = $scope.retrieveInstitutionFromCache();
 						$scope.$apply();
@@ -312,7 +311,7 @@
 
 			$scope.addListener("#step4Next", function(e){
 					jQuery('html,body').scrollTop(0);
-					window.setTimeout(()=>{
+					window.setTimeout(function() {
 						$scope.financial_resources = $scope.retrieveFinancialResourcesFromCache();
 						$scope.others_features = $scope.retrieveOtherFeatureFromCache();
 						$scope.$apply();
@@ -341,8 +340,9 @@
 				banca:false,
 				organizacao:false,
 				digitais:false
-			}
-			$scope.checkFunction = (val)=>{
+			};
+
+			$scope.checkFunction = function(val) {
 				if( $scope.itemChecked.length > 0){
 					var comunicacao = 0;
 					var banca = 0;
@@ -436,7 +436,7 @@
 			};
 
 			// ************** REGISTER ************** //
-			$scope.loader = (str) => {
+			$scope.loader = function(str){
 				if (!!str) {
 					if (str === 'show') {
 						$(".preloader").show();
@@ -514,7 +514,7 @@
 				});
 			}
 
-			window.setInterval(()=>{
+			window.setInterval(function() {
 				if( !!$scope.signupForm){
 					$scope.setInCache("SignupForm", $scope.signupForm);
 				}
@@ -534,9 +534,9 @@
 					$scope.setInCache("financial_resources", $scope.financial_resources);
 				}
 
-			},10000);
+			}, 10000);
 
-			$scope._SignupFormClear = () => {
+			$scope._SignupFormClear = function() {
 				//retorna um objeto membro vazio
 				$scope.members = Member.clear();
 				$scope.setInCache("members", $scope.members);
@@ -583,44 +583,44 @@
 					financial_resources: []
 				};
 			};
-			$scope.getFromCache = (cache)=>{
+			$scope.getFromCache = function(cache){
 				if(!!cache && cache !== 'undefined'){
 					return JSON.parse(cache);
 				}else{
 					return $scope._SignupFormClear();
 				}
 			};
-			$scope.setInCache = (key, value)=>{
+			$scope.setInCache = function(key, value){
 				if(!!value && value !== 'undefined'){
 					localStorage.setItem(key, JSON.stringify(value));
 				}
 			};
-			$scope.retrieveMembersFromCache= ()=>{
+			$scope.retrieveMembersFromCache= function(){
 				var cache = localStorage.getItem("members");
 				return $scope.getFromCache(cache);
 			};
-			$scope.retrieveDisciplineFromCache= ()=>{
+			$scope.retrieveDisciplineFromCache= function(){
 				var cache = localStorage.getItem("discipline");
 				return $scope.getFromCache(cache);
 			};
-			$scope.retrieveInstitutionFromCache= ()=>{
+			$scope.retrieveInstitutionFromCache= function(){
 				var cache = localStorage.getItem("instituicao");
 				return $scope.getFromCache(cache);
 			};
-			$scope.retrieveOtherFeatureFromCache= ()=>{
+			$scope.retrieveOtherFeatureFromCache= function(){
 				var cache = localStorage.getItem("others_features");
 				return $scope.getFromCache(cache);
 			};
-			$scope.retrieveFinancialResourcesFromCache= ()=>{
+			$scope.retrieveFinancialResourcesFromCache= function(){
 				var cache = localStorage.getItem("financial_resources");
 				return $scope.getFromCache(cache);
 			};
 
-			$scope._SignupFormRetrieveFromCache = () => {
+			$scope._SignupFormRetrieveFromCache = function(){
 				var cache = localStorage.getItem("SignupForm");
 				return $scope.getFromCache(cache);
 			};
-			$scope.itemCheckedFromCache = () => {
+			$scope.itemCheckedFromCache = function(){
 				var cache = localStorage.getItem('itemChecked');
 				return $scope.getFromCache(cache);
 			};

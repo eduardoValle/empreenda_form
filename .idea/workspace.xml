@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b312ab89-4364-43c8-ad3e-7980a4636708" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/controllers/selecionaDados.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libs/ngMask/ngMask.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/menu_item.ctrl.php" afterPath="$PROJECT_DIR$/controllers/menu_item.ctrl.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/eeaDataTable.js" afterPath="$PROJECT_DIR$/js/eeaDataTable.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/table_criation.php" afterPath="$PROJECT_DIR$/models/table_criation.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/menu_page.tpl.php" afterPath="$PROJECT_DIR$/views/painel/menu_page.tpl.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/form.ctrl.js" afterPath="$PROJECT_DIR$/js/form.ctrl.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libs/jquery.min.js" afterPath="$PROJECT_DIR$/libs/jquery.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/discipline.html" afterPath="$PROJECT_DIR$/views/discipline.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/financialResources.html" afterPath="$PROJECT_DIR$/views/financialResources.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/form.tpl.php" afterPath="$PROJECT_DIR$/views/form.tpl.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.html" afterPath="$PROJECT_DIR$/views/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/instituicao.html" afterPath="$PROJECT_DIR$/views/instituicao.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/member.html" afterPath="$PROJECT_DIR$/views/member.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/painel/menu_page.tpl.php" afterPath="$PROJECT_DIR$/views/painel/menu_page.tpl.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/libs/form.js" afterPath="$PROJECT_DIR$/js/form.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/libs/form.min.js" afterPath="$PROJECT_DIR$/js/form.min.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -31,50 +39,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="eeaDataTable.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/eeaDataTable.js">
+      <file leaf-file-name="form.ctrl.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/form.ctrl.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1309">
-              <caret line="77" column="36" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="5" />
+            <state relative-caret-position="10574">
+              <caret line="622" column="50" lean-forward="false" selection-start-line="622" selection-start-column="50" selection-end-line="622" selection-end-column="50" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu_page.tpl.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/painel/menu_page.tpl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="36" column="1" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="1" />
-              <folding>
-                <marker date="1494350837805" expanded="true" signature="216:1899" ph="..." />
-                <marker date="1494350837805" expanded="true" signature="1517:1884" ph="..." />
-                <marker date="1494350837805" expanded="true" signature="1551:1864" ph="..." />
-                <marker date="1494350837805" expanded="true" signature="1694:1841" ph="..." />
-                <marker date="1494350837805" expanded="true" signature="1783:1814" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu_item.ctrl.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/menu_item.ctrl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="selecionaDados.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/controllers/selecionaDados.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="25" column="85" lean-forward="false" selection-start-line="25" selection-start-column="85" selection-end-line="25" selection-end-column="85" />
-              <folding>
-                <marker date="1494350078722" expanded="true" signature="562:896" ph="SELECT eea_c... eea_coordinator" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -91,18 +61,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>curso</find>
-      <find>nome</find>
-      <find>STEP1</find>
-      <find>Recursos econômicos</find>
-      <find>financ</find>
-      <find>candi</find>
-      <find>ng-if=&quot;financial_resources.own_resource==true&quot;</find>
-      <find>$scope.register</find>
-      <find>fina</find>
-      <find>own_resource</find>
-      <find>valor</find>
-      <find>SaveAccount</find>
       <find>detailing</find>
       <find>war</find>
       <find>finalizar</find>
@@ -121,6 +79,18 @@
       <find>localStorage</find>
       <find>register</find>
       <find>console</find>
+      <find>decla</find>
+      <find>mask='99.999.999/9999-99'</find>
+      <find>celu</find>
+      <find>VALOR</find>
+      <find>mem</find>
+      <find>add</find>
+      <find>cn</find>
+      <find>capa</find>
+      <find>term_appointment</find>
+      <find>num</find>
+      <find>partner_features</find>
+      <find>=&gt;</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,10 +108,8 @@
         <option value="$PROJECT_DIR$/js/eeaDataTalbe.js" />
         <option value="$PROJECT_DIR$/classes/Rest.inc.php" />
         <option value="$PROJECT_DIR$/views/teste.php" />
-        <option value="$PROJECT_DIR$/libs/jquery.min.js" />
         <option value="$PROJECT_DIR$/libs/angular-datatables.min.js" />
         <option value="$PROJECT_DIR$/empreenda_form.php" />
-        <option value="$PROJECT_DIR$/views/form.tpl.php" />
         <option value="$PROJECT_DIR$/controllers/teste.php" />
         <option value="$PROJECT_DIR$/js/directives.js" />
         <option value="$PROJECT_DIR$/models/db_install.php" />
@@ -150,20 +118,23 @@
         <option value="$PROJECT_DIR$/libs/ultimate-data-table/ultimate-datatable-3.3.1-SNAPSHOT.js" />
         <option value="$PROJECT_DIR$/controllers/dashboardData.php" />
         <option value="$PROJECT_DIR$/views/menu_page.tpl.php" />
-        <option value="$PROJECT_DIR$/views/discipline.html" />
-        <option value="$PROJECT_DIR$/views/instituicao.html" />
-        <option value="$PROJECT_DIR$/views/member.html" />
-        <option value="$PROJECT_DIR$/views/index.html" />
-        <option value="$PROJECT_DIR$/views/financialResources.html" />
         <option value="$PROJECT_DIR$/js/services.js" />
         <option value="$PROJECT_DIR$/controllers/validateData.php" />
         <option value="$PROJECT_DIR$/views/othersFeatures.html" />
-        <option value="$PROJECT_DIR$/js/form.ctrl.js" />
         <option value="$PROJECT_DIR$/controllers/selecionaDados.php" />
-        <option value="$PROJECT_DIR$/js/eeaDataTable.js" />
         <option value="$PROJECT_DIR$/controllers/menu_item.ctrl.php" />
-        <option value="$PROJECT_DIR$/views/painel/menu_page.tpl.php" />
         <option value="$PROJECT_DIR$/models/table_criation.php" />
+        <option value="$PROJECT_DIR$/js/eeaDataTable.js" />
+        <option value="$PROJECT_DIR$/views/painel/menu_page.tpl.php" />
+        <option value="$PROJECT_DIR$/views/form.tpl.php" />
+        <option value="$PROJECT_DIR$/views/member.html" />
+        <option value="$PROJECT_DIR$/views/discipline.html" />
+        <option value="$PROJECT_DIR$/views/instituicao.html" />
+        <option value="$PROJECT_DIR$/libs/jquery.min.js" />
+        <option value="$PROJECT_DIR$/views/financialResources.html" />
+        <option value="$PROJECT_DIR$/views/index.html" />
+        <option value="$PROJECT_DIR$/js/form.js" />
+        <option value="$PROJECT_DIR$/js/form.ctrl.js" />
       </list>
     </option>
   </component>
@@ -278,53 +249,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="painel" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empreenda_form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empreenda_form" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empreenda_form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empreenda_form" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empreenda_form" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="empreenda_form" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -342,16 +267,17 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\js" />
       <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\views\painel" />
       <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\libs\ultimate-data-table" />
       <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\libs\data-table" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\libs\ngMask" />
       <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\libs" />
       <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\libs\data-tables" />
       <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\imgs" />
       <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\views" />
-      <recent name="D:\wamp\www\wordpress\wp-content\plugins\empreenda_form\controllers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -469,12 +395,12 @@
       <workItem from="1493815685152" duration="42837000" />
       <workItem from="1493904550317" duration="8901000" />
       <workItem from="1494262203981" duration="1181000" />
-      <workItem from="1494333888958" duration="7637000" />
+      <workItem from="1494333888958" duration="17137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="258368000" />
+    <option name="totallyTimeSpent" value="267868000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -487,8 +413,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13854167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13854167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -520,14 +447,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/basic.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="92" column="9" lean-forward="false" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/084ef825-9c72-4af7-b81a-94be6a210aa5/console.sql" />
     <entry file="file://$PROJECT_DIR$/models/table_coordinators.php" />
     <entry file="file://$PROJECT_DIR$/models/table_institution.php" />
     <entry file="file://$PROJECT_DIR$/models/table_participation.php" />
@@ -543,13 +462,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/jquery.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="686">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -575,13 +487,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/jquery.toast.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/index.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -631,14 +536,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/libs/form.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/libs/form.js">
+    <entry file="file://$PROJECT_DIR$/js/form.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -652,21 +550,6 @@
           <folding>
             <marker date="1493735837292" expanded="true" signature="607:654" ph="SELECT name,... eea_coordinator" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/directives.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="57" column="5" lean-forward="false" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/form.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="15" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -694,69 +577,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/discipline.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="90" lean-forward="true" selection-start-line="19" selection-start-column="90" selection-end-line="19" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/instituicao.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3298">
-          <caret line="194" column="4" lean-forward="true" selection-start-line="194" selection-start-column="4" selection-end-line="194" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="23" column="18" lean-forward="true" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/empreenda_form.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/financialResources.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="11" column="14" lean-forward="false" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/member.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="126" column="110" lean-forward="false" selection-start-line="126" selection-start-column="110" selection-end-line="126" selection-end-column="177" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/othersFeatures.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="19" column="36" lean-forward="false" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/form.ctrl.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-901">
-          <caret line="469" column="0" lean-forward="false" selection-start-line="469" selection-start-column="0" selection-end-line="472" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -798,24 +622,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/eeaDataTable.js">
+    <entry file="file://$PROJECT_DIR$/controllers/selecionaDados.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="77" column="36" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="84" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/painel/menu_page.tpl.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="36" column="1" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="1" />
+        <state relative-caret-position="459">
+          <caret line="32" column="1" lean-forward="true" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
           <folding>
-            <marker date="1494350837805" expanded="true" signature="216:1899" ph="..." />
-            <marker date="1494350837805" expanded="true" signature="1517:1884" ph="..." />
-            <marker date="1494350837805" expanded="true" signature="1551:1864" ph="..." />
-            <marker date="1494350837805" expanded="true" signature="1694:1841" ph="..." />
-            <marker date="1494350837805" expanded="true" signature="1783:1814" ph="..." />
+            <marker date="1494350078722" expanded="true" signature="562:896" ph="SELECT eea_c... eea_coordinator" />
           </folding>
         </state>
       </provider>
@@ -828,13 +640,148 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/selecionaDados.php">
+    <entry file="file://$PROJECT_DIR$/css/form.min.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="85" lean-forward="false" selection-start-line="25" selection-start-column="85" selection-end-line="25" selection-end-column="85" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/painel/menu_page.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="34" column="30" lean-forward="true" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
           <folding>
-            <marker date="1494350078722" expanded="true" signature="562:896" ph="SELECT eea_c... eea_coordinator" />
+            <marker date="1494355373476" expanded="true" signature="216:2103" ph="..." />
+            <marker date="1494355373476" expanded="true" signature="1517:2088" ph="..." />
+            <marker date="1494355373476" expanded="true" signature="1573:1680" ph="..." />
+            <marker date="1494355373476" expanded="true" signature="1755:2068" ph="..." />
+            <marker date="1494355373476" expanded="true" signature="1898:2045" ph="..." />
+            <marker date="1494355373476" expanded="true" signature="1987:2018" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/eeaDataTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="72" column="36" lean-forward="false" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/ngMask/ngMask.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/index.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/directives.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="819">
+          <caret line="57" column="5" lean-forward="false" selection-start-line="57" selection-start-column="5" selection-end-line="57" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-898">
+          <caret line="23" column="18" lean-forward="true" selection-start-line="23" selection-start-column="18" selection-end-line="23" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/form.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="742">
+          <caret line="50" column="58" lean-forward="true" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="58" />
+          <folding>
+            <marker date="1494357190109" expanded="true" signature="1848:1889" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/member.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="88" column="0" lean-forward="true" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/discipline.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="58" column="21" lean-forward="false" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/othersFeatures.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/libs/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="13" column="67" lean-forward="false" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="244" column="67" lean-forward="false" selection-start-line="244" selection-start-column="67" selection-end-line="244" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/financialResources.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="183" column="0" lean-forward="true" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/form.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="90" column="25" lean-forward="true" selection-start-line="90" selection-start-column="25" selection-end-line="90" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/instituicao.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="103" column="75" lean-forward="false" selection-start-line="103" selection-start-column="59" selection-end-line="103" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/form.ctrl.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10574">
+          <caret line="622" column="50" lean-forward="false" selection-start-line="622" selection-start-column="50" selection-end-line="622" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -55,7 +55,9 @@
     <label class="col-md-4 col-sm-3 control-label" for="n_students">Previsão do nº de alunos</label>
     <div class="col-md-6 col-sm-6">
         <input ng-model="discipline.n_students" id="n_students" name="n_students" type="number"
-               placeholder="Apenas números" class="form-control input-md" required data-rule-required="true"
+               placeholder="Apenas números" class="form-control input-md" required
+               mask='9999'
+               data-rule-required="true"
                data-msg-required="É necessário preencher o campo Previsão de alunos.">
     </div>
 </div>

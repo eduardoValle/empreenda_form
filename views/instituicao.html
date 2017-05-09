@@ -1,6 +1,6 @@
 <h2 class="titulo-fase">Fase 3 - Proposta institucional</h2>
 
-<!-- Select Basic -->
+<!-- TIPO DE PROPOSTA-->
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label" for="proposal">Tipo de proposta</label>
     <div class="col-md-6 col-sm-6">
@@ -12,10 +12,6 @@
         </select>
     </div>
 </div>
-
-<!--<legend ng-if="instituicao.proposal==1">Instituição</legend>-->
-<!--<legend ng-if="instituicao.proposal==3">Instituição</legend>-->
-<!--<legend ng-if="instituicao.proposal==2">Campus</legend>-->
 
 <!-- NOME DA INSTITUIÇÃO -->
 <div class="form-group">
@@ -32,8 +28,10 @@
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label" for="cnpj_instituicao">CNPJ</label>
     <div class="col-md-6 col-sm-6">
-        <input ng-model="instituicao.cnpj" id="cnpj_instituicao" name="cnpj_instituicao" type="number"
-               placeholder="Apenas números" class="form-control input-md" required data-rule-required="true"
+        <input ng-model="instituicao.cnpj" id="cnpj_instituicao" name="cnpj_instituicao" type="text"
+               placeholder="Apenas números" class="form-control input-md" required
+               mask='99.999.999/9999-99'
+               data-rule-required="true"
                data-msg-required="É necessário aceitar o campo CNPJ.">
     </div>
 </div>
@@ -66,8 +64,10 @@
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label" for="instituicao_phone">Telefone</label>
     <div class="col-md-6 col-sm-6">
-        <input ng-model="instituicao.phone" id="instituicao_phone" name="instituicao_phone" type="number"
-               placeholder="Apenas números" class="form-control input-md" required data-rule-required="true"
+        <input ng-model="instituicao.phone" id="instituicao_phone" name="instituicao_phone" type="text"
+               mask='(99) 9999-9999'
+               placeholder="Apenas números" class="form-control input-md" required
+               data-rule-required="true"
                data-msg-required="É necessário preencher o campo Telefone.">
     </div>
 </div>
@@ -88,8 +88,10 @@
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label" for="phone_responsible">Contato do representante legal</label>
     <div class="col-md-6 col-sm-6">
-        <input ng-model="instituicao.phone_responsible" id="phone_responsible" name="phone_responsible" type="number"
-               placeholder="" class="form-control input-md" required data-rule-required="true"
+        <input ng-model="instituicao.phone_responsible" id="phone_responsible" name="phone_responsible" type="text"
+               placeholder="" class="form-control input-md" required
+               mask='(99) 9 9999-9999'
+               data-rule-required="true"
                data-msg-required="É necessário preencher o campo de Contato do representante legal.">
     </div>
 </div>

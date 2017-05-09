@@ -84,7 +84,7 @@
                        data-msg-required="É necessário preencher o campo Valor de recurso">
             </div>
         </div>
-        <!-- INFORMAÇÕES ADICIONAIS SOBRE A PARCERIA -->
+        <!-- INFORMAÇÕES ADICIONAIS SOBRE O RECURSO -->
         <div class="form-group">
             <label class="col-md-4 col-sm-3 control-label" for="own_detailing">
                 Informações adicionais sobre o recurso
@@ -164,8 +164,8 @@
             <label class="col-md-4 col-sm-3 control-label" for="financial_resources_cnpj">CNPJ do parceiro</label>
             <div class="col-md-6 col-sm-6">
                 <input ng-model="financial_resources.cnpj" id="financial_resources_cnpj" name="financial_resources_cnpj"
-                       placeholder="Apenas números"
-                       type="number" class="form-control input-md" financial_resources required
+                       class="form-control input-md" type="text" placeholder="Apenas números" required
+                       mask='99.999.999/9999-99'
                        data-rule-required="true"
                        data-msg-required="É necessário preencher o campo CNPJ">
             </div>
@@ -198,8 +198,8 @@
             <label class="col-md-4 col-sm-3 control-label" for="contact_person">Telefone do responsável</label>
             <div class="col-md-6 col-sm-6">
                 <input ng-model="financial_resources.contact_phone" id="contact_person" name="contact_person"
-                       type="text"
-                       placeholder="Apenas números" class="form-control input-md" required
+                       type="text" placeholder="Apenas números" class="form-control input-md" required
+                       mask='(99) 9 9999-9999'
                        data-rule-required="true"
                        data-msg-required="É necessário preencher o campo Telefone do Resposável">
             </div>

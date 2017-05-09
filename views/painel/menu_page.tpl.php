@@ -24,7 +24,11 @@ function my_custom_menu_page() {
             <script src="../wp-content/plugins/empreenda_form/js/eeaDataTable.js" type="text/javascript" charset="utf-8"></script>
             
              <div ng-app="ngAppDemo" class="container-fluid">
-                <div class="row">
+                <div class="row" ng-if="coordenadores">
+                    <h1 align=center>Não há coordenadores cadastrados!! =/</h1><br>
+                </div>
+                 
+                <div class="row" ng-if="!coordenadores">
                     <h1 align=center>Lista de coordenadores cadastrados</h1><br>
                     <div ng-controller="ngAppDemoController">
                         <div class="col-md-12 col-lg-12" ultimate-datatable="datatable">

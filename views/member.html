@@ -40,11 +40,12 @@
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label">CPF</label>
     <div class="col-md-6 col-sm-6">
-        <input ng-model="members.cpf" id="member_cpf" name="member_cpf" type="number" placeholder="Apenas números"
-               class="form-control input-md"
-               required
+        <input ng-model="members.cpf" id="member_cpf" name="member_cpf" type="text" placeholder="Apenas números"
+               class="form-control input-md" required
+               mask='999.999.999.99'
                data-rule-required="true"
-               data-msg-required="É necessário preencher o campo CPF">
+               data-msg-required="É necessário preencher o campo CPF"
+        >
     </div>
 </div>
 <br>
@@ -65,11 +66,12 @@
 <div class="form-group">
     <label class="col-md-4 col-sm-3 control-label">Celular</label>
     <div class="col-md-6 col-sm-6">
-        <input ng-model="members.mobile" id="member_mobile" name="member_mobile" type="number"
-               placeholder="Apenas números" class="form-control input-md"
-               required
+        <input ng-model="members.mobile" id="member_mobile" name="member_mobile" type="text"
+               placeholder="Apenas números" class="form-control input-md" required
+               mask='(99) 9 9999-9999'
                data-rule-required="true"
-               data-msg-required="É necessário preencher o campo Celular">
+               data-msg-required="É necessário preencher o campo Celular"
+        >
     </div>
 </div>
 <br>
@@ -85,23 +87,6 @@
     </div>
 </div>
 
-<!-- CONTRATO FINAL PARA ACEITE DO COORDENADOR -->
-<div class="form-group">
-    <label class="col-md-4 col-sm-3 control-label">Declaro a concordância com as normas do programa apresentadas através
-        deste <a href="https://www.empreendaemacao.com.br/wp-content/uploads/2017/04/editalPublico.pdf" target="_blank"
-                 title="Abrir edital">EDITAL DE CHAMAMENTO PÚBLICO DEVELOP 01/2017</a></label>
-    <div class="col-md-6 col-sm-6">
-        <div class="radio">
-            <label>
-                <input type="checkbox" ng-model="agreeMember" name="agreeMember" id="agreeMember" value="true"
-                       required
-                       data-rule-required="true"
-                       data-msg-required="É necessário aceitar as normas do programa">
-                Aceito
-            </label>
-        </div>
-    </div>
-</div>
 <div class="form-group">
 	<h3>Função:</h3>
 	<label class="funcao">
