@@ -41,17 +41,18 @@ function eea_theme() {
         plugins_url().'/' . $dir . '/libs/ngMask/ngMask.min.js',
         plugins_url().'/' . $dir . '/libs/jquery.min.js',
         plugins_url().'/' . $dir . '/libs/jquery.validate.min.js',
-        plugins_url().'/' . $dir . '/libs/jquery.formtowizard.js',
-        plugins_url().'/' . $dir . '/libs/jquery.toast.min.js',
+        plugins_url().'/' . $dir . '/libs/jquery.formtowizard.min.js',
+        plugins_url().'/' . $dir . '/libs/jquery.toast/jquery.toast.min.js',
         plugins_url().'/' . $dir . '/js/directives.js',
         plugins_url().'/' . $dir . '/js/form.ctrl.js',
         plugins_url().'/' . $dir . '/js/services.js',
         plugins_url().'/' . $dir . '/js/form.js'
     );
+
     // define the styles dependencies
     $styles = array(
-        plugins_url().'/' . $dir . '/css/form.css',
-        plugins_url().'/' . $dir . '/css/jquery.toast.min.css'
+        plugins_url().'/' . $dir . '/libs/jquery.toast/jquery.toast.min.css',
+        plugins_url().'/' . $dir . '/css/form.css'
     );
 
     $htmlScripts  = getHtmlScripts( $scripts );
