@@ -20,7 +20,6 @@ function getHtmlScripts( $arr ){
     $html = "";
     foreach( $arr as $k=>$v){
         $html .='<script src="' .$v. '"></script>';
-        
     }
     return $html;
 }
@@ -29,7 +28,6 @@ function getHtmlStyles( $arr ){
     $html = "";
     foreach( $arr as $k=>$v){
         $html .='<link rel="stylesheet" href="' .$v. '">';
-        
     }
     return $html;
 }
@@ -41,20 +39,19 @@ function eea_theme() {
     $scripts = array(
         plugins_url().'/' . $dir . '/libs/angular.min.js',
         plugins_url().'/' . $dir . '/libs/ngMask/ngMask.min.js',
+        plugins_url().'/' . $dir . '/libs/jquery.min.js',
+        plugins_url().'/' . $dir . '/libs/jquery.validate.min.js',
+        plugins_url().'/' . $dir . '/libs/jquery.formtowizard.js',
+        plugins_url().'/' . $dir . '/libs/jquery.toast.min.js',
         plugins_url().'/' . $dir . '/js/directives.js',
         plugins_url().'/' . $dir . '/js/form.ctrl.js',
         plugins_url().'/' . $dir . '/js/services.js',
-        plugins_url().'/' . $dir . '/libs/jquery.min.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.min.js',
-        plugins_url().'/' . $dir . '/libs/jquery.formtowizard.js',
-        plugins_url().'/' . $dir . '/js/form.js',
-        plugins_url().'/' . $dir . '/js/jquery.toast.min.js',
+        plugins_url().'/' . $dir . '/js/form.js'
     );
     // define the styles dependencies
     $styles = array(
         plugins_url().'/' . $dir . '/css/form.css',
-        plugins_url().'/' . $dir . '/css/jquery.toast.min.css',
-
+        plugins_url().'/' . $dir . '/css/jquery.toast.min.css'
     );
 
     $htmlScripts  = getHtmlScripts( $scripts );

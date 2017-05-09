@@ -59,13 +59,13 @@
                     } else {
                         id.map(i => {
                             if (typeof(i) === 'string') {
-                            try {
-                                $(i).rules("remove");
-                                $(i).data('rule-required', false);
-                                $(i).removeAttr('required');
-                            } catch (e) {}
-                        }
-                    });
+                                try {
+                                    $(i).rules("remove");
+                                    $(i).data('rule-required', false);
+                                    $(i).removeAttr('required');
+                                } catch (e) {}
+                            }
+                        });
                     }
                 };
 
@@ -623,7 +623,6 @@
                 };
 
                 $scope.signupForm = $scope._SignupFormRetrieveFromCache();
-
                 $scope.members = $scope.retrieveMembersFromCache();
                 $scope.discipline = $scope.retrieveDisciplineFromCache();
                 $scope.instituicao = $scope.retrieveInstitutionFromCache();
