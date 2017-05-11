@@ -70,7 +70,7 @@
                 url: '/wordpress/wp-content/plugins/empreenda_form/controllers/selecionaDados.php'
             }).then(function (response) {
                 console.log(response.data);
-                $scope.coordenadores = response.data;
+                $scope.coordenadores = (response.data.length === 0 ? false : response.data);
 
                 //Inserindo as configurações no data table.
                 $scope.datatable = datatable(datatableConfig);

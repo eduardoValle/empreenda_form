@@ -11,12 +11,17 @@ require_once('../../../../wp-config.php');
 $host = DB_HOST;
 $dataBase = DB_NAME;
 
+$response = new stdClass;
+$response->type = 'insert database';
+
 try {
     $dbh = new PDO("mysql:dbname=$dataBase;host=$host", DB_USER, DB_PASSWORD, array(PDO::ATTR_PERSISTENT => true));
     //echo "Connected\n";
 } catch (Exception $e) {
-    echo "error database\n";
-    die("Não foi possível conectar ao banco de dados: " . $e->getMessage());
+    $response->type = 'error database';
+    $response->message = $e->getMessage();
+    print_r(json_encode($response));
+    return;
 }
 
 try {
@@ -29,5 +34,9 @@ try {
     print_r(json_encode($result));
 
 } catch (Exception $e) {
-    echo 'Problemas ao recuperar dados: ' . $e->getMessage();
+    $response->type = 'Problemas ao recuperar dados do coordenador!!';
+    $response->message = $e->getMessage();
+    print_r(json_encode($response));
+//    die("Não foi possível recuperar os dados: " . $e->getMessage());
+    return;
 }

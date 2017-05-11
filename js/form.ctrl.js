@@ -96,7 +96,7 @@
                                 digitais: false
                             };
                         } else {
-                            messageToast('Defina alguma função para o membro', 'Erro!!', 'error');
+                            messageToast('Erro!!', 'Defina alguma função para o membro', 'error');
                             return false;
                         }
 
@@ -184,7 +184,6 @@
                     }
                 };
 
-
                 /** RECURSOS FINANCEIROS **/
 
                 $scope.financial = 5;
@@ -209,7 +208,6 @@
                     $scope.financial = 0;
                     $scope.financialOption = 0;
                 };
-
 
                 $scope.addFinancialResources = function () {
                     if (!!$scope.financial_resources.partner_features &&
@@ -256,6 +254,7 @@
                     $scope.members = $scope.retrieveMembersFromCache();
                     $scope.$apply();
                 });
+
                 $scope.addListener("#step1Next", function (e) {
                     window.setTimeout(function () {
                         $scope.discipline = $scope.retrieveDisciplineFromCache();
@@ -277,7 +276,6 @@
                     }
                     jQuery('html,body').scrollTop(0);
                 });
-
 
                 $scope.addListener("#step2Next", function (e) {
                     $scope.addInstituicao();
@@ -354,10 +352,9 @@
                         try {
                             if (eval(val) >= 1) {
                                 $scope.functions[val] = false;
-                                messageToast('Essa função só pode ser atribuída a um membro!', 'Erro!!', 'error');
+                                messageToast('Erro!!', 'Apenas um membro pode ter essa função!', 'error');
                             }
-                        } catch (e) {
-                        }
+                        } catch (e) {}
                     }
                 };
 
@@ -384,6 +381,7 @@
                         console.error("type undefined");
                     }
                 };
+
                 $scope.saveItem = function (type) {
                     if (!!type) {
                         $scope.edit = false;
@@ -405,6 +403,7 @@
                         console.error("type undefined");
                     }
                 };
+
                 $scope.removeItem = function (type, index) {
                     if (!!type) {
                         $scope.edit = false;
@@ -463,32 +462,51 @@
                             'Content-Type': undefined
                         }
                     }).then(function (response) {
+
+                        console.log(response);
+
                         $scope.loader('hide');
-                        switch (response.data) {
+                        switch (response.data.type) {
+
                             case 'success':
                                 //Limpando o formulário.
                                 // $scope.signupForm = $scope.SignupForm();
-                                localStorage.clear();
-                                messageToast('Sua proposta foi enviada com sucesso!!', 'Parabéns!!', 'success');
+                                // localStorage.clear();
+                                messageToast('Parabéns!!', 'Sua proposta foi enviada com sucesso!!', 'success');
                                 //Redirecionando para a página principal.
-                                setTimeout(function () {
-                                    window.location.href = "http://www.empreendaemacao.com.br/";
-                                }, 2000);
+                                // setTimeout(function () {
+                                //     window.location.href = "http://www.empreendaemacao.com.br/";
+                                // }, 2000);
                                  break;
+
                             case 'error database':
-                                messageToast('Erro ao conectar com o banco de dados!! \nPor favor, entre em contato com nossos administradores!!', 'Erro!', 'error');
+                                messageToast('Erro!', 'Erro ao conectar com o banco de dados!! \nPor favor, entre em contato com nossos administradores!!', 'error');
+                                registrarLog($scope.signupForm, response);
                                 break;
+
+                            case 'insert database':
+                                messageToast('Erro!', 'Erro ao inserir dados no banco de dados!! \nPor favor, entre em contato com nossos administradores!!', 'error');
+                                registrarLog($scope.signupForm, response);
+                                break;
+
                             default:
-                                messageToast('Erro ao efetuar cadastro!!', 'Erro!!', 'error');
+                                messageToast('Erro!!', 'Erro ao efetuar cadastro!!', 'error');
+                                registrarLog($scope.signupForm, response);
                         }
                     }, function () {
                         // ERROR
-                        messageToast('Erro ao efetuar cadastro', 'Erro!', 'error');
+                        messageToast('Erro!', 'Erro ao efetuar cadastro', 'error');
                         $scope.loader('hide');
                     });
                 };
 
-                function messageToast(text, header, type) {
+                /**
+                 * Exibe a mensagem com um toast na tela.
+                 * @param header
+                 * @param text
+                 * @param type
+                 */
+                function messageToast(header, text, type) {
                     jQuery.toast({
                         text: text, // Text that is to be shown in the toast
                         heading: header, // Optional heading to be shown on the toast
@@ -501,6 +519,37 @@
                         textAlign: 'left', // Text alignment i.e. left, right or center
                         loader: true, // Whether to show loader or not. True by default
                         loaderBg: '#9EC600' // Background color of the toast loader
+                    });
+                }
+
+                /**
+                 * Registra no log o erro ocorrido.
+                 * @param dados
+                 * @param error
+                 */
+                function registrarLog(dados, error) {
+
+                    var obj = {};
+                    obj.error = error.data;
+                    obj.coordenador = dados.coordenador.name;
+
+                    var log = new FormData();
+                    log.append("log_error", JSON.stringify(obj));
+                    console.log(log);
+                    $http({
+                        method: 'POST',
+                        url: '/wordpress/wp-content/plugins/empreenda_form/controllers/log.php',
+                        data: log,
+                        transformRequest: angular.identity,
+                        headers: {
+                            'Content-Type': undefined
+                        }
+                    }).then(function (res) {
+                        // SUCCESS
+                        console.log('Erro registrado na tebela de log!!');
+                    }, function () {
+                        // ERROR
+                        console.log('Erro ao cadastrar log no banco de dados!!');
                     });
                 }
 

@@ -15,6 +15,7 @@ function eea_uninstall_db() {
 
     try {
         $sql = '
+            DROP TABLE IF EXISTS `eea_log`;
             DROP TABLE IF EXISTS `eea_campus`;
             DROP TABLE IF EXISTS `eea_discipline`;
             DROP TABLE IF EXISTS `eea_functions`;
@@ -224,6 +225,21 @@ function eea_db_install(){
               KEY `id_coordenador2` (`id_coordenador`)
             ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
     
+            -- --------------------------------------------------------
+            --
+            -- Estrutura da tabela `eea_log`
+            --
+            
+            CREATE TABLE IF NOT EXISTS `eea_log` (
+              `id_log` int(11) NOT NULL AUTO_INCREMENT,
+              `nome_coordenador` varchar(255) DEFAULT NULL,
+              `error_type` varchar(255) DEFAULT NULL,
+              `error_message` varchar(255) DEFAULT NULL,
+              `data` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+              PRIMARY KEY (`id_log`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
             --
             -- Limitadores para a tabela `eea_discipline`
             --

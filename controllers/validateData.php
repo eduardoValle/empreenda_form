@@ -27,12 +27,17 @@ $dataBase = DB_NAME;
 $array = json_decode(filter_input(INPUT_POST, 'signupForm', FILTER_DEFAULT));
 //print_r($array);
 
+$response = new stdClass;
+$response->type = 'insert database';
+
 try {
     $dbh = new PDO("mysql:dbname=$dataBase;host=$host", DB_USER, DB_PASSWORD, array(PDO::ATTR_PERSISTENT => true));
     //echo "Connected\n";
 } catch (Exception $e) {
-    echo "error database\n";
-    die("Não foi possível conectar ao banco de dados: " . $e->getMessage());
+    $response->type = 'error database';
+    $response->message = $e->getMessage();
+    print_r(json_encode($response));
+    return;
 }
 
 
@@ -213,7 +218,7 @@ try {
 
     if($_FILES['term_appointment']['size'] > 32000000){ // Se o arquivo for maior que 32Mb
         //erro de tamanho de arquivo
-        echo "upload size error";
+        $response->type = 'upload size error';
         throw new Exception("Arquivo grande demais para fazer upload!\n");
 //        die("upload size error" . $e->getMessage());
     }
@@ -223,17 +228,16 @@ try {
     }
 
     if(!move_uploaded_file($_FILES['term_appointment']['tmp_name'], $uploadfile)) {
-        echo "upload error";
+        $response->type = 'upload error';
         throw new Exception("Não foi possível realizar o upload desse arquivo!\n");
     }
 
-
     $dbh->commit();
-
-    echo 'success';
+    $response->type = 'success';
+    print_r(json_encode($response));
 
 } catch (Exception $e) {
     $dbh->rollBack();
-    echo "insert database";
-    //echo "Failed: " . $e->getMessage();
+    $response->message = $e->getMessage();
+    print_r(json_encode($response));
 }
