@@ -41,11 +41,12 @@
                 $scope.getMemberFunction = function (id) {
                     var list = [
                         '',
-                        'Professor da disciplina',
-                        'Responsável pela comunicação com a central do PEA',
+                        'Professor de disciplina',
                         'Tutor de projetos',
+                        'Responsável pela comunicação com a central do PEA',
                         'Responsável pela formação da banca de avaliadores',
-                        'Organizador do ELEA', 'Responsável pelas comunicações analógicas ou digitais de divulgação'
+                        'Responsável pela organização do ELEA',
+                        'Responsável pelas comunicações analógicas ou digitais de divulgação'
                     ];
                     return list[id];
                 };
@@ -455,7 +456,7 @@
 
                     $http({
                         method: 'POST',
-                        url: '/wordpress/wp-content/plugins/empreenda_form/controllers/validateData.php',
+                        url: '/wordpress/wp-content/plugins/empreenda_form/controllers/formulario/validateData.php',
                         data: formData,
                         transformRequest: angular.identity,
                         headers: {
@@ -538,7 +539,7 @@
                     console.log(log);
                     $http({
                         method: 'POST',
-                        url: '/wordpress/wp-content/plugins/empreenda_form/controllers/log.php',
+                        url: '/wordpress/wp-content/plugins/empreenda_form/controllers/formulario/log.php',
                         data: log,
                         transformRequest: angular.identity,
                         headers: {

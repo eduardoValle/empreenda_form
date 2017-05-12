@@ -21,7 +21,7 @@ function my_custom_menu_page() {
             <script src="../wp-content/plugins/empreenda_form/libs/angular.min.js" type="text/javascript" charset="utf-8"></script>
             <script src="../wp-content/plugins/empreenda_form/libs/moments.js" type="text/javascript" charset="utf-8"></script>
             <script src="../wp-content/plugins/empreenda_form/libs/ultimate-data-table/ultimate-datatable-3.3.1-SNAPSHOT.js" type="text/javascript" charset="utf-8"></script>
-            <script src="../wp-content/plugins/empreenda_form/js/eeaDataTable.js" type="text/javascript" charset="utf-8"></script>
+            <script src="../wp-content/plugins/empreenda_form/js/painel/eeaDataTable.js" type="text/javascript" charset="utf-8"></script>
             
              <div ng-app="ngAppDemo" class="container-fluid">
                 <div class="row" ng-if="coordenadores">

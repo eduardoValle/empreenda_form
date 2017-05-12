@@ -6,7 +6,7 @@
  * Time: 19:32
  */
 
-require_once('../../../../wp-config.php');
+require_once('../../../../../wp-config.php');
 
 $host = DB_HOST;
 $dataBase = DB_NAME;

@@ -7,8 +7,6 @@
     angular.module('ngAppDemo', ['ultimateDataTableServices']).controller('ngAppDemoController', ['$scope', '$http', 'datatable',
         function ($scope, $http, datatable) {
 
-            var coordenadores = [];
-
             //Simple example of configuration
             var datatableConfig = {
                 'name': 'simple_datatable',
@@ -67,7 +65,7 @@
 
             $http({
                 method: 'GET',
-                url: '/wordpress/wp-content/plugins/empreenda_form/controllers/selecionaDados.php'
+                url: '/wordpress/wp-content/plugins/empreenda_form/controllers/painel/selecionaDados.php'
             }).then(function (response) {
                 console.log(response.data);
                 $scope.coordenadores = (response.data.length === 0 ? false : response.data);

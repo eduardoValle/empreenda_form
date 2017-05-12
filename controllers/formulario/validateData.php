@@ -6,8 +6,8 @@
  * Time: 10:16
  */
 
-require_once('../../../../wp-config.php');
-require_once('../../../../wp-load.php');
+require_once('../../../../../wp-config.php');
+require_once('../../../../../wp-load.php');
 
 global $wpdb;
 
