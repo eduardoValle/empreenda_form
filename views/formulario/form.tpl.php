@@ -34,7 +34,11 @@ function eea_theme() {
         $dir . '/libs/jquery.formtowizard.min.js',
         $dir . '/libs/jquery.toast/jquery.toast.min.js',
         $dir . '/js/formulario/directives.js',
-        $dir . '/js/formulario/form.ctrl.js',
+        $dir . '/js/formulario/controllers/member.ctrl.js',
+        $dir . '/js/formulario/controllers/institution.ctrl.js',
+        $dir . '/js/formulario/controllers/financialResources.ctrl.js',
+        $dir . '/js/formulario/controllers/othersFeatures.ctrl.js',
+        $dir . '/js/formulario/controllers/form.ctrl.js',
         $dir . '/js/formulario/services.js',
         $dir . '/js/formulario/form.js'
     );

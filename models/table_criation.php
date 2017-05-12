@@ -193,7 +193,6 @@ function eea_db_install(){
               `cpf` varchar(255) DEFAULT NULL,
               `email` varchar(255) DEFAULT NULL,
               `mobile` varchar(255) DEFAULT NULL,
-              `functions` varchar(255) DEFAULT NULL,
               `id_coordenador` int(255) DEFAULT NULL,
               PRIMARY KEY (`id_member`),
               KEY `id_coordenador` (`id_coordenador`)
